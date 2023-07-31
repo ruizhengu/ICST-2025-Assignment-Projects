@@ -16,10 +16,12 @@ Command:
 
 ```sh
 # Arja
-java -cp lib/*:bin us.msu.cse.repair.Main Arja -DsrcJavaDir /home/ruizhen/Projects/SSBSE/anonymised-submissions/1/src/main/java/uk/ac/sheffield/com1003/cafe -DbinJavaDir /home/ruizhen/Projects/SSBSE/anonymised-submissions/1/build/classes/java/main -DbinTestDir /home/ruizhen/Projects/SSBSE/anonymised-submissions/1/build/classes/java/test -Ddependences dependency/javaparser-core-3.25.1.jar:dependency/javaparser-core-serialization-3.25.1.jar:dependency/commons-lang3-3.0.jar
+java -cp lib/*:bin us.msu.cse.repair.Main Arja -DsrcJavaDir /home/ruizhen/Projects/SSBSE/Cafe/Cafe_1/src/main/java/uk/ac/sheffield/com1003/cafe -DbinJavaDir /home/ruizhen/Projects/SSBSE/Cafe/Cafe_1/build/classes/java/main -DbinTestDir /home/ruizhen/Projects/SSBSE/Cafe/Cafe_1/build/classes/java/test -Ddependences dependency/javaparser-core-3.24.4.jar:dependency/javaparser-core-serialization-3.24.4.jar:dependency/commons-lang3-3.0.jar
 ```
 
-## Astro
+**Comments: the process can be ran but can not generate results.**
+
+## Astor
 
 Repository: https://github.com/SpoonLabs/astor
 
@@ -33,8 +35,10 @@ Command:
 
 ```sh
 # jGenProg2
-java -cp target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/  -binjavafolder /build/classes/java/main/ -bintestfolder  /build/classes/java/test/ -location /home/ruizhen/Projects/SSBSE/anonymised-submissions/1/ -dependencies /home/ruizhen/Projects/SSBSE/dependency
+java -cp target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/  -binjavafolder /build/classes/java/main/ -bintestfolder  /build/classes/java/test/ -location /home/ruizhen/Projects/SSBSE/Cafe/Cafe_1 -dependencies /home/ruizhen/Projects/SSBSE/Cafe/Cafe_1/dependency
 ```
+
+**Comments: can generate results (class variants) but some test cases can not run on the update program.**
 
 ## kGenProg
 
