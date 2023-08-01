@@ -27,7 +27,7 @@ Repository: https://github.com/SpoonLabs/astor
 
 Last commit: Sep 2022
 
-Java version: 11
+Java version: 11 *(The problem sheet was built in Java 17, some code has compatibility issue with Java 11)*
 
 Executable: **Yes**
 
