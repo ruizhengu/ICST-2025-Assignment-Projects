@@ -35,7 +35,7 @@ Command:
 
 ```sh
 # jGenProg2
-java -cp target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/  -binjavafolder /build/classes/java/main/ -bintestfolder  /build/classes/java/test/ -location /home/ruizhen/Projects/SSBSE/Cafe/Cafe_1 -dependencies /home/ruizhen/Projects/SSBSE/Cafe/Cafe_1/dependency
+java -cp target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/  -binjavafolder /build/classes/java/main/ -bintestfolder /build/classes/java/test/ -location /home/ruizhen/Projects/SSBSE/Cafe/com1003_cafe -dependencies /home/ruizhen/Projects/SSBSE/Cafe/dependency
 ```
 
 **Comments: can generate results (class variants) but some test cases can not run on the update program.**
