@@ -19,6 +19,11 @@ dependencies {
 
     testImplementation 'org.apache.commons:commons-lang3:3.0'
     testImplementation 'com.github.javaparser:javaparser-core-serialization:3.25.1'
+
+//    implementation 'com.gzoltar:com.gzoltar.core:1.7.3'
+    implementation files('lib/com.gzoltar-0.1.1-jdk7.jar')
+    implementation 'org.reflections:reflections:0.10.2'
+    implementation 'org.json:json:20230618'
 }
 
 test {

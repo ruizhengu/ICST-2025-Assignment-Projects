@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.stream.Stream;
 
 import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class TestCafeTask3 {
