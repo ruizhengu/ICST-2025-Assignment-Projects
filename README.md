@@ -16,7 +16,7 @@ Command:
 
 ```sh
 # Arja
-java -cp lib/*:bin us.msu.cse.repair.Main Arja -DsrcJavaDir /home/ruizhen/Projects/SSBSE/Cafe/Cafe_1/src/main/java/uk/ac/sheffield/com1003/cafe -DbinJavaDir /home/ruizhen/Projects/SSBSE/Cafe/Cafe_1/build/classes/java/main -DbinTestDir /home/ruizhen/Projects/SSBSE/Cafe/Cafe_1/build/classes/java/test -Ddependences dependency/javaparser-core-3.24.4.jar:dependency/javaparser-core-serialization-3.24.4.jar:dependency/commons-lang3-3.0.jar
+java -cp lib/*:bin us.msu.cse.repair.Main Arja -DsrcJavaDir /home/ruizhen/Projects/SSBSE/Cafe/com1003_cafe/src/main/java/uk/ac/sheffield/com1003/cafe -DbinJavaDir /home/ruizhen/Projects/SSBSE/Cafe/com1003_cafe/build/classes/java/main -DbinTestDir /home/ruizhen/Projects/SSBSE/Cafe/com1003_cafe/build/classes/java/test -Ddependences /home/ruizhen/Projects/SSBSE/Cafe/dependency/javaparser-core-3.24.4.jar:/home/ruizhen/Projects/SSBSE/Cafe/dependency/javaparser-core-serialization-3.24.4.jar:/home/ruizhen/Projects/SSBSE/Cafe/dependency/commons-lang3-3.0.jar
 ```
 
 **Comments: the process can be ran but can not generate results.**
