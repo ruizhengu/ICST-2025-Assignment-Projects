@@ -1,6 +1,7 @@
 package uk.ac.sheffield.com1003.cafe.faultlocalizer;
 
 import com.gzoltar.core.GZoltar;
+import com.gzoltar.core.components.Statement;
 import com.gzoltar.core.instr.testing.TestResult;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -25,8 +26,8 @@ public class FaultLocalizer {
 
     public FaultLocalizer() throws IOException {
         srcDir = "/home/ruizhen/Projects/SSBSE/Cafe/com1003_cafe";
-        binJavaDir = "/home/ruizhen/Projects/SSBSE/Cafe/com1003_cafe/src/main";
-        binTestDir = "/home/ruizhen/Projects/SSBSE/Cafe/com1003_cafe/src/test";
+        binJavaDir = "/home/ruizhen/Projects/SSBSE/Cafe/com1003_cafe/build/classes/java/main";
+        binTestDir = "/home/ruizhen/Projects/SSBSE/Cafe/com1003_cafe/build/classes/java/test";
         getClasses();
 
         dependencies.add("/home/ruizhen/Projects/SSBSE/Cafe/dependency/javaparser-core-3.24.4.jar");
@@ -35,9 +36,6 @@ public class FaultLocalizer {
 
         positiveTestMethods = new HashSet<String>();
         negativeTestMethods = new HashSet<String>();
-
-        System.out.println(binJavaClasses);
-        System.out.println(binExecuteTestClasses);
     }
 
     public void getClasses() throws IOException {
@@ -80,6 +78,10 @@ public class FaultLocalizer {
 
         System.out.println("positiveTestMethods " + positiveTestMethods.size());
         System.out.println("negativeTestMethods " + negativeTestMethods.size());
+
+        for (Statement gzoltarStatement : gz.getSuspiciousStatements()) {
+            System.out.println("SuspiciousStatements " + gzoltarStatement);
+        }
     }
 
 
