@@ -2,6 +2,8 @@
 
 # Search-based Automated Program Repair as Automated Assessment Tools
 
+**Definition of a "not runnable tool":** *if the tool can work for reproduction (e.g. can work on Defects4J bugs), then the execution of the tool is correct. If the tool can not work on the programming assignments in the correct setup, then the tool is not runnable for the programming assignments.*
+
 ## ARJA
 
 Repository: https://github.com/yyxhdy/arja
@@ -29,6 +31,65 @@ java -cp lib/\*:bin us.msu.cse.repair.Main Arja -DsrcJavaDir /Users/ray/Project/
 
 * Fault localisation works for the problem sheet with Java 1.8.
 * Can not generate any result.
+
+## CapGen
+
+Repository: https://github.com/MingWEN-CS/CapGen
+
+### Configuration
+
+```
+#[REQUIRED]the required options you need to set
+#1. The work directory, where to find the required libraries. The default one is the current directory "."
+workLoc=.
+#2. The bug location, where stores the bug repository
+bugLoc = /home/ruizhen/Projects/SSBSE/Cafe
+#3. the location of JDK 7. Bug Lang 57 requires JDK7 to run it
+JDK7 = /usr/lib/jvm/jdk1.7.0_80/bin/
+#4. The task you want to run [RQ1/RQ3/RepairABug]
+task = RQ1
+##. RQ1 and RQ3 reproduce the results for RQ1 and RQ3
+
+##. If the task is RepairABug, you need further specify the following parameters
+#5. The project 
+project = Cafe
+#6. The bug ID
+bid = 1
+# the specific task you want to run {faultLocation, ingredientsExtraction, patchPrioritization, patchValidation, resultsAnalysis}
+#1. faultLocation: run GZoltar to produce the fault space [true/false]
+#2. ingredientsExtraction: to extract the fixing ingredients together with their contexts [true/false]
+#3. patchPrioritization: to generate candidate patches and rank them [true/false]
+#4. patchValidation: validate the patches generated [true/false]
+#5: resultsAnalysis: analyze the results [true/false]
+faultLocation = false
+ingredientsExtraction = true
+patchPrioritization = false
+patchValidation = false
+resultsAnalysis = false
+```
+
+### Command
+
+```sh
+java -jar CapGen.jar config_test.txt 
+```
+
+### Error Output
+
+```sh
+error happens when writing lines to file /home/ruizhen/Projects/SSBSE/Cafe/Chart_1_buggy/ingredients/ingredientsRank.txt
+java.io.FileNotFoundException: /home/ruizhen/Projects/SSBSE/Cafe/Chart_1_buggy/ingredients/ingredientsRank.txt (No such file or directory)
+......
+error happens when writing lines to file /home/ruizhen/Projects/SSBSE/Cafe/Chart_8_buggy/ingredients/ingredientsRank.txt
+java.io.FileNotFoundException: /home/ruizhen/Projects/SSBSE/Cafe/Chart_8_buggy/ingredients/ingredientsRank.txt (No such file or directory)
+......
+```
+
+### Comments
+
+* Can work on provided Defects4J bugs.
+
+* Assume this tool is fixed for Defects4J bugs.
 
 ## Astor
 
@@ -60,7 +121,7 @@ JUnit version: 4
 
 ### Configuration
 
-```sh
+```toml
 # kgenprog.toml
 # placed in the root directory of the problem sheet
 
