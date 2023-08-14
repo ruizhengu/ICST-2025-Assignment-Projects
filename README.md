@@ -2,7 +2,7 @@
 
 # Search-based Automated Program Repair as Automated Assessment Tools
 
-**Definition of a "not runnable tool":** *if the tool can work for reproduction (e.g. can work on Defects4J bugs), then the execution of the tool is correct. If the tool can not work on the programming assignments in the correct setup, then the tool is not runnable for the programming assignments.*
+**Definition of a "not runnable" tool:** *if the tool can work for reproduction (e.g. can work on Defects4J bugs), then the execution of the tool is correct. If the tool can not work on the programming assignments in the correct setup, then the tool is not runnable for the programming assignments.*
 
 ## ARJA
 
@@ -144,7 +144,7 @@ Repository: https://bitbucket.org/maxpei/jaid/src/master/
 ### Comments
 
 * Can work on Defects4J bugs.
-* Can not work on the problem sheet.
+* Can generate repairs for the problem sheet, but the repairs are not valid. 
 
 ## kGenProg
 
@@ -167,4 +167,4 @@ java -jar kGenProg-1.8.2.jar
 
 ### Comments
 
-No result is generated.
+* No result is generated.
