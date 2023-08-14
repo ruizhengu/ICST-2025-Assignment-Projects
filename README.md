@@ -133,7 +133,7 @@ Repository: https://bitbucket.org/maxpei/jaid/src/master/
 
 ### Configuration
 
-**Properties:** [problem_sheet.properties](https://github.com/ruizhengu/APR-as-AAT/blob/main/properties/jaid/problem_sheet.properties)
+**Properties:** [problem_sheet.properties](/properties/jaid/problem_sheet.properties)
 
 **Program arguments**
 
@@ -156,23 +156,7 @@ JUnit version: 4
 
 ### Configuration
 
-```toml
-# kgenprog.toml
-# placed in the root directory of the problem sheet
-
-# Specifies the path to the root directory of the target project.
-root-dir = "./"
-
-# Specifies paths to "product" source code (i.e. main, non-test code),
-# or to directories containing them.
-src = ["src/main/java"]
-
-# Specifies paths to test source code, or to directories containing them.
-test = ["src/test/java"]
-
-# Specifies class paths needed to build the target project.
-cp = ["build/classes/java/main", "build/classes/java/test", "../dependency/commons-lang3-3.0.jar", "../dependency/javaparser-core-3.25.1.jar", "../dependency/javaparser-core-serialization-3.25.1.jar", "../dependency/junit-4.13.2.jar", "../dependency/junit-jupiter-api-5.9.0.jar", "../dependency/junit-jupiter-engine-5.9.0.jar", "../dependency/junit-vintage-engine-5.9.0.jar", "../dependency/apiguardian-api-1.1.2.jar"]
-```
+**Properties:** [kgenprog.toml](/properties/kGenProg/kgenprog.toml)
 
 ### Command
 
