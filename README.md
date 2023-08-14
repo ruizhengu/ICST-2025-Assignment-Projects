@@ -58,35 +58,7 @@ Repository: https://github.com/MingWEN-CS/CapGen
 
 ### Configuration
 
-```
-#[REQUIRED]the required options you need to set
-#1. The work directory, where to find the required libraries. The default one is the current directory "."
-workLoc=.
-#2. The bug location, where stores the bug repository
-bugLoc = /home/ruizhen/Projects/SSBSE/Cafe
-#3. the location of JDK 7. Bug Lang 57 requires JDK7 to run it
-JDK7 = /usr/lib/jvm/jdk1.7.0_80/bin/
-#4. The task you want to run [RQ1/RQ3/RepairABug]
-task = RQ1
-##. RQ1 and RQ3 reproduce the results for RQ1 and RQ3
-
-##. If the task is RepairABug, you need further specify the following parameters
-#5. The project 
-project = Cafe
-#6. The bug ID
-bid = 1
-# the specific task you want to run {faultLocation, ingredientsExtraction, patchPrioritization, patchValidation, resultsAnalysis}
-#1. faultLocation: run GZoltar to produce the fault space [true/false]
-#2. ingredientsExtraction: to extract the fixing ingredients together with their contexts [true/false]
-#3. patchPrioritization: to generate candidate patches and rank them [true/false]
-#4. patchValidation: validate the patches generated [true/false]
-#5: resultsAnalysis: analyze the results [true/false]
-faultLocation = false
-ingredientsExtraction = true
-patchPrioritization = false
-patchValidation = false
-resultsAnalysis = false
-```
+**Properties:** [config_test.txt](/properties/CapGen/config_test.txt)
 
 ### Command
 
@@ -161,7 +133,7 @@ Repository: https://bitbucket.org/maxpei/jaid/src/master/
 
 ### Configuration
 
-**Properties: ** [problem_sheet.properties](https://github.com/ruizhengu/APR-as-AAT/blob/main/properties/jaid/problem_sheet.properties)
+**Properties:** [problem_sheet.properties](https://github.com/ruizhengu/APR-as-AAT/blob/main/properties/jaid/problem_sheet.properties)
 
 **Program arguments**
 
