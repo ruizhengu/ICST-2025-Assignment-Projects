@@ -32,6 +32,26 @@ java -cp lib/\*:bin us.msu.cse.repair.Main Arja -DsrcJavaDir /Users/ray/Project/
 * Fault localisation works for the problem sheet with Java 1.8.
 * Can not generate any result.
 
+## Astor
+
+Repository: https://github.com/SpoonLabs/astor
+
+Java version: 1.8
+
+JUnit version: 4
+
+### Command
+
+```sh
+# jGenProg2
+java -cp target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/  -binjavafolder /build/classes/java/main/ -bintestfolder /build/classes/java/test/ -location /home/ruizhen/Projects/SSBSE/Cafe/com1003_cafe -dependencies /home/ruizhen/Projects/SSBSE/Cafe/dependency
+```
+
+### Comments
+
+* Can localise faults in the problem sheet with Java 1.8 (GZoltar & flacoco).
+* Can generate repairs for the problem sheet, but the repairs are not valid.
+
 ## CapGen
 
 Repository: https://github.com/MingWEN-CS/CapGen
@@ -88,28 +108,19 @@ java.io.FileNotFoundException: /home/ruizhen/Projects/SSBSE/Cafe/Chart_8_buggy/i
 ### Comments
 
 * Can work on provided Defects4J bugs.
-
 * Assume this tool is fixed for Defects4J bugs.
 
-## Astor
+## ConFix
 
-Repository: https://github.com/SpoonLabs/astor
-
-Java version: 1.8
-
-JUnit version: 4
-
-### Command
-
-```sh
-# jGenProg2
-java -cp target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/  -binjavafolder /build/classes/java/main/ -bintestfolder /build/classes/java/test/ -location /home/ruizhen/Projects/SSBSE/Cafe/com1003_cafe -dependencies /home/ruizhen/Projects/SSBSE/Cafe/dependency
-```
+Repository: https://github.com/thwak/ConFix
 
 ### Comments
 
-* Can localise faults in the problem sheet with Java 1.8 (GZoltar & flacoco).
-* Can generate repairs for the problem sheet, but the repairs are not valid.
+* Unclear how to generate coverage information.
+
+  ```sh
+  java.io.FileNotFoundException: coverage-info.obj (No such file or directory)
+  ```
 
 ## kGenProg
 
