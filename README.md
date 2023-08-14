@@ -153,7 +153,26 @@ Failed test file does not exist : /home/ruizhen/Projects/SSBSE/GenPat/resources/
 
 ## Genesis
 
+***Can not compile, will try on a VM later.***
 
+## JAID
+
+Repository: https://bitbucket.org/maxpei/jaid/src/master/
+
+### Configuration
+
+**Properties: ** [problem_sheet.properties](https://github.com/ruizhengu/APR-as-AAT/blob/main/properties/jaid/problem_sheet.properties)
+
+**Program arguments**
+
+```
+--JaidSettingFile $MODULE_DIR$/example/af_test/problem_sheet.properties
+```
+
+### Comments
+
+* Can work on Defects4J bugs.
+* Can not work on the problem sheet.
 
 ## kGenProg
 
