@@ -122,6 +122,39 @@ Repository: https://github.com/thwak/ConFix
   java.io.FileNotFoundException: coverage-info.obj (No such file or directory)
   ```
 
+## GenPat
+
+Repository: https://github.com/xgdsmileboy/GenPat
+
+### Configuration
+
+```java
+// Main.java
+args = new String[5];
+args[0] = "repair";
+args[1] = "-bp";
+args[2] = "/home/ruizhen/Projects/SSBSE/CapGen/Defects4J/Chart_1_buggy";
+args[3] = "-pf";
+args[4] = "/home/ruizhen/Projects/SSBSE/GenPat/example/patterns/pattern_file1.pattern";
+```
+
+### Error Output
+
+```sh
+[INFO ] 2023-08-14 12:05:12,635 /home/ruizhen/Projects/SSBSE/CapGen/Defects4J/Chart_1_buggy, [_name=FakeSubject, _ssrc=, _tsrc=, _sbin=, _tbin=]
+TIMEOUT : 7200000ms
+[INFO ] 2023-08-14 12:05:12,637 Repair : FakeSubject_1
+Failed test file does not exist : /home/ruizhen/Projects/SSBSE/GenPat/resources/d4j-info/failed_tests/FakeSubject/1.txt
+```
+
+### Comments
+
+* Not sure how to run.
+
+## Genesis
+
+
+
 ## kGenProg
 
 Repository: https://github.com/kusumotolab/kGenProg
