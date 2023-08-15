@@ -2,7 +2,9 @@
 
 # Search-based Automated Program Repair as Automated Assessment Tools
 
-**Definition of a "not runnable" tool:** *if the tool can work for reproduction (e.g. can work on Defects4J bugs), then the execution of the tool is correct. If the tool can not work on the programming assignments in the correct setup, then the tool is not runnable for the programming assignments.*
+**Definition of a "not runnable" tool:** *if the tool can work for reproduction (e.g. can work on Defects4J bugs), then the execution of the tool is correct. If the tool can not work on the programming assignments or the simple example in the correct setup, then the tool is not runnable for the programming assignments.*
+
+A "runnable" tool only means the tool can run and does not guarantee it can generate meaningful results.
 
 ## ARJA
 
@@ -81,6 +83,8 @@ java.io.FileNotFoundException: /home/ruizhen/Projects/SSBSE/Cafe/Chart_8_buggy/i
 
 * Can work on provided Defects4J bugs.
 * Assume this tool is fixed for Defects4J bugs.
+* **Can not work on the simple example.**
+* **Can not work on the problem sheet.**
 
 ## ConFix
 
@@ -122,6 +126,8 @@ Failed test file does not exist : /home/ruizhen/Projects/SSBSE/GenPat/resources/
 ### Comments
 
 * Not sure how to run.
+* **Can not work on the simple example.**
+* **Can not work on the problem sheet.**
 
 ## Genesis
 
@@ -144,7 +150,7 @@ Repository: https://bitbucket.org/maxpei/jaid/src/master/
 ### Comments
 
 * Can work on Defects4J bugs.
-* Can generate repairs for the problem sheet, but the repairs are not valid. 
+* Can generate repairs for the problem sheet and the simple example, but the repairs are not valid. 
 
 ## kGenProg
 
