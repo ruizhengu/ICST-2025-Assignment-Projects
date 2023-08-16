@@ -1,0 +1,6 @@
+testGetSum(org.example.test11)
+testGetSum2(org.example.test11)
+testGetSum3(org.example.test11)
+testGetSum4(org.example.test11)
+testGetSum5(org.example.test11)
+testGetEven(org.example.test11)

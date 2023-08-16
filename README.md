@@ -196,6 +196,39 @@ Repository: https://github.com/squaresLab/genprog4java
 
 * Unclear instructions, failed with unknown reasons.
 
+## SimFix
+
+Repository: https://github.com/xgdsmileboy/SimFix
+
+**Properties(attempted):** [d4j-info](/properties/SimFix/d4j-info)
+
+**Program arguments**
+
+```
+# Defects4J lang
+--proj_home=/Users/ray/Project/PhD/SSBSE/SimFix/bugs --proj_name=lang --bug_id=1
+```
+
+```
+# simple example
+--proj_home=/Users/ray/Project/PhD/SSBSE/Cafe --proj_name=example --bug_id=1
+```
+
+### Error Output
+
+```
+Cannot get suspicious statement for non-existing file : /Users/ray/Project/PhD/SSBSE/SimFix/sbfl/ochiai/lang/1/stmt-susps.txt
+org.apache.commons.lang3.math.NumberUtils,462
+Exception in thread "main" java.lang.Error: Unresolved compilation problem: 
+```
+
+Missing */SimFix/sbfl/ochiai* directory.
+
+### Comments
+
+* The off-the-shelf version is fixed to Defects4J bugs (required bug information located in */SimFix/d4j-info*).
+* It may be possible to manually add bug information for the simple example or the problem sheet, but the effort remains unknown.
+
 ## kGenProg
 
 Repository: https://github.com/kusumotolab/kGenProg
