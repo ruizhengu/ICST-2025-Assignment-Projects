@@ -160,6 +160,42 @@ Repository: https://github.com/squaresLab/genprog4java
 
 * Can not run the provided example.
 
+## LSRepair
+
+### Procedure
+
+1. Start with the **DataPreparer** directory.
+
+2. Following the guide of **A.1**.
+
+3. Move **DataPreparer-0.0.1-SNAPSHOT.jar** from *DataProparer/target* to *DataProparer/target/dependency*.
+
+4. Execute the command
+
+   ```sh
+   java -cp "target/dependency/*" -Xmx1g data.javaFile.getter.MainProcess /home/ruizhen/Projects/SSBSE/LSRepair /home/ruizhen/Projects/SSBSE/LSRepair/ 2
+   ```
+
+   This command will generate **JavaFiles.txt** in */home/ruizhen/Projects/SSBSE/LSRepair*.
+
+5. Create a **Output** folder at */home/ruizhen/Projects/SSBSE/LSRepair*.
+
+6. Execute the command
+
+   ```sh
+   java -cp "target/dependency/*" -Xmx1g data.javaCode.akka.parser.MainParser /home/ruizhen/Projects/SSBSE/LSRepair/JavaFiles.txt /home/ruizhen/Projects/SSBSE/LSRepair/Output/ 2 2
+   ```
+
+   The command fail with the error
+
+   ```sh
+   java.io.FileNotFoundException: /home/ruizhen/Projects/SSBSE/LSRepair/Output/Metric/MethodBodyTokens.txt (No such file or directory)
+   ```
+
+### Comments
+
+* Unclear instructions, failed with unknown reasons.
+
 ## kGenProg
 
 Repository: https://github.com/kusumotolab/kGenProg
