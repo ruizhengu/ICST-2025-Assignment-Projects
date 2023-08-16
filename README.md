@@ -152,6 +152,14 @@ Repository: https://bitbucket.org/maxpei/jaid/src/master/
 * Can work on Defects4J bugs.
 * Can generate repairs for the problem sheet and the simple example, but the repairs are not valid. 
 
+## JaRFly
+
+Repository: https://github.com/squaresLab/genprog4java
+
+### Comments
+
+* Can not run the provided example.
+
 ## kGenProg
 
 Repository: https://github.com/kusumotolab/kGenProg
