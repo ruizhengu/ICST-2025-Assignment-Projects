@@ -262,6 +262,21 @@ Repository: https://github.com/TruX-DTF/TBar
   String result = ShellUtils.shellRun(Arrays.asList("cd " + projectName + "\n", defects4jPath + "framework/bin/defects4j " + cmdType + "\n"), buggyProject, cmdType.equals("test") ? 2 : 1);
   ```
 
+## kPAR
+
+Repository: https://github.com/TruX-DTF/FL-VS-APR
+
+### Comments
+
+* The tool is fixed to Defects4J bugs (the program is executing defects4j command).
+
+  ```java
+  // AbstractFixer.java
+  if (FileHelper.getAllFiles(path + buggyProject + PathUtils.getSrcPath(buggyProject).get(0), ".class").isEmpty()) {
+      TestUtils.compileProjectWithDefects4j(path + buggyProject, defects4jPath);
+  }
+  ```
+
 ## kGenProg
 
 Repository: https://github.com/kusumotolab/kGenProg
