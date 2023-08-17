@@ -262,21 +262,6 @@ Repository: https://github.com/TruX-DTF/TBar
   String result = ShellUtils.shellRun(Arrays.asList("cd " + projectName + "\n", defects4jPath + "framework/bin/defects4j " + cmdType + "\n"), buggyProject, cmdType.equals("test") ? 2 : 1);
   ```
 
-## kPAR
-
-Repository: https://github.com/TruX-DTF/FL-VS-APR
-
-### Comments
-
-* The tool is fixed to Defects4J bugs (the program is executing defects4j command).
-
-  ```java
-  // AbstractFixer.java
-  if (FileHelper.getAllFiles(path + buggyProject + PathUtils.getSrcPath(buggyProject).get(0), ".class").isEmpty()) {
-      TestUtils.compileProjectWithDefects4j(path + buggyProject, defects4jPath);
-  }
-  ```
-
 ## kGenProg
 
 Repository: https://github.com/kusumotolab/kGenProg
@@ -299,3 +284,54 @@ java -jar kGenProg-1.8.2.jar
 ### Comments
 
 * No result is generated.
+
+## kPAR
+
+Repository: https://github.com/TruX-DTF/FL-VS-APR
+
+### Comments
+
+* The tool is fixed to Defects4J bugs (the program is executing defects4j command).
+
+  ```java
+  // AbstractFixer.java
+  if (FileHelper.getAllFiles(path + buggyProject + PathUtils.getSrcPath(buggyProject).get(0), ".class").isEmpty()) {
+      TestUtils.compileProjectWithDefects4j(path + buggyProject, defects4jPath);
+  }
+  ```
+
+## ssFix
+
+Repository: https://github.com/qixin5/ssFix
+
+**Properties (simple example):** [testsuite_classes](/properties/ssFix/simpleExample_1_buggy/testsuite_classes)
+
+**Properties (problem sheet):** [testsuite_classes](/properties/ssFix/com1003_cafe_8/testsuite_classes)
+
+### Command
+
+```sh
+# simple example
+./run -bugid s1 -dependjpath /home/ruizhen/Projects/SSBSE/ssFix/test/Lang_21_buggy/all0.jar -projdpath /home/ruizhen/Projects/SSBSE/ssFix/test/simpleExample_1_buggy -projsrcdpath /home/ruizhen/Projects/SSBSE/ssFix/test/simpleExample_1_buggy/src/main/java -projbuilddpath /home/ruizhen/Projects/SSBSE/ssFix/test/simpleExample_1_buggy/target/classes -projtestbuilddpath /home/ruizhen/Projects/SSBSE/ssFix/test/simpleExample_1_buggy/target/test-classes -outputdpath /home/ruizhen/Projects/SSBSE/ssFix/test/rslt -ssfixdpath /home/ruizhen/Projects/SSBSE/ssFix -tsuitefpath /home/ruizhen/Projects/SSBSE/ssFix/test/simpleExample_1_buggy/testsuite_classes -faulocaddstacktrace -parallelgranularity 8 &> simpleExample1_log
+```
+
+```sh
+# problem sheet 
+./run -bugid c8 -dependjpath /home/ruizhen/Projects/SSBSE/Cafe/dependency/ -projdpath /home/ruizhen/Projects/SSBSE/ssFix/test/com1003_cafe_8 -projsrcdpath /home/ruizhen/Projects/SSBSE/ssFix/test/com1003_cafe_8/src/main/java -projbuilddpath /home/ruizhen/Projects/SSBSE/ssFix/test/com1003_cafe_8/build/classes -projtestbuilddpath /home/ruizhen/Projects/SSBSE/ssFix/test/com1003_cafe_8/build/test-classes -outputdpath /home/ruizhen/Projects/SSBSE/ssFix/test/rslt -ssfixdpath /home/ruizhen/Projects/SSBSE/ssFix -tsuitefpath /home/ruizhen/Projects/SSBSE/ssFix/test/com1003_cafe_8/testsuite_classes -faulocaddstacktrace -parallelgranularity 8 &> cafe8_log
+```
+
+### Comments
+
+* The tool can work on the provided Lang_21_buggy example, but no patch is generated.
+
+* The tool can not work on the simple example and the problem sheet because there is no fault localization result found.
+
+  ```
+  # simpleExample1_log
+  
+  No Fault Localization Result Found!
+  Fault Localization Failure.
+  Repair execution time: 8
+  ```
+
+  
