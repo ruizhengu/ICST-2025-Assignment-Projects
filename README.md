@@ -247,6 +247,21 @@ Repository: https://github.com/SketchFix/SketchFix
 * The HelloWorld example can generate repair with the simple example but the repair is invalid.
 * No clear instruction about how to use the tool on Defects4J or other real world bugs.
 
+## TBar
+
+Repository: https://github.com/TruX-DTF/TBar
+
+### Comments
+
+* The tool is fixed to Defects4J bugs (the program is executing defects4j command).
+
+  ```java
+  // AbstractFixer.java
+  TestUtils.compileProjectWithDefects4j(fullBuggyProjectPath, defects4jPath);
+  // TestUtils.java
+  String result = ShellUtils.shellRun(Arrays.asList("cd " + projectName + "\n", defects4jPath + "framework/bin/defects4j " + cmdType + "\n"), buggyProject, cmdType.equals("test") ? 2 : 1);
+  ```
+
 ## kGenProg
 
 Repository: https://github.com/kusumotolab/kGenProg
