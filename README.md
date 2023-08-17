@@ -229,6 +229,24 @@ Missing */SimFix/sbfl/ochiai* directory.
 * The off-the-shelf version is fixed to Defects4J bugs (required bug information located in */SimFix/d4j-info*).
 * It may be possible to manually add bug information for the simple example or the problem sheet, but the effort remains unknown.
 
+## SketchFix
+
+Repository: https://github.com/SketchFix/SketchFix
+
+**Properties (simple example):** [SimpleConfig.txt](/properties/SketchFix/SimpleConfig.txt)
+
+### Procedure (simple example)
+
+1. Place **Test1.java** and **test11.java** in */SketchFix/HelloWorld/src*.
+2. Replace **SimpleConfig.txt** in */SketchFix/Helloworld*.
+3. Run **PatchGenerationRunner.java**.
+
+### Comments
+
+* The HelloWorld example works on the provided fault.
+* The HelloWorld example can generate repair with the simple example but the repair is invalid.
+* No clear instruction about how to use the tool on Defects4J or other real world bugs.
+
 ## kGenProg
 
 Repository: https://github.com/kusumotolab/kGenProg

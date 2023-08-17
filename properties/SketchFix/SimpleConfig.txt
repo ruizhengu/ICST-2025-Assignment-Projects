@@ -1,0 +1,6 @@
+#Config File Similar to Defects4J build properties file
+classes.modified=Test1
+dir.src.classes=src
+dir.src.tests=src
+tests.trigger=test11::testGetEven
+output.sketch=./example/
