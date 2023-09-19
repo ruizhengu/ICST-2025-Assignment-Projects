@@ -6,7 +6,7 @@
 
 **Coverage Measurement**
 
-```bash
+```sh
 $EVOSUITE -measureCoverage -class uk.ac.sheffield.com1003.cafe.Cafe -Djunit=uk.ac.sheffield.com1003.cafe.junit4.TestCafeTask1 -criterion branch -projectCP build/classes/java/main:build/classes/java/test
 ```
 
@@ -23,5 +23,13 @@ $EVOSUITE -measureCoverage -class uk.ac.sheffield.com1003.cafe.Cafe -Djunit=uk.a
 * Total coverage: 27%
 * Computation finished
 * Writing statistics
+```
+
+
+
+### EvoSuite<sub>amp</sub>
+
+```sh
+sh evosuite.sh
 ```
 
