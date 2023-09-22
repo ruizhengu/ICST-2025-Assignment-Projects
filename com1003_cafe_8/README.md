@@ -30,6 +30,6 @@ $EVOSUITE -measureCoverage -class uk.ac.sheffield.com1003.cafe.Cafe -Djunit=uk.a
 ### EvoSuite<sub>amp</sub>
 
 ```sh
-sh evosuite.sh
+sh evosuiteAmp.sh
 ```
 

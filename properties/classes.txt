@@ -1,5 +1,4 @@
 uk.ac.sheffield.com1003.cafe.exceptions.TooManyIngredientsException
-uk.ac.sheffield.com1003.cafe.Recipe$Size
 uk.ac.sheffield.com1003.cafe.App
 uk.ac.sheffield.com1003.cafe.ingredients.Water
 uk.ac.sheffield.com1003.cafe.Recipe
