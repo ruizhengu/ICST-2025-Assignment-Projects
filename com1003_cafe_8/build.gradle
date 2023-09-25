@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application'
+    id 'jacoco'
 }
 
 repositories {
@@ -25,6 +26,19 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    filter {
+        excludeTestsMatching "uk.ac.sheffield.com1003.cafe.junit4.evosuite.*"
+    }
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
+}
+
+jacoco {
+    toolVersion = "0.8.9"
+    reportsDirectory = layout.buildDirectory.dir('customJacocoReportDir')
 }
 
 application {
