@@ -1,9 +1,5 @@
 package uk.ac.sheffield.com1003.cafe.junit4;
 
-import org.apache.commons.lang3.EnumUtils;
-import org.apache.commons.lang3.mutable.MutableBoolean;
-import org.apache.commons.lang3.reflect.ConstructorUtils;
-import org.apache.commons.lang3.reflect.FieldUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,12 +12,8 @@ import uk.ac.sheffield.com1003.cafe.ingredients.Unit;
 import uk.ac.sheffield.com1003.cafe.ingredients.Water;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.stream.Stream;
 
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -146,25 +138,26 @@ public class TestCafeTask1 {
 
         // Having to use reflection because we didn't provide
         // a getter for Coffee.decaf or ask for one to be implemented
-        Boolean isDecaf = (Boolean)FieldUtils.readField(c, "decaf", true);
-        assertFalse(isDecaf);
+//        Boolean isDecaf = (Boolean)FieldUtils.readField(c, "decaf", true);
+        assertFalse(c.getDecaf());
     }
 
     @Test
     public void testCoffeeConstructorOverloaded() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException, InstantiationException {
         // if Coffee(int amount) has not been implemented, this will throw NoSuchMethodException
-        Coffee c = ConstructorUtils.invokeConstructor(Coffee.class, 30);
 
+//        Coffee c = ConstructorUtils.invokeConstructor(Coffee.class, 30);
+        Coffee c = new Coffee(30);
         assertEquals("Coffee", c.getName());
         assertEquals(30, c.getAmount());
         assertEquals(Unit.GR, c.getUnit());
-        Boolean isDecaf = (Boolean)FieldUtils.readField(c, "decaf", true);
-        assertFalse(isDecaf);
+        assertFalse(c.getDecaf());
     }
 
     @Test
     public void testWaterConstructorOverloaded() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException, InstantiationException {
-        Water w = ConstructorUtils.invokeConstructor(Water.class, 120);
+//        Water w = ConstructorUtils.invokeConstructor(Water.class, 120);
+        Water w = new Water(120);
         assertNotNull(w);
         assertEquals("Water", w.getName());
         assertEquals(120, w.getAmount());
@@ -189,7 +182,15 @@ public class TestCafeTask1 {
 
     @Test
     public void testSoyMilkOptionExists() {
-        assertTrue(EnumUtils.isValidEnum(Milk.Type.class, "SOY"), "SOY does not seem to exist in Milk.Type");
+        boolean flag = false;
+        for (Milk.Type type: Milk.Type.values()) {
+            if (type.name().equals("SOY")) {
+                flag = true;
+            }
+        }
+        assertTrue(flag);
+
+//        assertTrue(EnumUtils.isValidEnum(Milk.Type.class, "SOY"), "SOY does not seem to exist in Milk.Type");
     }
 
 }
