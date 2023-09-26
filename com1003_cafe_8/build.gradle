@@ -27,7 +27,8 @@ dependencies {
 test {
     useJUnitPlatform()
     filter {
-        excludeTestsMatching "uk.ac.sheffield.com1003.cafe.junit4.evosuite.*"
+        includeTestsMatching "uk.ac.sheffield.com1003.cafe.junit4.*"
+        includeTestsMatching "uk.ac.sheffield.com1003.cafe.evosuite.original.*"
     }
     finalizedBy jacocoTestReport
 }
@@ -38,7 +39,7 @@ jacocoTestReport {
 
 jacoco {
     toolVersion = "0.8.9"
-    reportsDirectory = layout.buildDirectory.dir('customJacocoReportDir')
+    reportsDirectory = layout.buildDirectory.dir('JacocoReport')
 }
 
 application {
