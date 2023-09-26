@@ -1,6 +1,5 @@
 package uk.ac.sheffield.com1003.cafe.junit4.split;
 
-import org.apache.commons.lang3.reflect.FieldUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -98,25 +97,15 @@ public class TestServeNonexistentOrder {
         cafe.addRecipe(createEspressoRecipe());
         Order o = cafe.serveOrder();
         assertNull(o);
-        int indexPlace = (int)FieldUtils.readField(cafe, "indexNextOrderToPlace", true);
-        int indexServe = (int)FieldUtils.readField(cafe, "indexNextOrderToServe", true);
+        int indexPlace = cafe.getIndexNextOrderToPlace();
+        int indexServe = cafe.getIndexNextOrderToServe();
         assertEquals(0, indexPlace);
         assertEquals(0, indexServe);
-        Order[] orders = (Order[])FieldUtils.readField(cafe, "orders", true);
+        Order[] orders = cafe.getOrders();
         for (int i = 0; i < orders.length; i++) {
             assertNull(orders[i]);
         }
     }
-
-
-
-
-
-
-
-
-
-
 
 
 }

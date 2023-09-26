@@ -1,6 +1,5 @@
 package uk.ac.sheffield.com1003.cafe.junit4.split;
 
-import org.apache.commons.lang3.reflect.FieldUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +12,9 @@ import uk.ac.sheffield.com1003.cafe.ingredients.Water;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.stream.Stream;
 
 import static org.junit.Assert.*;
@@ -97,23 +98,13 @@ public class TestPlaceOrder {
         Cafe cafe = new Cafe("Central Perk", 1, 1);
         cafe.addRecipe(createEspressoRecipe());
         assertTrue(cafe.placeOrder("Espresso", "Jose", 3));
-        Order[] orders = (Order[])FieldUtils.readField(cafe, "orders", true);
+        Order[] orders = cafe.getOrders();
         assertEquals(1, orders.length);
         Order o = orders[0];
         assertEquals("Order: Espresso; For: Jose; Paid: 3.0", o.toString());
-        Object served = FieldUtils.readField(o, "orderServed", true);
+        LocalDateTime served = o.getOrderServed();
         assertNull(served); // order has not been served yet
     }
-
-
-
-
-
-
-
-
-
-
 
 
 }

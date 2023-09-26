@@ -27,8 +27,9 @@ dependencies {
 test {
     useJUnitPlatform()
     filter {
-        includeTestsMatching "uk.ac.sheffield.com1003.cafe.junit4.*"
+//        includeTestsMatching "uk.ac.sheffield.com1003.cafe.junit4.*"
         includeTestsMatching "uk.ac.sheffield.com1003.cafe.evosuite.original.*"
+//        includeTestsMatching "uk.ac.sheffield.com1003.cafe.evosuite.baseline.*"
     }
     finalizedBy jacocoTestReport
 }

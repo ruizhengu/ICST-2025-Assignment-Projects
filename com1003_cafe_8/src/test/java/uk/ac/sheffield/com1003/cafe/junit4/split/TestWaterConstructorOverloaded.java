@@ -1,9 +1,5 @@
 package uk.ac.sheffield.com1003.cafe.junit4.split;
 
-import org.apache.commons.lang3.EnumUtils;
-import org.apache.commons.lang3.mutable.MutableBoolean;
-import org.apache.commons.lang3.reflect.ConstructorUtils;
-import org.apache.commons.lang3.reflect.FieldUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -100,7 +96,7 @@ public class TestWaterConstructorOverloaded  {
 
     @Test(timeout = 5000)
     public void testWaterConstructorOverloaded() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException, InstantiationException {
-        Water w = ConstructorUtils.invokeConstructor(Water.class, 120);
+        Water w = new Water(120);
         assertNotNull(w);
         assertEquals("Water", w.getName());
         assertEquals(120, w.getAmount());

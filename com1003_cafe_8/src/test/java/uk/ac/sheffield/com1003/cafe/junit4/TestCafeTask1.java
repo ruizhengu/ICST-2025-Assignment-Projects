@@ -138,7 +138,6 @@ public class TestCafeTask1 {
 
         // Having to use reflection because we didn't provide
         // a getter for Coffee.decaf or ask for one to be implemented
-//        Boolean isDecaf = (Boolean)FieldUtils.readField(c, "decaf", true);
         assertFalse(c.getDecaf());
     }
 
@@ -146,7 +145,6 @@ public class TestCafeTask1 {
     public void testCoffeeConstructorOverloaded() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException, InstantiationException {
         // if Coffee(int amount) has not been implemented, this will throw NoSuchMethodException
 
-//        Coffee c = ConstructorUtils.invokeConstructor(Coffee.class, 30);
         Coffee c = new Coffee(30);
         assertEquals("Coffee", c.getName());
         assertEquals(30, c.getAmount());
@@ -156,7 +154,6 @@ public class TestCafeTask1 {
 
     @Test
     public void testWaterConstructorOverloaded() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException, InstantiationException {
-//        Water w = ConstructorUtils.invokeConstructor(Water.class, 120);
         Water w = new Water(120);
         assertNotNull(w);
         assertEquals("Water", w.getName());
@@ -183,14 +180,14 @@ public class TestCafeTask1 {
     @Test
     public void testSoyMilkOptionExists() {
         boolean flag = false;
-        for (Milk.Type type: Milk.Type.values()) {
+        for (Milk.Type type : Milk.Type.values()) {
             if (type.name().equals("SOY")) {
                 flag = true;
+                break;
             }
         }
         assertTrue(flag);
 
-//        assertTrue(EnumUtils.isValidEnum(Milk.Type.class, "SOY"), "SOY does not seem to exist in Milk.Type");
     }
 
 }
