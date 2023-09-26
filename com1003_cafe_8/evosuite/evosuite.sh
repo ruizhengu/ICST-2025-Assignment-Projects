@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-file_classes=/home/ruizhen/Projects/APR-as-AAT/properties/classes.txt
-file_test_classes=/home/ruizhen/Projects/APR-as-AAT/properties/test-classes.txt
+file_classes=/home/ruizhen/Projects/APR-as-AAT/test-augmentation/classes.txt
+file_test_classes=/home/ruizhen/Projects/APR-as-AAT/test-augmentation/test-classes.txt
 
-dir_output=/home/ruizhen/Projects/APR-as-AAT/properties/test-generation/evosuite
+dir_output=/home/ruizhen/Projects/APR-as-AAT/test-augmentation/evosuite
 
 project_cp=/home/ruizhen/Projects/APR-as-AAT/com1003_cafe_8/build/classes/java/main
 tests_cp=/home/ruizhen/Projects/APR-as-AAT/com1003_cafe_8/build/classes/java/test

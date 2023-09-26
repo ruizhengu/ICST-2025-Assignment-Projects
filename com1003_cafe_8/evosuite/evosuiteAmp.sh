@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-file_classes=/home/ruizhen/Projects/APR-as-AAT/properties/classes.txt
-file_test_classes=/home/ruizhen/Projects/APR-as-AAT/properties/test-classes.txt
+file_classes=/home/ruizhen/Projects/APR-as-AAT/test-augmentation/classes.txt
+file_test_classes=/home/ruizhen/Projects/APR-as-AAT/test-augmentation/test-classes.txt
 
-dir_output=/home/ruizhen/Projects/APR-as-AAT/properties/test-generation/EvoAmp
+dir_output=/home/ruizhen/Projects/APR-as-AAT/test-augmentation/EvoAmp
 
 testGen_bin=/home/ruizhen/Projects/test-amplification/defects4j/framework/lib/test_generation/bin
 testGen_lib=/home/ruizhen/Projects/test-amplification/defects4j/framework/lib/test_generation/generation
