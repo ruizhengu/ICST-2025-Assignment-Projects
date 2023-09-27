@@ -3,7 +3,7 @@
  * Tue Sep 26 14:35:07 GMT 2023
  */
 
-package uk.ac.sheffield.com1003.cafe.exceptions;
+package uk.ac.sheffield.com1003.cafe.evosuite.branch.exceptions;
 
 import org.junit.Test;
 import static org.junit.Assert.*;

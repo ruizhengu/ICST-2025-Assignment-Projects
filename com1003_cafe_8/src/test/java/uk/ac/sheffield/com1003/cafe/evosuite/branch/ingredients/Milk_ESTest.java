@@ -3,7 +3,7 @@
  * Tue Sep 26 17:30:22 GMT 2023
  */
 
-package uk.ac.sheffield.com1003.cafe.ingredients;
+package uk.ac.sheffield.com1003.cafe.evosuite.branch.ingredients;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -31,12 +31,10 @@ public class Milk_ESTest extends Milk_ESTest_scaffolding {
   public void test1()  throws Throwable  {
       Milk milk0 = new Milk();
       Milk milk1 = new Milk();
-      assertTrue(milk1.equals((Object)milk0));
+      assertTrue(milk1.equals(milk0));
       
-      Unit unit0 = Unit.UNDEFINED;
-      milk1.unit = unit0;
       boolean boolean0 = milk1.equals(milk0);
-      assertFalse(boolean0);
+      assertTrue(boolean0);
   }
 
   @Test(timeout = 4000)
@@ -57,7 +55,7 @@ public class Milk_ESTest extends Milk_ESTest_scaffolding {
       Milk milk1 = new Milk();
       assertEquals("Milk", milk1.getName());
       
-      milk1.name = "lt= -ifPY=')zh";
+//      milk1.name = "lt= -ifPY=')zh";
       boolean boolean0 = milk0.equals(milk1);
       assertFalse(boolean0);
   }

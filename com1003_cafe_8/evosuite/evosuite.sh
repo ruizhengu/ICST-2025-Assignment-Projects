@@ -31,7 +31,8 @@ for class in $(cat $file_classes); do
         -projectCP $project_cp:$tests_cp \
         -Djunit=$test \
         -Dselected_junit=$test \
-        -Dtest_dir=$dir_output"
+        -Dtest_dir=$dir_output \
+        -criterion branch"
 
         if ! exec_cmd "$cmd"; then
             exit 1

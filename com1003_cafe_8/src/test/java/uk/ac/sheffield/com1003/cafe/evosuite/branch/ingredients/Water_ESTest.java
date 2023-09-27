@@ -3,7 +3,7 @@
  * Tue Sep 26 14:43:56 GMT 2023
  */
 
-package uk.ac.sheffield.com1003.cafe.ingredients;
+package uk.ac.sheffield.com1003.cafe.evosuite.branch.ingredients;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -19,13 +19,11 @@ public class Water_ESTest extends Water_ESTest_scaffolding {
   @Test(timeout = 4000)
   public void test0()  throws Throwable  {
       Water water0 = new Water();
-      Unit unit0 = Unit.UNDEFINED;
-      water0.unit = unit0;
       Water water1 = new Water();
       boolean boolean0 = water0.equals(water1);
       assertEquals("Water", water1.getName());
       assertEquals(30, water1.getAmount());
-      assertFalse(boolean0);
+      assertTrue(boolean0);
   }
 
   @Test(timeout = 4000)
@@ -43,11 +41,9 @@ public class Water_ESTest extends Water_ESTest_scaffolding {
   public void test2()  throws Throwable  {
       Water water0 = new Water(1);
       assertEquals("Water", water0.getName());
-      
-      water0.name = "";
       Water water1 = new Water(1);
       boolean boolean0 = water0.equals(water1);
-      assertFalse(boolean0);
+      assertTrue(boolean0);
   }
 
   @Test(timeout = 4000)

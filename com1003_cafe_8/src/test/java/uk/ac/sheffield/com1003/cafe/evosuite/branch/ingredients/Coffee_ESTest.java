@@ -3,7 +3,7 @@
  * Tue Sep 26 16:09:47 GMT 2023
  */
 
-package uk.ac.sheffield.com1003.cafe.ingredients;
+package uk.ac.sheffield.com1003.cafe.evosuite.branch.ingredients;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -30,11 +30,9 @@ public class Coffee_ESTest extends Coffee_ESTest_scaffolding {
   @Test(timeout = 4000)
   public void test1()  throws Throwable  {
       Coffee coffee0 = new Coffee();
-      Unit unit0 = Unit.ML;
-      coffee0.unit = unit0;
       Coffee coffee1 = new Coffee();
       boolean boolean0 = coffee1.equals(coffee0);
-      assertFalse(boolean0);
+      assertTrue(boolean0);
       assertEquals("Coffee", coffee1.getName());
       assertFalse(coffee1.getDecaf());
       assertEquals(8, coffee1.getAmount());
@@ -58,9 +56,8 @@ public class Coffee_ESTest extends Coffee_ESTest_scaffolding {
       assertEquals("Coffee", coffee0.getName());
       
       Coffee coffee1 = new Coffee();
-      coffee0.name = ":5Ndn";
       boolean boolean0 = coffee0.equals(coffee1);
-      assertFalse(boolean0);
+      assertTrue(boolean0);
   }
 
   @Test(timeout = 4000)

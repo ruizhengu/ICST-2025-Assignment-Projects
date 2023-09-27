@@ -3,7 +3,7 @@
  * Tue Sep 26 15:57:04 GMT 2023
  */
 
-package uk.ac.sheffield.com1003.cafe;
+package uk.ac.sheffield.com1003.cafe.evosuite.branch;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
