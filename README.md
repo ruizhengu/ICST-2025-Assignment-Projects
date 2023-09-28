@@ -42,6 +42,12 @@ Java version: 1.8
 
 JUnit version: 4
 
+### Configuration
+
+**Main:** [AstorMain.java](/properties/astor/AstorMain.java)
+
+**Maven:** [pom.xml](/properties/astor/pom.xml)
+
 ### Command
 
 ```sh
