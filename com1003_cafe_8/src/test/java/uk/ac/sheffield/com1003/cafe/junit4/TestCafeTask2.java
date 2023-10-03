@@ -11,6 +11,8 @@ import uk.ac.sheffield.com1003.cafe.ingredients.Water;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -141,7 +143,7 @@ public class TestCafeTask2 {
 //        ArrayList<String> lines = getOutLines();
 //        assertTrue(lines.stream().anyMatch(item -> item.contains("Central Perk")));
 //        assertTrue(lines.stream().anyMatch(item -> item.contains("Menu")));
-//        // using relax separator between name and price for recipes:
+        // using relax separator between name and price for recipes:
 //        assertTrue(lines.stream().anyMatch(item -> item.matches("Espresso.*1\\.5")));
 //        assertTrue(lines.stream().anyMatch(item -> item.matches("Americano.*2\\.0")));
 //        assertTrue(lines.stream().anyMatch(item -> item.contains("Enjoy")));

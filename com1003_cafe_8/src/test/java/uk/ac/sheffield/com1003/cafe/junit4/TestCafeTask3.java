@@ -1,5 +1,6 @@
 package uk.ac.sheffield.com1003.cafe.junit4;
 
+import org.apache.commons.lang3.reflect.FieldUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,7 +13,8 @@ import uk.ac.sheffield.com1003.cafe.ingredients.Water;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.stream.Stream;
 
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -114,11 +116,11 @@ public class TestCafeTask3 {
         Cafe cafe = new Cafe("Central Perk", 1, 1);
         cafe.addRecipe(createEspressoRecipe());
         assertTrue(cafe.placeOrder("Espresso", "Jose", 3));
-        Order[] orders = cafe.getOrders();
+        Order[] orders = (Order[])FieldUtils.readField(cafe, "orders", true);
         assertEquals(1, orders.length);
         Order o = orders[0];
         assertEquals("Order: Espresso; For: Jose; Paid: 3.0", o.toString());
-        LocalDateTime served = o.getOrderServed();
+        Object served = FieldUtils.readField(o, "orderServed", true);
         assertNull(served); // order has not been served yet
     }
 
@@ -127,7 +129,7 @@ public class TestCafeTask3 {
         Cafe cafe = new Cafe("Central Perk", 1, 1);
         cafe.addRecipe(createEspressoRecipe()); // Price is 1.5
         assertFalse(cafe.placeOrder("Espresso", "Jose", 1));
-        Order[] orders = cafe.getOrders();
+        Order[] orders = (Order[])FieldUtils.readField(cafe, "orders", true);
         assertNull(orders[0]);
     }
 
@@ -151,8 +153,8 @@ public class TestCafeTask3 {
         Cafe cafe = new Cafe("Central Perk", 1, 1);
         cafe.addRecipe(createEspressoRecipe());
         assertTrue(cafe.placeOrder("Espresso", "Jose", 3));
-        int indexPlace = cafe.getIndexNextOrderToPlace();
-        int indexServe = cafe.getIndexNextOrderToServe();
+        int indexPlace = (int)FieldUtils.readField(cafe, "indexNextOrderToPlace", true);
+        int indexServe = (int)FieldUtils.readField(cafe, "indexNextOrderToServe", true);
         assertEquals(1, indexPlace);
         assertEquals(0, indexServe);
     }
@@ -163,11 +165,11 @@ public class TestCafeTask3 {
         cafe.addRecipe(createEspressoRecipe());
         Order o = cafe.serveOrder();
         assertNull(o);
-        int indexPlace = cafe.getIndexNextOrderToPlace();
-        int indexServe = cafe.getIndexNextOrderToServe();
+        int indexPlace = (int)FieldUtils.readField(cafe, "indexNextOrderToPlace", true);
+        int indexServe = (int)FieldUtils.readField(cafe, "indexNextOrderToServe", true);
         assertEquals(0, indexPlace);
         assertEquals(0, indexServe);
-        Order[] orders = cafe.getOrders();
+        Order[] orders = (Order[])FieldUtils.readField(cafe, "orders", true);
         for (int i = 0; i < orders.length; i++) {
             assertNull(orders[i]);
         }
@@ -179,10 +181,10 @@ public class TestCafeTask3 {
         cafe.addRecipe(createEspressoRecipe());
         assertTrue(cafe.placeOrder("Espresso", "Jose", 3));
         Order o = cafe.serveOrder();
-        LocalDateTime served = o.getOrderServed();
+        Object served = FieldUtils.readField(o, "orderServed", true);
         assertNotNull(served); // order has been served
-        int indexPlace = cafe.getIndexNextOrderToPlace();
-        int indexServe = cafe.getIndexNextOrderToServe();
+        int indexPlace = (int)FieldUtils.readField(cafe, "indexNextOrderToPlace", true);
+        int indexServe = (int)FieldUtils.readField(cafe, "indexNextOrderToServe", true);
         assertEquals(1, indexPlace);
         assertEquals(1, indexServe);
         assertNull(cafe.serveOrder()); // cannot serve more orders

@@ -19,13 +19,4 @@ public class Syrup extends Ingredient {
     public String toString() {
         return "Syrup [unit=" + unit + ", amount=" + amount + ", flavour=" + flavour + "]";
     }
-
-    /**
-     * The method is added for accessing the flavour parameter from the test cases
-     *
-     * @return
-     */
-    public String getFlavour() {
-        return this.flavour;
-    }
 }

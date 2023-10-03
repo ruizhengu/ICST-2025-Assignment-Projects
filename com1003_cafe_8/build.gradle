@@ -26,13 +26,10 @@ dependencies {
 
 test {
     useJUnitPlatform()
-    filter {
-        includeTestsMatching "uk.ac.sheffield.com1003.cafe.junit4.*"
-//        includeTestsMatching "uk.ac.sheffield.com1003.cafe.evosuite.baseline.*"
-//        includeTestsMatching "uk.ac.sheffield.com1003.cafe.evosuite.branch.*"
-//        includeTestsMatching "uk.ac.sheffield.com1003.cafe.evosuite.mutation.*"
-        includeTestsMatching "uk.ac.sheffield.com1003.cafe.randoop.*"
-    }
+//    filter {
+//        includeTestsMatching "uk.ac.sheffield.com1003.cafe.junit4.*"
+//        includeTestsMatching "uk.ac.sheffield.com1003.cafe.randoop.*"
+//    }
     finalizedBy jacocoTestReport
 }
 

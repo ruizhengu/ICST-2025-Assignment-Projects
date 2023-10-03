@@ -105,7 +105,7 @@ public class TestPrintMenuIncorrectFormat  {
 //        ArrayList<String> lines = getOutLines();
 //        assertTrue(lines.stream().anyMatch(item -> item.contains("Central Perk")));
 //        assertTrue(lines.stream().anyMatch(item -> item.contains("Menu")));
-//        // using relax separator between name and price for recipes:
+        // using relax separator between name and price for recipes:
 //        assertTrue(lines.stream().anyMatch(item -> item.matches("Espresso.*1\\.5")));
 //        assertTrue(lines.stream().anyMatch(item -> item.matches("Americano.*2\\.0")));
 //        assertTrue(lines.stream().anyMatch(item -> item.contains("Enjoy")));

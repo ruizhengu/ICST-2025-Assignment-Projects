@@ -1,5 +1,8 @@
 package uk.ac.sheffield.com1003.cafe.junit4.split;
 
+import org.apache.commons.lang3.reflect.ConstructorUtils;
+import org.apache.commons.lang3.reflect.FieldUtils;
+import org.apache.commons.lang3.reflect.MethodUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

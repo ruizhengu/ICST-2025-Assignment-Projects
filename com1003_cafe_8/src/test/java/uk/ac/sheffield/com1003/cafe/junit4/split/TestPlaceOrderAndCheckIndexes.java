@@ -1,5 +1,6 @@
 package uk.ac.sheffield.com1003.cafe.junit4.split;
 
+import org.apache.commons.lang3.reflect.FieldUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -95,11 +96,21 @@ public class TestPlaceOrderAndCheckIndexes {
         Cafe cafe = new Cafe("Central Perk", 1, 1);
         cafe.addRecipe(createEspressoRecipe());
         assertTrue(cafe.placeOrder("Espresso", "Jose", 3));
-        int indexPlace = cafe.getIndexNextOrderToPlace();
-        int indexServe = cafe.getIndexNextOrderToServe();
+        int indexPlace = (int)FieldUtils.readField(cafe, "indexNextOrderToPlace", true);
+        int indexServe = (int)FieldUtils.readField(cafe, "indexNextOrderToServe", true);
         assertEquals(1, indexPlace);
         assertEquals(0, indexServe);
     }
+
+
+
+
+
+
+
+
+
+
 
 
 }

@@ -1,19 +1,32 @@
 package uk.ac.sheffield.com1003.cafe.junit4.split;
 
+import org.apache.commons.lang3.EnumUtils;
+import org.apache.commons.lang3.mutable.MutableBoolean;
+import org.apache.commons.lang3.reflect.ConstructorUtils;
+import org.apache.commons.lang3.reflect.FieldUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import uk.ac.sheffield.com1003.cafe.Cafe;
 import uk.ac.sheffield.com1003.cafe.Recipe;
 import uk.ac.sheffield.com1003.cafe.exceptions.TooManyIngredientsException;
 import uk.ac.sheffield.com1003.cafe.ingredients.Coffee;
+import uk.ac.sheffield.com1003.cafe.ingredients.Milk;
+import uk.ac.sheffield.com1003.cafe.ingredients.Unit;
 import uk.ac.sheffield.com1003.cafe.ingredients.Water;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.PrintStream;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.stream.Stream;
 
 import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class TestAppClassExists {
+public class TestAppClassExists  {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
@@ -90,6 +103,14 @@ public class TestAppClassExists {
         Class<?> clazz = Class.forName("uk.ac.sheffield.com1003.cafe.App");
         assertNotNull(clazz);
     }
+
+
+
+
+
+
+
+
 
 
 }

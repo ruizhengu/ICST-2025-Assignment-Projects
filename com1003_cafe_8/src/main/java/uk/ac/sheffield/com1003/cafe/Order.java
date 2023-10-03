@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Order {
-
+    
     private Recipe recipeOrdered;
     private String customerName;
     private double amountPaid;
@@ -18,10 +18,10 @@ public class Order {
      * request field to "none". Sets the placing date and time to
      * the current date using {@link LocalDateTime#now()} and
      * the serving date to null.
-     *
-     * @param recipe       Recipe for the order
+     * 
+     * @param recipe Recipe for the order
      * @param customerName Customer name
-     * @param amountPaid   Amount paid by customer in pounds
+     * @param amountPaid Amount paid by customer in pounds
      */
     public Order(Recipe recipe, String customerName, double amountPaid) {
         this(recipe, customerName, amountPaid, "none");
@@ -33,10 +33,10 @@ public class Order {
      * request from the customer. Sets the placing date and time to
      * the current date using {@link LocalDateTime#now()} and
      * the serving date to null.
-     *
-     * @param recipe         Recipe for the order
-     * @param customerName   Customer name
-     * @param amountPaid     Amount paid by customer in pounds
+     * 
+     * @param recipe Recipe for the order
+     * @param customerName Customer name
+     * @param amountPaid Amount paid by customer in pounds
      * @param specialRequest The text of the special request, e.g., "extra shot"
      */
     public Order(Recipe recipe, String customerName, double amountPaid, String specialRequest) {
@@ -71,11 +71,11 @@ public class Order {
         sb.append("Paid: " + amountPaid);
         sb.append(lineBreak);
         sb.append("Change due: ");
-        sb.append(amountPaid - recipeOrdered.getPrice());
+        sb.append(amountPaid-recipeOrdered.getPrice());
         sb.append("Note: " + specialRequest);
         sb.append(lineBreak);
         sb.append("Served: ");
-        if (orderServed == null)
+        if (orderServed == null) 
             sb.append("Pending");
         else
             sb.append(orderServed.format(formatter));
@@ -97,14 +97,5 @@ public class Order {
     @Override
     public String toString() {
         return "Order: " + recipeOrdered.getName() + "; For: " + customerName + "; Paid: " + amountPaid;
-    }
-
-    /**
-     * The method is added for accessing the orderServed parameter from the test cases
-     *
-     * @return
-     */
-    public LocalDateTime getOrderServed() {
-        return orderServed;
     }
 }

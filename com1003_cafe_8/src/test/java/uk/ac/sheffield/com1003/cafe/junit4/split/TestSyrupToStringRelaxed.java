@@ -1,12 +1,14 @@
 package uk.ac.sheffield.com1003.cafe.junit4.split;
 
+import org.apache.commons.lang3.reflect.ConstructorUtils;
+import org.apache.commons.lang3.reflect.FieldUtils;
+import org.apache.commons.lang3.reflect.MethodUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import uk.ac.sheffield.com1003.cafe.Recipe;
 import uk.ac.sheffield.com1003.cafe.exceptions.TooManyIngredientsException;
 import uk.ac.sheffield.com1003.cafe.ingredients.Coffee;
-import uk.ac.sheffield.com1003.cafe.ingredients.Syrup;
 import uk.ac.sheffield.com1003.cafe.ingredients.Unit;
 import uk.ac.sheffield.com1003.cafe.ingredients.Water;
 
@@ -19,7 +21,7 @@ import java.util.stream.Stream;
 import static org.junit.Assert.*;
 import static uk.ac.sheffield.com1003.cafe.ingredients.Unit.ML;
 
-public class TestSyrupToStringRelaxed {
+public class TestSyrupToStringRelaxed  {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
@@ -94,13 +96,19 @@ public class TestSyrupToStringRelaxed {
     @Test(timeout = 5000)
     public void testSyrupToStringRelaxed() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException, InstantiationException {
         Class<?> syrupClass = Class.forName("uk.ac.sheffield.com1003.cafe.ingredients.Syrup");
-        Syrup o = new Syrup("caramel");
+        Object o = ConstructorUtils.invokeConstructor(syrupClass, "caramel");
         assertTrue(syrupClass.isInstance(o));
-        int amount = o.getAmount();
-        Unit unit = o.getUnit();
-        String s = o.toString();
+        int amount = (int)FieldUtils.readField(o, "amount", true);
+        Unit unit = (Unit)FieldUtils.readField(o, "unit", true);
+        String s = (String)MethodUtils.invokeMethod(o, "toString");
         assertTrue(s.toUpperCase().matches("SYRUP.*UNIT.*" + unit + ".*AMOUNT.*" + amount + ".*FLAVOUR.*CARAMEL.*"));
     }
+
+
+
+
+
+
 
 
 }

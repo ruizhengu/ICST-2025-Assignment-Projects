@@ -1,35 +1,12 @@
 # APR-as-AAT
 
-# Test Augmentation with EvoSuite
+# com1003_cafe
 
-## Working with existing tests
+This is the orignal version of the **com1003_cafe** project, only changing the Java version from 17 to 8.
 
-**Coverage Measurement**
+# Randoop
 
-```sh
-$EVOSUITE -measureCoverage -class uk.ac.sheffield.com1003.cafe.Cafe -Djunit=uk.ac.sheffield.com1003.cafe.junit4.TestCafeTask1 -criterion branch -projectCP build/classes/java/main:build/classes/java/test
-```
-
-**Results**
-
-```
-* Finished: ClassName: uk.ac.sheffield.com1003.cafe.junit4.TestCafeTask1, MethodName: testCoffeeConstructor
-* Number of test cases executed: 10
-* Executed 10 unit test(s)
-* Target class uk.ac.sheffield.com1003.cafe.Cafe
-* Coverage of criterion BRANCH: 27%
-* Number of covered goals: 12 / 45
-* Total number of covered goals: 12 / 45
-* Total coverage: 27%
-* Computation finished
-* Writing statistics
-```
-
-
-
-### EvoSuite<sub>amp</sub>
-
-```sh
-sh evosuiteAmp.sh
+```shell
+java -Xmx3000m -classpath com1003_cafe_8/build/classes/java/main:randoop-all-4.3.2.jar randoop.main.Main gentests --classlist=classes.txt --no-error-revealing-tests=true --time-limit=60 --junit-output-dir=randoop-output
 ```
 

@@ -11,6 +11,8 @@ import uk.ac.sheffield.com1003.cafe.ingredients.Water;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -232,7 +234,7 @@ public class TestCafeTask5 {
         Recipe latte2 = new Recipe("Large Soy Latte", 2.5, Recipe.Size.LARGE, 3);
         latte2.addIngredient(new Milk(100, Milk.Type.WHOLE));
         latte2.addIngredient(new Water());
-        latte2.addIngredient(new Coffee(8, true)); // 8 is default amount; default decaf=false
+        latte2.addIngredient(new Coffee( 8, true)); // 8 is default amount; default decaf=false
 
         assertNotEquals(latte, latte2);
     }

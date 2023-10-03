@@ -31,10 +31,4 @@ public class Coffee extends Ingredient {
         return name.equals(coffee.getName()) && amount == coffee.amount && unit == coffee.unit && decaf == coffee.decaf;
     }
 
-    /** The method is added for accessing the decaf parameter from the test cases
-     * @return
-     */
-    public boolean getDecaf() {
-        return this.decaf;
-    }
 }

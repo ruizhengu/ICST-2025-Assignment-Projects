@@ -1,12 +1,14 @@
 package uk.ac.sheffield.com1003.cafe.junit4.split;
 
+import org.apache.commons.lang3.reflect.ConstructorUtils;
+import org.apache.commons.lang3.reflect.FieldUtils;
+import org.apache.commons.lang3.reflect.MethodUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import uk.ac.sheffield.com1003.cafe.Recipe;
 import uk.ac.sheffield.com1003.cafe.exceptions.TooManyIngredientsException;
 import uk.ac.sheffield.com1003.cafe.ingredients.Coffee;
-import uk.ac.sheffield.com1003.cafe.ingredients.Syrup;
 import uk.ac.sheffield.com1003.cafe.ingredients.Unit;
 import uk.ac.sheffield.com1003.cafe.ingredients.Water;
 
@@ -94,8 +96,8 @@ public class TestSyrupDefaultConstructorSetsUnit  {
     @Test(timeout = 5000)
     public void testSyrupDefaultConstructorSetsUnit() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException, InstantiationException {
         Class<?> syrupClass = Class.forName("uk.ac.sheffield.com1003.cafe.ingredients.Syrup");
-        Syrup o = new Syrup();
-        Unit unit = o.getUnit();
+        Object o = ConstructorUtils.invokeConstructor(syrupClass);
+        Unit unit = (Unit)FieldUtils.readField(o, "unit", true);
         assertEquals(ML, unit);
     }
 

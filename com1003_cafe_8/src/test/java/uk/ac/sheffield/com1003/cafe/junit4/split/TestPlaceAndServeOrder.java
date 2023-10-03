@@ -1,5 +1,6 @@
 package uk.ac.sheffield.com1003.cafe.junit4.split;
 
+import org.apache.commons.lang3.reflect.FieldUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,7 +13,6 @@ import uk.ac.sheffield.com1003.cafe.ingredients.Water;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.stream.Stream;
 
@@ -98,10 +98,10 @@ public class TestPlaceAndServeOrder {
         cafe.addRecipe(createEspressoRecipe());
         assertTrue(cafe.placeOrder("Espresso", "Jose", 3));
         Order o = cafe.serveOrder();
-        LocalDateTime served = o.getOrderServed();
+        Object served = FieldUtils.readField(o, "orderServed", true);
         assertNotNull(served); // order has been served
-        int indexPlace = cafe.getIndexNextOrderToPlace();
-        int indexServe = cafe.getIndexNextOrderToServe();
+        int indexPlace = (int)FieldUtils.readField(cafe, "indexNextOrderToPlace", true);
+        int indexServe = (int)FieldUtils.readField(cafe, "indexNextOrderToServe", true);
         assertEquals(1, indexPlace);
         assertEquals(1, indexServe);
         assertNull(cafe.serveOrder()); // cannot serve more orders

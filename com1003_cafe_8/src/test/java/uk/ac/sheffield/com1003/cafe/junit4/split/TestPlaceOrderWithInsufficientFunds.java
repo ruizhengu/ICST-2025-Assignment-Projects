@@ -1,5 +1,6 @@
 package uk.ac.sheffield.com1003.cafe.junit4.split;
 
+import org.apache.commons.lang3.reflect.FieldUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -96,9 +97,19 @@ public class TestPlaceOrderWithInsufficientFunds {
         Cafe cafe = new Cafe("Central Perk", 1, 1);
         cafe.addRecipe(createEspressoRecipe()); // Price is 1.5
         assertFalse(cafe.placeOrder("Espresso", "Jose", 1));
-        Order[] orders = cafe.getOrders();
+        Order[] orders = (Order[])FieldUtils.readField(cafe, "orders", true);
         assertNull(orders[0]);
     }
+
+
+
+
+
+
+
+
+
+
 
 
 }

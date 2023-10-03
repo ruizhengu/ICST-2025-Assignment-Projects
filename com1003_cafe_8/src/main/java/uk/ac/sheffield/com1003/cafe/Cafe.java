@@ -43,7 +43,6 @@ public class Cafe {
 
     /**
      * Returns greeting string
-     *
      * @return "Welcome to <cafe name>"
      */
     public String greeting() {
@@ -52,7 +51,6 @@ public class Cafe {
 
     /**
      * Getter for cafe name
-     *
      * @return Cafe name
      */
     public String getName() {
@@ -83,7 +81,6 @@ public class Cafe {
     /**
      * Find recipe with given name and remove it from the menu.
      * Assumes there are no duplicated recipe names.
-     *
      * @param recipeName Name of the recipe to be removed
      */
     public void removeRecipe(String recipeName) throws RecipeNotFoundException {
@@ -165,19 +162,17 @@ public class Cafe {
         sb.append(sectionSep);
         sb.append("Enjoy!");
         System.out.println(sb);
-    }
-
-    ;
+    };
 
 
     /**
      * Place an order for a given recipe name with a given amount of money.
      *
-     * @param recipeName   The name of the recipe being ordered
-     * @param amountPaid   Money handed when placing order
+     * @param recipeName The name of the recipe being ordered
+     * @param amountPaid Money handed when placing order
      * @param customerName Name of customer placing order
      * @return True if the recipe name exists in the menu and the amount paid is sufficcient; return false otherwise
-     * @throws RecipeNotFoundException    if the recipe name does not exist in the menu
+     * @throws RecipeNotFoundException if the recipe name does not exist in the menu
      * @throws CafeOutOfCapacityException if the cafe cannot take any more orders and is out of capacity
      */
     public boolean placeOrder(String recipeName, String customerName, double amountPaid) throws CafeOutOfCapacityException, RecipeNotFoundException {
@@ -214,7 +209,6 @@ public class Cafe {
 
     /**
      * If there is an order to serve, serves it ({@link Order#serve()}) and increments {@link Cafe#indexNextOrderToServe}
-     *
      * @return The updated served order, or null of there is no order to serve.
      */
     public Order serveOrder() {
@@ -226,32 +220,5 @@ public class Cafe {
         o.serve();
         indexNextOrderToServe++;
         return o;
-    }
-
-    /**
-     * The method is added for accessing the orders parameter from the test cases
-     *
-     * @return
-     */
-    public Order[] getOrders() {
-        return orders;
-    }
-
-    /**
-     * The method is added for accessing the indexNextOrderToPlace parameter from the test cases
-     *
-     * @return
-     */
-    public int getIndexNextOrderToPlace() {
-        return indexNextOrderToPlace;
-    }
-
-    /**
-     * The method is added for accessing the indexNextOrderToServe parameter from the test cases
-     *
-     * @return
-     */
-    public int getIndexNextOrderToServe() {
-        return indexNextOrderToServe;
     }
 }

@@ -1,12 +1,14 @@
 package uk.ac.sheffield.com1003.cafe.junit4.split;
 
+import org.apache.commons.lang3.reflect.ConstructorUtils;
+import org.apache.commons.lang3.reflect.FieldUtils;
+import org.apache.commons.lang3.reflect.MethodUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import uk.ac.sheffield.com1003.cafe.Recipe;
 import uk.ac.sheffield.com1003.cafe.exceptions.TooManyIngredientsException;
 import uk.ac.sheffield.com1003.cafe.ingredients.Coffee;
-import uk.ac.sheffield.com1003.cafe.ingredients.Syrup;
 import uk.ac.sheffield.com1003.cafe.ingredients.Unit;
 import uk.ac.sheffield.com1003.cafe.ingredients.Water;
 
@@ -94,10 +96,10 @@ public class TestSyrupOverloadedConstructor  {
     @Test(timeout = 5000)
     public void testSyrupOverloadedConstructor() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException, InstantiationException {
         Class<?> syrupClass = Class.forName("uk.ac.sheffield.com1003.cafe.ingredients.Syrup");
-        Syrup o = new Syrup("caramel");
+        Object o = ConstructorUtils.invokeConstructor(syrupClass, "caramel");
         assertTrue(syrupClass.isInstance(o));
 
-        String flavour = o.getFlavour();
+        String flavour = (String)FieldUtils.readField(o, "flavour", true);
         assertEquals("caramel", flavour);
     }
 
