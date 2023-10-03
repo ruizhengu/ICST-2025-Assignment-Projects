@@ -1,4 +1,4 @@
-package uk.ac.sheffield.com1003.cafe.module;
+package uk.ac.sheffield.com1003.cafe.solution;
 
 public class Syrup extends Ingredient {
     private String flavour;

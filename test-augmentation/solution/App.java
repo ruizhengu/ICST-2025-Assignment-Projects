@@ -1,4 +1,4 @@
-package uk.ac.sheffield.com1003.cafe.module;
+package uk.ac.sheffield.com1003.cafe.solution;
 
 import uk.ac.sheffield.com1003.cafe.Recipe.Size;
 import uk.ac.sheffield.com1003.cafe.ingredients.Water;
