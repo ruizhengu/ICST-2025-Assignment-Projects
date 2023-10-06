@@ -1,3 +1,6 @@
+test-augmentation/target
+test-augmentation/output_astor
+
 .idea/
 .DS_Store
 # Compiled class file

@@ -87,6 +87,7 @@ public class Cafe {
         int i = 0;
         while (i < menu.length) {
             if (menu[i] != null && menu[i].getName().equals(recipeName)) {
+//                nRecipes--;
                 menu[i] = null;
                 return;
             } else

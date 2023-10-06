@@ -1,0 +1,8 @@
+--- /src/main/java/introclassJava/grade_f5b56c79_010.java
++++ /src/main/java/introclassJava/grade_f5b56c79_010.java
+@@ -71,2 +71,2 @@
+-		if (score.value >= A.value) {
+-			output += java.lang.String.format("Stdent has an A grade\n");
++		if (score.value >= A.value) { 			output += java.lang.String.format("Student has an A grade\n");
++
+
