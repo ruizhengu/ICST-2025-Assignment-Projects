@@ -1,0 +1,25 @@
+{
+  "VARIANT_ID": "274",
+  "VALIDATION": "|true|0|16|[]|",
+  "patchhunks": [
+    {
+      "LOCATION": "introclassJava.digits_90a14c1a_004",
+      "PATH": "\\/Users\\/ruizhengu\\/Experiments\\/APR-as-AAT\\/IntroClassJava\\/dataset\\/digits\\/90a14c1ac8f56395389fade6f67872a9684e61f83099e634ac675eae04f391f3cc2b6f6ebe966f2488ce7e00a2cabb218f3b1372d4161b3c05d134b1b7f296d2\\/004\\/src\\/main\\/java\\/introclassJava\\/digits_90a14c1a_004.java",
+      "INGREDIENT_SCOPE": "LOCAL",
+      "SUSPICIOUNESS": "1",
+      "INGREDIENT_PARENT": "while (value.value !\u003d 0) {\\n\\tdigit.value \u003d value.value % 10;\\n\\tvalue.value \u003d value.value \\/ 10;\\n\\toutput +\u003d java.lang.String.format(\\\"%d\\\\n\\\", digit.value);\\n} ",
+      "PATCH_HUNK_TYPE": "CtWhileImpl|CtBlockImpl",
+      "ORIGINAL_CODE": "while (value.value \u003c (-10)) {\\n\\tdigit.value \u003d java.lang.Math.abs(value.value % 10);\\n\\tvalue.value \u003d value.value \\/ 10;\\n\\toutput +\u003d java.lang.String.format(\\\"%d\\\\n\\\", digit.value);\\n} ",
+      "BUGGY_CODE_TYPE": "CtWhileImpl|CtBlockImpl",
+      "OPERATOR": "InsertAfterOp",
+      "MODIFIED_FILE_PATH": "\\/Users\\/ruizhengu\\/Projects\\/APR-as-AAT\\/test-augmentation\\/.\\/output_astor\\/AstorMain-004\\/\\/src\\/\\/variant-274\\/introclassJava\\/digits_90a14c1a_004.java",
+      "LINE": "71",
+      "MP_RANKING": "0",
+      "PATCH_HUNK_CODE": "while (value.value !\u003d 0) {\\n\\tdigit.value \u003d value.value % 10;\\n\\tvalue.value \u003d value.value \\/ 10;\\n\\toutput +\u003d java.lang.String.format(\\\"%d\\\\n\\\", digit.value);\\n} "
+    }
+  ],
+  "TIME": "34",
+  "GENERATION": "137",
+  "FOLDER_SOLUTION_CODE": "\\/Users\\/ruizhengu\\/Projects\\/APR-as-AAT\\/test-augmentation\\/.\\/output_astor\\/AstorMain-004\\/\\/src\\/\\/variant-274",
+  "PATCH_DIFF_ORIG": "--- \\/src\\/main\\/java\\/introclassJava\\/digits_90a14c1a_004.java\\n+++ \\/src\\/main\\/java\\/introclassJava\\/digits_90a14c1a_004.java\\n@@ -75 +75 @@\\n-\\t\\t\\t} \\n+\\t\\t\\t} \\t\\t\\twhile (value.value !\u003d 0) { \\t\\t\\t\\tdigit.value \u003d value.value % 10; \\t\\t\\t\\tvalue.value \u003d value.value \\/ 10; \\t\\t\\t\\toutput +\u003d java.lang.String.format(\\\"%d\\\\n\\\", digit.value);} \\n\\n"
+}
