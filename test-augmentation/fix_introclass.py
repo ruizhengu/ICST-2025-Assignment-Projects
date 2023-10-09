@@ -36,6 +36,16 @@ def replace_package(file):
     with open(file, "w") as f:
         f.writelines(content)
 
+def import_package(file):
+    with open(file, "r") as f:
+        content = f.readlines()
+        for line in content:
+            if line.startswith("import org.junit.Test;"):
+                index = content.index(line)
+                content[index] = "import org.junit.Test;\nimport introclassJava.solution.*;\n"
+    with open(file, "w") as f:
+        f.writelines(content)
+
 def get_submissions(dataset):
     submissions_main = []
     submissions_test = []
@@ -64,11 +74,12 @@ def copy_ref(ref_classes, ref_tests, submissions_main, submissions_test):
             shutil.copy(ref_class, target_name)
             replace_package(target_name)
     # test classes
-    # for ref_test in ref_tests:
-    #     file_name = ref_test.split("/")[-1]
-    #     for submission_test in submissions_test:
-    #         target_name = os.path.join(submission_test, file_name)
-    #         shutil.copy(ref_test, target_name)
+    for ref_test in ref_tests:
+        file_name = ref_test.split("/")[-1]
+        for submission_test in submissions_test:
+            target_name = os.path.join(submission_test, file_name)
+            shutil.copy(ref_test, target_name)
+            import_package(target_name)
 
 
 for dataset in os.listdir(DATA_PATH):
@@ -82,8 +93,8 @@ for dataset in os.listdir(DATA_PATH):
         # copy_ref(ref_classes, ref_tests, submissions_main, submissions_test)
         # build and test submissions
         for root in roots:
-            print(run_cmd(f"mvn -f {root} compile"))
-            print(run_cmd(f"mvn -f {root} test"))
+            # print(run_cmd(f"mvn -f {root} compile"))
+            # print(run_cmd(f"mvn -f {root} test"))
             astor_command = f"java -cp /Users/ruizhengu/Experiments/APR-as-AAT/astor/target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/  -binjavafolder /target/classes/ -bintestfolder /target/test-classes/ -location {root} -scope global"
             # print(astor_command)
             # print(run_cmd(astor_command))
