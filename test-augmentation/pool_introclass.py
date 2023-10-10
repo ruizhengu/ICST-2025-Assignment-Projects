@@ -92,7 +92,8 @@ for dataset in os.listdir(DATA_PATH):
         for root in roots:
             # print(run_cmd(f"mvn -f {root} compile"))
             # run_cmd(f"mvn -f {root} test")
-            astor_command = f"java -cp /Users/ruizhengu/Experiments/APR-as-AAT/astor/target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/  -binjavafolder /target/classes/ -bintestfolder /target/test-classes/ -location {root} -scope global"
+            # astor_command = f"java -cp /Users/ruizhengu/Experiments/APR-as-AAT/astor/target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/  -binjavafolder /target/classes/ -bintestfolder /target/test-classes/ -location {root} -scope global"
+            astor_command = f"java -cp /Users/ruizhengu/Experiments/APR-as-AAT/astor/target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/  -binjavafolder /target/classes/ -bintestfolder /target/test-classes/ -location {root} -scope global -mode cardumen"
             run_cmd(astor_command)
             astor_output = os.path.join(ASTOR_OUTPUT_PATH, f"AstorMain-{root.split('/')[-1]}", "astor_output.json")
             patches = json.load(open(astor_output))["patches"]
