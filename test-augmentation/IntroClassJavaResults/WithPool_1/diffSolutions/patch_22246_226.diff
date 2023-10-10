@@ -1,0 +1,10 @@
+--- /src/main/java/introclassJava/grade_0cea42f9_003.java
++++ /src/main/java/introclassJava/grade_0cea42f9_003.java
+@@ -72,3 +72,3 @@
+-			output += java.lang.String.format("Stdent has an A grade\n");
+-		} else if ((score.value < A.value) && (score.value >= B.value)) {
+-			output += java.lang.String.format("Student has an B grade\n");
++
++
++			output += java.lang.String.format("Student has an A grade\n");} else if ((score.value < A.value) && (score.value >= B.value)) { 			output += java.lang.String.format("Student has an B grade\n");
+
