@@ -28,4 +28,11 @@ Fix IntroClassJava submissions with the reference solutions by jGenProg2.
 * WithPool_1
   * jGenProg2: 15 / 297
   * Without the tests for the reference
-  * With a pool of every submission in each subset
+  * With a pool of every submission in each assignment
+* WithPool_2
+  * Cardumen: 15 / 297
+  * With a pool of every submission in each assignment
+
+* WithRef_3
+  * Cardumen: 23 / 297
+  * Without the tests for the reference

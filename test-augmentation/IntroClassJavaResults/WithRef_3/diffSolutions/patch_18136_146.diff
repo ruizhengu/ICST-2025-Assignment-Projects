@@ -1,0 +1,8 @@
+--- /src/main/java/introclassJava/grade_769cd811_000.java
++++ /src/main/java/introclassJava/grade_769cd811_000.java
+@@ -84,2 +84,2 @@
+-		if (S.value < D.value) {
+-			output += java.lang.String.format("Student has an F grade\n");
++		if (S.value < D.value) { 			output += java.lang.String.format("Student has failed the course\n");
++
+
