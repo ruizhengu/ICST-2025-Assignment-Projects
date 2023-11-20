@@ -1,6 +1,8 @@
 test-augmentation/target
 test-augmentation/output_astor
 
+__pycache__/
+
 .idea/
 .DS_Store
 # Compiled class file
