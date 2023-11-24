@@ -2,6 +2,7 @@ import os
 import shutil
 import subprocess
 import json
+import uuid
 
 from utils import run_cmd
 
@@ -28,13 +29,13 @@ class RepairIntroClass:
             tests = [os.path.join(ref, tests_path, _) for _ in os.listdir(os.path.join(ref, tests_path))]
         return classes, tests
 
-    def replace_package(self, file):
+    def replace_package(self, file, extra):
         with open(file, "r") as f:
             content = f.readlines()
             for line in content:
                 if line.startswith("package introclassJava;"):
                     index = content.index(line)
-                    content[index] = "package introclassJava.solution;\n"
+                    content[index] = f"package introclassJava.{extra};\n"
         with open(file, "w") as f:
             f.writelines(content)
 
@@ -74,7 +75,7 @@ class RepairIntroClass:
                     os.mkdir(os.path.join(submission_main, "solution"))
                 target_name = os.path.join(submission_main, "solution", file_name)
                 shutil.copy(ref_class, target_name)
-                self.replace_package(target_name)
+                self.replace_package(target_name, "solution")
         # test classes
         for ref_test in ref_tests:
             file_name = ref_test.split("/")[-1]
@@ -82,6 +83,28 @@ class RepairIntroClass:
                 target_name = os.path.join(submission_test, file_name)
                 shutil.copy(ref_test, target_name)
                 self.import_package(target_name)
+
+    # def copy_submissions(self, total_space, submission):
+    #     if not os.path.exists(os.path.join(submission, "pool")):
+    #         os.mkdir(os.path.join(submission, "pool"))
+    #     for space in total_space:
+    #         package_id = "".join([_ for _ in space.split("/")[8] if not _.isdigit()])
+    #         package_index = "".join([_ for _ in uuid.uuid4().hex if not _.isdigit()])
+    #         if not os.path.exists(os.path.join(submission, "pool", package_id)):
+    #             os.mkdir(os.path.join(submission, "pool", package_id))
+    #         if not os.path.exists(os.path.join(submission, "pool", package_id, package_index)):
+    #             os.mkdir(os.path.join(submission, "pool", package_id, package_index))
+    #         for classes in os.listdir(space):
+    #             if classes.endswith(".java"):
+    #                 file_name = classes.split("/")[-1]
+    #                 target_name = os.path.join(submission, "pool", package_id, package_index, file_name)
+    #                 shutil.copy(os.path.join(space, classes), target_name)
+    #                 self.replace_package(target_name, f"pool.{package_id}.{package_index}")
+
+    # def create_pool(self, ref_classes, submissions_main):
+    #     for submission in submissions_main:
+    #         self.copy_refs(ref_classes, submission)
+    #         self.copy_submissions(submissions_main, submission)
 
     def repair(self):
         for dataset in os.listdir(self.path_dataset):
