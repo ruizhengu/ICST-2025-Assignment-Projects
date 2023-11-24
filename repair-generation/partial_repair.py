@@ -2,7 +2,8 @@ import os.path
 import re
 import shutil
 import subprocess
-from enum import Enum
+
+from utils import run_cmd
 
 
 class PartialRepair:
@@ -12,8 +13,8 @@ class PartialRepair:
         self._positive_tests = []
         self._negative_tests = []
         self.src_java, self.src_test, self.bin_java, self.bin_test = self.get_src_build(build_tool)
-        self._test_tmp_bin = os.path.join("test-tmp", "bin")
-        self._test_tmp_src = os.path.join("test-tmp", "src")
+        self._test_tmp_bin = os.path.join("lib", "test-tmp", "bin")
+        self._test_tmp_src = os.path.join("lib", "test-tmp", "src")
 
     @staticmethod
     def get_src_build(build_tool):
@@ -44,9 +45,6 @@ class PartialRepair:
         print("Positive Tests: ", self._positive_tests)
         print("Negative Tests: ", self._negative_tests)
 
-    def run_cmd(self, command):
-        return subprocess.Popen(command, shell=True, stdout=subprocess.PIPE).stdout.read()
-
     def partial_repair(self):
         self.get_tests()
         if len(self._negative_tests) > 0:
@@ -58,8 +56,8 @@ class PartialRepair:
             for test in self._negative_tests:
                 self.move_test(f"{test}.java", self.src_test, self._test_tmp_src, 1)
                 self.move_test(f"{test}.class", self.bin_test, self._test_tmp_bin, 1)
-                # print(self.run_cmd(f"mvn -f {self._root} compile"))
-                # self.run_cmd(f"mvn -f {self._root} test")
+                # print(run_cmd(f"mvn -f {self._root} compile"))
+                # run_cmd(f"mvn -f {self._root} test")
 
     def move_test(self, test, src, destination, direction):
         source_path = os.path.join(self._root, src, self._class_name, test)

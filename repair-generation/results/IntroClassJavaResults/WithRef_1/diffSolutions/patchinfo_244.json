@@ -1,0 +1,25 @@
+{
+  "VARIANT_ID": "244",
+  "VALIDATION": "|true|0|18|[]|",
+  "patchhunks": [
+    {
+      "LOCATION": "introclassJava.grade_833bd42c_003",
+      "PATH": "\\/Users\\/ruizhengu\\/Experiments\\/APR-as-AAT\\/IntroClassJava\\/dataset\\/grade\\/833bd42c11f7407d63f604b8ba3b7927e22e04e91884c959f01083cda7d5019610705b94a89c09cd1caa3fd1d58eee24b48b85b523db0fa3fc302e7af2dff93d\\/003\\/src\\/main\\/java\\/introclassJava\\/grade_833bd42c_003.java",
+      "INGREDIENT_SCOPE": "GLOBAL",
+      "SUSPICIOUNESS": "1",
+      "INGREDIENT_PARENT": "output +\u003d java.lang.String.format(\\\"Student has failed the course\\\\n\\\")",
+      "PATCH_HUNK_TYPE": "CtOperatorAssignmentImpl|CtBlockImpl",
+      "ORIGINAL_CODE": "output +\u003d java.lang.String.format(\\\"Student has an F grade\\\\n\\\")",
+      "BUGGY_CODE_TYPE": "CtOperatorAssignmentImpl|CtBlockImpl",
+      "OPERATOR": "ReplaceOp",
+      "MODIFIED_FILE_PATH": "\\/Users\\/ruizhengu\\/Projects\\/APR-as-AAT\\/test-augmentation\\/.\\/output_astor\\/AstorMain-003\\/\\/src\\/\\/variant-244\\/introclassJava\\/grade_833bd42c_003.java",
+      "LINE": "82",
+      "MP_RANKING": "0",
+      "PATCH_HUNK_CODE": "output +\u003d java.lang.String.format(\\\"Student has failed the course\\\\n\\\")"
+    }
+  ],
+  "TIME": "15",
+  "GENERATION": "122",
+  "FOLDER_SOLUTION_CODE": "\\/Users\\/ruizhengu\\/Projects\\/APR-as-AAT\\/test-augmentation\\/.\\/output_astor\\/AstorMain-003\\/\\/src\\/\\/variant-244",
+  "PATCH_DIFF_ORIG": "--- \\/src\\/main\\/java\\/introclassJava\\/grade_833bd42c_003.java\\n+++ \\/src\\/main\\/java\\/introclassJava\\/grade_833bd42c_003.java\\n@@ -81,2 +81,2 @@\\n-\\t\\t} else {\\n-\\t\\t\\toutput +\u003d java.lang.String.format(\\\"Student has an F grade\\\\n\\\");\\n+\\t\\t} else { \\t\\t\\toutput +\u003d java.lang.String.format(\\\"Student has failed the course\\\\n\\\");\\n+\\n\\n"
+}

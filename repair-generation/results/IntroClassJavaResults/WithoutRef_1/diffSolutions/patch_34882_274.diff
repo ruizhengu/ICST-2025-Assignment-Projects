@@ -1,0 +1,6 @@
+--- /src/main/java/introclassJava/digits_90a14c1a_004.java
++++ /src/main/java/introclassJava/digits_90a14c1a_004.java
+@@ -75 +75 @@
+-			} 
++			} 			while (value.value != 0) { 				digit.value = value.value % 10; 				value.value = value.value / 10; 				output += java.lang.String.format("%d\n", digit.value);} 
+

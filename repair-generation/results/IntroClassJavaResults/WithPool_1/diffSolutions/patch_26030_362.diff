@@ -1,0 +1,8 @@
+--- /src/main/java/introclassJava/grade_1c2bb3a4_003.java
++++ /src/main/java/introclassJava/grade_1c2bb3a4_003.java
+@@ -80,2 +80,2 @@
+-			output += java.lang.String.format("Student has an F grade\n");
+-		}
++
++			output += java.lang.String.format("Student has failed the course\n");}
+
