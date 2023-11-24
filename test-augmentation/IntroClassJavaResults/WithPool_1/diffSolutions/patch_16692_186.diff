@@ -1,6 +1,0 @@
---- /src/main/java/introclassJava/digits_d5059e2b_000.java
-+++ /src/main/java/introclassJava/digits_d5059e2b_000.java
-@@ -63 +63 @@
--		digit.value = java.lang.Math.abs(num.value) % 10;
-+
-

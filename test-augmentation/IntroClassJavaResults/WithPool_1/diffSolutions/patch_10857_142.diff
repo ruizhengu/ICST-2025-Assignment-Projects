@@ -1,8 +1,0 @@
---- /src/main/java/introclassJava/grade_d6364e6e_007.java
-+++ /src/main/java/introclassJava/grade_d6364e6e_007.java
-@@ -84,2 +84,2 @@
--		} else if (Std.value >= D.value) {
--			output += java.lang.String.format("Student has a D grade\n");
-+		} else if (Std.value >= D.value) { 			output += java.lang.String.format("Student has an D grade");
-+
-

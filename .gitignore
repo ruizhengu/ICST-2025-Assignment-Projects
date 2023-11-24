@@ -1,5 +1,6 @@
-test-augmentation/target
-test-augmentation/output_astor
+repair-generation/target
+repair-generation/results/output_astor
+repair-generation/test-augmentation
 
 __pycache__/
 
