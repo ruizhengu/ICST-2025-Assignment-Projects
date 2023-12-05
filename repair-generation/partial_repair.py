@@ -58,6 +58,7 @@ class PartialRepair:
                 self.move_test(f"{test}.class", self.bin_test, self._test_tmp_bin, 1)
                 # print(run_cmd(f"mvn -f {self._root} compile"))
                 # run_cmd(f"mvn -f {self._root} test")
+                yield test
 
     def move_test(self, test, src, destination, direction):
         source_path = os.path.join(self._root, src, self._class_name, test)
@@ -71,4 +72,6 @@ class PartialRepair:
 if __name__ == '__main__':
     root = "/Users/ruizhengu/Experiments/APR-as-AAT/IntroClassJava/dataset/checksum/2c1556672751734adf9a561fbf88767c32224fca14a81e9d9c719f18d0b21765038acc16ecd8377f74d4f43e8c844538161d869605e3516cf797d0a6a59f1f8e/003"
     partial = PartialRepair(root, "introclassJava", "maven")
-    partial.partial_repair()
+    partial_repair_iterator = partial.partial_repair()
+    for test in partial_repair_iterator:
+        print(test)

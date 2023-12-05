@@ -1,7 +1,3 @@
-repair-generation/target
-repair-generation/results/output_astor
-repair-generation/test-augmentation
-
 __pycache__/
 
 .idea/
