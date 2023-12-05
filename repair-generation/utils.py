@@ -1,7 +1,7 @@
-import glob
 import os
 import subprocess
-import sys
+import pandas as pd
+from openpyxl import Workbook
 
 
 def run_cmd(command):
@@ -51,6 +51,26 @@ def save_results(path, submission):
     with open(path, "a") as f:
         f.write(submission + "\n")
         f.close()
+
+
+def append_excel(file, data):
+    # Read the existing data
+    try:
+        df = pd.read_excel(file, sheet_name="workspace")
+    except FileNotFoundError:
+        df = pd.DataFrame()
+    # Append new data (a dictionary) to the DataFrame
+    df = df.append(data, ignore_index=True)
+    # Save the updated DataFrame back to the file
+    df.to_excel(data, index=False)
+
+
+def create_excel(file):
+    wb = Workbook()
+    if len(wb.sheetnames) > 0:
+        wb.remove(wb.active)
+    wb.create_sheet("workspace")
+    wb.save(file)
 
 
 def apply_patch(patch):

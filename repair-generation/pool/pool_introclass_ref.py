@@ -10,12 +10,13 @@ import utils
 class PoolIntroClassRef:
     def __init__(self):
         self.path_dataset = "/Users/ruizhengu/Experiments/APR-as-AAT/IntroClassJava/dataset"
-        self.path_fix_output = "/Users/ruizhengu/Projects/APR-as-AAT/repair-generation/results/results_introclass.txt"
+        self.path_fix_output = "/Users/ruizhengu/Projects/APR-as-AAT/repair-generation/results/results_introclass.xlsx"
         self._ref_main = os.path.join("reference", "src", "main", "java", "introclassJava")
         self._ref_tests = os.path.join("reference", "src", "test", "java", "introclassJava")
         self._submission_main = os.path.join("src", "main", "java", "introclassJava")
         self._submission_test = os.path.join("src", "test", "java", "introclassJava")
         self._astor_output = os.path.join(pathlib.Path(__file__).parent.resolve(), "output_astor")
+        utils.create_excel(self.path_fix_output)
 
     def get_ref(self, dataset):
         ref = os.path.join(dataset, "ref")
@@ -65,7 +66,7 @@ class PoolIntroClassRef:
     def repair(self):
         datasets = list(Path(self.path_dataset).glob('*'))
         total_datasets = len(datasets)
-
+        patch_count = 0
         for index, dataset_path in enumerate(datasets, start=1):
             if dataset_path.is_dir():
                 print(f"Processing dataset {index}/{total_datasets}: {dataset_path.name}")
@@ -85,17 +86,24 @@ class PoolIntroClassRef:
                     utils.run_cmd(astor_command)
                     try:
                         astor_output = os.path.join(self._astor_output, f"AstorMain-{root.split('/')[-1]}")
-                        astor_output_rename = os.path.join(self._astor_output,
-                                                           f"AstorMain-{dataset_path.name}-{root_index}")
-                        os.rename(astor_output, astor_output_rename)
-                        with open(os.path.join(astor_output_rename, "astor_output.json"), 'r') as file:
+                        with open(os.path.join(astor_output, "astor_output.json"), 'r') as file:
                             patches = json.load(file)["patches"]
                         if patches:
                             print(f"Patch found - {root}")
-                            utils.save_results(self.path_fix_output, str(root))
+                            data = {
+                                "ID": patch_count,
+                                "Project": dataset_path.name,
+                                "Patch": f"AstorMain-{dataset_path.name}-{root_index}",
+                                "Submission": str(root)
+                            }
+                            # utils.save_results(self.path_fix_output, str(root))
+                            astor_output_rename = os.path.join(self._astor_output,
+                                                               f"AstorMain-{dataset_path.name}-{root_index}")
+                            os.rename(astor_output, astor_output_rename)
+                            utils.append_excel(self.path_fix_output, data)
                         else:
                             print(f"No patch found - {root}")
-                            shutil.rmtree(astor_output_rename)
+                            shutil.rmtree(astor_output)
                     except Exception as e:
                         print(f"Error processing {root}: {e}")
 
