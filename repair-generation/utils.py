@@ -136,6 +136,8 @@ def apply_patch(file):
         data = json.load(f)
         path, modified_path = get_max_suspicious(data)
     shutil.move(modified_path, path)
+    run_cmd(f"mvn -f {path} compile")
+    run_cmd(f"mvn -f {path} test")
 
 
 def get_max_suspicious(data):

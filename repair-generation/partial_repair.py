@@ -74,6 +74,10 @@ class PartialRepair:
                 patch = repair_intro_class.repair(root, root_index)
                 if patch is not None:
                     utils.apply_patch(patch / "astor_output.json")
+                    # self.get_tests(root)
+                    # if len(self._negative_tests) == 0:
+                    #     print("partial repair success!")
+                    #     break
 
     def move_test(self, test, src, destination, direction, root):
         source_path = Path(root) / src / self._class_name / test

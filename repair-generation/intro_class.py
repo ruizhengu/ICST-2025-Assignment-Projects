@@ -96,6 +96,8 @@ class IntroClass:
         utils.run_cmd(astor_command)
         astor_output = self._astor_output / f"AstorMain-{root.split('/')[-1]}"
         astor_output_json = astor_output / "astor_output.json"
+        # if not astor_output.exists():
+        #     return None
         with astor_output_json.open("r") as file:
             patches = json.load(file)["patches"]
         if patches:
