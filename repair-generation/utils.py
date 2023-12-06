@@ -1,5 +1,8 @@
+import json
 import os
 import subprocess
+from pathlib import Path
+
 import pandas as pd
 from openpyxl import Workbook
 
@@ -70,5 +73,30 @@ def create_excel(file):
     wb.save(file)
 
 
-def apply_patch(patch):
-    pass
+def apply_patch(file):
+    file_path = Path(file) / "astor_output.json"
+    with file_path.open('r') as f:
+        data = json.load(f)
+        for patch in data["patches"]:
+            for patch_hunk in patch["patchhunks"]:
+                path = patch_hunk["PATH"]
+                modified_path = patch_hunk["MODIFIED_FILE_PATH"]
+                print(path, modified_path)
+
+
+def update_patch_paths(file, new_path):
+    file_path = Path(file) / "astor_output.json"
+    with file_path.open('r') as f:
+        data = json.load(f)
+    for patch in data["patches"]:
+        for patch_hunk in patch["patchhunks"]:
+            path = patch_hunk["PATH"].replace("\\/", "/")
+            modified_path = os.path.normpath(patch_hunk["MODIFIED_FILE_PATH"].replace("\\/", "/"))
+            path_parts = modified_path.split(os.sep)
+            if len(path_parts) > 8 and path_parts[8].startswith('AstorMain-'):
+                path_parts[8] = new_path
+            modified_path = os.sep.join(path_parts)
+            patch_hunk["PATH"] = path
+            patch_hunk["MODIFIED_FILE_PATH"] = modified_path
+    with file_path.open('w') as f:
+        json.dump(data, f, indent=2)
