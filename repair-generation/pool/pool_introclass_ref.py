@@ -7,6 +7,9 @@ import utils
 
 
 class PoolIntroClassRef:
+    """
+    Generating the initial patches for the IntroClassJava dataset (with reference solutions)
+    """
     def __init__(self):
         self.path_dataset = Path("/Users/ruizhengu/Experiments/APR-as-AAT/IntroClassJava/dataset")
         self.patch_results = Path(
@@ -19,6 +22,12 @@ class PoolIntroClassRef:
         utils.create_excel(self.patch_results)
 
     def get_ref(self, dataset):
+        """
+        Get reference solutions of the dataset
+
+        :param dataset: path of the dataset
+        :return:
+        """
         ref = dataset / "ref"
         classes = []
         tests = []
@@ -28,6 +37,12 @@ class PoolIntroClassRef:
         return classes, tests
 
     def get_submission(self, dataset):
+        """
+        Get the submissions in the dataset
+
+        :param dataset: path of the dataset
+        :return:
+        """
         submissions_main = []
         submissions_test = []
         roots = []
@@ -43,6 +58,14 @@ class PoolIntroClassRef:
         return submissions_main, submissions_test, roots
 
     def copy_ref(self, ref_classes, ref_tests, submissions_main, submissions_test):
+        """
+        Copy the reference solution in each submission in the current dataset
+
+        :param ref_classes:
+        :param ref_tests:
+        :param submissions_main:
+        :param submissions_test:
+        """
         for ref_class in ref_classes:
             file_name = ref_class.name
             for submission_main in submissions_main:
@@ -81,7 +104,6 @@ class PoolIntroClassRef:
                     utils.run_cmd(f"mvn -f {root} test")
                     astor_command = f"java -cp /Users/ruizhengu/Experiments/APR-as-AAT/astor/target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/ -binjavafolder /target/classes/ -bintestfolder /target/test-classes/ -location {root} -scope global -out {self._astor_output}"
                     utils.run_cmd(astor_command)
-                    # try:
                     astor_output = self._astor_output / f"AstorMain-{root.split('/')[-1]}"
                     astor_output_json = astor_output / "astor_output.json"
                     with astor_output_json.open("r") as file:
