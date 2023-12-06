@@ -1,5 +1,6 @@
 import json
 import os
+import shutil
 import subprocess
 from pathlib import Path
 
@@ -7,6 +8,17 @@ import pandas as pd
 from openpyxl import Workbook
 
 ASTOR_OUTPUT = Path("/Users/ruizhengu/Projects/APR-as-AAT/repair-generation/results/output_astor")
+INTRO_CLASS_PATH = Path("/Users/ruizhengu/Experiments/APR-as-AAT/IntroClassJava/dataset")
+PATCH_RESULTS = Path("/Users/ruizhengu/Projects/APR-as-AAT/repair-generation/results/results_introclass.xlsx")
+
+
+def get_intro_class_datasets():
+    outputs = {}
+    datasets = list(INTRO_CLASS_PATH.glob('*'))
+    for dataset in datasets:
+        if dataset.is_dir():
+            outputs[dataset.name] = dataset
+    return outputs
 
 
 def run_cmd(command):
@@ -108,7 +120,6 @@ def get_patches():
     for patch in patches:
         output_json = patch / "astor_output.json"
         if output_json.exists():
-            print(patch)
             with output_json.open('r') as f:
                 data = json.load(f)
                 path, modified_path = get_max_suspicious(data)
@@ -118,14 +129,19 @@ def get_patches():
                 "modified_path": modified_path
             }
             outputs.append(output)
-    print(outputs)
+
+
+def apply_patch(file):
+    with file.open("r") as f:
+        data = json.load(f)
+        path, modified_path = get_max_suspicious(data)
+    shutil.move(modified_path, path)
 
 
 def get_max_suspicious(data):
     max_suspicious = -1
     path_max = ""
     modified_path_max = ""
-
     for patch in data["patches"]:
         for patch_hunk in patch["patchhunks"]:
             suspicious = float(patch_hunk["SUSPICIOUNESS"])
@@ -163,6 +179,3 @@ def update_patch_paths(folder, new_path):
 
 def is_valid_file(file):
     return Path(file).is_file()
-
-
-get_patches()

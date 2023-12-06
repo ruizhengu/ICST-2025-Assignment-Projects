@@ -6,7 +6,7 @@ from pathlib import Path
 import utils
 
 
-class PoolIntroClassRef:
+class IntroClassRef:
     """
     Generating the initial patches for the IntroClassJava dataset (with reference solutions)
     """
@@ -126,5 +126,5 @@ class PoolIntroClassRef:
 
 
 if __name__ == '__main__':
-    repair = PoolIntroClassRef()
+    repair = IntroClassRef()
     repair.repair()
