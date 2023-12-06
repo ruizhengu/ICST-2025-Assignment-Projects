@@ -54,15 +54,12 @@ def save_results(path, submission):
 
 
 def append_excel(file, data):
-    # Read the existing data
     try:
         df = pd.read_excel(file, sheet_name="workspace")
     except FileNotFoundError:
         df = pd.DataFrame()
-    # Append new data (a dictionary) to the DataFrame
-    df = df.append(data, ignore_index=True)
-    # Save the updated DataFrame back to the file
-    df.to_excel(data, index=False)
+    df = pd.concat([df, pd.DataFrame(data, index=[0])])
+    df.to_excel(file, index=False, sheet_name="workspace")
 
 
 def create_excel(file):
