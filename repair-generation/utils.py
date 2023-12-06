@@ -25,38 +25,69 @@ def add_package(path, package):
 
 
 def replace_package(file, old, new):
-    if not os.path.isfile(file):
+    """
+    Replacing the package
+
+    :param file: path of the file for replacing
+    :param old: the targeted string to be replaced
+    :param new: the new string
+    :return:
+    """
+    file_path = Path(file)
+    if not is_valid_file(file_path):
         print("Please enter a valid path")
-    else:
-        with open(file, "r") as f:
-            content = f.readlines()
-        with open(file, "w") as f:
-            for line in content:
-                if line.startswith(old):
-                    line = f"{new}\n"
-                f.write(line)
+        return
+    with file_path.open("r") as f:
+        content = f.readlines()
+    with file_path.open("w") as f:
+        for line in content:
+            if line.startswith(old):
+                line = f"{new}\n"
+            f.write(line)
 
 
 def import_class(file, line_before, new_line):
-    if not os.path.isfile(file):
+    """
+    Importing a new class after a specific class
+
+    :param file: path of the file for replacing
+    :param line_before: the line before the inserting
+    :param new_line: the new line to import
+    :return:
+    """
+    file_path = Path(file)
+    if not is_valid_file(file_path):
         print("Please enter a valid path")
-    else:
-        with open(file, "r") as f:
-            content = f.readlines()
-        with open(file, "w") as f:
-            for line in content:
-                f.write(line)
-                if line.startswith(line_before):
-                    f.write(f"{new_line}\n")
+        return
+    with file_path.open("r") as f:
+        content = f.readlines()
+    with file_path.open("w") as f:
+        for line in content:
+            f.write(line)
+            if line.startswith(line_before):
+                f.write(f"{new_line}\n")
 
 
-def save_results(path, submission):
-    with open(path, "a") as f:
-        f.write(submission + "\n")
-        f.close()
+def create_excel(file):
+    """
+    Create an empty xlsx file
+
+    :param file: the path of the file
+    """
+    wb = Workbook()
+    if len(wb.sheetnames) > 0:
+        wb.remove(wb.active)
+    wb.create_sheet("workspace")
+    wb.save(file)
 
 
 def append_excel(file, data):
+    """
+    Append data in the xlsx file
+
+    :param file: the path of the xlsx file
+    :param data: the new data to append
+    """
     try:
         df = pd.read_excel(file, sheet_name="workspace")
     except FileNotFoundError:
@@ -65,16 +96,12 @@ def append_excel(file, data):
     df.to_excel(file, index=False, sheet_name="workspace")
 
 
-def create_excel(file):
-    wb = Workbook()
-    if len(wb.sheetnames) > 0:
-        wb.remove(wb.active)
-    wb.create_sheet("workspace")
-    wb.save(file)
+def apply_patch(folder):
+    """
 
-
-def apply_patch(file):
-    file_path = Path(file) / "astor_output.json"
+    :param folder:
+    """
+    file_path = Path(folder) / "astor_output.json"
     with file_path.open('r') as f:
         data = json.load(f)
         for patch in data["patches"]:
@@ -84,8 +111,14 @@ def apply_patch(file):
                 print(path, modified_path)
 
 
-def update_patch_paths(file, new_path):
-    file_path = Path(file) / "astor_output.json"
+def update_patch_paths(folder, new_path):
+    """
+    Update the path in the astor_output.json file to the renamed unique path
+
+    :param folder: path of the output folder
+    :param new_path: the renamed path
+    """
+    file_path = Path(folder) / "astor_output.json"
     with file_path.open('r') as f:
         data = json.load(f)
     for patch in data["patches"]:
@@ -100,3 +133,7 @@ def update_patch_paths(file, new_path):
             patch_hunk["MODIFIED_FILE_PATH"] = modified_path
     with file_path.open('w') as f:
         json.dump(data, f, indent=2)
+
+
+def is_valid_file(file):
+    return Path(file).is_file()
