@@ -6,6 +6,8 @@ from pathlib import Path
 import pandas as pd
 from openpyxl import Workbook
 
+ASTOR_OUTPUT = Path("/Users/ruizhengu/Projects/APR-as-AAT/repair-generation/results/output_astor")
+
 
 def run_cmd(command):
     return subprocess.Popen(command, shell=True, stdout=subprocess.PIPE).stdout.read()
@@ -96,19 +98,43 @@ def append_excel(file, data):
     df.to_excel(file, index=False, sheet_name="workspace")
 
 
-def apply_patch(folder):
+def get_patches():
     """
+    Get all patches in the astor output folder.
 
-    :param folder:
     """
-    file_path = Path(folder) / "astor_output.json"
-    with file_path.open('r') as f:
-        data = json.load(f)
-        for patch in data["patches"]:
-            for patch_hunk in patch["patchhunks"]:
-                path = patch_hunk["PATH"]
-                modified_path = patch_hunk["MODIFIED_FILE_PATH"]
-                print(path, modified_path)
+    outputs = []
+    patches = list(ASTOR_OUTPUT.glob('*'))
+    for patch in patches:
+        output_json = patch / "astor_output.json"
+        if output_json.exists():
+            print(patch)
+            with output_json.open('r') as f:
+                data = json.load(f)
+                path, modified_path = get_max_suspicious(data)
+            output = {
+                "patch": patch,
+                "original_path": path,
+                "modified_path": modified_path
+            }
+            outputs.append(output)
+    print(outputs)
+
+
+def get_max_suspicious(data):
+    max_suspicious = -1
+    path_max = ""
+    modified_path_max = ""
+
+    for patch in data["patches"]:
+        for patch_hunk in patch["patchhunks"]:
+            suspicious = float(patch_hunk["SUSPICIOUNESS"])
+            if suspicious > max_suspicious:
+                max_suspicious = suspicious
+                path_max = patch_hunk["PATH"]
+                modified_path_max = patch_hunk["MODIFIED_FILE_PATH"]
+
+    return path_max, modified_path_max
 
 
 def update_patch_paths(folder, new_path):
@@ -137,3 +163,6 @@ def update_patch_paths(folder, new_path):
 
 def is_valid_file(file):
     return Path(file).is_file()
+
+
+get_patches()

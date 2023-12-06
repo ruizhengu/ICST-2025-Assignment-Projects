@@ -18,7 +18,7 @@ class PoolIntroClassRef:
         self._ref_tests = Path("reference/src/test/java/introclassJava")
         self._submission_main = Path("src/main/java/introclassJava")
         self._submission_test = Path("src/test/java/introclassJava")
-        self._astor_output = Path("/Users/ruizhengu/Projects/APR-as-AAT/repair-generation/results/output_astor")
+        self._astor_output = utils.ASTOR_OUTPUT
         utils.create_excel(self.patch_results)
 
     def get_ref(self, dataset):
