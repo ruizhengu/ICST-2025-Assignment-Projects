@@ -1,5 +1,6 @@
 import json
 import os
+import re
 import shutil
 import subprocess
 from pathlib import Path
@@ -181,3 +182,35 @@ def update_patch_paths(folder, new_path):
 
 def is_valid_file(file):
     return Path(file).is_file()
+
+
+def get_class_content(file, class_name):
+    with open(file, 'r') as f:
+        content = f.read()
+    pattern = rf"class\s+{re.escape(class_name)}\s*\{{(.*?)\}}$"
+    match = re.search(pattern, content, re.DOTALL)
+    if match:
+        return match.group(0)
+    else:
+        print(f"Class '{class_name}' not found in {file}")
+        return None
+
+
+def replace_class(file, class_name, class_content):
+    pattern = rf"class\s+{re.escape(class_name)}\s*\{{(.*?)\}}$"
+    newline_pattern = r'(?<!\\)\\n'
+    with open(file, "r") as f:
+        content = f.read()
+
+    class_content = re.sub(newline_pattern, r'\\\\n', class_content)
+    modified_content = re.sub(pattern, class_content, content, flags=re.DOTALL)
+    print(modified_content)
+    with open(file, "w") as f:
+        f.write(modified_content)
+
+
+file = "/Users/ruizhengu/Experiments/APR-as-AAT/test-n/median_fe9d5fb9_000.java"
+class_name = "median_fe9d5fb9_000"
+content = get_class_content(file, class_name)
+file_new = "/Users/ruizhengu/Experiments/APR-as-AAT/test-o/median_fe9d5fb9_000.java"
+replace_class(file_new, "median_fe9d5fb9_000", content)
