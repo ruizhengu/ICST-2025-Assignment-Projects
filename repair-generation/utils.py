@@ -136,7 +136,10 @@ def apply_patch(file):
     with file.open("r") as f:
         data = json.load(f)
         path, modified_path = get_max_suspicious(data)
-    shutil.move(modified_path, path)
+    # shutil.move(modified_path, path)
+    class_name = Path(modified_path).name.replace(".java", "")
+    new_content = get_class_content(modified_path, class_name)
+    replace_class(path, class_name, new_content)
     run_cmd(f"mvn -f {path} compile")
     run_cmd(f"mvn -f {path} test")
 
@@ -201,16 +204,31 @@ def replace_class(file, class_name, class_content):
     newline_pattern = r'(?<!\\)\\n'
     with open(file, "r") as f:
         content = f.read()
-
     class_content = re.sub(newline_pattern, r'\\\\n', class_content)
     modified_content = re.sub(pattern, class_content, content, flags=re.DOTALL)
-    print(modified_content)
     with open(file, "w") as f:
         f.write(modified_content)
 
 
-file = "/Users/ruizhengu/Experiments/APR-as-AAT/test-n/median_fe9d5fb9_000.java"
-class_name = "median_fe9d5fb9_000"
-content = get_class_content(file, class_name)
-file_new = "/Users/ruizhengu/Experiments/APR-as-AAT/test-o/median_fe9d5fb9_000.java"
-replace_class(file_new, "median_fe9d5fb9_000", content)
+def reset():
+    delete_results()
+    delete_tmp_tests()
+    # reset intro class repo
+    run_cmd("git -C /Users/ruizhengu/Experiments/APR-as-AAT/IntroClassJava stash")
+
+
+def delete_results():
+    for item in ASTOR_OUTPUT.iterdir():
+        if item.is_dir():
+            shutil.rmtree(item)
+
+
+def delete_tmp_tests():
+    test_tmp_bin = Path("/Users/ruizhengu/Projects/APR-as-AAT/repair-generation/lib/test-tmp/bin")
+    test_tmp_src = Path("/Users/ruizhengu/Projects/APR-as-AAT/repair-generation/lib/test-tmp/src")
+    for item in test_tmp_bin.iterdir():
+        if item.is_file():
+            os.remove(item)
+    for item in test_tmp_src.iterdir():
+        if item.is_file():
+            os.remove(item)

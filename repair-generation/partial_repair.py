@@ -19,6 +19,7 @@ class PartialRepair:
         self._test_tmp_bin = os.path.join("lib", "test-tmp", "bin")
         self._test_tmp_src = os.path.join("lib", "test-tmp", "src")
         utils.create_excel(utils.PATCH_RESULTS)
+        utils.reset()
 
     @staticmethod
     def get_src_build(build_tool):

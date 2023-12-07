@@ -125,7 +125,7 @@ class IntroClass:
         if astor_output.exists():
             os.rename(astor_output, new_name)
             return new_name
-        elif new_name.exists():
+        if new_name.exists():
             os.rename(new_name, new_name_digit)
             return new_name_digit
         else:
