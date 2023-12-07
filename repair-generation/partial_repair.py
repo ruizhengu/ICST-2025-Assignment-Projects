@@ -13,8 +13,6 @@ class PartialRepair:
     def __init__(self, datasets, class_name, build_tool):
         self.datasets = datasets
         self._class_name = class_name
-        self._positive_tests = []
-        self._negative_tests = []
         self.src_java, self.src_test, self.bin_java, self.bin_test = self.get_src_build(build_tool)
         self._test_tmp_bin = os.path.join("lib", "test-tmp", "bin")
         self._test_tmp_src = os.path.join("lib", "test-tmp", "src")
@@ -32,8 +30,7 @@ class PartialRepair:
         return build_paths[build_tool]
 
     def get_tests(self, root):
-        self._negative_tests = []
-        self._positive_tests = []
+        negative_tests = []
         cmd = f"mvn -f {root} test | grep 'Tests run:.*Failures:.*Errors:'"
         try:
             output = subprocess.check_output(cmd, shell=True, text=True)
@@ -44,13 +41,12 @@ class PartialRepair:
                 if match:
                     num_failures = int(match.group(1))
                     if num_failures > 0:
-                        self._negative_tests.append(match.group(2))
-                    else:
-                        self._positive_tests.append(match.group(2))
+                        negative_tests.append(match.group(2))
+            return negative_tests
         except subprocess.CalledProcessError as e:
             print(f"Error executing test command: {e}")
-        print("Positive Tests: ", self._positive_tests)
-        print("Negative Tests: ", self._negative_tests)
+        # print("Positive Tests: ", self._positive_tests)
+        # print("Negative Tests: ", self._negative_tests)
 
     def repair_dataset(self):
         for dataset, path in self.datasets.items():
@@ -62,23 +58,23 @@ class PartialRepair:
                 self.partial_repair(root, repair_intro_class, root_index)
 
     def partial_repair(self, root, repair_intro_class, root_index):
-        self.get_tests(root)
-        if len(self._negative_tests) > 0:
+        negative_tests = self.get_tests(root)
+        if len(negative_tests) > 0:
             # Move all negative tests to temporary directory
-            for test in self._negative_tests:
+            for test in negative_tests:
                 self.move_test(f"{test}.java", self.src_test, self._test_tmp_src, 0, root)
                 self.move_test(f"{test}.class", self.bin_test, self._test_tmp_bin, 0, root)
             # Build the project and run APR with only one negative test at a time
-            for test in self._negative_tests:
+            for test in negative_tests:
                 self.move_test(f"{test}.java", self.src_test, self._test_tmp_src, 1, root)
                 self.move_test(f"{test}.class", self.bin_test, self._test_tmp_bin, 1, root)
                 patch = repair_intro_class.repair(root, root_index)
                 if patch is not None:
                     utils.apply_patch(patch / "astor_output.json")
-                    # self.get_tests(root)
-                    # if len(self._negative_tests) == 0:
-                    #     print("partial repair success!")
-                    #     break
+                    patched_negative_tests = self.get_tests(root)
+                    if len(patched_negative_tests) == 0:
+                        print("partial repair success!")
+                        break
 
     def move_test(self, test, src, destination, direction, root):
         source_path = Path(root) / src / self._class_name / test

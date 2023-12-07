@@ -118,20 +118,50 @@ class IntroClass:
             return None
 
     def rename_output(self, astor_output):
-        new_name = self._astor_output / f"AstorMain-{self.path_dataset.name}-1"
-        pattern = rf"AstorMain-{self.path_dataset.name}-1-\d+"
-        new_name_digit = self._astor_output / f"AstorMain-{self.path_dataset.name}-1-1"
+        # new_name = self._astor_output / f"AstorMain-{self.path_dataset.name}-1"
+        # pattern = rf"AstorMain-{self.path_dataset.name}-1-\d+"
+        # new_name_digit = self._astor_output / f"AstorMain-{self.path_dataset.name}-1-1"
+        # output = ""
+        # max_digit = -1
+        # if astor_output.exists():
+        #     os.rename(astor_output, new_name)
+        #     output = new_name
+        #     # return new_name
+        # if new_name.exists():
+        #     os.rename(new_name, new_name_digit)
+        #     # return new_name_digit
+        #     output = new_name_digit
+        # for file in self._astor_output.iterdir():
+        #     if re.match(pattern, file.name):
+        #         digit = int(file.name.split("-")[-1]) + 1
+        #         if digit > max_digit:
+        #             max_digit = digit
+        #             updated_name_digit = self._astor_output / f"AstorMain-{self.path_dataset.name}-1-{digit}"
+        #             os.rename(file, updated_name_digit)
+        #         # return updated_name_digit
+        #             output = updated_name_digit
+        # return output
+        pattern = rf"AstorMain-{re.escape(self.path_dataset.name)}-1-(\d+)"
+        max_digit = 0
 
+        # Find the maximum digit in existing files
+        for file in self._astor_output.iterdir():
+            match = re.match(pattern, file.name)
+            if match:
+                digit = int(match.group(1))
+                max_digit = max(max_digit, digit)
+
+        # Determine the new name for astor_output
+        if max_digit > 0:
+            new_digit = max_digit + 1
+        else:
+            new_digit = 1
+        new_name = self._astor_output / f"AstorMain-{self.path_dataset.name}-1-{new_digit}"
+
+        # Rename astor_output to new_name
         if astor_output.exists():
             os.rename(astor_output, new_name)
             return new_name
-        if new_name.exists():
-            os.rename(new_name, new_name_digit)
-            return new_name_digit
-        else:
-            for file in self._astor_output.iterdir():
-                if re.match(pattern, file.name):
-                    digit = int(file.name.split("-")[-1]) + 1
-                    updated_name_digit = self._astor_output / f"AstorMain-{self.path_dataset.name}-1-{digit}"
-                    os.rename(file, updated_name_digit)
-                    return updated_name_digit
+
+        # Return None or an appropriate value if astor_output doesn't exist
+        return None
