@@ -44,3 +44,15 @@ Fix IntroClassJava submissions with the reference solutions by jGenProg2.
   * Cardumen: 23 / 297
   * Without the tests for the reference
 
+### Partial Repair
+
+* WithRef_1
+
+  * jGenProg2: 37 / 297
+
+    | Project  | Patches | Total | Percentage |
+    | -------- | ------- | ----- | ---------- |
+    | median   | 3       | 36    | 8.33%      |
+    | smallest | 10      | 32    | 31.25%     |
+    | grade    | 20      | 47    | 42.55%     |
+    | digits   | 4       | 40    | 10.0%      |
