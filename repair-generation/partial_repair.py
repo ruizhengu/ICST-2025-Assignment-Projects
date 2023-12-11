@@ -87,5 +87,8 @@ class PartialRepair:
 
 if __name__ == '__main__':
     datasets = utils.get_intro_class_datasets()
+    for dataset_name, dataset in datasets.items():
+        if dataset_name == "grade":
+            datasets = {dataset_name: dataset}
     repair = PartialRepair(datasets, "introclassJava", "maven")
     repair.repair_dataset()

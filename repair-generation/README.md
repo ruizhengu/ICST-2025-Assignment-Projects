@@ -56,3 +56,7 @@ Fix IntroClassJava submissions with the reference solutions by jGenProg2.
     | smallest | 10      | 32    | 31.25%     |
     | grade    | 20      | 47    | 42.55%     |
     | digits   | 4       | 40    | 10.0%      |
+
+* WithRef_grade_1
+  * Manually added one more reference solution for the **grade** dataset
+  * jGenProg2: 17 / 47

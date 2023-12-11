@@ -211,7 +211,6 @@ def replace_class(file, class_name, class_content):
 
 
 def reset():
-    print("reset called ")
     delete_results()
     delete_tmp_tests()
     # reset intro class repo
@@ -221,7 +220,6 @@ def reset():
 def delete_results():
     for item in ASTOR_OUTPUT.iterdir():
         if item.is_dir():
-            print(item)
             shutil.rmtree(item)
 
 
