@@ -1,4 +1,5 @@
 import re
+import shutil
 import subprocess
 from pathlib import Path
 
@@ -6,9 +7,28 @@ from pathlib import Path
 class RepairCafe:
     def __init__(self, submissions):
         self.submissions = Path(submissions)
+        self.test_suite = Path(
+            "/Users/ruizhengu/Projects/APR-as-AAT/com1003_cafe/com1003_cafe_8/src/test/java/uk/ac/sheffield/com1003/cafe/junit4")
+
+    def replace_tests(self, submission):
+        destination = submission / "src/test/java/uk/ac/sheffield/com1003/cafe"
+        print(destination)
+        # delete all files and folders in path
+        for item in destination.iterdir():
+            if item.is_dir():
+                shutil.rmtree(item)
+            else:
+                item.unlink()
+
+        for item in self.test_suite.iterdir():
+            if item.is_dir():
+                shutil.copytree(item, destination / item.name)
+            else:
+                shutil.copy2(item, destination / item.name)
 
     def build_version(self):
         for submission in self.submissions.iterdir():
+            self.replace_tests(submission)
             if ".DS_Store" not in str(submission):
                 build_gradle = submission / "build.gradle"
                 try:
