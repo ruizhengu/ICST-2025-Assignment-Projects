@@ -56,8 +56,9 @@ def replace_package(file, old, new):
         content = f.readlines()
     with file_path.open("w") as f:
         for line in content:
-            if line.startswith(old):
-                line = f"{new}\n"
+            if old in line:
+                # line = f"{new}\n"
+                line = line.replace(old, new)
             f.write(line)
 
 
@@ -233,3 +234,10 @@ def delete_tmp_tests():
         if item.is_file():
             os.remove(item)
 
+
+def empty_directory(path):
+    for item in path.iterdir():
+        if item.is_dir():
+            shutil.rmtree(item)
+        else:
+            item.unlink()
