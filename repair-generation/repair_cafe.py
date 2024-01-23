@@ -71,9 +71,11 @@ class RepairCafe:
                         f.write(line)
 
                 # change the environmental variable JAVA_HOME to 1.8
+                chmod = f"chmod +x {submission}/gradlew"
                 cmd = f"{submission}/gradlew build -x test -p {submission}"
                 try:
-                    output = subprocess.check_output(cmd, shell=True, text=True)
+                    utils.run_cmd(chmod)
+                    utils.run_cmd(cmd)
                 except subprocess.CalledProcessError as e:
                     print(f"{submission} - Error executing {e}")
 
