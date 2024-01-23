@@ -11,14 +11,19 @@ import utils
 class RepairCafe:
     def __init__(self, submissions):
         self.submissions = Path(submissions)
+        # self.test_suite = Path(
+        #     "/Users/ruizhengu/Projects/APR-as-AAT/com1003_cafe/com1003_cafe_8/src/test/java/uk/ac/sheffield/com1003/cafe/junit4")
         self.test_suite = Path(
-            "/Users/ruizhengu/Projects/APR-as-AAT/com1003_cafe/com1003_cafe_8/src/test/java/uk/ac/sheffield/com1003/cafe/junit4")
-        self.ref_path = Path("/Users/ruizhengu/Projects/APR-as-AAT/com1003_cafe/com1003_cafe_8")
+            "/mnt/parscratch/users/acp22rg/APR-as-AAT/APR-as-AAT/com1003_cafe/com1003_cafe_8/src/test/java/uk/ac/sheffield/com1003/cafe/junit4")
+        # self.ref_path = Path("/Users/ruizhengu/Projects/APR-as-AAT/com1003_cafe/com1003_cafe_8")
+        self.ref_path = Path("/mnt/parscratch/users/acp22rg/APR-as-AAT/APR-as-AAT/com1003_cafe/com1003_cafe_8")
         self._main_path = Path("src/main/java/uk/ac/sheffield/com1003/cafe")
         self._test_path = Path("src/test/java/uk/ac/sheffield/com1003/cafe")
         self._astor_output = utils.ASTOR_OUTPUT
+        # self.patch_results = Path(
+        #     "/Users/ruizhengu/Projects/APR-as-AAT/repair-generation/results/results_cafe.xlsx")
         self.patch_results = Path(
-            "/Users/ruizhengu/Projects/APR-as-AAT/repair-generation/results/results_cafe.xlsx")
+            "/mnt/parscratch/users/acp22rg/APR-as-AAT/APR-as-AAT/repair-generation/results/results_cafe.xlsx")
         utils.create_excel(self.patch_results)
 
     def replace_tests(self, submission):
@@ -123,7 +128,8 @@ class RepairCafe:
     def repair(self, root, root_index):
         utils.run_cmd(f"gradle build -p {root}")
 
-        astor_command = f"java -cp /Users/ruizhengu/Experiments/APR-as-AAT/astor/target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/ -binjavafolder /build/classes/java/main/ -bintestfolder /build/classes/java/test/ -location {root} -scope global -out {self._astor_output}"
+        # astor_command = f"java -cp /Users/ruizhengu/Experiments/APR-as-AAT/astor/target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/ -binjavafolder /build/classes/java/main/ -bintestfolder /build/classes/java/test/ -location {root} -scope global -out {self._astor_output}"
+        astor_command = f"java -cp /mnt/parscratch/users/acp22rg/APR-as-AAT/astor/target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/ -binjavafolder /build/classes/java/main/ -bintestfolder /build/classes/java/test/ -location {root} -scope global -out {self._astor_output}"
         utils.run_cmd(astor_command)
         astor_output = self._astor_output / f"AstorMain-{root.split('/')[-1]}"
         astor_output_json = astor_output / "astor_output.json"
@@ -167,7 +173,8 @@ class RepairCafe:
 
 
 if __name__ == '__main__':
-    submissions = "/Users/ruizhengu/Experiments/APR-as-AAT/anonymised-submissions"
+    # submissions = "/Users/ruizhengu/Experiments/APR-as-AAT/anonymised-submissions"
+    submissions = "/mnt/parscratch/users/acp22rg/APR-as-AAT/anonymised-submissions"
     repair_cafe = RepairCafe(submissions)
     roots = repair_cafe.pre_processing()
     repair_cafe.build_version()
