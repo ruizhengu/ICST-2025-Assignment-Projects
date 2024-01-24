@@ -135,24 +135,27 @@ class RepairCafe:
         utils.run_cmd(astor_command)
         astor_output = self._astor_output / f"AstorMain-{root.split('/')[-1]}"
         astor_output_json = astor_output / "astor_output.json"
-        with astor_output_json.open("r") as file:
-            patches = json.load(file)["patches"]
-        if patches:
-            print(f"Patch found - {root}")
-            data = {
-                # "ID": patch_count,
-                "Project": "Cafe",
-                "Patch": f"AstorMain-Cafe-{root_index}",
-                "Submission": str(root)
-            }
-            new_path = self.rename_output(astor_output)
-            utils.append_excel(self.patch_results, data)
-            utils.update_patch_paths(new_path, new_path.name)
-            return new_path
-        else:
-            print(f"No patch found - {root}")
-            shutil.rmtree(astor_output)
-            return None
+        try:
+            with astor_output_json.open("r") as file:
+                patches = json.load(file)["patches"]
+            if patches:
+                print(f"Patch found - {root}")
+                data = {
+                    # "ID": patch_count,
+                    "Project": "Cafe",
+                    "Patch": f"AstorMain-Cafe-{root_index}",
+                    "Submission": str(root)
+                }
+                new_path = self.rename_output(astor_output)
+                utils.append_excel(self.patch_results, data)
+                utils.update_patch_paths(new_path, new_path.name)
+                return new_path
+            else:
+                print(f"No patch found - {root}")
+                shutil.rmtree(astor_output)
+                return None
+        except FileNotFoundError as e:
+            print(f"File not found: {e}")
 
     def rename_output(self, astor_output):
         pattern = rf"AstorMain-Cafe-1-(\d+)"
@@ -179,7 +182,7 @@ if __name__ == '__main__':
     submissions = "/mnt/parscratch/users/acp22rg/APR-as-AAT/anonymised-submissions"
     repair_cafe = RepairCafe(submissions)
     roots = repair_cafe.pre_processing()
-    repair_cafe.build_version()
+    # repair_cafe.build_version()
     for root_index, root in enumerate(roots, start=1):
         print(f"Processing submission {root_index}/{len(roots)}")
         repair_cafe.repair(root, root_index)
