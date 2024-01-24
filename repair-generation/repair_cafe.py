@@ -3,6 +3,7 @@ import os
 import re
 import shutil
 import subprocess
+from datetime import datetime
 from pathlib import Path
 
 import utils
@@ -184,5 +185,6 @@ if __name__ == '__main__':
     roots = repair_cafe.pre_processing()
     # repair_cafe.build_version()
     for root_index, root in enumerate(roots, start=1):
-        print(f"Processing submission {root_index}/{len(roots)}")
+        current_time = datetime.now().strftime("%H:%M:%S")
+        print(f"Processing submission {root_index}/{len(roots)} | {current_time}")
         repair_cafe.repair(root, root_index)
