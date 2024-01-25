@@ -31,6 +31,11 @@ test {
 //        includeTestsMatching "uk.ac.sheffield.com1003.cafe.randoop.*"
 //    }
     finalizedBy jacocoTestReport
+    testLogging {
+        events "failed"
+        exceptionFormat "short"
+        showStandardStreams = true
+    }
 }
 
 jacocoTestReport {

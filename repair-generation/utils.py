@@ -24,7 +24,7 @@ def get_intro_class_datasets():
 
 
 def run_cmd(command):
-    return subprocess.Popen(command, shell=True, stdout=subprocess.PIPE).stdout.read()
+    return subprocess.Popen(command, shell=True, stdout=subprocess.PIPE).stdout.read().decode('utf-8')
 
 
 def add_package(path, package):
@@ -242,3 +242,10 @@ def empty_directory(path):
             shutil.rmtree(item)
         else:
             item.unlink()
+
+
+def gradle_get_failed_tests(submission):
+    cmd = f"{submission}/gradlew test -p {submission}"
+    output = run_cmd(cmd)
+    pattern = re.compile(r"\n(\w+) > .+ FAILED")
+    return set(pattern.findall(output))
