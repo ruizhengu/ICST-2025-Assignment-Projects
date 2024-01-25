@@ -183,7 +183,8 @@ if __name__ == '__main__':
     submissions = "/mnt/parscratch/users/acp22rg/APR-as-AAT/anonymised-submissions"
     repair_cafe = RepairCafe(submissions)
     roots = repair_cafe.pre_processing()
-    # repair_cafe.build_version()
+    repair_cafe.build_version()
+    print("Start Repairing")
     for root_index, root in enumerate(roots, start=1):
         current_time = datetime.now().strftime("%H:%M:%S")
         print(f"Processing submission {root_index}/{len(roots)} | {current_time}")
