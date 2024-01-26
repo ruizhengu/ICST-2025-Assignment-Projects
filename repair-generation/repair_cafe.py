@@ -12,8 +12,8 @@ import utils
 class RepairCafe:
     def __init__(self, submissions):
         self.submissions = Path(submissions)
-        self.home_path = Path("/Users/ruizhengu/Projects/APR-as-AAT")
-        # self.home_path = Path("/mnt/parscratch/users/acp22rg/APR-as-AAT/APR-as-AAT")
+        # self.home_path = Path("/Users/ruizhengu/Projects/APR-as-AAT")
+        self.home_path = Path("/mnt/parscratch/users/acp22rg/APR-as-AAT/APR-as-AAT")
         self.ref_path = self.home_path / "com1003_cafe/com1003_cafe_8"
         self.test_suite = self.ref_path / "src/test/java/uk/ac/sheffield/com1003/cafe"
         self._main_path = Path("src/main/java/uk/ac/sheffield/com1003/cafe")
@@ -41,24 +41,24 @@ class RepairCafe:
     def pre_processing(self):
         submission_roots = []
         submissions_list = list(filter(lambda p: ".DS_Store" not in str(p), self.submissions.iterdir()))
-        # counter = 0
-        # for submission in submissions_list:
-        #     counter += 1
-        #     print(f"Build submission {submission.name} | {counter} / {len(submissions_list)}")
-        #     self.replace_tests(submission)
-        #     self.replace_build_gradle(submission)
-        #     self.copy_ref(submission)
-        #     # change the environmental variable JAVA_HOME to 1.8
-        #     chmod = f"chmod +x {submission}/gradlew"
-        #     cmd = f"{submission}/gradlew build -x test -p {submission}"
-        #     try:
-        #         utils.run_cmd(chmod)
-        #         utils.run_cmd(cmd)
-        #         submission_roots.append(str(submission))
-        #     except subprocess.CalledProcessError as e:
-        #         print(f"{submission} - Error executing {e}")
+        counter = 0
         for submission in submissions_list:
-            submission_roots.append(str(submission))
+            counter += 1
+            print(f"Build submission {submission.name} | {counter} / {len(submissions_list)}")
+            self.replace_tests(submission)
+            self.replace_build_gradle(submission)
+            self.copy_ref(submission)
+            # change the environmental variable JAVA_HOME to 1.8
+            chmod = f"chmod +x {submission}/gradlew"
+            cmd = f"{submission}/gradlew build -x test -p {submission}"
+            try:
+                utils.run_cmd(chmod)
+                utils.run_cmd(cmd)
+                submission_roots.append(str(submission))
+            except subprocess.CalledProcessError as e:
+                print(f"{submission} - Error executing {e}")
+        # for submission in submissions_list:
+        #     submission_roots.append(str(submission))
         return submission_roots
 
     def get_ref(self):
@@ -97,8 +97,8 @@ class RepairCafe:
     def repair(self, root, root_index):
         submission_name = root.split('/')[-1]
         utils.run_cmd(f"{root}/gradlew build -p {root}")
-        astor_command = f"java -cp /Users/ruizhengu/Experiments/APR-as-AAT/astor/target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/ -binjavafolder /build/classes/java/main/ -bintestfolder /build/classes/java/test/ -location {root} -scope global -out {self._astor_output}"
-        # astor_command = f"java -cp /mnt/parscratch/users/acp22rg/APR-as-AAT/astor/target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/ -binjavafolder /build/classes/java/main/ -bintestfolder /build/classes/java/test/ -location {root} -scope global -out {self._astor_output}"
+        # astor_command = f"java -cp /Users/ruizhengu/Experiments/APR-as-AAT/astor/target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/ -binjavafolder /build/classes/java/main/ -bintestfolder /build/classes/java/test/ -location {root} -scope global -out {self._astor_output}"
+        astor_command = f"java -cp /mnt/parscratch/users/acp22rg/APR-as-AAT/astor/target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/ -binjavafolder /build/classes/java/main/ -bintestfolder /build/classes/java/test/ -location {root} -scope global -out {self._astor_output}"
         utils.run_cmd(astor_command)
         time.sleep(60)
         astor_output = Path(self._astor_output) / f"AstorMain-{submission_name}"
@@ -145,11 +145,11 @@ class RepairCafe:
         return None
 
 
-if __name__ == '__main__':
-    submissions = "/Users/ruizhengu/Experiments/APR-as-AAT/anonymised-submissions"
-    # submissions = "/mnt/parscratch/users/acp22rg/APR-as-AAT/anonymised-submissions"
-    repair_cafe = RepairCafe(submissions)
-    submission_roots = repair_cafe.pre_processing()
-    print("Start Repairing")
-    # for root_index, root in enumerate(submission_roots, start=1):
-    #     repair_cafe.repair(root, root_index)
+# if __name__ == '__main__':
+#     submissions = "/Users/ruizhengu/Experiments/APR-as-AAT/anonymised-submissions"
+#     # submissions = "/mnt/parscratch/users/acp22rg/APR-as-AAT/anonymised-submissions"
+#     repair_cafe = RepairCafe(submissions)
+#     submission_roots = repair_cafe.pre_processing()
+#     print("Start Repairing")
+#     # for root_index, root in enumerate(submission_roots, start=1):
+#     #     repair_cafe.repair(root, root_index)

@@ -9,12 +9,12 @@ from loguru import logger
 
 class PartialRepairCafe:
     def __init__(self):
-        self.submissions = "/Users/ruizhengu/Experiments/APR-as-AAT/anonymised-submissions"
-        # self.submissions = "/mnt/parscratch/users/acp22rg/APR-as-AAT/anonymised-submissions"
+        # self.submissions = "/Users/ruizhengu/Experiments/APR-as-AAT/anonymised-submissions"
+        self.submissions = "/mnt/parscratch/users/acp22rg/APR-as-AAT/anonymised-submissions"
         self.repair_cafe = RepairCafe(self.submissions)
         self.submission_roots = self.repair_cafe.pre_processing()
-        self.home_repair = Path("/Users/ruizhengu/Projects/APR-as-AAT/repair-generation")
-        # self.home_repair = Path("/mnt/parscratch/users/acp22rg/APR-as-AAT/APR-as-AAT/repair-generation")
+        # self.home_repair = Path("/Users/ruizhengu/Projects/APR-as-AAT/repair-generation")
+        self.home_repair = Path("/mnt/parscratch/users/acp22rg/APR-as-AAT/APR-as-AAT/repair-generation")
         self._backup_bin = self.home_repair / "lib/test-tmp/bin"
         self._backup_src = self.home_repair / "lib/test-tmp/src"
         self._src_test = "src/test/java/uk/ac/sheffield/com1003/cafe"
