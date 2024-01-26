@@ -8,8 +8,8 @@ from pathlib import Path
 import pandas as pd
 from openpyxl import Workbook
 
-ASTOR_OUTPUT = Path("/Users/ruizhengu/Projects/APR-as-AAT/repair-generation/results/output_astor")
-# ASTOR_OUTPUT = Path("/mnt/parscratch/users/acp22rg/APR-as-AAT/APR-as-AAT/repair-generation/results/output_astor")
+ASTOR_OUTPUT = "/Users/ruizhengu/Projects/APR-as-AAT/repair-generation/results/output_astor"
+# ASTOR_OUTPUT = "/mnt/parscratch/users/acp22rg/APR-as-AAT/APR-as-AAT/repair-generation/results/output_astor"
 INTRO_CLASS_PATH = Path("/Users/ruizhengu/Experiments/APR-as-AAT/IntroClassJava/dataset")
 PATCH_RESULTS = Path("/Users/ruizhengu/Projects/APR-as-AAT/repair-generation/results/results_introclass.xlsx")
 
@@ -134,16 +134,16 @@ def get_patches():
             outputs.append(output)
 
 
-def apply_patch(file):
-    with file.open("r") as f:
+def apply_patch(astor_output):
+    with astor_output.open("r") as f:
         data = json.load(f)
         path, modified_path = get_max_suspicious(data)
-    # shutil.move(modified_path, path)
-    class_name = Path(modified_path).name.replace(".java", "")
-    new_content = get_class_content(modified_path, class_name)
-    replace_class(path, class_name, new_content)
-    run_cmd(f"mvn -f {path} compile")
-    run_cmd(f"mvn -f {path} test")
+    shutil.move(modified_path, path)
+    # class_name = Path(modified_path).name.replace(".java", "")
+    # new_content = get_class_content(modified_path, class_name)
+    # replace_class(path, class_name, new_content)
+    # run_cmd(f"mvn -f {path} compile")
+    # run_cmd(f"mvn -f {path} test")
 
 
 def get_max_suspicious(data):

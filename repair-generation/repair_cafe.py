@@ -3,7 +3,7 @@ import os
 import re
 import shutil
 import subprocess
-from datetime import datetime
+import time
 from pathlib import Path
 
 import utils
@@ -15,7 +15,7 @@ class RepairCafe:
         self.home_path = Path("/Users/ruizhengu/Projects/APR-as-AAT")
         # self.home_path = Path("/mnt/parscratch/users/acp22rg/APR-as-AAT/APR-as-AAT")
         self.ref_path = self.home_path / "com1003_cafe/com1003_cafe_8"
-        self.test_suite = self.ref_path / "src/test/java/uk/ac/sheffield/com1003/cafe/junit4"
+        self.test_suite = self.ref_path / "src/test/java/uk/ac/sheffield/com1003/cafe"
         self._main_path = Path("src/main/java/uk/ac/sheffield/com1003/cafe")
         self._test_path = Path("src/test/java/uk/ac/sheffield/com1003/cafe")
         self._astor_output = utils.ASTOR_OUTPUT
@@ -30,7 +30,6 @@ class RepairCafe:
     def replace_tests(self, submission):
         destination = submission / self._test_path
         utils.empty_directory(destination)
-        destination = destination / "junit4"
         if not destination.exists():
             destination.mkdir(parents=True)
         for item in self.test_suite.iterdir():
@@ -42,22 +41,24 @@ class RepairCafe:
     def pre_processing(self):
         submission_roots = []
         submissions_list = list(filter(lambda p: ".DS_Store" not in str(p), self.submissions.iterdir()))
-        counter = 0
+        # counter = 0
+        # for submission in submissions_list:
+        #     counter += 1
+        #     print(f"Build submission {submission.name} | {counter} / {len(submissions_list)}")
+        #     self.replace_tests(submission)
+        #     self.replace_build_gradle(submission)
+        #     self.copy_ref(submission)
+        #     # change the environmental variable JAVA_HOME to 1.8
+        #     chmod = f"chmod +x {submission}/gradlew"
+        #     cmd = f"{submission}/gradlew build -x test -p {submission}"
+        #     try:
+        #         utils.run_cmd(chmod)
+        #         utils.run_cmd(cmd)
+        #         submission_roots.append(str(submission))
+        #     except subprocess.CalledProcessError as e:
+        #         print(f"{submission} - Error executing {e}")
         for submission in submissions_list:
-            counter += 1
-            print(f"Build submission {submission.name} | {counter} / {len(submissions_list)}")
-            self.replace_tests(submission)
-            self.replace_build_gradle(submission)
-            self.copy_ref(submission)
-            # change the environmental variable JAVA_HOME to 1.8
-            chmod = f"chmod +x {submission}/gradlew"
-            cmd = f"{submission}/gradlew build -x test -p {submission}"
-            try:
-                utils.run_cmd(chmod)
-                utils.run_cmd(cmd)
-                submission_roots.append(str(submission))
-            except subprocess.CalledProcessError as e:
-                print(f"{submission} - Error executing {e}")
+            submission_roots.append(str(submission))
         return submission_roots
 
     def get_ref(self):
@@ -95,13 +96,12 @@ class RepairCafe:
 
     def repair(self, root, root_index):
         submission_name = root.split('/')[-1]
-        current_time = datetime.now().strftime("%H:%M:%S")
-        print(f"Processing submission {submission_name} | {root_index} / {len(submission_roots)} | {current_time}")
         utils.run_cmd(f"{root}/gradlew build -p {root}")
         astor_command = f"java -cp /Users/ruizhengu/Experiments/APR-as-AAT/astor/target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/ -binjavafolder /build/classes/java/main/ -bintestfolder /build/classes/java/test/ -location {root} -scope global -out {self._astor_output}"
         # astor_command = f"java -cp /mnt/parscratch/users/acp22rg/APR-as-AAT/astor/target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/ -binjavafolder /build/classes/java/main/ -bintestfolder /build/classes/java/test/ -location {root} -scope global -out {self._astor_output}"
         utils.run_cmd(astor_command)
-        astor_output = self._astor_output / f"AstorMain-{submission_name}"
+        time.sleep(60)
+        astor_output = Path(self._astor_output) / f"AstorMain-{submission_name}"
         astor_output_json = astor_output / "astor_output.json"
         try:
             with astor_output_json.open("r") as file:
@@ -128,7 +128,7 @@ class RepairCafe:
     def rename_output(self, astor_output):
         pattern = rf"AstorMain-Cafe-1-(\d+)"
         max_digit = 0
-        for file in self._astor_output.iterdir():
+        for file in Path(self._astor_output).iterdir():
             match = re.match(pattern, file.name)
             if match:
                 digit = int(match.group(1))
@@ -137,7 +137,7 @@ class RepairCafe:
             new_digit = max_digit + 1
         else:
             new_digit = 1
-        new_name = self._astor_output / f"AstorMain-Cafe-1-{new_digit}"
+        new_name = Path(self._astor_output) / f"AstorMain-Cafe-1-{new_digit}"
 
         if astor_output.exists():
             os.rename(astor_output, new_name)
@@ -151,5 +151,5 @@ if __name__ == '__main__':
     repair_cafe = RepairCafe(submissions)
     submission_roots = repair_cafe.pre_processing()
     print("Start Repairing")
-    for root_index, root in enumerate(submission_roots, start=1):
-        repair_cafe.repair(root, root_index)
+    # for root_index, root in enumerate(submission_roots, start=1):
+    #     repair_cafe.repair(root, root_index)
