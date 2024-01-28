@@ -114,9 +114,9 @@ class RepairCafe:
                     "Patch": f"AstorMain-Cafe-{root_index}",
                     "Submission": str(root)
                 }
-                new_path = self.rename_output(astor_output)
+                new_path = self.rename_output(astor_output, submission_name)
                 utils.append_excel(self.patch_results, data)
-                utils.update_patch_paths(new_path, new_path.name)
+                utils.update_patch_paths(new_path)
                 return new_path
             else:
                 print(f"No patch found - {root}")
@@ -125,8 +125,8 @@ class RepairCafe:
         except FileNotFoundError as e:
             print(f"File not found: {e}")
 
-    def rename_output(self, astor_output):
-        pattern = rf"AstorMain-Cafe-1-(\d+)"
+    def rename_output(self, astor_output, submission_name):
+        pattern = rf"AstorMain-Cafe-{submission_name}-(\d+)"
         patch_path = self.home_path / "repair-generation/results/patches"
         max_digit = 0
         for file in patch_path.iterdir():
@@ -138,7 +138,7 @@ class RepairCafe:
             new_digit = max_digit + 1
         else:
             new_digit = 1
-        new_name = patch_path / f"AstorMain-Cafe-1-{new_digit}"
+        new_name = patch_path / f"AstorMain-Cafe-{submission_name}-{new_digit}"
 
         shutil.copytree(astor_output, new_name)
         return new_name
