@@ -4,7 +4,6 @@ from datetime import datetime
 import utils
 from repair_cafe import RepairCafe
 from pathlib import Path
-import logging
 
 
 class PartialRepairCafe:
@@ -25,7 +24,7 @@ class PartialRepairCafe:
             negative_tests = utils.gradle_get_failed_tests(submission)
             self.log_progress(index, submission)
             if len(negative_tests) > 0:
-                logging.info(f"Number of Negative Tests: {len(negative_tests)}")
+                print(f"Number of Negative Tests: {len(negative_tests)}")
                 self.empty_backup()
                 for test in negative_tests:
                     self.move_test(submission, test, 0)
@@ -41,20 +40,20 @@ class PartialRepairCafe:
             self.repair_cafe.replace_tests(submission)
             patched_negative_tests = utils.gradle_get_failed_tests(submission)
             if len(patched_negative_tests) == 0:
-                logging.info(f"Partial Repair - Fixed > Submission {submission}")
+                print(f"Partial Repair - Fixed > Submission {submission}")
             elif len(patched_negative_tests) < len(negative_tests):
-                logging.info(f"Partial Repair - Improved > Submission {submission}")
+                print(f"Partial Repair - Improved > Submission {submission}")
 
     def log_progress(self, index, submission):
         submission_name = submission.split('/')[-1]
         current_time = datetime.now().strftime("%H:%M:%S")
-        logging.info(
+        print(
             f"Processing Submission > {submission_name} | {index} / {len(self.submission_roots)} | {current_time}")
 
     @staticmethod
     def log_partial_repair(submission, test, test_index, num_negative_tests):
         submission_name = submission.split('/')[-1]
-        logging.info(
+        print(
             f"Partial Repair Submission > {submission_name} | Test > {test} | {test_index} / {num_negative_tests}")
 
     def empty_backup(self):

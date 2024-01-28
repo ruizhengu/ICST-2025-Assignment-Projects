@@ -176,9 +176,8 @@ def update_patch_paths(folder, new_path):
             path = patch_hunk["PATH"].replace("\\/", "/")
             modified_path = os.path.normpath(patch_hunk["MODIFIED_FILE_PATH"].replace("\\/", "/"))
             path_parts = modified_path.split(os.sep)
-            if len(path_parts) > 8 and path_parts[8].startswith('AstorMain-'):
-                path_parts[8] = new_path
-            modified_path = os.sep.join(path_parts)
+            folder_path = str(folder).split(os.sep)
+            modified_path = os.path.join(os.sep.join(folder_path), os.sep.join(path_parts[9:]))
             patch_hunk["PATH"] = path
             patch_hunk["MODIFIED_FILE_PATH"] = modified_path
     with file_path.open('w') as f:

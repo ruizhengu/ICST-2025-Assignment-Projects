@@ -6,5 +6,7 @@ test-augmentation/
 
 target/
 
-lib/test-tmp/bin/
-lib/test-tmp/src/
+lib/test-tmp/bin/*
+lib/test-tmp/src/*
+
+results/patches/*

@@ -127,8 +127,9 @@ class RepairCafe:
 
     def rename_output(self, astor_output):
         pattern = rf"AstorMain-Cafe-1-(\d+)"
+        patch_path = self.home_path / "repair-generation/results/patches"
         max_digit = 0
-        for file in Path(self._astor_output).iterdir():
+        for file in patch_path.iterdir():
             match = re.match(pattern, file.name)
             if match:
                 digit = int(match.group(1))
@@ -137,13 +138,15 @@ class RepairCafe:
             new_digit = max_digit + 1
         else:
             new_digit = 1
-        new_name = Path(self._astor_output) / f"AstorMain-Cafe-1-{new_digit}"
+        new_name = patch_path / f"AstorMain-Cafe-1-{new_digit}"
 
-        if astor_output.exists():
-            os.rename(astor_output, new_name)
-            return new_name
-        return None
+        shutil.copytree(astor_output, new_name)
+        return new_name
 
+        # if astor_output.exists():
+        #     os.rename(astor_output, new_name)
+        #     return new_name
+        # return None
 
 # if __name__ == '__main__':
 #     submissions = "/Users/ruizhengu/Experiments/APR-as-AAT/anonymised-submissions"
