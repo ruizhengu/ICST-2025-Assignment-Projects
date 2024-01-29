@@ -32,8 +32,11 @@ class PartialRepairCafe:
                     self.move_test(submission, test, 1)
                     self.log_partial_repair(submission, test, test_index, len(negative_tests))
                     patch = self.repair_cafe.repair(submission, index)
-                    if patch is not None:
-                        utils.apply_patch(patch / "astor_output.json")
+                    try:
+                        if patch is not None:
+                            utils.apply_patch(patch / "astor_output.json")
+                    except FileNotFoundError as e:
+                        print(f"File Not Found: {e}")
                     utils.empty_directory(Path(submission) / self._src_test)
                     utils.empty_directory(Path(submission) / self._bin_test)
             # Check if partial repair works

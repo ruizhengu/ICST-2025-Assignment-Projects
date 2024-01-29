@@ -179,7 +179,6 @@ def update_patch_paths(folder):
             folder_path = str(folder).split(os.sep)
             # modified_path = os.path.join(os.sep.join(folder_path), os.sep.join(path_parts[9:]))
             modified_path = os.path.join(os.sep.join(folder_path), os.sep.join(path_parts[11:]))
-            print(modified_path)
             patch_hunk["PATH"] = path
             patch_hunk["MODIFIED_FILE_PATH"] = modified_path
     with file_path.open('w') as f:
