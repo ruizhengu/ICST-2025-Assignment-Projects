@@ -10,17 +10,14 @@ import utils
 
 
 class RepairCafe:
-    def __init__(self, submissions):
+    def __init__(self, submissions, home_path):
         self.submissions = Path(submissions)
-        # self.home_path = Path("/Users/ruizhengu/Projects/APR-as-AAT")
-        self.home_path = Path("/mnt/parscratch/users/acp22rg/APR-as-AAT/APR-as-AAT")
+        self.home_path = home_path
         self.ref_path = self.home_path / "com1003_cafe/com1003_cafe_8"
         self.test_suite = self.ref_path / "src/test/java/uk/ac/sheffield/com1003/cafe"
         self._main_path = Path("src/main/java/uk/ac/sheffield/com1003/cafe")
         self._test_path = Path("src/test/java/uk/ac/sheffield/com1003/cafe")
         self._astor_output = utils.ASTOR_OUTPUT
-        self.patch_results = self.home_path / "repair-generation/results/results_cafe.xlsx"
-        utils.create_excel(self.patch_results)
 
     def replace_build_gradle(self, submission):
         build_gradle_source = self.ref_path / "build.gradle"
@@ -111,11 +108,10 @@ class RepairCafe:
                 data = {
                     # "ID": patch_count,
                     "Project": "Cafe",
-                    "Patch": f"AstorMain-Cafe-{root_index}",
+                    "Patch": f"AstorMain-Cafe-{submission_name}",
                     "Submission": str(root)
                 }
                 new_path = self.rename_output(astor_output, submission_name)
-                utils.append_excel(self.patch_results, data)
                 utils.update_patch_paths(new_path)
                 return new_path
             else:

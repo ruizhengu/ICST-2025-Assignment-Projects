@@ -46,7 +46,7 @@ class PartialRepair:
         except subprocess.CalledProcessError as e:
             print(f"Error executing test command: {e}")
         # print("Positive Tests: ", self._positive_tests)
-        # print("Negative Tests: ", self._negative_tests)
+        # print("Negative Tests: ", self._negative_tes ts)
 
     def repair_dataset(self):
         for dataset, path in self.datasets.items():
