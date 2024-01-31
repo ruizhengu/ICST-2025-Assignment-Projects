@@ -28,11 +28,14 @@ class PartialRepairCafe:
 
     def partial_repair(self):
         for index, submission in enumerate(self.submission_roots, start=1):
+            num_test = utils.get_number_tests(submission)
             submission_name = submission.split('/')[-1]
-            negative_tests = utils.gradle_get_failed_tests(submission)
+            positive_tests = utils.get_positive_tests(submission)
+            negative_tests = utils.get_positive_tests(submission)
+            initial_positive_test = len(positive_tests)
             self.log_progress(index, submission_name)
             # If the submission is fixed with a test, keep the test in the list, otherwise drop it
-            incremental_test = []
+            incremental_test = list(utils.get_positive_tests(submission))
             if len(negative_tests) > 0:
                 print(f"Number of Negative Tests: {len(negative_tests)}")
                 self.empty_backup()
@@ -40,34 +43,37 @@ class PartialRepairCafe:
                     self.test_backup(submission, test)
                 for test_index, test in enumerate(negative_tests, start=1):
                     incremental_test.append(test)
-                    self.move_incremental_tests(submission, incremental_test)
+                    self.move_test(submission, test)
                     self.log_partial_repair(submission_name, test, test_index, len(negative_tests))
                     patch = self.repair_cafe.repair(submission, index)
                     try:
                         if patch is not None:
                             utils.apply_patch(patch / "astor_output.json")
-                            self.save_patch_results(submission_name, incremental_test)
+                            self.save_patch_results(submission_name, incremental_test, num_test)
                         else:
                             incremental_test.pop()
+                            self.delete_test(submission, test)
                     except FileNotFoundError as e:
                         print(f"File Not Found: {e}")
-                    utils.empty_directory(Path(submission) / self._src_test)
-                    utils.empty_directory(Path(submission) / self._bin_test)
+                    # utils.empty_directory(Path(submission) / self._src_test)
+                    # utils.empty_directory(Path(submission) / self._bin_test)
             # Check if partial repair works
             # self.repair_cafe.replace_tests(submission)
             # patched_negative_tests = utils.gradle_get_failed_tests(submission)
-            if len(incremental_test) == len(negative_tests):
+
+            if len(incremental_test) == num_test:
                 print(f"Partial Repair - Fixed > Submission {submission}")
-            elif len(incremental_test) > 0:
+            elif len(incremental_test) > initial_positive_test:
                 print(f"Partial Repair - Improved > Submission {submission}")
 
-    def save_patch_results(self, submission_name, incremental_test):
+    def save_patch_results(self, submission_name, incremental_test, num_tests):
         data = {
             # "ID": patch_count,
             "Project": "Cafe",
             "Patch": f"AstorMain-Cafe-{submission_name}",
             "Submission": submission_name,
-            "Tests": ", ".join(incremental_test)
+            # "Tests": ", ".join(incremental_test),
+            "Passed Tests": f"{len(incremental_test)} / {num_tests}"
         }
         utils.append_excel(self.patch_results, data)
 
@@ -95,15 +101,30 @@ class PartialRepairCafe:
         shutil.move(source_src, backup_src)
         shutil.move(source_bin, backup_bin)
 
-    def move_incremental_tests(self, submission, incremental_test):
-        for test in incremental_test:
-            source_src = Path(submission) / self._src_test / f"{test}.java"
-            source_bin = Path(submission) / self._bin_test / f"{test}.class"
-            backup_src = self.home_repair / self._backup_src / f"{test}.java"
-            backup_bin = self.home_repair / self._backup_bin / f"{test}.class"
-            if backup_src.exists() and backup_bin.exists():
-                shutil.move(backup_src, source_src)
-                shutil.move(backup_bin, source_bin)
+    def delete_test(self, submission, test):
+        test_src = Path(submission) / self._src_test / f"{test}.java"
+        test_bin = Path(submission) / self._bin_test / f"{test}.class"
+        test_src.unlink()
+        test_bin.unlink()
+
+    def move_test(self, submission, test):
+        source_src = Path(submission) / self._src_test / f"{test}.java"
+        source_bin = Path(submission) / self._bin_test / f"{test}.class"
+        backup_src = self.home_repair / self._backup_src / f"{test}.java"
+        backup_bin = self.home_repair / self._backup_bin / f"{test}.class"
+        shutil.move(backup_src, source_src)
+        shutil.move(backup_bin, source_bin)
+
+
+# def move_incremental_tests(self, submission, incremental_test):
+#     for test in incremental_test:
+#         source_src = Path(submission) / self._src_test / f"{test}.java"
+#         source_bin = Path(submission) / self._bin_test / f"{test}.class"
+#         backup_src = self.home_repair / self._backup_src / f"{test}.java"
+#         backup_bin = self.home_repair / self._backup_bin / f"{test}.class"
+#         if backup_src.exists() and backup_bin.exists():
+#             shutil.move(backup_src, source_src)
+#             shutil.move(backup_bin, source_bin)
 
 
 if __name__ == '__main__':

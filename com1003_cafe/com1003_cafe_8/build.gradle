@@ -32,7 +32,7 @@ test {
 //    }
     finalizedBy jacocoTestReport
     testLogging {
-        events "failed"
+        events "FAILED", "PASSED"
         exceptionFormat "short"
         showStandardStreams = true
     }

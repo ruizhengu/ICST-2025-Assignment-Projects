@@ -177,8 +177,8 @@ def update_patch_paths(folder):
             modified_path = os.path.normpath(patch_hunk["MODIFIED_FILE_PATH"].replace("\\/", "/"))
             path_parts = modified_path.split(os.sep)
             folder_path = str(folder).split(os.sep)
-            # modified_path = os.path.join(os.sep.join(folder_path), os.sep.join(path_parts[9:]))
-            modified_path = os.path.join(os.sep.join(folder_path), os.sep.join(path_parts[11:]))
+            modified_path = os.path.join(os.sep.join(folder_path), os.sep.join(path_parts[9:]))
+            # modified_path = os.path.join(os.sep.join(folder_path), os.sep.join(path_parts[11:]))
             patch_hunk["PATH"] = path
             patch_hunk["MODIFIED_FILE_PATH"] = modified_path
     with file_path.open('w') as f:
@@ -244,8 +244,22 @@ def empty_directory(path):
             item.unlink()
 
 
-def gradle_get_failed_tests(submission):
-    cmd = f"{submission}/gradlew test -p {submission}"
+def get_negative_tests(submission):
+    cmd = f"{submission}/gradlew clean test -p {submission}"
     output = run_cmd(cmd)
     pattern = re.compile(r"\n(\w+) > .+ FAILED")
     return set(pattern.findall(output))
+
+
+def get_positive_tests(submission):
+    cmd = f"{submission}/gradlew clean test -p {submission}"
+    output = run_cmd(cmd)
+    pattern = re.compile(r"\n(\w+) > .+ PASSED")
+    return set(pattern.findall(output))
+
+
+def get_number_tests(submission):
+    cmd = f"{submission}/gradlew clean test -p {submission}"
+    output = run_cmd(cmd)
+    pattern = re.compile(r"\n(\w+) > .+ (?:FAILED|PASSED)")
+    return len(set(pattern.findall(output)))
