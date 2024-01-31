@@ -1,6 +1,7 @@
 #!/bin/bash
 
-#SBATCH --mem=16G
+#SBATCH --mem=32G
+#SBATCH --time=72:00:00
 
 module load Java/8.362
 module load Anaconda3/2022.10
