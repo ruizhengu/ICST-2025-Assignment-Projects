@@ -91,26 +91,23 @@ class RepairCafe:
             shutil.rmtree(destination)
         shutil.copytree(ref_solution, destination)
 
-    def repair(self, root, root_index):
+    def repair(self, root):
         submission_name = root.split('/')[-1]
         utils.run_cmd(f"{root}/gradlew clean build -p {root}")
         # astor_command = f"java -cp /Users/ruizhengu/Experiments/APR-as-AAT/astor/target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/ -binjavafolder /build/classes/java/main/ -bintestfolder /build/classes/java/test/ -location {root} -scope global -out {self._astor_output}"
         astor_command = f"java -cp /mnt/parscratch/users/acp22rg/APR-as-AAT/astor/target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/ -binjavafolder /build/classes/java/main/ -bintestfolder /build/classes/java/test/ -location {root} -scope global -out {self._astor_output}"
-        utils.run_cmd(astor_command)
+        astor_console = utils.run_cmd(astor_command)
         time.sleep(60)
         astor_output = Path(self._astor_output) / f"AstorMain-{submission_name}"
         astor_output_json = astor_output / "astor_output.json"
-        try:
+        if "No suspicious line detected by the fault localization" in astor_console:
+            print("No suspicious line detected by the fault localization")
+            return "No suspicious line"
+        else:
             with astor_output_json.open("r") as file:
                 patches = json.load(file)["patches"]
             if patches:
                 print(f"Patch found - {root}")
-                data = {
-                    # "ID": patch_count,
-                    "Project": "Cafe",
-                    "Patch": f"AstorMain-Cafe-{submission_name}",
-                    "Submission": str(root)
-                }
                 new_path = self.rename_output(astor_output, submission_name)
                 utils.update_patch_paths(new_path)
                 return new_path
@@ -118,8 +115,6 @@ class RepairCafe:
                 print(f"No patch found - {root}")
                 shutil.rmtree(astor_output)
                 return None
-        except FileNotFoundError as e:
-            print(f"File not found: {e}")
 
     def rename_output(self, astor_output, submission_name):
         pattern = rf"AstorMain-Cafe-{submission_name}-(\d+)"
@@ -138,17 +133,3 @@ class RepairCafe:
 
         shutil.copytree(astor_output, new_name)
         return new_name
-
-        # if astor_output.exists():
-        #     os.rename(astor_output, new_name)
-        #     return new_name
-        # return None
-
-# if __name__ == '__main__':
-#     submissions = "/Users/ruizhengu/Experiments/APR-as-AAT/anonymised-submissions"
-#     # submissions = "/mnt/parscratch/users/acp22rg/APR-as-AAT/anonymised-submissions"
-#     repair_cafe = RepairCafe(submissions)
-#     submission_roots = repair_cafe.pre_processing()
-#     print("Start Repairing")
-#     # for root_index, root in enumerate(submission_roots, start=1):
-#     #     repair_cafe.repair(root, root_index)

@@ -24,20 +24,11 @@ def get_intro_class_datasets():
 
 
 def run_cmd(command):
-    return subprocess.Popen(command, shell=True, stdout=subprocess.PIPE).stdout.read().decode('utf-8')
-
-
-def add_package(path, package):
-    if not os.path.exists(os.path.dirname(path)):
-        print("Please enter a valid path")
-    else:
-        for file in os.listdir(path):
-            if file.endswith(".java"):
-                with open(os.path.join(path, file), "r+") as f:
-                    content = f.read()
-                    f.seek(0, 0)
-                    # f.write("package uk.ac.sheffield.com1003.cafe.randoop;" + "\n\n" + content)
-                    f.write(package + "\n\n" + content)
+    process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    stdout, stderr = process.communicate()
+    output = stdout.decode('utf-8')
+    errors = stderr.decode('utf-8')
+    return "\n".join([output, errors])
 
 
 def replace_package(file, old, new):
@@ -166,7 +157,6 @@ def update_patch_paths(folder):
     Update the path in the astor_output.json file to the renamed unique path
 
     :param folder: path of the output folder
-    :param new_path: the renamed path
     """
     file_path = Path(folder) / "astor_output.json"
     with file_path.open('r') as f:
@@ -177,8 +167,8 @@ def update_patch_paths(folder):
             modified_path = os.path.normpath(patch_hunk["MODIFIED_FILE_PATH"].replace("\\/", "/"))
             path_parts = modified_path.split(os.sep)
             folder_path = str(folder).split(os.sep)
-            modified_path = os.path.join(os.sep.join(folder_path), os.sep.join(path_parts[9:]))
-            # modified_path = os.path.join(os.sep.join(folder_path), os.sep.join(path_parts[11:]))
+            # modified_path = os.path.join(os.sep.join(folder_path), os.sep.join(path_parts[9:]))
+            modified_path = os.path.join(os.sep.join(folder_path), os.sep.join(path_parts[11:]))
             patch_hunk["PATH"] = path
             patch_hunk["MODIFIED_FILE_PATH"] = modified_path
     with file_path.open('w') as f:
@@ -220,7 +210,7 @@ def reset():
 
 
 def delete_results():
-    for item in ASTOR_OUTPUT.iterdir():
+    for item in Path(ASTOR_OUTPUT).iterdir():
         if item.is_dir():
             shutil.rmtree(item)
 
@@ -244,22 +234,18 @@ def empty_directory(path):
             item.unlink()
 
 
-def get_negative_tests(submission):
+def gradle_get_tests(submission):
+    """
+    Get positive test classes, negative test classes and the number of total test classes.
+    :param submission:
+    :return:
+    """
     cmd = f"{submission}/gradlew clean test -p {submission}"
     output = run_cmd(cmd)
-    pattern = re.compile(r"\n(\w+) > .+ FAILED")
-    return set(pattern.findall(output))
-
-
-def get_positive_tests(submission):
-    cmd = f"{submission}/gradlew clean test -p {submission}"
-    output = run_cmd(cmd)
-    pattern = re.compile(r"\n(\w+) > .+ PASSED")
-    return set(pattern.findall(output))
-
-
-def get_number_tests(submission):
-    cmd = f"{submission}/gradlew clean test -p {submission}"
-    output = run_cmd(cmd)
-    pattern = re.compile(r"\n(\w+) > .+ (?:FAILED|PASSED)")
-    return len(set(pattern.findall(output)))
+    pattern_positive = re.compile(r"\n(\w+) > .+ PASSED")
+    pattern_negative = re.compile(r"\n(\w+) > .+ FAILED")
+    pattern_all = re.compile(r"\n(\w+) > .+ (?:FAILED|PASSED)")
+    positive_tests = set(pattern_positive.findall(output))
+    negative_tests = set(pattern_negative.findall(output))
+    num_tests = len(set(pattern_all.findall(output)))
+    return positive_tests, negative_tests, num_tests
