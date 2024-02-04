@@ -8,5 +8,8 @@ target/
 
 lib/test-tmp/bin/*
 lib/test-tmp/src/*
+!lib/test-tmp/src/.gitkeep
+!lib/test-tmp/bin/.gitkeep
 
 results/patches/*
+!results/patches/.gitkeep
