@@ -8,8 +8,6 @@ from pathlib import Path
 import pandas as pd
 from openpyxl import Workbook
 
-# ASTOR_OUTPUT = "/Users/ruizhengu/Projects/APR-as-AAT/repair-generation/results/output_astor"
-ASTOR_OUTPUT = "/mnt/parscratch/users/acp22rg/APR-as-AAT/APR-as-AAT/repair-generation/results/output_astor"
 INTRO_CLASS_PATH = Path("/Users/ruizhengu/Experiments/APR-as-AAT/IntroClassJava/dataset")
 PATCH_RESULTS = Path("/Users/ruizhengu/Projects/APR-as-AAT/repair-generation/results/results_introclass.xlsx")
 
@@ -104,27 +102,6 @@ def append_excel(file, data):
     df.to_excel(file, index=False, sheet_name="workspace")
 
 
-def get_patches():
-    """
-    Get all patches in the astor output folder.
-
-    """
-    outputs = []
-    patches = list(ASTOR_OUTPUT.glob('*'))
-    for patch in patches:
-        output_json = patch / "astor_output.json"
-        if output_json.exists():
-            with output_json.open('r') as f:
-                data = json.load(f)
-                path, modified_path = get_max_suspicious(data)
-            output = {
-                "patch": patch,
-                "original_path": path,
-                "modified_path": modified_path
-            }
-            outputs.append(output)
-
-
 def apply_patch(astor_output):
     with astor_output.open("r") as f:
         data = json.load(f)
@@ -200,30 +177,6 @@ def replace_class(file, class_name, class_content):
     modified_content = re.sub(pattern, class_content, content, flags=re.DOTALL)
     with open(file, "w") as f:
         f.write(modified_content)
-
-
-def reset():
-    delete_results()
-    delete_tmp_tests()
-    # reset intro class repo
-    run_cmd("git -C /Users/ruizhengu/Experiments/APR-as-AAT/IntroClassJava stash")
-
-
-def delete_results():
-    for item in Path(ASTOR_OUTPUT).iterdir():
-        if item.is_dir():
-            shutil.rmtree(item)
-
-
-def delete_tmp_tests():
-    test_tmp_bin = Path("/Users/ruizhengu/Projects/APR-as-AAT/repair-generation/lib/test-tmp/bin")
-    test_tmp_src = Path("/Users/ruizhengu/Projects/APR-as-AAT/repair-generation/lib/test-tmp/src")
-    for item in test_tmp_bin.iterdir():
-        if item.is_file():
-            os.remove(item)
-    for item in test_tmp_src.iterdir():
-        if item.is_file():
-            os.remove(item)
 
 
 def empty_directory(path):
