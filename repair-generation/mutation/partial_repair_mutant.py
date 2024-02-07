@@ -29,7 +29,7 @@ class PartialRepairMutant:
         utils.create_excel(self.patch_results)
 
     def partial_repair(self):
-        for index, mutant in enumerate(self.mutants, start=1):
+        for index, mutant in enumerate(self.mutant_roots, start=1):
             mutant_name = mutant.split('/')[-1]
             positive_tests, negative_tests, num_tests = utils.gradle_get_tests(mutant)
             initial_positive_tests = len(positive_tests)

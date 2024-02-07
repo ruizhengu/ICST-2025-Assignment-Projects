@@ -4,7 +4,7 @@
 #SBATCH --time=96:00:00
 
 module load Java/8.362
-module load Anaconda3/2022.10
+module Anaconda3/2022.05
 #conda init bash
 #conda activate APR-as-AAT
 
