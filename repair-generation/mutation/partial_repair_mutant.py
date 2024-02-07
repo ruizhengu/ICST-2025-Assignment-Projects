@@ -45,6 +45,7 @@ class PartialRepairMutant:
                     self.move_test(mutant, test)
                     patch = self.repair_mutant.repair(mutant)
                     if patch == "No suspicious line":
+                        print("No suspicious line")
                         continue
                     elif patch is not None:
                         utils.apply_patch(patch / "astor_output.json")
