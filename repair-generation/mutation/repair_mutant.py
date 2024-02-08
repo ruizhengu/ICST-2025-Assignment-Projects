@@ -44,7 +44,7 @@ class RepairMutant:
                 return None
 
     def rename_output(self, astor_output, submission_name):
-        pattern = rf"AstorMain-Cafe-{submission_name}-(\d+)"
+        pattern = rf"AstorMain-{submission_name}-(\d+)"
         patch_path = self.home_path / "repair-generation/results/patches"
         max_digit = 0
         for file in patch_path.iterdir():
