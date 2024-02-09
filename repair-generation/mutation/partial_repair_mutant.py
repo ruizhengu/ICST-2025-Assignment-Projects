@@ -55,8 +55,8 @@ class PartialRepairMutant:
                         # Drop the failed test, put it to the backup,
                         # Checking number of negative tests after partial repair
                         self.test_backup(mutant, test)
-                    _, negative_tests_intermediate, _ = utils.gradle_get_tests(mutant)
-                    self.save_patch_results(mutant_name, patch, len(negative_tests_intermediate), num_tests)
+                    positive_tests_intermediate, _, _ = utils.gradle_get_tests(mutant)
+                    self.save_patch_results(mutant_name, patch, len(positive_tests_intermediate), num_tests)
             # Get the number of negative tests to check if partial repair works
             self.restore_backup(mutant)
             _, negative_tests_repaired, _ = utils.gradle_get_tests(mutant)
@@ -79,14 +79,14 @@ class PartialRepairMutant:
                 source_bin = Path(mutant) / self._bin_test / _bin
                 shutil.move(backup_bin, source_bin)
 
-    def save_patch_results(self, mutant_name, patch, negative_tests_repaired, num_tests):
+    def save_patch_results(self, mutant_name, patch, positive_tests, num_tests):
         if patch is None:
             patch = "None"
         data = {
             "Project": "Cafe",
             "Mutant": mutant_name,
             "Patch": str(patch).split('/')[-1],
-            "Passed Tests": f"{negative_tests_repaired} / {num_tests}"
+            "Passed Tests": f"{positive_tests} / {num_tests}"
         }
         utils.append_excel(self.patch_results, data)
 
