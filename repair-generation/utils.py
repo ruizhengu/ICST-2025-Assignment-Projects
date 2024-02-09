@@ -179,8 +179,10 @@ def replace_class(file, class_name, class_content):
         f.write(modified_content)
 
 
-def empty_directory(path):
+def empty_directory(path, keep=None):
     for item in path.iterdir():
+        if keep is not None and item.name == keep:
+            continue
         if item.is_dir():
             shutil.rmtree(item)
         else:

@@ -93,8 +93,8 @@ class PartialRepairMutant:
     def empty_backup(self):
         backup_src = self.home_repair / self._backup_src
         backup_bin = self.home_repair / self._backup_bin
-        utils.empty_directory(backup_src)
-        utils.empty_directory(backup_bin)
+        utils.empty_directory(backup_src, ".gitkeep")
+        utils.empty_directory(backup_bin, ".gitkeep")
 
     def test_backup(self, mutant, test):
         source_src = Path(mutant) / self._src_test / f"{test}.java"
