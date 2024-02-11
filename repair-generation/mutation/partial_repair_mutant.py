@@ -73,11 +73,11 @@ class PartialRepairMutant:
         for src in backup_src.iterdir():
             if src.name.endswith(".java"):
                 source_src = Path(mutant) / self._src_test / src
-                shutil.move(backup_src, source_src)
+                shutil.move(backup_src / src, source_src)
         for _bin in backup_bin.iterdir():
             if _bin.name.endswith(".class"):
                 source_bin = Path(mutant) / self._bin_test / _bin
-                shutil.move(backup_bin, source_bin)
+                shutil.move(backup_bin / _bin, source_bin)
 
     def save_patch_results(self, mutant_name, patch, positive_tests, num_tests):
         if patch is None:
