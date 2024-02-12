@@ -43,7 +43,7 @@ class PartialRepairMutant:
                 for test in negative_tests:
                     self.test_backup(mutant, test)
                 for test_index, test in enumerate(negative_tests, start=1):
-                    # Put negative tests in the proje
+                    # Put negative tests in the project
                     self.move_test(mutant, test)
                     patch = self.repair_mutant.repair(mutant)
                     if patch == f"No suspicious line > Mutant {mutant_name} > Test {test}":
