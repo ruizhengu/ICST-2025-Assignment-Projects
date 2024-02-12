@@ -55,8 +55,8 @@ class PartialRepairMutant:
                         # Drop the failed test, put it to the backup,
                         # Checking number of negative tests after partial repair
                         self.test_backup(mutant, test)
-                    positive_tests_intermediate, _, _ = utils.gradle_get_tests(mutant)
-                    self.save_patch_results(mutant_name, patch, len(positive_tests_intermediate), num_tests)
+                    _, negative_tests_intermediate, _ = utils.gradle_get_tests(mutant)
+                    self.save_patch_results(mutant_name, patch, len(negative_tests_intermediate))
             # Get the number of negative tests to check if partial repair works
             self.restore_backup(mutant)
             _, negative_tests_repaired, _ = utils.gradle_get_tests(mutant)
@@ -67,9 +67,33 @@ class PartialRepairMutant:
             else:
                 print(f"Partial Repair - Failed > Mutant {mutant}")
 
+    def save_patch_results(self, mutant_name, patch, negative_tests):
+        if patch is None:
+            patch = "None"
+        data = {
+            "Project": "Cafe",
+            "Mutant": mutant_name,
+            "Patch": str(patch).split('/')[-1],
+            "Negative Tests": f"{negative_tests}"
+        }
+        utils.append_excel(self.patch_results, data)
+
+    def _get_path(self, mutant=None, test=None):
+        if mutant is None and test is None:
+            # Get backup src and backup bin directories
+            return self.home_repair / self._backup_src, self.home_repair / self._backup_bin
+        elif mutant is not None and test is not None:
+            # Get the source and backup directories
+            source_src = Path(mutant) / self._src_test / f"{test}.java"
+            source_bin = Path(mutant) / self._bin_test / f"{test}.class"
+            backup_src = self.home_repair / self._backup_src / f"{test}.java"
+            backup_bin = self.home_repair / self._backup_bin / f"{test}.class"
+            return source_src, source_bin, backup_src, backup_bin
+
     def restore_backup(self, mutant):
-        backup_src = self.home_repair / self._backup_src
-        backup_bin = self.home_repair / self._backup_bin
+        # backup_src = self.home_repair / self._backup_src
+        # backup_bin = self.home_repair / self._backup_bin
+        backup_src, backup_bin = self._get_path()
         for src in backup_src.iterdir():
             if src.name.endswith(".java"):
                 source_src = Path(mutant) / self._src_test / src
@@ -79,42 +103,35 @@ class PartialRepairMutant:
                 source_bin = Path(mutant) / self._bin_test / _bin
                 shutil.move(backup_bin / _bin, source_bin)
 
-    def save_patch_results(self, mutant_name, patch, positive_tests, num_tests):
-        if patch is None:
-            patch = "None"
-        data = {
-            "Project": "Cafe",
-            "Mutant": mutant_name,
-            "Patch": str(patch).split('/')[-1],
-            "Passed Tests": f"{positive_tests} / {num_tests}"
-        }
-        utils.append_excel(self.patch_results, data)
-
     def empty_backup(self):
-        backup_src = self.home_repair / self._backup_src
-        backup_bin = self.home_repair / self._backup_bin
+        # backup_src = self.home_repair / self._backup_src
+        # backup_bin = self.home_repair / self._backup_bin
+        backup_src, backup_bin = self._get_path()
         utils.empty_directory(backup_src, ".gitkeep")
         utils.empty_directory(backup_bin, ".gitkeep")
 
     def test_backup(self, mutant, test):
-        source_src = Path(mutant) / self._src_test / f"{test}.java"
-        source_bin = Path(mutant) / self._bin_test / f"{test}.class"
-        backup_src = self.home_repair / self._backup_src / f"{test}.java"
-        backup_bin = self.home_repair / self._backup_bin / f"{test}.class"
+        # source_src = Path(mutant) / self._src_test / f"{test}.java"
+        # source_bin = Path(mutant) / self._bin_test / f"{test}.class"
+        # backup_src = self.home_repair / self._backup_src / f"{test}.java"
+        # backup_bin = self.home_repair / self._backup_bin / f"{test}.class"
+        source_src, source_bin, backup_src, backup_bin = self._get_path(mutant, test)
         shutil.move(source_src, backup_src)
         shutil.move(source_bin, backup_bin)
 
     def delete_test(self, mutant, test):
-        test_src = Path(mutant) / self._src_test / f"{test}.java"
-        test_bin = Path(mutant) / self._bin_test / f"{test}.class"
-        test_src.unlink()
-        test_bin.unlink()
+        # test_src = Path(mutant) / self._src_test / f"{test}.java"
+        # test_bin = Path(mutant) / self._bin_test / f"{test}.class"
+        source_src, source_bin, _, _ = self._get_path(mutant, test)
+        source_src.unlink()
+        source_bin.unlink()
 
     def move_test(self, mutant, test):
-        source_src = Path(mutant) / self._src_test / f"{test}.java"
-        source_bin = Path(mutant) / self._bin_test / f"{test}.class"
-        backup_src = self.home_repair / self._backup_src / f"{test}.java"
-        backup_bin = self.home_repair / self._backup_bin / f"{test}.class"
+        # source_src = Path(mutant) / self._src_test / f"{test}.java"
+        # source_bin = Path(mutant) / self._bin_test / f"{test}.class"
+        # backup_src = self.home_repair / self._backup_src / f"{test}.java"
+        # backup_bin = self.home_repair / self._backup_bin / f"{test}.class"
+        source_src, source_bin, backup_src, backup_bin = self._get_path(mutant, test)
         shutil.move(backup_src, source_src)
         shutil.move(backup_bin, source_bin)
 
