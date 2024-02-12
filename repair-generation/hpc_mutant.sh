@@ -8,11 +8,12 @@ module load Anaconda3/2022.05
 #conda init bash
 #conda activate APR-as-AAT
 
+EXISTING_DIR="/mnt/parscratch/users/acp22rg/APR-as-AAT/model_mutants"
 SOURCE_DIR="/mnt/parscratch/users/acp22rg/APR-as-AAT/APR-as-AAT/resource/model_mutants"
-DESTINATION_DIR="/mnt/parscratch/users/acp22rg/APR-as-AAT/model_mutants"
+DESTINATION_DIR="/mnt/parscratch/users/acp22rg/APR-as-AAT"
 
-if [ -d "$DESTINATION_DIR" ]; then
-    rm -rf "$DESTINATION_DIR"
+if [ -d "$EXISTING_DIR" ]; then
+    rm -rf "$EXISTING_DIR"
 fi
 
 rsync -av "$SOURCE_DIR" "$DESTINATION_DIR"
