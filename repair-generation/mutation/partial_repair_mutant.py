@@ -45,6 +45,9 @@ class PartialRepairMutant:
                 for test_index, test in enumerate(negative_tests, start=1):
                     # Put negative tests in the project
                     self.move_test(mutant, test)
+                    # Should check the number of negative tests here
+                    # If no negative tests, move to the next one
+                    # TO DO
                     patch = self.repair_mutant.repair(mutant)
                     if patch == f"No suspicious line > Mutant {mutant_name} > Test {test}":
                         print("No suspicious line")
