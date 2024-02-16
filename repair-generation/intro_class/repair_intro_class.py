@@ -37,6 +37,7 @@ class RepairIntroClass:
             new_dataset = self.new_root / info["name"]
             if not new_dataset.exists():
                 os.mkdir(new_dataset)
+            shutil.copytree(info["ref"], new_dataset / "ref")
             for index, revision in enumerate(info["revisions"], start=1):
                 new_revision = new_dataset / str(index)
                 shutil.copytree(revision, new_revision)

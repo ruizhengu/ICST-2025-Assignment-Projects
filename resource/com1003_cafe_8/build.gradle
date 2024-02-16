@@ -15,6 +15,7 @@ targetCompatibility = JavaVersion.VERSION_1_8
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     testCompileOnly 'junit:junit:4.13.2'
     testRuntimeOnly 'org.junit.vintage:junit-vintage-engine:5.9.0'
 
@@ -79,6 +80,27 @@ task listTests {
                     }
                 }
             }
+        }
+    }
+}
+
+task listFailedTests {
+    doLast {
+        def testResultsDir = file("${project.buildDir}/test-results/test")
+        if (!testResultsDir.exists()) {
+            println "Test results not found. Please run tests before executing this task."
+            return
+        }
+
+        testResultsDir.eachDir { dir ->
+            dir.eachFileMatch(~/.+\.xml$/, { File resultFile ->
+                def testResult = new XmlSlurper().parse(resultFile)
+                testResult.'testcase'.findAll { it.'@status'.text() == 'FAILED' }.each { failedTest ->
+                    def className = failedTest.'@classname'.text()
+                    def methodName = failedTest.'@name'.text()
+                    println "${className}::${methodName}"
+                }
+            })
         }
     }
 }
