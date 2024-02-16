@@ -1,6 +1,6 @@
-# APR-as-AAT
+# APR4Grade
 
-# Search-based Automated Program Repair as Automated Assessment Tools
+# Automated Program Repair for Grading Programming Assignments
 
 **Definition of a "not runnable" tool:** *if the tool can work for reproduction (e.g. can work on Defects4J bugs), then the execution of the tool is correct. If the tool can not work on the programming assignments or the simple example in the correct setup, then the tool is not runnable for the programming assignments.*
 
@@ -10,23 +10,15 @@ A "runnable" tool only means the tool can run and does not guarantee it can gene
 
 Repository: https://github.com/yyxhdy/arja
 
-Java version: 1.8
-
-JUnit version: 4
+Java version: 1.7
 
 ### Command
-
-**Ubuntu**
-
-```sh
-# Arja
-java -cp lib/*:bin us.msu.cse.repair.Main Arja -DsrcJavaDir /home/ruizhen/Projects/SSBSE/Cafe/com1003_cafe -DbinJavaDir /home/ruizhen/Projects/SSBSE/Cafe/com1003_cafe/build/classes/java/main -DbinTestDir /home/ruizhen/Projects/SSBSE/Cafe/com1003_cafe/build/classes/java/test -Ddependences /home/ruizhen/Projects/SSBSE/Cafe/dependency/javaparser-core-3.25.1.jar:/home/ruizhen/Projects/SSBSE/Cafe/dependency/javaparser-core-serialization-3.25.1.jar:/home/ruizhen/Projects/SSBSE/Cafe/dependency/commons-lang3-3.0.jar
-```
 
 **Mac**
 
 ```sh
-java -cp lib/\*:bin us.msu.cse.repair.Main Arja -DsrcJavaDir /Users/ray/Project/PhD/SSBSE/Cafe/com1003_cafe -DbinJavaDir /Users/ray/Project/PhD/SSBSE/Cafe/com1003_cafe/build/classes/java/main -DbinTestDir /Users/ray/Project/PhD/SSBSE/Cafe/com1003_cafe/build/classes/java/test -Ddependences /Users/ray/Project/PhD/SSBSE/Cafe/dependency/javaparser-core-3.25.1.jar:/Users/ray/Project/PhD/SSBSE/Cafe/dependency/javaparser-core-serialization-3.25.1.jar:/Users/ray/Project/PhD/SSBSE/Cafe/dependency/commons-lang3-3.0.jar
+# IntroClassJava
+java -cp "lib/*:bin:target/classes" us.msu.cse.repair.Main Arja -DsrcJavaDir /Users/ruizhengu/Experiments/APR-as-AAT/newIntroClass/median/1/src -DbinJavaDir /Users/ruizhengu/Experiments/APR-as-AAT/newIntroClass/median/1/target/classes -DbinTestDir /Users/ruizhengu/Experiments/APR-as-AAT/newIntroClass/median/1/target/test-classes -Ddependences /Users/ruizhengu/Experiments/APR-as-AAT/dependency
 ```
 
 ### Comments
@@ -59,8 +51,6 @@ java -cp target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorM
 # maven
 java -cp target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/  -binjavafolder /target/classes/ -bintestfolder /target/test-classes/ -location /Users/ruizhengu/Experiments/APR-as-AAT/IntroClassJava/dataset/checksum/2c1556672751734adf9a561fbf88767c32224fca14a81e9d9c719f18d0b21765038acc16ecd8377f74d4f43e8c844538161d869605e3516cf797d0a6a59f1f8e/003 -scope global
 ```
-
-
 
 ### Comments
 
