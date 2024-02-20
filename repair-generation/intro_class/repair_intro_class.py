@@ -61,7 +61,7 @@ class RepairIntroClass:
             path_src = dataset / "src"
             path_bin_src = dataset / "target/classes"
             path_bin_test = dataset / "target/test-classes"
-            path_dependency = "/Users/ruizhengu/Experiments/APR-as-AAT/dependency"
+            path_dependency = "/Users/ruizhengu/Experiments/APR-as-AAT/dependency/junit-4.13.2.jar"
             arja_cmd = f"cd {arja_path} && java -cp \"lib/*:bin:target/classes\" us.msu.cse.repair.Main Arja -DsrcJavaDir {path_src} -DbinJavaDir {path_bin_src} -DbinTestDir {path_bin_test} -Ddependences {path_dependency}"
             print("=" * 10 + f" ARJA -> {dataset} " + "=" * 10)
             # print(arja_cmd)
