@@ -23,8 +23,7 @@ java -cp "lib/*:bin:target/classes" us.msu.cse.repair.Main Arja -DsrcJavaDir /Us
 
 ### Comments
 
-* Fault localisation works for the problem sheet with Java 1.8.
-* Can not generate any result.
+* Can generate patches.
 
 ## Astor
 
@@ -54,8 +53,7 @@ java -cp target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorM
 
 ### Comments
 
-* Can localise faults in the problem sheet with Java 1.8 (GZoltar & flacoco).
-* Can generate repairs for the problem sheet, but the repairs are not valid.
+* Can generate patches by jGenProg.
 
 ## CapGen
 

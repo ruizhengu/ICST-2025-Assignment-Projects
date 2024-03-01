@@ -75,28 +75,28 @@ class RepairIntroClass:
     def arja(self):
         # for program in self.new_datasets:
         for program in self.new_datasets:
-            mvn_compile = f"cd {program} && mvn compile"
-            mvn_test = f"cd {program} && mvn test"
-            utils.run_cmd(mvn_compile)
-            utils.run_cmd(mvn_test)
-            print(program)
-            # arja_path = "/Users/ruizhengu/Experiments/APR-as-AAT/arja"
-            # path_src = program / "src"
-            # path_bin_src = program / "target/classes"
-            # path_bin_test = program / "target/test-classes"
-            # path_dependency = "/Users/ruizhengu/Experiments/APR-as-AAT/dependency/junit-4.11.jar"
-            #
-            # path_output = self.path_output / program.name.split("_")[0]
-            # if not path_output.exists():
-            #     os.mkdir(path_output)
-            # path_output = path_output / program.name
-            # if not path_output.exists():
-            #     os.mkdir(path_output)
-            #
-            # arja_cmd = f"cd {arja_path} && java -cp \"lib/*:bin:target/classes\" us.msu.cse.repair.Main Arja -DsrcJavaDir {path_src} -DbinJavaDir {path_bin_src} -DbinTestDir {path_bin_test} -Ddependences {path_dependency} -DpatchOutputRoot {path_output}"
-            # print("=" * 10 + f" ARJA -> {program} " + "=" * 10)
-            # # print(arja_cmd)
-            # utils.run_cmd(arja_cmd)
+            # mvn_compile = f"cd {program} && mvn compile"
+            # mvn_test = f"cd {program} && mvn test"
+            # utils.run_cmd(mvn_compile)
+            # utils.run_cmd(mvn_test)
+            # print(program)
+            arja_path = "/Users/ruizhengu/Experiments/APR-as-AAT/arja"
+            path_src = program / "src"
+            path_bin_src = program / "target/classes"
+            path_bin_test = program / "target/test-classes"
+            path_dependency = "/Users/ruizhengu/Experiments/APR-as-AAT/dependency/junit-4.11.jar"
+
+            path_output = self.path_output / program.name.split("_")[0]
+            if not path_output.exists():
+                os.mkdir(path_output)
+            path_output = path_output / program.name
+            if not path_output.exists():
+                os.mkdir(path_output)
+
+            arja_cmd = f"cd {arja_path} && java -cp \"lib/*:bin:target/classes\" us.msu.cse.repair.Main Arja -DsrcJavaDir {path_src} -DbinJavaDir {path_bin_src} -DbinTestDir {path_bin_test} -Ddependences {path_dependency} -DpatchOutputRoot {path_output}"
+            print("=" * 10 + f" ARJA -> {program} " + "=" * 10)
+            # print(arja_cmd)
+            utils.run_cmd(arja_cmd)
 
     def check_outputs(self):
         total_count = 0
@@ -116,5 +116,5 @@ class RepairIntroClass:
 
 if __name__ == '__main__':
     repair = RepairIntroClass()
-    repair.arja()
-    # repair.copy_ref()
+    # repair.arja()
+    repair.check_outputs()
