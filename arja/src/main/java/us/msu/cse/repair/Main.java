@@ -2,6 +2,7 @@ package us.msu.cse.repair;
 
 import jmetal.util.JMException;
 
+import java.awt.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -22,7 +23,7 @@ class Main {
         args[6] = "/Users/ruizhengu/Experiments/APR-as-AAT/model_mutants/Java_8/cafe_2/build/classes/java/test";
         args[7] = "-Ddependences";
 
-        String dependencies = "/Users/ruizhengu/Experiments/APR-as-AAT/dependency";
+        String dependencies = "../dependency";
         String classpath = Files.walk(Paths.get(dependencies))
                 .filter(Files::isRegularFile)
                 .filter(path -> !path.getFileName().toString().equals(".DS_Store"))
