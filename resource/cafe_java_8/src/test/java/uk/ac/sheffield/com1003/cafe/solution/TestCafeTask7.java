@@ -3,13 +3,17 @@ package uk.ac.sheffield.com1003.cafe.solution;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import uk.ac.sheffield.com1003.cafe.solution.exceptions.RecipeNotFoundException;
-import uk.ac.sheffield.com1003.cafe.solution.exceptions.TooManyIngredientsException;
-import uk.ac.sheffield.com1003.cafe.solution.ingredients.Coffee;
-import uk.ac.sheffield.com1003.cafe.solution.ingredients.Water;
+import uk.ac.sheffield.com1003.cafe.Cafe;
+import uk.ac.sheffield.com1003.cafe.Recipe;
+import uk.ac.sheffield.com1003.cafe.exceptions.RecipeNotFoundException;
+import uk.ac.sheffield.com1003.cafe.exceptions.TooManyIngredientsException;
+import uk.ac.sheffield.com1003.cafe.ingredients.Coffee;
+import uk.ac.sheffield.com1003.cafe.ingredients.Water;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -68,28 +72,26 @@ public class TestCafeTask7 {
         }
     }
 
-//    protected ArrayList<String> getOutLines() {
-//        Stream<String> lines = outContent.toString().lines();
-//        ArrayList<String> arrayList = new ArrayList<>();
-//        lines.forEach(arrayList::add);
-//        return arrayList;
-//    }
+    protected ArrayList<String> getOutLines() {
+        String[] lines = outContent.toString().split("\\r?\\n");
+        ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(lines));
+        return arrayList;
+    }
 
     protected void resetOutLines() {
         outContent.reset();
     }
 
-//    protected ArrayList<String> getErrLines() {
-//        Stream<String> lines = errContent.toString().lines();
-//        ArrayList<String> arrayList = new ArrayList<>();
-//        lines.forEach(arrayList::add);
-//        return arrayList;
-//    }
+    protected ArrayList<String> getErrLines() {
+        String[] lines = errContent.toString().split("\\r?\\n");
+        ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(lines));
+        return arrayList;
+    }
 
     @Test
     public void testRemoveNonexistentRecipeIncorrectException() {
-        Cafe cafe = new Cafe("Central Perk", 10, 10);
-        cafe.addRecipe(createEspressoRecipe());
+            Cafe cafe = new Cafe("Central Perk", 10, 10);
+            cafe.addRecipe(createEspressoRecipe());
         try {
             cafe.removeRecipe("Dummy Recipe");
             fail("It should have thrown RecipeNotFoundException");
@@ -106,7 +108,7 @@ public class TestCafeTask7 {
             cafe.removeRecipe("Dummy Recipe");
             fail("It should have thrown RecipeNotFoundException");
         } catch (Exception thrown) {
-            assertEquals("uk.ac.sheffield.com1003.cafe.solution.exceptions.RecipeNotFoundException", thrown.getClass().getName());
+            assertEquals("uk.ac.sheffield.com1003.cafe.exceptions.RecipeNotFoundException", thrown.getClass().getName());
         }
     }
 

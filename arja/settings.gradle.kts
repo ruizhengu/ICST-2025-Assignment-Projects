@@ -1,2 +1,2 @@
-rootProject.name = "arja-gradle"
+rootProject.name = "arja"
 

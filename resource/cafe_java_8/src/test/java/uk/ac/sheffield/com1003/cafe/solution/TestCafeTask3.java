@@ -4,15 +4,19 @@ import org.apache.commons.lang3.reflect.FieldUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import uk.ac.sheffield.com1003.cafe.solution.exceptions.TooManyIngredientsException;
-import uk.ac.sheffield.com1003.cafe.solution.ingredients.Coffee;
-import uk.ac.sheffield.com1003.cafe.solution.ingredients.Water;
+import uk.ac.sheffield.com1003.cafe.Cafe;
+import uk.ac.sheffield.com1003.cafe.Order;
+import uk.ac.sheffield.com1003.cafe.Recipe;
+import uk.ac.sheffield.com1003.cafe.exceptions.TooManyIngredientsException;
+import uk.ac.sheffield.com1003.cafe.ingredients.Coffee;
+import uk.ac.sheffield.com1003.cafe.ingredients.Water;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.junit.Assert.*;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class TestCafeTask3 {
@@ -70,23 +74,21 @@ public class TestCafeTask3 {
         }
     }
 
-//    protected ArrayList<String> getOutLines() {
-//        Stream<String> lines = outContent.toString().lines();
-//        ArrayList<String> arrayList = new ArrayList<>();
-//        lines.forEach(arrayList::add);
-//        return arrayList;
-//    }
+    protected ArrayList<String> getOutLines() {
+        String[] lines = outContent.toString().split("\\r?\\n");
+        ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(lines));
+        return arrayList;
+    }
 
     protected void resetOutLines() {
         outContent.reset();
     }
 
-//    protected ArrayList<String> getErrLines() {
-//        Stream<String> lines = errContent.toString().lines();
-//        ArrayList<String> arrayList = new ArrayList<>();
-//        lines.forEach(arrayList::add);
-//        return arrayList;
-//    }
+    protected ArrayList<String> getErrLines() {
+        String[] lines = errContent.toString().split("\\r?\\n");
+        ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(lines));
+        return arrayList;
+    }
 
     @Test
     public void testCafeOutOfCapacityExceptionExists() {
@@ -111,7 +113,7 @@ public class TestCafeTask3 {
         Cafe cafe = new Cafe("Central Perk", 1, 1);
         cafe.addRecipe(createEspressoRecipe());
         assertTrue(cafe.placeOrder("Espresso", "Jose", 3));
-        Order[] orders = (Order[]) FieldUtils.readField(cafe, "orders", true);
+        Order[] orders = (Order[])FieldUtils.readField(cafe, "orders", true);
         assertEquals(1, orders.length);
         Order o = orders[0];
         assertEquals("Order: Espresso; For: Jose; Paid: 3.0", o.toString());
@@ -124,7 +126,7 @@ public class TestCafeTask3 {
         Cafe cafe = new Cafe("Central Perk", 1, 1);
         cafe.addRecipe(createEspressoRecipe()); // Price is 1.5
         assertFalse(cafe.placeOrder("Espresso", "Jose", 1));
-        Order[] orders = (Order[]) FieldUtils.readField(cafe, "orders", true);
+        Order[] orders = (Order[])FieldUtils.readField(cafe, "orders", true);
         assertNull(orders[0]);
     }
 
@@ -140,7 +142,7 @@ public class TestCafeTask3 {
         Cafe cafe = new Cafe("Central Perk", 1, 1);
         cafe.addRecipe(createEspressoRecipe()); // Price is 1.5
         Exception thrown = assertThrows(Exception.class, () -> cafe.placeOrder("Flat white", "Jose", 10));
-        assertEquals("uk.ac.sheffield.com1003.cafe.solution.exceptions.RecipeNotFoundException", thrown.getClass().getName());
+        assertEquals("uk.ac.sheffield.com1003.cafe.exceptions.RecipeNotFoundException", thrown.getClass().getName());
     }
 
     @Test
@@ -148,8 +150,8 @@ public class TestCafeTask3 {
         Cafe cafe = new Cafe("Central Perk", 1, 1);
         cafe.addRecipe(createEspressoRecipe());
         assertTrue(cafe.placeOrder("Espresso", "Jose", 3));
-        int indexPlace = (int) FieldUtils.readField(cafe, "indexNextOrderToPlace", true);
-        int indexServe = (int) FieldUtils.readField(cafe, "indexNextOrderToServe", true);
+        int indexPlace = (int)FieldUtils.readField(cafe, "indexNextOrderToPlace", true);
+        int indexServe = (int)FieldUtils.readField(cafe, "indexNextOrderToServe", true);
         assertEquals(1, indexPlace);
         assertEquals(0, indexServe);
     }
@@ -160,11 +162,11 @@ public class TestCafeTask3 {
         cafe.addRecipe(createEspressoRecipe());
         Order o = cafe.serveOrder();
         assertNull(o);
-        int indexPlace = (int) FieldUtils.readField(cafe, "indexNextOrderToPlace", true);
-        int indexServe = (int) FieldUtils.readField(cafe, "indexNextOrderToServe", true);
+        int indexPlace = (int)FieldUtils.readField(cafe, "indexNextOrderToPlace", true);
+        int indexServe = (int)FieldUtils.readField(cafe, "indexNextOrderToServe", true);
         assertEquals(0, indexPlace);
         assertEquals(0, indexServe);
-        Order[] orders = (Order[]) FieldUtils.readField(cafe, "orders", true);
+        Order[] orders = (Order[])FieldUtils.readField(cafe, "orders", true);
         for (int i = 0; i < orders.length; i++) {
             assertNull(orders[i]);
         }
@@ -178,8 +180,8 @@ public class TestCafeTask3 {
         Order o = cafe.serveOrder();
         Object served = FieldUtils.readField(o, "orderServed", true);
         assertNotNull(served); // order has been served
-        int indexPlace = (int) FieldUtils.readField(cafe, "indexNextOrderToPlace", true);
-        int indexServe = (int) FieldUtils.readField(cafe, "indexNextOrderToServe", true);
+        int indexPlace = (int)FieldUtils.readField(cafe, "indexNextOrderToPlace", true);
+        int indexServe = (int)FieldUtils.readField(cafe, "indexNextOrderToServe", true);
         assertEquals(1, indexPlace);
         assertEquals(1, indexServe);
         assertNull(cafe.serveOrder()); // cannot serve more orders
@@ -201,7 +203,7 @@ public class TestCafeTask3 {
             cafe.addRecipe(createEspressoRecipe());
             cafe.placeOrder("Espresso", "Jose", 3);
         });
-        assertEquals("uk.ac.sheffield.com1003.cafe.solution.exceptions.CafeOutOfCapacityException", thrown.getClass().getName());
+        assertEquals("uk.ac.sheffield.com1003.cafe.exceptions.CafeOutOfCapacityException", thrown.getClass().getName());
     }
 
     @Test
@@ -222,6 +224,6 @@ public class TestCafeTask3 {
             cafe.placeOrder("Espresso", "Jose", 3);
             cafe.placeOrder("Espresso", "Mari-Cruz", 5);
         });
-        assertEquals("uk.ac.sheffield.com1003.cafe.solution.exceptions.CafeOutOfCapacityException", thrown.getClass().getName());
+        assertEquals("uk.ac.sheffield.com1003.cafe.exceptions.CafeOutOfCapacityException", thrown.getClass().getName());
     }
 }

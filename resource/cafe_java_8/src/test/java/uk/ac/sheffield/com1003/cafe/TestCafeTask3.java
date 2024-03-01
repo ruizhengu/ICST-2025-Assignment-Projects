@@ -4,9 +4,6 @@ import org.apache.commons.lang3.reflect.FieldUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import uk.ac.sheffield.com1003.cafe.Cafe;
-import uk.ac.sheffield.com1003.cafe.Order;
-import uk.ac.sheffield.com1003.cafe.Recipe;
 import uk.ac.sheffield.com1003.cafe.exceptions.TooManyIngredientsException;
 import uk.ac.sheffield.com1003.cafe.ingredients.Coffee;
 import uk.ac.sheffield.com1003.cafe.ingredients.Water;
@@ -14,10 +11,9 @@ import uk.ac.sheffield.com1003.cafe.ingredients.Water;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.stream.Stream;
+import java.util.Arrays;
 
 import static org.junit.Assert.*;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class TestCafeTask3 {
@@ -75,23 +71,21 @@ public class TestCafeTask3 {
         }
     }
 
-//    protected ArrayList<String> getOutLines() {
-//        Stream<String> lines = outContent.toString().lines();
-//        ArrayList<String> arrayList = new ArrayList<>();
-//        lines.forEach(arrayList::add);
-//        return arrayList;
-//    }
+    protected ArrayList<String> getOutLines() {
+        String[] lines = outContent.toString().split("\\r?\\n");
+        ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(lines));
+        return arrayList;
+    }
 
     protected void resetOutLines() {
         outContent.reset();
     }
 
-//    protected ArrayList<String> getErrLines() {
-//        Stream<String> lines = errContent.toString().lines();
-//        ArrayList<String> arrayList = new ArrayList<>();
-//        lines.forEach(arrayList::add);
-//        return arrayList;
-//    }
+    protected ArrayList<String> getErrLines() {
+        String[] lines = errContent.toString().split("\\r?\\n");
+        ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(lines));
+        return arrayList;
+    }
 
     @Test
     public void testCafeOutOfCapacityExceptionExists() {

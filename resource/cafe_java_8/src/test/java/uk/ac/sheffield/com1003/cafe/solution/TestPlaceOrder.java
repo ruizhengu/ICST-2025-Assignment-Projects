@@ -4,12 +4,17 @@ import org.apache.commons.lang3.reflect.FieldUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import uk.ac.sheffield.com1003.cafe.solution.exceptions.TooManyIngredientsException;
-import uk.ac.sheffield.com1003.cafe.solution.ingredients.Coffee;
-import uk.ac.sheffield.com1003.cafe.solution.ingredients.Water;
+import uk.ac.sheffield.com1003.cafe.Cafe;
+import uk.ac.sheffield.com1003.cafe.Order;
+import uk.ac.sheffield.com1003.cafe.Recipe;
+import uk.ac.sheffield.com1003.cafe.exceptions.TooManyIngredientsException;
+import uk.ac.sheffield.com1003.cafe.ingredients.Coffee;
+import uk.ac.sheffield.com1003.cafe.ingredients.Water;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.junit.Assert.*;
 
@@ -69,36 +74,44 @@ public class TestPlaceOrder {
         }
     }
 
-//    protected ArrayList<String> getOutLines() {
-//        Stream<String> lines = outContent.toString().lines();
-//        ArrayList<String> arrayList = new ArrayList<>();
-//        lines.forEach(arrayList::add);
-//        return arrayList;
-//    }
+    protected ArrayList<String> getOutLines() {
+        String[] lines = outContent.toString().split("\\r?\\n");
+        ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(lines));
+        return arrayList;
+    }
 
     protected void resetOutLines() {
         outContent.reset();
     }
 
-//    protected ArrayList<String> getErrLines() {
-//        Stream<String> lines = errContent.toString().lines();
-//        ArrayList<String> arrayList = new ArrayList<>();
-//        lines.forEach(arrayList::add);
-//        return arrayList;
-//    }
+    protected ArrayList<String> getErrLines() {
+        String[] lines = errContent.toString().split("\\r?\\n");
+        ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(lines));
+        return arrayList;
+    }
 
     @Test(timeout = 5000)
     public void placeOrder() throws Exception {
         Cafe cafe = new Cafe("Central Perk", 1, 1);
         cafe.addRecipe(createEspressoRecipe());
         assertTrue(cafe.placeOrder("Espresso", "Jose", 3));
-        Order[] orders = (Order[]) FieldUtils.readField(cafe, "orders", true);
+        Order[] orders = (Order[])FieldUtils.readField(cafe, "orders", true);
         assertEquals(1, orders.length);
         Order o = orders[0];
         assertEquals("Order: Espresso; For: Jose; Paid: 3.0", o.toString());
         Object served = FieldUtils.readField(o, "orderServed", true);
         assertNull(served); // order has not been served yet
     }
+
+
+
+
+
+
+
+
+
+
 
 
 }

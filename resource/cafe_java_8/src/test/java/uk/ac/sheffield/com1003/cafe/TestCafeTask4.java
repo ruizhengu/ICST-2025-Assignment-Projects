@@ -3,8 +3,6 @@ package uk.ac.sheffield.com1003.cafe;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import uk.ac.sheffield.com1003.cafe.Cafe;
-import uk.ac.sheffield.com1003.cafe.Recipe;
 import uk.ac.sheffield.com1003.cafe.exceptions.TooManyIngredientsException;
 import uk.ac.sheffield.com1003.cafe.ingredients.Coffee;
 import uk.ac.sheffield.com1003.cafe.ingredients.Water;
@@ -12,7 +10,7 @@ import uk.ac.sheffield.com1003.cafe.ingredients.Water;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.stream.Stream;
+import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -72,23 +70,21 @@ public class TestCafeTask4 {
         }
     }
 
-//    protected ArrayList<String> getOutLines() {
-//        Stream<String> lines = outContent.toString().lines();
-//        ArrayList<String> arrayList = new ArrayList<>();
-//        lines.forEach(arrayList::add);
-//        return arrayList;
-//    }
+    protected ArrayList<String> getOutLines() {
+        String[] lines = outContent.toString().split("\\r?\\n");
+        ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(lines));
+        return arrayList;
+    }
 
     protected void resetOutLines() {
         outContent.reset();
     }
 
-//    protected ArrayList<String> getErrLines() {
-//        Stream<String> lines = errContent.toString().lines();
-//        ArrayList<String> arrayList = new ArrayList<>();
-//        lines.forEach(arrayList::add);
-//        return arrayList;
-//    }
+    protected ArrayList<String> getErrLines() {
+        String[] lines = errContent.toString().split("\\r?\\n");
+        ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(lines));
+        return arrayList;
+    }
 
     @Test
     public void printPendingOrderSingle() throws Exception {
@@ -96,10 +92,10 @@ public class TestCafeTask4 {
         cafe.addRecipe(createEspressoRecipe());
         cafe.placeOrder("Espresso", "Jose", 3);
         cafe.printPendingOrders();
-//        ArrayList<String> lines = getOutLines();
-//        assertEquals(2, lines.size());
-//        assertEquals("Pending Orders:", lines.get(0));
-//        assertEquals("Order: Espresso; For: Jose; Paid: 3.0", lines.get(1));
+        ArrayList<String> lines = getOutLines();
+        assertEquals(2, lines.size());
+        assertEquals("Pending Orders:", lines.get(0));
+        assertEquals("Order: Espresso; For: Jose; Paid: 3.0", lines.get(1));
     }
 
     @Test
@@ -109,11 +105,11 @@ public class TestCafeTask4 {
         cafe.placeOrder("Espresso", "Jose", 3);
         cafe.placeOrder("Espresso", "Mari-Cruz", 5);
         cafe.printPendingOrders();
-//        ArrayList<String> lines = getOutLines();
-//        assertEquals(3, lines.size());
-//        assertEquals("Pending Orders:", lines.get(0));
-//        assertEquals("Order: Espresso; For: Jose; Paid: 3.0", lines.get(1));
-//        assertEquals("Order: Espresso; For: Mari-Cruz; Paid: 5.0", lines.get(2));
+        ArrayList<String> lines = getOutLines();
+        assertEquals(3, lines.size());
+        assertEquals("Pending Orders:", lines.get(0));
+        assertEquals("Order: Espresso; For: Jose; Paid: 3.0", lines.get(1));
+        assertEquals("Order: Espresso; For: Mari-Cruz; Paid: 5.0", lines.get(2));
     }
 
     @Test
@@ -126,10 +122,10 @@ public class TestCafeTask4 {
         cafe.placeOrder("Espresso", "Jose", 3);
         cafe.serveOrder();
         cafe.printPendingOrders();
-//        ArrayList<String> lines = getOutLines();
-//        assertEquals(2, lines.size());
-//        assertEquals("Pending Orders:", lines.get(0));
-//        assertEquals("Order: Espresso; For: Jose; Paid: 3.0", lines.get(1));
+        ArrayList<String> lines = getOutLines();
+        assertEquals(2, lines.size());
+        assertEquals("Pending Orders:", lines.get(0));
+        assertEquals("Order: Espresso; For: Jose; Paid: 3.0", lines.get(1));
     }
 
     @Test
@@ -138,9 +134,9 @@ public class TestCafeTask4 {
         cafe.addRecipe(createEspressoRecipe());
         cafe.placeOrder("Espresso", "Jose", 3);
         cafe.printPendingOrders();
-//        ArrayList<String> lines = getOutLines();
-//        assertTrue(lines.stream().anyMatch(item -> item.toUpperCase().matches(".*PENDING.*ORDERS.*")));
-//        assertTrue(lines.stream().anyMatch(item -> item.toUpperCase().matches(".*ORDER.*ESPRESSO.*FOR.*JOSE.*PAID.*3.*")));
+        ArrayList<String> lines = getOutLines();
+        assertTrue(lines.stream().anyMatch(item -> item.toUpperCase().matches(".*PENDING.*ORDERS.*")));
+        assertTrue(lines.stream().anyMatch(item -> item.toUpperCase().matches(".*ORDER.*ESPRESSO.*FOR.*JOSE.*PAID.*3.*")));
     }
 
     @Test
@@ -150,22 +146,22 @@ public class TestCafeTask4 {
         // is consistent regardless of the number of placed and served orders
         Cafe cafe = new Cafe("Central Perk", 2, 2);
         cafe.printPendingOrders();
-//        ArrayList<String> firstPrint = getOutLines();
+        ArrayList<String> firstPrint = getOutLines();
         resetOutLines();
 
         cafe.addRecipe(createEspressoRecipe());
         cafe.placeOrder("Espresso", "Mari-Cruz", 5);
         cafe.serveOrder();
         cafe.printPendingOrders();
-//        ArrayList<String> secondPrint = getOutLines();
+        ArrayList<String> secondPrint = getOutLines();
         resetOutLines();
 
         cafe.placeOrder("Espresso", "Jose", 3);
         cafe.serveOrder(); // both orders served, no pending order left
         cafe.printPendingOrders();
-//        ArrayList<String> thirdPrint = getOutLines();
+        ArrayList<String> thirdPrint = getOutLines();
         resetOutLines();
-//        assertEquals(firstPrint, secondPrint);
-//        assertEquals(secondPrint, thirdPrint);
+        assertEquals(firstPrint, secondPrint);
+        assertEquals(secondPrint, thirdPrint);
     }
 }

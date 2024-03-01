@@ -3,8 +3,6 @@ package uk.ac.sheffield.com1003.cafe;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import uk.ac.sheffield.com1003.cafe.Cafe;
-import uk.ac.sheffield.com1003.cafe.Recipe;
 import uk.ac.sheffield.com1003.cafe.exceptions.TooManyIngredientsException;
 import uk.ac.sheffield.com1003.cafe.ingredients.Coffee;
 import uk.ac.sheffield.com1003.cafe.ingredients.Water;
@@ -12,7 +10,7 @@ import uk.ac.sheffield.com1003.cafe.ingredients.Water;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.stream.Stream;
+import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -71,23 +69,21 @@ public class TestCafeTask2 {
         }
     }
 
-//    protected ArrayList<String> getOutLines() {
-//        Stream<String> lines = outContent.toString().lines();
-//        ArrayList<String> arrayList = new ArrayList<>();
-//        lines.forEach(arrayList::add);
-//        return arrayList;
-//    }
+    protected ArrayList<String> getOutLines() {
+        String[] lines = outContent.toString().split("\\r?\\n");
+        ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(lines));
+        return arrayList;
+    }
 
     protected void resetOutLines() {
         outContent.reset();
     }
 
-//    protected ArrayList<String> getErrLines() {
-//        Stream<String> lines = errContent.toString().lines();
-//        ArrayList<String> arrayList = new ArrayList<>();
-//        lines.forEach(arrayList::add);
-//        return arrayList;
-//    }
+    protected ArrayList<String> getErrLines() {
+        String[] lines = errContent.toString().split("\\r?\\n");
+        ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(lines));
+        return arrayList;
+    }
 
     @Test
     public void testGreeting() {
@@ -115,16 +111,16 @@ public class TestCafeTask2 {
         cafe.addRecipe(americano);
 
         cafe.printMenu();
-//        ArrayList<String> lines = getOutLines();
-//        assertEquals(8, lines.size());
-//        assertEquals("==========", lines.get(0));
-//        assertEquals("Welcome to Central Perk", lines.get(1));
-//        assertEquals("Menu", lines.get(2));
-//        assertEquals("==========", lines.get(3));
-//        assertEquals("Espresso - 1.5", lines.get(4));
-//        assertEquals("Americano - 2.0", lines.get(5));
-//        assertEquals("==========", lines.get(6));
-//        assertEquals("Enjoy!", lines.get(7));
+        ArrayList<String> lines = getOutLines();
+        assertEquals(8, lines.size());
+        assertEquals("==========", lines.get(0));
+        assertEquals("Welcome to Central Perk", lines.get(1));
+        assertEquals("Menu", lines.get(2));
+        assertEquals("==========", lines.get(3));
+        assertEquals("Espresso - 1.5", lines.get(4));
+        assertEquals("Americano - 2.0", lines.get(5));
+        assertEquals("==========", lines.get(6));
+        assertEquals("Enjoy!", lines.get(7));
     }
 
     @Test
@@ -140,12 +136,12 @@ public class TestCafeTask2 {
         cafe.addRecipe(americano);
 
         cafe.printMenu();
-//        ArrayList<String> lines = getOutLines();
-//        assertTrue(lines.stream().anyMatch(item -> item.contains("Central Perk")));
-//        assertTrue(lines.stream().anyMatch(item -> item.contains("Menu")));
+        ArrayList<String> lines = getOutLines();
+        assertTrue(lines.stream().anyMatch(item -> item.contains("Central Perk")));
+        assertTrue(lines.stream().anyMatch(item -> item.contains("Menu")));
         // using relax separator between name and price for recipes:
-//        assertTrue(lines.stream().anyMatch(item -> item.matches("Espresso.*1\\.5")));
-//        assertTrue(lines.stream().anyMatch(item -> item.matches("Americano.*2\\.0")));
-//        assertTrue(lines.stream().anyMatch(item -> item.contains("Enjoy")));
+        assertTrue(lines.stream().anyMatch(item -> item.matches("Espresso.*1\\.5")));
+        assertTrue(lines.stream().anyMatch(item -> item.matches("Americano.*2\\.0")));
+        assertTrue(lines.stream().anyMatch(item -> item.contains("Enjoy")));
     }
 }
