@@ -6,11 +6,11 @@ import org.apache.commons.lang3.reflect.MethodUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import uk.ac.sheffield.com1003.cafe.Recipe;
-import uk.ac.sheffield.com1003.cafe.exceptions.TooManyIngredientsException;
-import uk.ac.sheffield.com1003.cafe.ingredients.Coffee;
-import uk.ac.sheffield.com1003.cafe.ingredients.Unit;
-import uk.ac.sheffield.com1003.cafe.ingredients.Water;
+
+import uk.ac.sheffield.com1003.cafe.solution.exceptions.TooManyIngredientsException;
+import uk.ac.sheffield.com1003.cafe.solution.ingredients.Coffee;
+import uk.ac.sheffield.com1003.cafe.solution.ingredients.Water;
+import uk.ac.sheffield.com1003.cafe.solution.ingredients.Unit;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.junit.Assert.*;
-import static uk.ac.sheffield.com1003.cafe.ingredients.Unit.ML;
+import static uk.ac.sheffield.com1003.cafe.solution.ingredients.Unit.ML;
 
 public class TestCafeTask6 {
 
@@ -94,7 +94,7 @@ public class TestCafeTask6 {
     @Test
     public void testSyrupExists() throws Exception {
         try {
-            Class.forName("uk.ac.sheffield.com1003.cafe.ingredients.Syrup");
+            Class.forName("uk.ac.sheffield.com1003.cafe.solution.ingredients.Syrup");
         } catch (ClassNotFoundException e) {
             throw new Exception("Class Syrup does not exist");
         }
@@ -102,14 +102,14 @@ public class TestCafeTask6 {
 
     @Test
     public void testSyrupDefaultConstructor() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException, InstantiationException {
-        Class<?> syrupClass = Class.forName("uk.ac.sheffield.com1003.cafe.ingredients.Syrup");
+        Class<?> syrupClass = Class.forName("uk.ac.sheffield.com1003.cafe.solution.ingredients.Syrup");
         Object o = ConstructorUtils.invokeConstructor(syrupClass);
         assertTrue(syrupClass.isInstance(o));
     }
 
     @Test
     public void testSyrupDefaultConstructorSetsUnit() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException, InstantiationException {
-        Class<?> syrupClass = Class.forName("uk.ac.sheffield.com1003.cafe.ingredients.Syrup");
+        Class<?> syrupClass = Class.forName("uk.ac.sheffield.com1003.cafe.solution.ingredients.Syrup");
         Object o = ConstructorUtils.invokeConstructor(syrupClass);
         Unit unit = (Unit)FieldUtils.readField(o, "unit", true);
         assertEquals(ML, unit);
@@ -117,7 +117,7 @@ public class TestCafeTask6 {
 
     @Test
     public void testSyrupContainsFlavourField() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException, InstantiationException {
-        Class<?> syrupClass = Class.forName("uk.ac.sheffield.com1003.cafe.ingredients.Syrup");
+        Class<?> syrupClass = Class.forName("uk.ac.sheffield.com1003.cafe.solution.ingredients.Syrup");
         Object o = ConstructorUtils.invokeConstructor(syrupClass);
 
         Object flavour = FieldUtils.readField(o, "flavour", true);
@@ -126,7 +126,7 @@ public class TestCafeTask6 {
 
     @Test
     public void testSyrupOverloadedConstructor() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException, InstantiationException {
-        Class<?> syrupClass = Class.forName("uk.ac.sheffield.com1003.cafe.ingredients.Syrup");
+        Class<?> syrupClass = Class.forName("uk.ac.sheffield.com1003.cafe.solution.ingredients.Syrup");
         Object o = ConstructorUtils.invokeConstructor(syrupClass, "caramel");
         assertTrue(syrupClass.isInstance(o));
 
@@ -136,7 +136,7 @@ public class TestCafeTask6 {
 
     @Test
     public void testSyrupOverloadedConstructorSetsUnit() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException, InstantiationException {
-        Class<?> syrupClass = Class.forName("uk.ac.sheffield.com1003.cafe.ingredients.Syrup");
+        Class<?> syrupClass = Class.forName("uk.ac.sheffield.com1003.cafe.solution.ingredients.Syrup");
         Object o = ConstructorUtils.invokeConstructor(syrupClass, "caramel");
         assertTrue(syrupClass.isInstance(o));
 
@@ -148,7 +148,7 @@ public class TestCafeTask6 {
 
     @Test
     public void testSyrupToString() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException, InstantiationException {
-        Class<?> syrupClass = Class.forName("uk.ac.sheffield.com1003.cafe.ingredients.Syrup");
+        Class<?> syrupClass = Class.forName("uk.ac.sheffield.com1003.cafe.solution.ingredients.Syrup");
         Object o = ConstructorUtils.invokeConstructor(syrupClass, "caramel");
         assertTrue(syrupClass.isInstance(o));
         int amount = (int)FieldUtils.readField(o, "amount", true);
@@ -159,7 +159,7 @@ public class TestCafeTask6 {
 
     @Test
     public void testSyrupToStringRelaxed() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException, InstantiationException {
-        Class<?> syrupClass = Class.forName("uk.ac.sheffield.com1003.cafe.ingredients.Syrup");
+        Class<?> syrupClass = Class.forName("uk.ac.sheffield.com1003.cafe.solution.ingredients.Syrup");
         Object o = ConstructorUtils.invokeConstructor(syrupClass, "caramel");
         assertTrue(syrupClass.isInstance(o));
         int amount = (int)FieldUtils.readField(o, "amount", true);

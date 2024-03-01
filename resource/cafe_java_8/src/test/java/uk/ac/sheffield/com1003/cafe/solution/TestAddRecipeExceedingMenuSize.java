@@ -3,11 +3,10 @@ package uk.ac.sheffield.com1003.cafe.solution;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import uk.ac.sheffield.com1003.cafe.Cafe;
-import uk.ac.sheffield.com1003.cafe.Recipe;
-import uk.ac.sheffield.com1003.cafe.exceptions.TooManyIngredientsException;
-import uk.ac.sheffield.com1003.cafe.ingredients.Coffee;
-import uk.ac.sheffield.com1003.cafe.ingredients.Water;
+
+import uk.ac.sheffield.com1003.cafe.solution.exceptions.TooManyIngredientsException;
+import uk.ac.sheffield.com1003.cafe.solution.ingredients.Coffee;
+import uk.ac.sheffield.com1003.cafe.solution.ingredients.Water;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -18,7 +17,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class TestAddRecipeExceedingMenuSize  {
+public class TestAddRecipeExceedingMenuSize {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
@@ -99,14 +98,6 @@ public class TestAddRecipeExceedingMenuSize  {
         assertFalse(cafe.addRecipe(americano)); // should not be added
         assertEquals(1, cafe.getMenu().length);
     }
-
-
-
-
-
-
-
-
 
 
 }

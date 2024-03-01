@@ -4,12 +4,10 @@ import org.apache.commons.lang3.reflect.FieldUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import uk.ac.sheffield.com1003.cafe.Cafe;
-import uk.ac.sheffield.com1003.cafe.Order;
-import uk.ac.sheffield.com1003.cafe.Recipe;
-import uk.ac.sheffield.com1003.cafe.exceptions.TooManyIngredientsException;
-import uk.ac.sheffield.com1003.cafe.ingredients.Coffee;
-import uk.ac.sheffield.com1003.cafe.ingredients.Water;
+
+import uk.ac.sheffield.com1003.cafe.solution.exceptions.TooManyIngredientsException;
+import uk.ac.sheffield.com1003.cafe.solution.ingredients.Coffee;
+import uk.ac.sheffield.com1003.cafe.solution.ingredients.Water;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -142,7 +140,7 @@ public class TestCafeTask3 {
         Cafe cafe = new Cafe("Central Perk", 1, 1);
         cafe.addRecipe(createEspressoRecipe()); // Price is 1.5
         Exception thrown = assertThrows(Exception.class, () -> cafe.placeOrder("Flat white", "Jose", 10));
-        assertEquals("uk.ac.sheffield.com1003.cafe.exceptions.RecipeNotFoundException", thrown.getClass().getName());
+        assertEquals("uk.ac.sheffield.com1003.cafe.solution.exceptions.RecipeNotFoundException", thrown.getClass().getName());
     }
 
     @Test
@@ -203,7 +201,7 @@ public class TestCafeTask3 {
             cafe.addRecipe(createEspressoRecipe());
             cafe.placeOrder("Espresso", "Jose", 3);
         });
-        assertEquals("uk.ac.sheffield.com1003.cafe.exceptions.CafeOutOfCapacityException", thrown.getClass().getName());
+        assertEquals("uk.ac.sheffield.com1003.cafe.solution.exceptions.CafeOutOfCapacityException", thrown.getClass().getName());
     }
 
     @Test
@@ -224,6 +222,6 @@ public class TestCafeTask3 {
             cafe.placeOrder("Espresso", "Jose", 3);
             cafe.placeOrder("Espresso", "Mari-Cruz", 5);
         });
-        assertEquals("uk.ac.sheffield.com1003.cafe.exceptions.CafeOutOfCapacityException", thrown.getClass().getName());
+        assertEquals("uk.ac.sheffield.com1003.cafe.solution.exceptions.CafeOutOfCapacityException", thrown.getClass().getName());
     }
 }

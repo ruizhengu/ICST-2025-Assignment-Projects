@@ -3,11 +3,10 @@ package uk.ac.sheffield.com1003.cafe.solution;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import uk.ac.sheffield.com1003.cafe.Cafe;
-import uk.ac.sheffield.com1003.cafe.Recipe;
-import uk.ac.sheffield.com1003.cafe.exceptions.TooManyIngredientsException;
-import uk.ac.sheffield.com1003.cafe.ingredients.Coffee;
-import uk.ac.sheffield.com1003.cafe.ingredients.Water;
+
+import uk.ac.sheffield.com1003.cafe.solution.exceptions.TooManyIngredientsException;
+import uk.ac.sheffield.com1003.cafe.solution.ingredients.Coffee;
+import uk.ac.sheffield.com1003.cafe.solution.ingredients.Water;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -95,7 +94,7 @@ public class TestRemoveNonexistentRecipe  {
             cafe.removeRecipe("Dummy Recipe");
             fail("It should have thrown RecipeNotFoundException");
         } catch (Exception thrown) {
-            assertEquals("uk.ac.sheffield.com1003.cafe.exceptions.RecipeNotFoundException", thrown.getClass().getName());
+            assertEquals("uk.ac.sheffield.com1003.cafe.solution.exceptions.RecipeNotFoundException", thrown.getClass().getName());
         }
     }
 

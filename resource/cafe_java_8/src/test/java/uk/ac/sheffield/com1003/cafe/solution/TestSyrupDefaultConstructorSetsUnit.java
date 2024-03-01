@@ -5,11 +5,11 @@ import org.apache.commons.lang3.reflect.FieldUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import uk.ac.sheffield.com1003.cafe.Recipe;
-import uk.ac.sheffield.com1003.cafe.exceptions.TooManyIngredientsException;
-import uk.ac.sheffield.com1003.cafe.ingredients.Coffee;
-import uk.ac.sheffield.com1003.cafe.ingredients.Unit;
-import uk.ac.sheffield.com1003.cafe.ingredients.Water;
+
+import uk.ac.sheffield.com1003.cafe.solution.exceptions.TooManyIngredientsException;
+import uk.ac.sheffield.com1003.cafe.solution.ingredients.Coffee;
+import uk.ac.sheffield.com1003.cafe.solution.ingredients.Water;
+import uk.ac.sheffield.com1003.cafe.solution.ingredients.Unit;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
-import static uk.ac.sheffield.com1003.cafe.ingredients.Unit.ML;
+import static uk.ac.sheffield.com1003.cafe.solution.ingredients.Unit.ML;
 
 public class TestSyrupDefaultConstructorSetsUnit  {
 
@@ -92,7 +92,7 @@ public class TestSyrupDefaultConstructorSetsUnit  {
 
     @Test(timeout = 5000)
     public void testSyrupDefaultConstructorSetsUnit() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException, InstantiationException {
-        Class<?> syrupClass = Class.forName("uk.ac.sheffield.com1003.cafe.ingredients.Syrup");
+        Class<?> syrupClass = Class.forName("uk.ac.sheffield.com1003.cafe.solution.ingredients.Syrup");
         Object o = ConstructorUtils.invokeConstructor(syrupClass);
         Unit unit = (Unit)FieldUtils.readField(o, "unit", true);
         assertEquals(ML, unit);
