@@ -37,7 +37,7 @@ public class Cafe {
         menu = new Recipe[sizeMenu];
         orders = new Order[orderCapacity];
         indexNextOrderToPlace = 0;
-        indexNextOrderToServe = 0;
+        indexNextOrderToServe = 1;
         nRecipes = 0;
     }
 

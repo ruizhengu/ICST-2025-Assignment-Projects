@@ -5,7 +5,6 @@ plugins {
 }
 
 repositories {
-    // Use Maven Central for resolving dependencies.
     mavenCentral()
 }
 
@@ -52,7 +51,7 @@ application {
     mainClass = 'uk.ac.sheffield.com1003.cafe.App'
 }
 
-task listTests {
+tasks.register('listTests') {
     doLast {
         def testSourceDir = project.sourceSets.test.java.srcDirs
         testSourceDir.each { dir ->
@@ -84,23 +83,22 @@ task listTests {
     }
 }
 
-task listFailedTests {
+tasks.register('listFailedTests') {
     doLast {
         def testResultsDir = file("${project.buildDir}/test-results/test")
         if (!testResultsDir.exists()) {
             println "Test results not found. Please run tests before executing this task."
             return
         }
-
-        testResultsDir.eachDir { dir ->
-            dir.eachFileMatch(~/.+\.xml$/, { File resultFile ->
-                def testResult = new XmlSlurper().parse(resultFile)
-                testResult.'testcase'.findAll { it.'@status'.text() == 'FAILED' }.each { failedTest ->
-                    def className = failedTest.'@classname'.text()
-                    def methodName = failedTest.'@name'.text()
+        testResultsDir.eachFileMatch(~/.+\.xml$/, { File resultFile ->
+            def testResult = new XmlSlurper().parse(resultFile)
+            testResult.'testcase'.each { testcase ->
+                if (testcase.'failure'.size() > 0) {
+                    def className = testcase.'@classname'.text()
+                    def methodName = testcase.'@name'.text()
                     println "${className}::${methodName}"
                 }
-            })
-        }
+            }
+        })
     }
 }
