@@ -16,7 +16,7 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class TestSoyMilkOptionExists  {
+public class TestSoyMilkOptionExists {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
@@ -90,14 +90,6 @@ public class TestSoyMilkOptionExists  {
     public void testSoyMilkOptionExists() {
         assertTrue(EnumUtils.isValidEnum(Milk.Type.class, "SOY"), "SOY does not seem to exist in Milk.Type");
     }
-
-
-
-
-
-
-
-
 
 
 }

@@ -26,6 +26,9 @@ class CafeProcessing:
             self.replace_build_gradle(submission)
             chmod = f"chmod +x {submission}/gradlew"
             cmd = f"{submission}/gradlew build -x test -p {submission}"
+            self.replace_tests(submission)
+            self.inject_model_solution(submission)
+            self.inject_aspectj(submission)
             try:
                 utils.run_cmd(chmod)
                 build_output = utils.run_cmd(cmd)
@@ -33,81 +36,60 @@ class CafeProcessing:
                     print(submission.name + " BUILD FAILED")
             except Exception as e:
                 print(f"{submission} - Error executing {e}")
-
-    def replace_tests(self):
-        for submission in self.submission_list:
-            destination = submission / self._test_path
-            utils.empty_directory(destination)
-            if not destination.exists():
-                destination.mkdir(parents=True)
-            for item in self.model_test_suite.iterdir():
-                if item.is_dir():
-                    shutil.copytree(item, destination / item.name)
-                else:
-                    shutil.copy2(item, destination / item.name)
-            print(submission)
             break
 
-    def inject_model_solution(self):
-        for submission in self.submission_list:
-            model_solution = self.model_solution / self._main_path / "solution"
-            destination = submission / self._main_path / "solution"
-            if destination.exists():
-                shutil.rmtree(destination)
-            shutil.copytree(model_solution, destination)
-            break
+    def replace_tests(self, submission):
+        destination = submission / self._test_path
+        utils.empty_directory(destination)
+        if not destination.exists():
+            destination.mkdir(parents=True)
+        for item in self.model_test_suite.iterdir():
+            if item.is_dir():
+                shutil.copytree(item, destination / item.name)
+            else:
+                shutil.copy2(item, destination / item.name)
+
+    def inject_model_solution(self, submission):
+        model_solution = self.model_solution / self._main_path / "solution"
+        destination = submission / self._main_path / "solution"
+        if destination.exists():
+            shutil.rmtree(destination)
+        shutil.copytree(model_solution, destination)
+
+    def inject_aspectj(self, submission):
+        model_solution = self.model_solution / "src/main/java/aspect"
+        destination = submission / "src/main/java/aspect"
+        if destination.exists():
+            shutil.rmtree(destination)
+        shutil.copytree(model_solution, destination)
 
     def get_failed_tests(self):
         for submission in self.submission_list:
-            # test_cmd = f"{submission}/gradlew build -p {submission}"
-            # output = utils.run_cmd(test_cmd)
-            # print(output)
-            # break
             test_cmd = f"{submission}/gradlew build -p {submission}"
-            test_output = utils.run_cmd(test_cmd)
+            utils.run_cmd(test_cmd)
             list_cmd = f"{submission}/gradlew listFailedTests -p {submission}"
             output = utils.run_cmd(list_cmd)
             pattern = r"^(.+::\w+)$"
-            # Extracting all matches
             failed_tests = re.findall(pattern, output, re.MULTILINE)
-            print(failed_tests)
-            print(len(failed_tests))
+            failed_tests = [t.replace("::", ".") for t in failed_tests]
+            print(len(failed_tests), failed_tests)
+            for test in failed_tests:
+                self.get_method_calls(submission, test)
             break
 
-    def parse_jacoco_report(self, report):
-        tree = ET.parse(report)
-        root = tree.getroot()
-
-        # Define a dictionary to hold coverage data
-        coverage_data = {}
-
-        # Iterate over all classes in the report
-        for class_element in root.findall(".//class"):
-            class_name = class_element.get('name').replace('/', '.')
-            methods = class_element.findall('method')
-            coverage_data[class_name] = []
-
-            # Iterate over all methods in the class
-            for method in methods:
-                method_name = method.get('name')
-                line_coverage = method.find('counter[@type="LINE"]')
-
-                if line_coverage is not None:
-                    covered_lines = line_coverage.get('covered')
-                    total_lines = line_coverage.get('missed') + covered_lines
-                    coverage_data[class_name].append({
-                        'method_name': method_name,
-                        'covered_lines': covered_lines,
-                        'total_lines': total_lines
-                    })
-        print(coverage_data)
-        # return coverage_data
+    def get_method_calls(self, submission, test):
+        execution_log = submission / "method-executions.log"
+        test_cmd = f"{submission}/gradlew -p {submission} test --tests {test}"
+        utils.run_cmd(test_cmd)
+        with open(execution_log, "r") as f:
+            calls = f.readlines()
+        calls = set([line.replace("\n", "") for line in calls])
+        print(calls)
 
 
 if __name__ == '__main__':
     p = CafeProcessing()
-    # p.compile_submissions()
+    p.compile_submissions()
     # p.replace_tests()
     # p.inject_model_solution()
-    # p.get_failed_tests()
-    p.parse_jacoco_report("/Users/ruizhengu/Projects/APR-as-AAT/resource/cafe_java_8/build/JacocoReport/test/html/index.html")
+    p.get_failed_tests()
