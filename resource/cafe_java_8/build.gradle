@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'application'
     id 'jacoco'
+    id "io.freefair.aspectj.post-compile-weaving" version "6.4.1"
 }
 
 repositories {
@@ -10,6 +11,8 @@ repositories {
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
+
+//compileJava.ajc.options.compilerArgs = ["-sourceroots", sourceSets.main.java.sourceDirectories.getAsPath()]
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
@@ -20,8 +23,10 @@ dependencies {
 
     testImplementation 'org.apache.commons:commons-lang3:3.0'
     testImplementation 'com.github.javaparser:javaparser-core-serialization:3.25.1'
-
     testImplementation group: 'org.evosuite', name: 'evosuite-standalone-runtime', version: '1.0.6'
+
+    implementation "org.aspectj:aspectjrt:1.9.6"
+    implementation "org.aspectj:aspectjweaver:1.9.6"
 }
 
 test {
@@ -39,6 +44,10 @@ test {
 }
 
 jacocoTestReport {
+    reports {
+        xml.required = true
+        html.required = false
+    }
     dependsOn test // tests are required to run before generating the report
 }
 
