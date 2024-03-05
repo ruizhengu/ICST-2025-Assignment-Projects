@@ -1,3 +1,4 @@
+import json
 import re
 import shutil
 import subprocess
@@ -14,6 +15,7 @@ class CafeProcessing:
         self.submission_list = list(filter(lambda p: ".DS_Store" not in str(p), self.submission_path.iterdir()))
         self._main_path = Path("src/main/java/uk/ac/sheffield/com1003/cafe")
         self._test_path = Path("src/test/java/uk/ac/sheffield/com1003/cafe")
+        self.methods = self.get_model_methods()
 
     def replace_build_gradle(self, submission):
         build_gradle_source = self.model_solution / "build.gradle"
@@ -64,6 +66,8 @@ class CafeProcessing:
         shutil.copytree(model_solution, destination)
 
     def get_failed_tests(self):
+        submission_method_coverage = {}
+        method_coverage_json = "/Users/ruizhengu/Projects/APR-as-AAT/repair-generation/lib/method_coverage.json"
         for submission in self.submission_list:
             test_cmd = f"{submission}/gradlew build -p {submission}"
             utils.run_cmd(test_cmd)
@@ -72,9 +76,14 @@ class CafeProcessing:
             pattern = r"^(.+::\w+)$"
             failed_tests = re.findall(pattern, output, re.MULTILINE)
             failed_tests = [t.replace("::", ".") for t in failed_tests]
-            print(len(failed_tests), failed_tests)
+            test_method_calls = {}
             for test in failed_tests:
-                self.get_method_calls(submission, test)
+                method_calls = self.get_method_calls(submission, test)
+                test_method_calls[test] = method_calls
+            method_coverage = self.get_method_coverage(test_method_calls)
+            submission_method_coverage[submission.name] = method_coverage
+            with open(method_coverage_json, "w") as f:
+                f.write(json.dumps(submission_method_coverage, indent=4))
             break
 
     def get_method_calls(self, submission, test):
@@ -84,12 +93,33 @@ class CafeProcessing:
         with open(execution_log, "r") as f:
             calls = f.readlines()
         calls = set([line.replace("\n", "") for line in calls])
-        print(calls)
+        return calls
+
+    def get_method_coverage(self, test_method_calls):
+        method_coverage = {}
+        for method in self.methods:
+            data = {}
+            tests = []
+            for test, method_calls in test_method_calls.items():
+                for call in method_calls:
+                    if method in call:
+                        tests.append(test)
+            data["tests"] = tests
+            data["num"] = len(tests)
+            method_coverage[method] = data
+        return method_coverage
+
+    def get_model_methods(self):
+        methods_txt = Path("/Users/ruizhengu/Projects/APR-as-AAT/repair-generation/lib/methods.txt")
+        with open(methods_txt, "r") as f:
+            methods = f.readlines()
+        deduplicate = set(methods)
+        return [m.replace("\n", "") for m in deduplicate]
 
 
 if __name__ == '__main__':
     p = CafeProcessing()
-    p.compile_submissions()
+    # p.compile_submissions()
     # p.replace_tests()
     # p.inject_model_solution()
     p.get_failed_tests()

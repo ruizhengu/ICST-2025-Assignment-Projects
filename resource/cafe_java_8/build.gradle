@@ -27,14 +27,11 @@ dependencies {
 
     implementation "org.aspectj:aspectjrt:1.9.6"
     implementation "org.aspectj:aspectjweaver:1.9.6"
+    implementation 'com.github.javaparser:javaparser-core:3.23.1'
 }
 
 test {
     useJUnitPlatform()
-//    filter {
-//        includeTestsMatching "uk.ac.sheffield.com1003.cafe.junit4.*"
-//        includeTestsMatching "uk.ac.sheffield.com1003.cafe.randoop.*"
-//    }
     finalizedBy jacocoTestReport
     testLogging {
         events "FAILED", "PASSED"

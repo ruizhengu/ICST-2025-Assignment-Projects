@@ -1,0 +1,378 @@
+{
+    "135": {
+        "Recipe.addIngredient": {
+            "tests": [
+                "uk.ac.sheffield.com1003.cafe.TestRemoveRecipe.testRemoveRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestPlaceAndServeOrder.placeAndServeOrder",
+                "uk.ac.sheffield.com1003.cafe.TestRemoveMiddleRecipe.testRemoveMiddleRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestRecipeEqualsNoIngredients.testRecipeEqualsNoIngredients",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask5.testRecipeEqualsNoIngredients",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask5.testRecipeMultipleIngredients",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask5.testRecipeEqualsDifferentOrderOfSameIngredients",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask5.testRecipeMultipleIngredientsDifferentName",
+                "uk.ac.sheffield.com1003.cafe.TestSyrupOverloadedConstructor.testSyrupOverloadedConstructor",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask4.printPendingOrdersEmpty",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupToString",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupToStringRelaxed",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupOverloadedConstructorSetsUnit",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupOverloadedConstructor",
+                "uk.ac.sheffield.com1003.cafe.solution.TestSyrupOverloadedConstructor.testSyrupOverloadedConstructor",
+                "uk.ac.sheffield.com1003.cafe.TestSyrupOverloadedConstructorSetsUnit.testSyrupOverloadedConstructorSetsUnit",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask7.testRemoveNonexistentRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask7.testRemoveAllRecipes",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask7.testRemoveNonexistentRecipeIncorrectException",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask7.testRemoveRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask7.testRemoveMiddleRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestRemoveAllRecipes.testRemoveAllRecipes",
+                "uk.ac.sheffield.com1003.cafe.TestCoffeeConstructorOverloaded.testCoffeeConstructorOverloaded",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask3.placeOrderForNonexistentRecipeThrowsCorrectException",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask3.placeOrderForNonexistentRecipeThrowsException",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask3.placeAndServeOrder",
+                "uk.ac.sheffield.com1003.cafe.TestRemoveNonexistentRecipeIncorrectException.testRemoveNonexistentRecipeIncorrectException",
+                "uk.ac.sheffield.com1003.cafe.TestRemoveNonexistentRecipe.testRemoveNonexistentRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestSyrupToStringRelaxed.testSyrupToStringRelaxed",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask1.testCoffeeConstructorOverloaded",
+                "uk.ac.sheffield.com1003.cafe.TestRecipeMultipleIngredients.testRecipeMultipleIngredients",
+                "uk.ac.sheffield.com1003.cafe.TestPlaceOrderForNonexistentRecipeThrowsException.placeOrderForNonexistentRecipeThrowsException",
+                "uk.ac.sheffield.com1003.cafe.TestPrintPendingOrdersEmpty.printPendingOrdersEmpty",
+                "uk.ac.sheffield.com1003.cafe.TestRecipeEqualsDifferentOrderOfSameIngredients.testRecipeEqualsDifferentOrderOfSameIngredients",
+                "uk.ac.sheffield.com1003.cafe.TestSyrupToString.testSyrupToString",
+                "uk.ac.sheffield.com1003.cafe.TestPlaceOrderForNonexistentRecipeThrowsCorrectException.placeOrderForNonexistentRecipeThrowsCorrectException",
+                "uk.ac.sheffield.com1003.cafe.TestRecipeMultipleIngredientsDifferentName.testRecipeMultipleIngredientsDifferentName"
+            ],
+            "num": 37
+        },
+        "Cafe.printPendingOrders": {
+            "tests": [
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask4.printPendingOrdersEmpty",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupToString",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupToStringRelaxed",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupOverloadedConstructorSetsUnit",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupOverloadedConstructor",
+                "uk.ac.sheffield.com1003.cafe.solution.TestSyrupOverloadedConstructor.testSyrupOverloadedConstructor",
+                "uk.ac.sheffield.com1003.cafe.TestSyrupOverloadedConstructorSetsUnit.testSyrupOverloadedConstructorSetsUnit",
+                "uk.ac.sheffield.com1003.cafe.TestPrintPendingOrdersEmpty.printPendingOrdersEmpty"
+            ],
+            "num": 8
+        },
+        "Order.printReceipt": {
+            "tests": [],
+            "num": 0
+        },
+        "Coffee.equals": {
+            "tests": [
+                "uk.ac.sheffield.com1003.cafe.TestPlaceAndServeOrder.placeAndServeOrder",
+                "uk.ac.sheffield.com1003.cafe.TestRemoveMiddleRecipe.testRemoveMiddleRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestRecipeEqualsNoIngredients.testRecipeEqualsNoIngredients",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask5.testRecipeEqualsNoIngredients",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask5.testRecipeMultipleIngredients",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask5.testRecipeEqualsDifferentOrderOfSameIngredients",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask5.testRecipeMultipleIngredientsDifferentName",
+                "uk.ac.sheffield.com1003.cafe.TestSyrupOverloadedConstructor.testSyrupOverloadedConstructor",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask4.printPendingOrdersEmpty",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupToString",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupToStringRelaxed",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupOverloadedConstructorSetsUnit",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupOverloadedConstructor",
+                "uk.ac.sheffield.com1003.cafe.solution.TestSyrupOverloadedConstructor.testSyrupOverloadedConstructor",
+                "uk.ac.sheffield.com1003.cafe.TestSyrupOverloadedConstructorSetsUnit.testSyrupOverloadedConstructorSetsUnit",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask7.testRemoveNonexistentRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask7.testRemoveAllRecipes",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask7.testRemoveNonexistentRecipeIncorrectException",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask7.testRemoveMiddleRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestRemoveAllRecipes.testRemoveAllRecipes",
+                "uk.ac.sheffield.com1003.cafe.TestCoffeeConstructorOverloaded.testCoffeeConstructorOverloaded",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask3.placeOrderForNonexistentRecipeThrowsCorrectException",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask3.placeOrderForNonexistentRecipeThrowsException",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask3.placeAndServeOrder",
+                "uk.ac.sheffield.com1003.cafe.TestRemoveNonexistentRecipeIncorrectException.testRemoveNonexistentRecipeIncorrectException",
+                "uk.ac.sheffield.com1003.cafe.TestRemoveNonexistentRecipe.testRemoveNonexistentRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestSyrupToStringRelaxed.testSyrupToStringRelaxed",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask1.testCoffeeConstructorOverloaded",
+                "uk.ac.sheffield.com1003.cafe.TestRecipeMultipleIngredients.testRecipeMultipleIngredients",
+                "uk.ac.sheffield.com1003.cafe.TestPlaceOrderForNonexistentRecipeThrowsException.placeOrderForNonexistentRecipeThrowsException",
+                "uk.ac.sheffield.com1003.cafe.TestPrintPendingOrdersEmpty.printPendingOrdersEmpty",
+                "uk.ac.sheffield.com1003.cafe.TestRecipeEqualsDifferentOrderOfSameIngredients.testRecipeEqualsDifferentOrderOfSameIngredients",
+                "uk.ac.sheffield.com1003.cafe.TestSyrupToString.testSyrupToString",
+                "uk.ac.sheffield.com1003.cafe.TestPlaceOrderForNonexistentRecipeThrowsCorrectException.placeOrderForNonexistentRecipeThrowsCorrectException",
+                "uk.ac.sheffield.com1003.cafe.TestRecipeMultipleIngredientsDifferentName.testRecipeMultipleIngredientsDifferentName"
+            ],
+            "num": 35
+        },
+        "Ingredient.getAmount": {
+            "tests": [],
+            "num": 0
+        },
+        "Ingredient.toString": {
+            "tests": [],
+            "num": 0
+        },
+        "Coffee.toString": {
+            "tests": [],
+            "num": 0
+        },
+        "Ingredient.getName": {
+            "tests": [],
+            "num": 0
+        },
+        "Cafe.findRecipe": {
+            "tests": [],
+            "num": 0
+        },
+        "Recipe.getName": {
+            "tests": [
+                "uk.ac.sheffield.com1003.cafe.TestRemoveRecipe.testRemoveRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestPlaceAndServeOrder.placeAndServeOrder",
+                "uk.ac.sheffield.com1003.cafe.TestRemoveMiddleRecipe.testRemoveMiddleRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestRecipeEqualsNoIngredients.testRecipeEqualsNoIngredients",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask5.testRecipeEqualsNoIngredients",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask4.printPendingOrdersEmpty",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupToString",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupToStringRelaxed",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupOverloadedConstructorSetsUnit",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupOverloadedConstructor",
+                "uk.ac.sheffield.com1003.cafe.solution.TestSyrupOverloadedConstructor.testSyrupOverloadedConstructor",
+                "uk.ac.sheffield.com1003.cafe.TestSyrupOverloadedConstructorSetsUnit.testSyrupOverloadedConstructorSetsUnit",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask7.testRemoveNonexistentRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask7.testRemoveAllRecipes",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask7.testRemoveNonexistentRecipeIncorrectException",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask7.testRemoveRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask7.testRemoveMiddleRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestRemoveAllRecipes.testRemoveAllRecipes",
+                "uk.ac.sheffield.com1003.cafe.TestCoffeeConstructorOverloaded.testCoffeeConstructorOverloaded",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask3.placeOrderForNonexistentRecipeThrowsCorrectException",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask3.placeOrderForNonexistentRecipeThrowsException",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask3.placeAndServeOrder",
+                "uk.ac.sheffield.com1003.cafe.TestRemoveNonexistentRecipeIncorrectException.testRemoveNonexistentRecipeIncorrectException",
+                "uk.ac.sheffield.com1003.cafe.TestRemoveNonexistentRecipe.testRemoveNonexistentRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestSyrupToStringRelaxed.testSyrupToStringRelaxed",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask1.testCoffeeConstructorOverloaded",
+                "uk.ac.sheffield.com1003.cafe.TestPlaceOrderForNonexistentRecipeThrowsException.placeOrderForNonexistentRecipeThrowsException",
+                "uk.ac.sheffield.com1003.cafe.TestPrintPendingOrdersEmpty.printPendingOrdersEmpty",
+                "uk.ac.sheffield.com1003.cafe.TestPlaceOrderForNonexistentRecipeThrowsCorrectException.placeOrderForNonexistentRecipeThrowsCorrectException"
+            ],
+            "num": 29
+        },
+        "Cafe.getName": {
+            "tests": [],
+            "num": 0
+        },
+        "Cafe.printMenu": {
+            "tests": [],
+            "num": 0
+        },
+        "Cafe.removeRecipe": {
+            "tests": [
+                "uk.ac.sheffield.com1003.cafe.TestRemoveRecipe.testRemoveRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestRemoveMiddleRecipe.testRemoveMiddleRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestRecipeEqualsNoIngredients.testRecipeEqualsNoIngredients",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask5.testRecipeEqualsNoIngredients",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask7.testRemoveNonexistentRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask7.testRemoveAllRecipes",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask7.testRemoveNonexistentRecipeIncorrectException",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask7.testRemoveRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask7.testRemoveMiddleRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestRemoveAllRecipes.testRemoveAllRecipes",
+                "uk.ac.sheffield.com1003.cafe.TestCoffeeConstructorOverloaded.testCoffeeConstructorOverloaded",
+                "uk.ac.sheffield.com1003.cafe.TestRemoveNonexistentRecipeIncorrectException.testRemoveNonexistentRecipeIncorrectException",
+                "uk.ac.sheffield.com1003.cafe.TestRemoveNonexistentRecipe.testRemoveNonexistentRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestSyrupToStringRelaxed.testSyrupToStringRelaxed",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask1.testCoffeeConstructorOverloaded"
+            ],
+            "num": 15
+        },
+        "Cafe.getMenu": {
+            "tests": [
+                "uk.ac.sheffield.com1003.cafe.TestRemoveRecipe.testRemoveRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestPlaceAndServeOrder.placeAndServeOrder",
+                "uk.ac.sheffield.com1003.cafe.TestRemoveMiddleRecipe.testRemoveMiddleRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestRecipeEqualsNoIngredients.testRecipeEqualsNoIngredients",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask5.testRecipeEqualsNoIngredients",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask4.printPendingOrdersEmpty",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupToString",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupToStringRelaxed",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupOverloadedConstructorSetsUnit",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupOverloadedConstructor",
+                "uk.ac.sheffield.com1003.cafe.solution.TestSyrupOverloadedConstructor.testSyrupOverloadedConstructor",
+                "uk.ac.sheffield.com1003.cafe.TestSyrupOverloadedConstructorSetsUnit.testSyrupOverloadedConstructorSetsUnit",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask7.testRemoveRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask7.testRemoveMiddleRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask3.placeOrderForNonexistentRecipeThrowsCorrectException",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask3.placeOrderForNonexistentRecipeThrowsException",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask3.placeAndServeOrder",
+                "uk.ac.sheffield.com1003.cafe.TestPlaceOrderForNonexistentRecipeThrowsException.placeOrderForNonexistentRecipeThrowsException",
+                "uk.ac.sheffield.com1003.cafe.TestPrintPendingOrdersEmpty.printPendingOrdersEmpty",
+                "uk.ac.sheffield.com1003.cafe.TestPlaceOrderForNonexistentRecipeThrowsCorrectException.placeOrderForNonexistentRecipeThrowsCorrectException"
+            ],
+            "num": 20
+        },
+        "Water.toString": {
+            "tests": [],
+            "num": 0
+        },
+        "Water.equals": {
+            "tests": [
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask5.testRecipeMultipleIngredients",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask5.testRecipeEqualsDifferentOrderOfSameIngredients",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask5.testRecipeMultipleIngredientsDifferentName",
+                "uk.ac.sheffield.com1003.cafe.TestSyrupOverloadedConstructor.testSyrupOverloadedConstructor",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask7.testRemoveAllRecipes",
+                "uk.ac.sheffield.com1003.cafe.TestRemoveAllRecipes.testRemoveAllRecipes",
+                "uk.ac.sheffield.com1003.cafe.TestCoffeeConstructorOverloaded.testCoffeeConstructorOverloaded",
+                "uk.ac.sheffield.com1003.cafe.TestRecipeMultipleIngredients.testRecipeMultipleIngredients",
+                "uk.ac.sheffield.com1003.cafe.TestRecipeEqualsDifferentOrderOfSameIngredients.testRecipeEqualsDifferentOrderOfSameIngredients",
+                "uk.ac.sheffield.com1003.cafe.TestSyrupToString.testSyrupToString",
+                "uk.ac.sheffield.com1003.cafe.TestRecipeMultipleIngredientsDifferentName.testRecipeMultipleIngredientsDifferentName"
+            ],
+            "num": 11
+        },
+        "Cafe.serveOrder": {
+            "tests": [
+                "uk.ac.sheffield.com1003.cafe.TestPlaceAndServeOrder.placeAndServeOrder",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask4.printPendingOrdersEmpty",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupToString",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupToStringRelaxed",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupOverloadedConstructorSetsUnit",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupOverloadedConstructor",
+                "uk.ac.sheffield.com1003.cafe.solution.TestSyrupOverloadedConstructor.testSyrupOverloadedConstructor",
+                "uk.ac.sheffield.com1003.cafe.TestSyrupOverloadedConstructorSetsUnit.testSyrupOverloadedConstructorSetsUnit",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask3.placeAndServeOrder",
+                "uk.ac.sheffield.com1003.cafe.TestPrintPendingOrdersEmpty.printPendingOrdersEmpty"
+            ],
+            "num": 10
+        },
+        "Recipe.getPrice": {
+            "tests": [
+                "uk.ac.sheffield.com1003.cafe.TestPlaceAndServeOrder.placeAndServeOrder",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask4.printPendingOrdersEmpty",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupToString",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupToStringRelaxed",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupOverloadedConstructorSetsUnit",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupOverloadedConstructor",
+                "uk.ac.sheffield.com1003.cafe.solution.TestSyrupOverloadedConstructor.testSyrupOverloadedConstructor",
+                "uk.ac.sheffield.com1003.cafe.TestSyrupOverloadedConstructorSetsUnit.testSyrupOverloadedConstructorSetsUnit",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask3.placeAndServeOrder",
+                "uk.ac.sheffield.com1003.cafe.TestPrintPendingOrdersEmpty.printPendingOrdersEmpty"
+            ],
+            "num": 10
+        },
+        "Ingredient.equals": {
+            "tests": [],
+            "num": 0
+        },
+        "Recipe.equals": {
+            "tests": [],
+            "num": 0
+        },
+        "Recipe.isReady": {
+            "tests": [],
+            "num": 0
+        },
+        "Order.serve": {
+            "tests": [
+                "uk.ac.sheffield.com1003.cafe.TestPlaceAndServeOrder.placeAndServeOrder",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask4.printPendingOrdersEmpty",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupToString",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupToStringRelaxed",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupOverloadedConstructorSetsUnit",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupOverloadedConstructor",
+                "uk.ac.sheffield.com1003.cafe.solution.TestSyrupOverloadedConstructor.testSyrupOverloadedConstructor",
+                "uk.ac.sheffield.com1003.cafe.TestSyrupOverloadedConstructorSetsUnit.testSyrupOverloadedConstructorSetsUnit",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask3.placeAndServeOrder",
+                "uk.ac.sheffield.com1003.cafe.TestPrintPendingOrdersEmpty.printPendingOrdersEmpty"
+            ],
+            "num": 10
+        },
+        "Cafe.greeting": {
+            "tests": [],
+            "num": 0
+        },
+        "Ingredient.getUnit": {
+            "tests": [],
+            "num": 0
+        },
+        "Milk.toString": {
+            "tests": [],
+            "num": 0
+        },
+        "Recipe.hashCode": {
+            "tests": [],
+            "num": 0
+        },
+        "Cafe.addRecipe": {
+            "tests": [
+                "uk.ac.sheffield.com1003.cafe.TestRemoveRecipe.testRemoveRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestPlaceAndServeOrder.placeAndServeOrder",
+                "uk.ac.sheffield.com1003.cafe.TestRemoveMiddleRecipe.testRemoveMiddleRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestRecipeEqualsNoIngredients.testRecipeEqualsNoIngredients",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask5.testRecipeEqualsNoIngredients",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask4.printPendingOrdersEmpty",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupToString",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupToStringRelaxed",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupOverloadedConstructorSetsUnit",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupOverloadedConstructor",
+                "uk.ac.sheffield.com1003.cafe.solution.TestSyrupOverloadedConstructor.testSyrupOverloadedConstructor",
+                "uk.ac.sheffield.com1003.cafe.TestSyrupOverloadedConstructorSetsUnit.testSyrupOverloadedConstructorSetsUnit",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask7.testRemoveNonexistentRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask7.testRemoveAllRecipes",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask7.testRemoveNonexistentRecipeIncorrectException",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask7.testRemoveRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask7.testRemoveMiddleRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestRemoveAllRecipes.testRemoveAllRecipes",
+                "uk.ac.sheffield.com1003.cafe.TestCoffeeConstructorOverloaded.testCoffeeConstructorOverloaded",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask3.placeOrderForNonexistentRecipeThrowsCorrectException",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask3.placeOrderForNonexistentRecipeThrowsException",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask3.placeAndServeOrder",
+                "uk.ac.sheffield.com1003.cafe.TestRemoveNonexistentRecipeIncorrectException.testRemoveNonexistentRecipeIncorrectException",
+                "uk.ac.sheffield.com1003.cafe.TestRemoveNonexistentRecipe.testRemoveNonexistentRecipe",
+                "uk.ac.sheffield.com1003.cafe.TestSyrupToStringRelaxed.testSyrupToStringRelaxed",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask1.testCoffeeConstructorOverloaded",
+                "uk.ac.sheffield.com1003.cafe.TestPlaceOrderForNonexistentRecipeThrowsException.placeOrderForNonexistentRecipeThrowsException",
+                "uk.ac.sheffield.com1003.cafe.TestPrintPendingOrdersEmpty.printPendingOrdersEmpty",
+                "uk.ac.sheffield.com1003.cafe.TestPlaceOrderForNonexistentRecipeThrowsCorrectException.placeOrderForNonexistentRecipeThrowsCorrectException"
+            ],
+            "num": 29
+        },
+        "App.main": {
+            "tests": [],
+            "num": 0
+        },
+        "Order.toString": {
+            "tests": [],
+            "num": 0
+        },
+        "Milk.equals": {
+            "tests": [
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask5.testRecipeMultipleIngredients",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask5.testRecipeMultipleIngredientsDifferentName",
+                "uk.ac.sheffield.com1003.cafe.TestSyrupOverloadedConstructor.testSyrupOverloadedConstructor",
+                "uk.ac.sheffield.com1003.cafe.TestRecipeMultipleIngredients.testRecipeMultipleIngredients",
+                "uk.ac.sheffield.com1003.cafe.TestRecipeMultipleIngredientsDifferentName.testRecipeMultipleIngredientsDifferentName"
+            ],
+            "num": 5
+        },
+        "Syrup.toString": {
+            "tests": [],
+            "num": 0
+        },
+        "Cafe.placeOrder": {
+            "tests": [
+                "uk.ac.sheffield.com1003.cafe.TestPlaceAndServeOrder.placeAndServeOrder",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask4.printPendingOrdersEmpty",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupToString",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupToStringRelaxed",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupOverloadedConstructorSetsUnit",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupOverloadedConstructor",
+                "uk.ac.sheffield.com1003.cafe.solution.TestSyrupOverloadedConstructor.testSyrupOverloadedConstructor",
+                "uk.ac.sheffield.com1003.cafe.TestSyrupOverloadedConstructorSetsUnit.testSyrupOverloadedConstructorSetsUnit",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask3.placeOrderForNonexistentRecipeThrowsCorrectException",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask3.placeOrderForNonexistentRecipeThrowsException",
+                "uk.ac.sheffield.com1003.cafe.TestCafeTask3.placeAndServeOrder",
+                "uk.ac.sheffield.com1003.cafe.TestPlaceOrderForNonexistentRecipeThrowsException.placeOrderForNonexistentRecipeThrowsException",
+                "uk.ac.sheffield.com1003.cafe.TestPrintPendingOrdersEmpty.printPendingOrdersEmpty",
+                "uk.ac.sheffield.com1003.cafe.TestPlaceOrderForNonexistentRecipeThrowsCorrectException.placeOrderForNonexistentRecipeThrowsCorrectException"
+            ],
+            "num": 14
+        }
+    }
+}
