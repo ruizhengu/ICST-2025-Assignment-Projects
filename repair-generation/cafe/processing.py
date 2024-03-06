@@ -24,7 +24,6 @@ class CafeProcessing:
 
     def compile_submissions(self):
         for submission in self.submission_list:
-            print(submission)
             self.replace_build_gradle(submission)
             chmod = f"chmod +x {submission}/gradlew"
             cmd = f"{submission}/gradlew build -x test -p {submission}"
@@ -38,7 +37,7 @@ class CafeProcessing:
                     print(submission.name + " BUILD FAILED")
             except Exception as e:
                 print(f"{submission} - Error executing {e}")
-            break
+            print("*" * 5 + f" {submission} compilation finish " + "*" * 5)
 
     def replace_tests(self, submission):
         destination = submission / self._test_path
@@ -84,7 +83,6 @@ class CafeProcessing:
             submission_method_coverage[submission.name] = method_coverage
             with open(method_coverage_json, "w") as f:
                 f.write(json.dumps(submission_method_coverage, indent=4))
-            break
 
     def get_method_calls(self, submission, test):
         execution_log = submission / "method-executions.log"
@@ -120,6 +118,5 @@ class CafeProcessing:
 if __name__ == '__main__':
     p = CafeProcessing()
     # p.compile_submissions()
-    # p.replace_tests()
-    # p.inject_model_solution()
+
     p.get_failed_tests()
