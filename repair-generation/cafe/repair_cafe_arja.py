@@ -30,6 +30,15 @@ class RepairIntroClass:
             else:
                 shutil.copy2(item, destination / item.name)
 
+    def add_default_tests(self, submission):
+        destination = submission / self._test_path
+        utils.empty_directory(destination)
+        if not destination.exists():
+            destination.mkdir(parents=True)
+        for item in self.model_test_suite.iterdir():
+            if item.is_file():
+                shutil.copy2(item, destination / item.name)
+
     def inject_model_solution(self, submission):
         model_solution = self.model_solution / self._main_path / "solution"
         destination = submission / self._main_path / "solution"
@@ -47,15 +56,17 @@ class RepairIntroClass:
     def compile_submissions(self):
         for submission in self.submission_list:
             self.replace_build_gradle(submission)
+            self.add_default_tests(submission)
             chmod = f"chmod +x {submission}/gradlew"
-            cmd = f"{submission}/gradlew build -x test -p {submission}"
+            cmd = f"{submission}/gradlew build -p {submission}"
+            # cmd = f"{submission}/gradlew build -x test -p {submission}"
             # self.replace_tests(submission)
             # self.inject_model_solution(submission)
             # self.inject_aspectj(submission)
             try:
                 utils.run_cmd(chmod)
                 build_output = utils.run_cmd(cmd)
-                if "BUILD SUCCESSFUL" not in build_output:
+                if "BUILD SUCCESSFUL" not in build_output and "Execution failed for task ':test'." not in build_output:
                     print(submission.name + " BUILD FAILED")
             except Exception as e:
                 print(f"{submission} - Error executing {e}")
@@ -87,5 +98,3 @@ if __name__ == '__main__':
     repair = RepairIntroClass()
     repair.compile_submissions()
     repair.arja()
-
-
