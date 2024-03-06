@@ -9,7 +9,7 @@ class RepairIntroClass:
     def __init__(self):
         self.home_path = Path("/mnt/parscratch/users/acp22rg/APR-as-AAT/anonymised-submissions")
         self.submission_list = [submission for submission in self.home_path.iterdir() if submission.is_dir()]
-        self.model_solution = Path("/mnt/parscratch/users/acp22rg/APR-as-AAT/APR-as-AAT/resource/com1003_cafe_8")
+        self.model_solution = Path("/mnt/parscratch/users/acp22rg/APR-as-AAT/APR-as-AAT/resource/cafe_java_8")
         self.model_test_suite = self.model_solution / "src/test/java/uk/ac/sheffield/com1003/cafe"
         self._main_path = Path("src/main/java/uk/ac/sheffield/com1003/cafe")
         self._test_path = Path("src/test/java/uk/ac/sheffield/com1003/cafe")
@@ -70,7 +70,10 @@ class RepairIntroClass:
             path_dependency = Path("/mnt/parscratch/users/acp22rg/APR-as-AAT/APR-as-AAT/dependency")
             dependencies = [str(file) for file in path_dependency.glob('**/*.jar') if file.name != ".DS_Store"]
             dependencies = ":".join(dependencies)
-            path_output = Path("/mnt/parscratch/users/acp22rg/APR-as-AAT/cafe_arja_default") / dataset.name
+            path_output = Path("/mnt/parscratch/users/acp22rg/APR-as-AAT/cafe_arja_default")
+            if not path_output.exists():
+                os.mkdir(path_output)
+            path_output = path_output / dataset.name
             if not path_output.exists():
                 os.mkdir(path_output)
             arja_cmd = f"cd {arja_path} && java -cp \"lib/*:bin\" us.msu.cse.repair.Main ArjaE -DsrcJavaDir {path_src} -DbinJavaDir {path_bin_src} -DbinTestDir {path_bin_test} -Ddependences {dependencies} -DpatchOutputRoot {path_output}"
