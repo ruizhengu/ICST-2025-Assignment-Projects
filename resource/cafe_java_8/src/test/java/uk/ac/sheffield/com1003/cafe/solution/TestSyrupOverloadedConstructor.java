@@ -91,7 +91,7 @@ public class TestSyrupOverloadedConstructor  {
 
     @Test(timeout = 5000)
     public void testSyrupOverloadedConstructor() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException, InstantiationException {
-        Class<?> syrupClass = Class.forName("uk.ac.sheffield.com1003.cafe.ingredients.Syrup");
+        Class<?> syrupClass = Class.forName("uk.ac.sheffield.com1003.cafe.solution.ingredients.Syrup");
         Object o = ConstructorUtils.invokeConstructor(syrupClass, "caramel");
         assertTrue(syrupClass.isInstance(o));
 

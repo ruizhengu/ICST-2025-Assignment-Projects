@@ -83,6 +83,7 @@ class CafeProcessing:
             submission_method_coverage[submission.name] = method_coverage
             with open(method_coverage_json, "w") as f:
                 f.write(json.dumps(submission_method_coverage, indent=4))
+            print(f"Get failed tests: {submission.name}")
 
     def get_method_calls(self, submission, test):
         execution_log = submission / "method-executions.log"
@@ -114,9 +115,22 @@ class CafeProcessing:
         deduplicate = set(methods)
         return [m.replace("\n", "") for m in deduplicate]
 
+    def test_all_submissions(self):
+        for submission in self.submission_list:
+            test_cmd = f"{submission}/gradlew build -p {submission}"
+            utils.run_cmd(test_cmd)
+            try:
+                build_output = utils.run_cmd(test_cmd)
+                if "BUILD SUCCESSFUL" not in build_output and "Execution failed for task ':test'." not in build_output:
+                    print(submission.name + " BUILD FAILED")
+            except Exception as e:
+                print(f"{submission} - Error executing {e}")
+            # print("*" * 5 + f" {submission} compilation finish " + "*" * 5)
+
 
 if __name__ == '__main__':
     p = CafeProcessing()
     # p.compile_submissions()
 
-    p.get_failed_tests()
+    # p.get_failed_tests()
+    p.test_all_submissions()

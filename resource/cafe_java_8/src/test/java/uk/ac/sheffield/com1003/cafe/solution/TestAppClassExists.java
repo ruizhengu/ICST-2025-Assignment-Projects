@@ -87,7 +87,7 @@ public class TestAppClassExists  {
 
     @Test(timeout = 5000)
     public void testAppClassExists() throws ClassNotFoundException {
-        Class<?> clazz = Class.forName("uk.ac.sheffield.com1003.cafe.App");
+        Class<?> clazz = Class.forName("uk.ac.sheffield.com1003.cafe.solution.App");
         assertNotNull(clazz);
     }
 

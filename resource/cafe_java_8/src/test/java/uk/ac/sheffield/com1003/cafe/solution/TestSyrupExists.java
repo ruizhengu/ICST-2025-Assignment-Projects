@@ -86,7 +86,7 @@ public class TestSyrupExists  {
     @Test(timeout = 5000)
     public void testSyrupExists() throws Exception {
         try {
-            Class.forName("uk.ac.sheffield.com1003.cafe.ingredients.Syrup");
+            Class.forName("uk.ac.sheffield.com1003.cafe.solution.ingredients.Syrup");
         } catch (ClassNotFoundException e) {
             throw new Exception("Class Syrup does not exist");
         }

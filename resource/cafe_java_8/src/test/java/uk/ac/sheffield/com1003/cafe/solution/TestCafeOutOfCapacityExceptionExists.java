@@ -90,7 +90,7 @@ public class TestCafeOutOfCapacityExceptionExists  {
     @Test(timeout = 5000)
     public void testCafeOutOfCapacityExceptionExists() {
         try {
-            Class.forName("uk.ac.sheffield.com1003.cafe.exceptions.CafeOutOfCapacityException");
+            Class.forName("uk.ac.sheffield.com1003.cafe.solution.exceptions.CafeOutOfCapacityException");
         } catch (ClassNotFoundException e) {
             fail("CafeOutOfCapacityException class does not exist");
         }

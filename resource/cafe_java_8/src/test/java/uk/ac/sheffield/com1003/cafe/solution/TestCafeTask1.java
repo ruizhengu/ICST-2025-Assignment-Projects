@@ -94,7 +94,7 @@ public class TestCafeTask1 {
 
     @Test
     public void testAppClassExists() throws ClassNotFoundException {
-        Class<?> clazz = Class.forName("uk.ac.sheffield.com1003.cafe.App");
+        Class<?> clazz = Class.forName("uk.ac.sheffield.com1003.cafe.solution.App");
         assertNotNull(clazz);
     }
 
