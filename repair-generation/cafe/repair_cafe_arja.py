@@ -58,15 +58,15 @@ class RepairIntroClass:
         for submission in self.submission_list:
             self.replace_build_gradle(submission)
             self.add_default_tests(submission)
-            chmod = f"chmod +x {submission}/gradlew"
-            cmd = f"{submission}/gradlew build -p {submission}"
+            chmod_cmd = f"chmod +x {submission}/gradlew"
+            build_cmd = f"{submission}/gradlew build -p {submission}"
             # cmd = f"{submission}/gradlew build -x test -p {submission}"
             # self.replace_tests(submission)
             # self.inject_model_solution(submission)
             # self.inject_aspectj(submission)
             try:
-                utils.run_cmd(chmod)
-                build_output = utils.run_cmd(cmd)
+                utils.run_cmd(chmod_cmd)
+                build_output = utils.run_cmd(build_cmd)
                 if "BUILD SUCCESSFUL" not in build_output and "Execution failed for task ':test'." not in build_output:
                     print(submission.name + " BUILD FAILED")
             except Exception as e:
