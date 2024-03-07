@@ -4,6 +4,14 @@
 ./gradlew build
 ```
 
+Build the external projecrt
+
+```shell
+cd external
+mkdir bin
+javac -cp lib/*: -d bin $(find src -name '*.java')
+```
+
 ### Run ARJA-e with arguments
 
 ```shell
