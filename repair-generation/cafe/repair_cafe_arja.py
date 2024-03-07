@@ -77,8 +77,8 @@ class RepairIntroClass:
         for dataset in self.submission_list:
             arja_path = "/mnt/parscratch/users/acp22rg/APR-as-AAT/APR4Grade/arja"
             path_src = dataset / "src"
-            path_bin_src = dataset / "target/classes"
-            path_bin_test = dataset / "target/test-classes"
+            path_bin_src = dataset / "build/classes/java/main"
+            path_bin_test = dataset / "build/classes/java/test"
             path_dependency = Path("/mnt/parscratch/users/acp22rg/APR-as-AAT/APR4Grade/dependency")
             dependencies = [str(file) for file in path_dependency.glob('**/*.jar') if file.name != ".DS_Store"]
             dependencies = ":".join(dependencies)
