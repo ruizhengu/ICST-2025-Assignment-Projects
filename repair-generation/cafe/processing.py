@@ -13,7 +13,9 @@ class CafeProcessing:
         self.submission_path = Path("/Users/ruizhengu/Experiments/APR-as-AAT/anonymised-submissions")
         self.model_solution = Path("/Users/ruizhengu/Projects/APR-as-AAT/resource/cafe_java_8")
         self.model_test_suite = self.model_solution / "src/test/java/uk/ac/sheffield/com1003/cafe"
-        self.submission_list = list(filter(lambda p: ".DS_Store" not in str(p), self.submission_path.iterdir()))
+        # self.submission_list = list(filter(lambda p: ".DS_Store" not in str(p) and "", self.submission_path.iterdir()))
+        self.submission_list = [submission for submission in self.submission_path.iterdir() if
+                                submission.is_dir() and submission.name != ".git"]
         self._main_path = Path("src/main/java/uk/ac/sheffield/com1003/cafe")
         self._test_path = Path("src/test/java/uk/ac/sheffield/com1003/cafe")
         self.methods = self.get_model_methods()

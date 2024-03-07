@@ -74,22 +74,25 @@ class RepairIntroClass:
             print("*" * 5 + f" {submission} compilation finish " + "*" * 5)
 
     def arja(self):
-        for dataset in self.submission_list:
-            arja_path = "/mnt/parscratch/users/acp22rg/APR-as-AAT/APR4Grade/arja"
-            path_src = dataset / "src"
-            path_bin_src = dataset / "build/classes/java/main"
-            path_bin_test = dataset / "build/classes/java/test"
+        arja_path = "/mnt/parscratch/users/acp22rg/APR-as-AAT/APR4Grade/arja"
+        arja_build_cmd = f"{arja_path}/gradlew run -p {arja_path} build"
+        utils.run_cmd(arja_build_cmd)
+        for submission in self.submission_list:
+            path_src = submission / "src"
+            path_bin_src = submission / "build/classes/java/main"
+            path_bin_test = submission / "build/classes/java/test"
             path_dependency = Path("/mnt/parscratch/users/acp22rg/APR-as-AAT/APR4Grade/dependency")
             dependencies = [str(file) for file in path_dependency.glob('**/*.jar') if file.name != ".DS_Store"]
             dependencies = ":".join(dependencies)
             path_output = Path("/mnt/parscratch/users/acp22rg/APR-as-AAT/cafe_arja_default")
             if not path_output.exists():
                 os.mkdir(path_output)
-            path_output = path_output / dataset.name
+            path_output = path_output / submission.name
             if not path_output.exists():
                 os.mkdir(path_output)
-            arja_cmd = f"cd {arja_path} && java -cp \"lib/*:bin\" us.msu.cse.repair.Main ArjaE -DsrcJavaDir {path_src} -DbinJavaDir {path_bin_src} -DbinTestDir {path_bin_test} -Ddependences {dependencies} -DpatchOutputRoot {path_output}"
-            print("=" * 10 + f" ARJA -> {dataset} " + "=" * 10)
+            # arja_cmd = f"cd {arja_path} && java -cp \"lib/*:bin\" us.msu.cse.repair.Main ArjaE -DsrcJavaDir {path_src} -DbinJavaDir {path_bin_src} -DbinTestDir {path_bin_test} -Ddependences {dependencies} -DpatchOutputRoot {path_output}"
+            arja_cmd = f"{arja_path}/gradlew run -p {arja_path} --args='ArjaE -DsrcJavaDir {path_src} -DbinJavaDir {path_bin_src} -DbinTestDir {path_bin_test} -Ddependences {dependencies} -DpatchOutputRoot {path_output}'"
+            print("=" * 10 + f" ARJA -> {submission} " + "=" * 10)
             # print(arja_cmd)
             arja_output = utils.run_cmd(arja_cmd)
             # print(arja_output)
@@ -97,5 +100,5 @@ class RepairIntroClass:
 
 if __name__ == '__main__':
     repair = RepairIntroClass()
-    repair.compile_submissions()
+    # repair.compile_submissions()
     repair.arja()

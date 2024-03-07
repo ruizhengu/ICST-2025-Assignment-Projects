@@ -1,5 +1,7 @@
 plugins {
-    id("java")
+//    id("java")
+    java
+    application
 }
 
 group = "org.example"
@@ -19,6 +21,10 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
 
     implementation(fileTree("libs") { include("*.jar") })
+}
+
+application {
+    mainClass.set("us.msu.cse.repair.Main")
 }
 
 configurations.all {
