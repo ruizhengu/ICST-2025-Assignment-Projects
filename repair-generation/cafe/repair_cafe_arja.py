@@ -7,9 +7,10 @@ import utils
 
 class RepairIntroClass:
     def __init__(self):
-        self.home_path = Path("/mnt/parscratch/users/acp22rg/APR-as-AAT/anonymised-submissions")
-        self.submission_list = [submission for submission in self.home_path.iterdir() if submission.is_dir()]
-        self.model_solution = Path("/mnt/parscratch/users/acp22rg/APR-as-AAT/APR-as-AAT/resource/cafe_java_8")
+        self.home_path = Path("/mnt/parscratch/users/acp22rg/APR-as-AAT/IntermediateJava")
+        self.submission_list = [submission for submission in self.home_path.iterdir() if
+                                submission.is_dir() and submission.name != ".git"]
+        self.model_solution = Path("/mnt/parscratch/users/acp22rg/APR-as-AAT/APR4Grade/resource/cafe_java_8")
         self.model_test_suite = self.model_solution / "src/test/java/uk/ac/sheffield/com1003/cafe"
         self._main_path = Path("src/main/java/uk/ac/sheffield/com1003/cafe")
         self._test_path = Path("src/test/java/uk/ac/sheffield/com1003/cafe")
@@ -74,11 +75,11 @@ class RepairIntroClass:
 
     def arja(self):
         for dataset in self.submission_list:
-            arja_path = "/mnt/parscratch/users/acp22rg/APR-as-AAT/APR-as-AAT/arja"
+            arja_path = "/mnt/parscratch/users/acp22rg/APR-as-AAT/APR4Grade/arja"
             path_src = dataset / "src"
             path_bin_src = dataset / "target/classes"
             path_bin_test = dataset / "target/test-classes"
-            path_dependency = Path("/mnt/parscratch/users/acp22rg/APR-as-AAT/APR-as-AAT/dependency")
+            path_dependency = Path("/mnt/parscratch/users/acp22rg/APR-as-AAT/APR4Grade/dependency")
             dependencies = [str(file) for file in path_dependency.glob('**/*.jar') if file.name != ".DS_Store"]
             dependencies = ":".join(dependencies)
             path_output = Path("/mnt/parscratch/users/acp22rg/APR-as-AAT/cafe_arja_default")

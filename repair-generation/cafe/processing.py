@@ -1,4 +1,5 @@
 import json
+import os.path
 import re
 import shutil
 import subprocess
@@ -68,6 +69,7 @@ class CafeProcessing:
         submission_method_coverage = {}
         method_coverage_json = "/Users/ruizhengu/Projects/APR-as-AAT/repair-generation/lib/method_coverage.json"
         for submission in self.submission_list:
+            self.inject_aspectj(submission)
             test_cmd = f"{submission}/gradlew build -p {submission}"
             utils.run_cmd(test_cmd)
             list_cmd = f"{submission}/gradlew listFailedTests -p {submission}"
@@ -127,10 +129,46 @@ class CafeProcessing:
                 print(f"{submission} - Error executing {e}")
             # print("*" * 5 + f" {submission} compilation finish " + "*" * 5)
 
+    def reset_submission(self):
+        """
+        Remove the model solution
+        Remove the model test suite
+        Remove AspectJ and method-executions.log
+        """
+        for submission in self.submission_list:
+            # Remove the model solution
+            model_solution = submission / self._main_path / "solution"
+            if model_solution.exists():
+                shutil.rmtree(model_solution)
+            # Remove the model test suite
+            model_test = submission / self._test_path / "solution"
+            if model_test.exists():
+                shutil.rmtree(model_test)
+            # Remove AspectJ
+            aspect_j = submission / "src/main/java/aspect"
+            if aspect_j.exists():
+                shutil.rmtree(aspect_j)
+            # remove method execution log
+            log = submission / "method-executions.log"
+            if os.path.exists(log):
+                os.remove(log)
+            test_cmd = f"{submission}/gradlew build -p {submission}"
+            utils.run_cmd(test_cmd)
+            try:
+                build_output = utils.run_cmd(test_cmd)
+                if "BUILD SUCCESSFUL" not in build_output and "Execution failed for task ':test'." not in build_output:
+                    print(submission.name + " BUILD FAILED")
+            except Exception as e:
+                print(f"{submission} - Error executing {e}")
+
+    def count_submission(self):
+        count = 0
+        for submission in self.submission_list:
+            count += 1
+        print(count)
+
 
 if __name__ == '__main__':
     p = CafeProcessing()
     # p.compile_submissions()
-
-    # p.get_failed_tests()
-    p.test_all_submissions()
+    p.get_failed_tests()
