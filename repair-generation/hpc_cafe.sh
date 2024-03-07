@@ -8,6 +8,6 @@ module Anaconda3/2022.05
 #conda init bash
 #conda activate APR-as-AAT
 
-export PYTHONPATH="${PYTHONPATH}:/mnt/parscratch/users/acp22rg/APR-as-AAT/APR-as-AAT/repair-generation"
+export PYTHONPATH="${PYTHONPATH}:/mnt/parscratch/users/acp22rg/APR-as-AAT/APR4Grade/repair-generation"
 
-python /mnt/parscratch/users/acp22rg/APR-as-AAT/APR-as-AAT/repair-generation/cafe/repair_cafe_arja.py
+python /mnt/parscratch/users/acp22rg/APR-as-AAT/APR4Grade/repair-generation/cafe/repair_cafe_arja.py
