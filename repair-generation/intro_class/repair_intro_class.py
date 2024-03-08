@@ -13,7 +13,8 @@ class RepairIntroClass:
         self.new_root = Path("/Users/ruizhengu/Experiments/APR-as-AAT/newIntroClass")
         self.datasets_ref = Path("/Users/ruizhengu/Experiments/APR-as-AAT/newIntroClassRef")
         # self.new_datasets = self.pre_processing()
-        self.new_datasets = self.copy_ref()
+        # self.new_datasets = self.copy_ref()
+        self.new_datasets = self.new_dataset()
         # self.path_output = Path("/Users/ruizhengu/Experiments/APR-as-AAT/arja_intro")
         self.path_output = Path("/Users/ruizhengu/Experiments/APR-as-AAT/arja_intro_ref")
 
@@ -72,6 +73,15 @@ class RepairIntroClass:
                         new_datasets.append(program)
         return new_datasets
 
+    def new_dataset(self):
+        new_datasets = []
+        for dataset in self.datasets_ref.iterdir():
+            if dataset.is_dir():
+                for program in dataset.iterdir():
+                    if program.is_dir() and program.name != "ref" and program.name != "test" and program.name != "main":
+                        new_datasets.append(program)
+        return new_datasets
+
     def arja(self):
         # for program in self.new_datasets:
         for program in self.new_datasets:
@@ -98,6 +108,21 @@ class RepairIntroClass:
             # print(arja_cmd)
             utils.run_cmd(arja_cmd)
 
+    def k_gen_prog(self):
+        success_count = 0
+        for program in self.new_datasets:
+            path_src = program / "src/main"
+            path_test = program / "src/test"
+            cmd = f"java -jar /Users/ruizhengu/Experiments/APR-as-AAT/kGenProg-1.8.2.jar -r {program} -s {path_src} -t {path_test} --max-generation 50"
+            output = utils.run_cmd(cmd)
+            if "Exit status = SUCCESS" in output:
+                success_count += 1
+            print(f"kGenProg > {program}")
+        print(f"Success Count: {success_count}")
+
+    def jaid(self):
+        pass
+
     def check_outputs(self):
         total_count = 0
         data = {}
@@ -117,4 +142,5 @@ class RepairIntroClass:
 if __name__ == '__main__':
     repair = RepairIntroClass()
     # repair.arja()
-    repair.check_outputs()
+    # repair.check_outputs()
+    repair.k_gen_prog()

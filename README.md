@@ -14,10 +14,7 @@ Java version: 1.7
 
 ### Command
 
-**Mac**
-
 ```sh
-# IntroClassJava
 java -cp "lib/*:bin:target/classes" us.msu.cse.repair.Main Arja -DsrcJavaDir /Users/ruizhengu/Experiments/APR-as-AAT/newIntroClass/median/1/src -DbinJavaDir /Users/ruizhengu/Experiments/APR-as-AAT/newIntroClass/median/1/target/classes -DbinTestDir /Users/ruizhengu/Experiments/APR-as-AAT/newIntroClass/median/1/target/test-classes -Ddependences /Users/ruizhengu/Experiments/APR-as-AAT/dependency
 ```
 
@@ -32,12 +29,6 @@ Repository: https://github.com/SpoonLabs/astor
 Java version: 1.8
 
 JUnit version: 4
-
-### Configuration
-
-**Main:** [AstorMain.java](/properties/astor/AstorMain.java)
-
-**Maven:** [pom.xml](/properties/astor/pom.xml)
 
 ### Command
 
@@ -132,7 +123,9 @@ Failed test file does not exist : /home/ruizhen/Projects/SSBSE/GenPat/resources/
 
 ## Genesis
 
-***Can not compile, will try on a VM later.***
+### Comments
+
+* Can not compile.
 
 ## JAID
 
@@ -162,6 +155,8 @@ Repository: https://github.com/squaresLab/genprog4java
 * Can not run the provided example.
 
 ## LSRepair
+
+Repository: https://github.com/TruX-DTF/LSRepair
 
 ### Procedure
 
@@ -223,8 +218,6 @@ org.apache.commons.lang3.math.NumberUtils,462
 Exception in thread "main" java.lang.Error: Unresolved compilation problem: 
 ```
 
-Missing */SimFix/sbfl/ochiai* directory.
-
 ### Comments
 
 * The off-the-shelf version is fixed to Defects4J bugs (required bug information located in */SimFix/d4j-info*).
@@ -278,13 +271,12 @@ JUnit version: 4
 ### Command
 
 ```sh
-# execute in the root directory of the problem sheet
-java -jar kGenProg-1.8.2.jar 
+java -jar /Users/ruizhengu/Experiments/APR-as-AAT/kGenProg-1.8.2.jar -r /Users/ruizhengu/Experiments/APR-as-AAT/newIntroClass/median/median_1 -s /Users/ruizhengu/Experiments/APR-as-AAT/newIntroClass/median/median_1/src/main -t /Users/ruizhengu/Experiments/APR-as-AAT/newIntroClass/median/median_1/src/test --max-generation 50
 ```
 
 ### Comments
 
-* No result is generated.
+* 14 patches generated from IntroClassJava.
 
 ## kPAR
 
