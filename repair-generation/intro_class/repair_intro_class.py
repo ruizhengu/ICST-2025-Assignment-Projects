@@ -120,9 +120,6 @@ class RepairIntroClass:
             print(f"kGenProg > {program}")
         print(f"Success Count: {success_count}")
 
-    def jaid(self):
-        pass
-
     def check_outputs(self):
         total_count = 0
         data = {}

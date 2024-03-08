@@ -162,7 +162,7 @@ public class Cafe {
         sb.append(sectionSep);
         sb.append("Enjoy!");
         System.out.println(sb);
-    };
+    }
 
 
     /**
