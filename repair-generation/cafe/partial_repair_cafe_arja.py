@@ -1,13 +1,19 @@
 import json
 import os
+import random
 import re
 from pathlib import Path
 
 
 class PartialRepairCafeArja:
     def __init__(self):
-        self.model_solution = Path("/Users/ruizhengu/Projects/APR-as-AAT/resource/cafe_java_8")
-        self.method_file_json = Path("/Users/ruizhengu/Projects/APR-as-AAT/repair-generation/lib/method_files.json")
+        self.home_path = Path("/Users/ruizhengu/Projects/APR-as-AAT")
+        self.model_solution = self.home_path / "resource/cafe_java_8"
+        self.method_file_json = self.home_path / "repair-generation/lib/method_files.json"
+        self.method_coverage_json = self.home_path / "repair-generation/lib/method_coverage.json"
+        self.method_ranking_policy = "ASCENT"
+        self.method_ranking_policy = "DESCENT"
+        # self.method_ranking_policy = "RANDOM"
 
     def replace_method(self, submission, method_name, content):
         method_file = Path(self.get_method_path(method_name))
@@ -65,20 +71,46 @@ class PartialRepairCafeArja:
             d = json.load(f)
         return d[method_name]
 
-    def get_patch(self):
+    def get_patch(self, submission):
         pass
 
-    def method_ranking(self):
-        # failed test number high to low
-        # failed test number low to high
-        # random
-        pass
+    def method_ranking(self, submission):
+        with open(self.method_coverage_json) as f:
+            d = json.load(f)
+        coverage = d[submission]
+        methods_with_coverage = [(method, detail["num"]) for method, detail in coverage.items() if detail["num"] > 0]
+        if self.method_ranking_policy == "ASCENT":
+            # sort from high to low
+            sorted_methods = sorted(methods_with_coverage, key=lambda x: x[1], reverse=True)
+            for method in sorted_methods:
+                yield method[0]
+        elif self.method_ranking_policy == "DESCENT":
+            # sort from low to high
+            sorted_methods = sorted(methods_with_coverage, key=lambda x: x[1], reverse=False)
+            for method in sorted_methods:
+                yield method[0]
+        elif self.method_ranking_policy == "RANDOM":
+            # get a random element
+            for i in range(len(methods_with_coverage)):
+                random_index = random.randint(0, len(methods_with_coverage) - 1)
+                random_element = methods_with_coverage.pop(random_index)
+                yield random_element[0]
+
+
+def yield_test():
+    li = [1, 2, 3, 4, 5]
+    for i in range(3):
+        print(li)
+        yield li.pop()
 
 
 if __name__ == '__main__':
-    method = "App.main"
-    submission = Path("/Users/ruizhengu/Experiments/APR-as-AAT/cafe_java_8")
+    # method = "App.main"
+    # submission = Path("/Users/ruizhengu/Experiments/APR-as-AAT/cafe_java_8")
 
     p = PartialRepairCafeArja()
-    content = p.get_model_method_content(method)
-    p.replace_method(submission, method, content)
+    # content = p.get_model_method_content(method)
+    # p.replace_method(submission, method, content)
+    submission = "135"
+    for i in p.method_ranking(submission):
+        print(i)
