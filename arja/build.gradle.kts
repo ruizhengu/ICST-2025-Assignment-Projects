@@ -27,14 +27,6 @@ application {
     mainClass.set("us.msu.cse.repair.Main")
 }
 
-configurations.all {
-    resolutionStrategy {
-        force("org.eclipse.platform:org.eclipse.core.runtime:3.13.0")
-        force("org.eclipse.core:org.eclipse.core.resources:3.9.1.v20140825-1431")
-
-    }
-}
-
 tasks.test {
     useJUnitPlatform()
 }
