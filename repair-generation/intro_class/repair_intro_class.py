@@ -102,7 +102,6 @@ class RepairIntroClass:
             path_output = path_output / program.name
             if not path_output.exists():
                 os.mkdir(path_output)
-
             arja_cmd = f"cd {arja_path} && java -cp \"lib/*:bin:target/classes\" us.msu.cse.repair.Main Arja -DsrcJavaDir {path_src} -DbinJavaDir {path_bin_src} -DbinTestDir {path_bin_test} -Ddependences {path_dependency} -DpatchOutputRoot {path_output}"
             print("=" * 10 + f" ARJA -> {program} " + "=" * 10)
             # print(arja_cmd)
@@ -139,5 +138,5 @@ class RepairIntroClass:
 if __name__ == '__main__':
     repair = RepairIntroClass()
     # repair.arja()
-    # repair.check_outputs()
-    repair.k_gen_prog()
+    repair.check_outputs()
+    # repair.k_gen_prog()

@@ -175,6 +175,17 @@ class PartialRepairCafeArja:
                 random_element = methods_with_coverage.pop(random_index)
                 yield random_element[0]
 
+    def filter_patches(self):
+        patches = Path("/Users/ruizhengu/Downloads/patches_ctxr")
+        for patch in patches.iterdir():
+            if patch.is_dir():
+                diff = patch / "diff"
+                with open(diff, "r") as f:
+                    d = f.read()
+            if "System.exit(0);" not in d:
+                print(patch)
+            print(d)
+
 
 def yield_test():
     li = [1, 2, 3, 4, 5]
@@ -191,4 +202,5 @@ if __name__ == '__main__':
     # content = p.get_model_method_content(method)
     # p.replace_method(submission, method, content)
     submission = "135"
-    p.apply_patch(submission)
+    # p.apply_patch(submission)
+    p.filter_patches()

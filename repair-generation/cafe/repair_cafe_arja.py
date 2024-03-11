@@ -99,6 +99,10 @@ class RepairIntroClass:
 
 
 if __name__ == '__main__':
-    repair = RepairIntroClass()
+    # repair = RepairIntroClass()
     # repair.compile_submissions()
-    repair.arja()
+    # repair.arja()
+    path_dependency = Path("/Users/ruizhengu/Projects/APR-as-AAT/dependency")
+    dependencies = [str(file) for file in path_dependency.glob('**/*.jar') if file.name != ".DS_Store"]
+    dependencies = ":".join(dependencies)
+    print(dependencies)
