@@ -96,8 +96,62 @@ class PartialRepairCafeArja:
         return patches
 
     def apply_patch(self, submission):
+        submission = "median_1"
+
+        # TODO create a copy of the program under patch
+
+        path = Path("/Users/ruizhengu/Experiments/APR-as-AAT/arja_intro_patches/median_1")
+
         patches = self.get_patches(submission)
-        print(patches)
+        for patch in patches:
+            # print(patch["file_path"].split(f"{submission}/"))
+            path_suffix = patch["file_path"].split(f"{submission}/")[-1]
+            patch_path = path / path_suffix
+            print(patch)
+            if patch["action"] == "Replace":
+                # self.replace_statement(patch_path, patch)
+                pass
+            elif patch["action"] == "Delete":
+                # self.delete_statement(patch_path, patch)
+                pass
+            elif patch["action"] == "InsertBefore":
+                self.insert_statement_before(patch_path, patch)
+            else:
+                raise Exception("Unexpected Patch Action!")
+
+    def replace_statement(self, patch_path, patch):
+        with open(patch_path, "r") as f:
+            lines = f.readlines()
+        line_index = int(patch["line_number"]) - 1
+        if lines[line_index].strip().replace(" ", "") == patch["faulty_line"].replace(" ", ""):
+            lines[line_index] = patch["seed_line"] + "\n"
+        else:
+            raise Exception("Patch line number doesn't match with faulty code!")
+        with open(patch_path, "w") as f:
+            f.writelines(lines)
+
+    def delete_statement(self, patch_path, patch):
+        with open(patch_path, "r") as f:
+            lines = f.readlines()
+        line_index = int(patch["line_number"]) - 1
+        if lines[line_index].strip().replace(" ", "") == patch["faulty_line"].replace(" ", ""):
+            lines.pop(line_index)
+        else:
+            raise Exception("Patch line number doesn't match with faulty code!")
+        with open(patch_path, "w") as f:
+            f.writelines(lines)
+
+    def insert_statement_before(self, patch_path, patch):
+        with open(patch_path, "r") as f:
+            lines = f.readlines()
+        line_index = int(patch["line_number"]) - 1
+        print(lines[line_index].strip().replace(" ", ""))
+        if lines[line_index].strip().replace(" ", "") == patch["faulty_line"].replace(" ", ""):
+            lines.insert(line_index, patch["seed_line"] + "\n")
+        else:
+            raise Exception("Patch line number doesn't match with faulty code!")
+        with open(patch_path, "w") as f:
+            f.writelines(lines)
 
     def method_ranking(self, submission):
         with open(self.method_coverage_json) as f:
