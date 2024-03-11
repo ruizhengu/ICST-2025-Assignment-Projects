@@ -14,6 +14,7 @@ class PartialRepairCafeArja:
         self.method_ranking_policy = "ASCENT"
         self.method_ranking_policy = "DESCENT"
         # self.method_ranking_policy = "RANDOM"
+        self.patch_dir = "/Users/ruizhengu/Experiments/APR-as-AAT/arja_intro/median"
 
     def replace_method(self, submission, method_name, content):
         method_file = Path(self.get_method_path(method_name))
@@ -71,8 +72,32 @@ class PartialRepairCafeArja:
             d = json.load(f)
         return d[method_name]
 
-    def get_patch(self, submission):
-        pass
+    def get_patches(self, submission):
+        with open("/Users/ruizhengu/Experiments/APR-as-AAT/arja_intro/median/median_1/Patch_465.txt") as f:
+            text = f.read()
+        patterns = {
+            "Replace": re.compile(r"Replace (.*?) (\d+)\s+Faulty:\s+(.*?)\s+Seed:\s+(.*?)\s+\*+", re.DOTALL),
+            "Delete": re.compile(r"Delete (.*?) (\d+)\s+Faulty:\s+(.*?)\s+Seed:\s+(.*?)\s+\*+", re.DOTALL),
+            "InsertBefore": re.compile(r"InsertBefore (.*?) (\d+)\s+Faulty:\s+(.*?)\s+Seed:\s+(.*?)\s+\*+", re.DOTALL),
+        }
+        patches = []
+        for action, pattern in patterns.items():
+            matches = pattern.findall(text)
+            for match in matches:
+                file_path, line_number, faulty, seed = match
+                patch = {
+                    "action": action,
+                    "file_path": file_path,
+                    "line_number": line_number,
+                    "faulty_line": faulty.strip(),
+                    "seed_line": seed.strip()
+                }
+                patches.append(patch)
+        return patches
+
+    def apply_patch(self, submission):
+        patches = self.get_patches(submission)
+        print(patches)
 
     def method_ranking(self, submission):
         with open(self.method_coverage_json) as f:
@@ -112,5 +137,4 @@ if __name__ == '__main__':
     # content = p.get_model_method_content(method)
     # p.replace_method(submission, method, content)
     submission = "135"
-    for i in p.method_ranking(submission):
-        print(i)
+    p.apply_patch(submission)
