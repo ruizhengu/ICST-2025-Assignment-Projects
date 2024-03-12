@@ -2,7 +2,7 @@ import shutil
 from datetime import datetime
 
 import utils
-from repair_cafe import RepairCafe
+# from repair_cafe import RepairCafe
 from pathlib import Path
 
 
@@ -17,7 +17,7 @@ class PartialRepairCafe:
         # self.astor_output = "/Users/ruizhengu/Projects/APR-as-AAT/repair-generation/results/output_astor"
         self.astor_output = "/mnt/parscratch/users/acp22rg/APR-as-AAT/APR-as-AAT/repair-generation/results/output_astor"
 
-        self.repair_cafe = RepairCafe(self.submissions, self.home_path, self.astor_output)
+        # self.repair_cafe = RepairCafe(self.submissions, self.home_path, self.astor_output)
         self.submission_roots = self.repair_cafe.pre_processing()
 
         self.home_repair = self.home_path / "repair-generation"
