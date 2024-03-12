@@ -108,3 +108,26 @@ tasks.register('listFailedTests') {
         })
     }
 }
+
+tasks.register('countFailedTests') {
+    doLast {
+        def count = 0
+        def testResultsDir = file("${project.buildDir}/test-results/test")
+        if (!testResultsDir.exists()) {
+            println "Test results not found. Please run tests before executing this task."
+            return
+        }
+        testResultsDir.eachFileMatch(~/.+\.xml$/, { File resultFile ->
+            def testResult = new XmlSlurper().parse(resultFile)
+            testResult.'testcase'.each { testcase ->
+                if (testcase.'failure'.size() > 0) {
+                    count += 1
+//                    def className = testcase.'@classname'.text()
+//                    def methodName = testcase.'@name'.text()
+
+                }
+            }
+        })
+        println "Number of negative tests: ${count}"
+    }
+}
