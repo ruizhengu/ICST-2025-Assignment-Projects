@@ -10,10 +10,9 @@ import utils
 
 class CafeProcessing:
     def __init__(self):
-        self.submission_path = Path("/Users/ruizhengu/Experiments/APR-as-AAT/anonymised-submissions")
-        self.model_solution = Path("/Users/ruizhengu/Projects/APR-as-AAT/resource/cafe_java_8")
+        self.submission_path = Path("/Users/ruizhengu/Experiments/APR4Grade/IntermediateJava")
+        self.model_solution = Path("/Users/ruizhengu/Projects/APR4Grade/model_solution")
         self.model_test_suite = self.model_solution / "src/test/java/uk/ac/sheffield/com1003/cafe"
-        # self.submission_list = list(filter(lambda p: ".DS_Store" not in str(p) and "", self.submission_path.iterdir()))
         self.submission_list = [submission for submission in self.submission_path.iterdir() if
                                 submission.is_dir() and submission.name != ".git"]
         self._main_path = Path("src/main/java/uk/ac/sheffield/com1003/cafe")
@@ -28,11 +27,11 @@ class CafeProcessing:
     def compile_submissions(self):
         for submission in self.submission_list:
             self.replace_build_gradle(submission)
-            chmod = f"chmod +x {submission}/gradlew"
-            cmd = f"{submission}/gradlew build -x test -p {submission}"
             self.replace_tests(submission)
-            self.inject_model_solution(submission)
-            self.inject_aspectj(submission)
+            chmod = f"chmod +x {submission}/gradlew"
+            cmd = f"{submission}/gradlew build -p {submission}"
+            # self.inject_model_solution(submission)
+            # self.inject_aspectj(submission)
             try:
                 utils.run_cmd(chmod)
                 build_output = utils.run_cmd(cmd)
@@ -113,7 +112,7 @@ class CafeProcessing:
         return method_coverage
 
     def get_model_methods(self):
-        methods_txt = Path("/Users/ruizhengu/Projects/APR-as-AAT/repair-generation/lib/methods.txt")
+        methods_txt = Path("/Users/ruizhengu/Projects/APR4Grade/repair-generation/lib/methods.txt")
         with open(methods_txt, "r") as f:
             methods = f.readlines()
         deduplicate = set(methods)
@@ -129,7 +128,36 @@ class CafeProcessing:
                     print(submission.name + " BUILD FAILED")
             except Exception as e:
                 print(f"{submission} - Error executing {e}")
-            # print("*" * 5 + f" {submission} compilation finish " + "*" * 5)
+
+    def add_missed_classes(self):
+        for submission in self.submission_list:
+            classes = {
+                "app": {
+                    "submission": submission / "src/main/java/uk/ac/sheffield/com1003/cafe/App.java",
+                    "model": self.model_solution / "src/main/java/uk/ac/sheffield/com1003/cafe/App.java"
+                },
+                "syrup": {
+                    "submission": submission / "src/main/java/uk/ac/sheffield/com1003/cafe/ingredients/Syrup.java",
+                    "model": self.model_solution / "src/main/java/uk/ac/sheffield/com1003/cafe/ingredients/Syrup.java"
+                },
+                "exception_cafe": {
+                    "submission": submission / "src/main/java/uk/ac/sheffield/com1003/cafe/exceptions/CafeOutOfCapacityException.java",
+                    "model": self.model_solution / "src/main/java/uk/ac/sheffield/com1003/cafe/exceptions/CafeOutOfCapacityException.java"
+                },
+                "exception_recipe": {
+                    "submission": submission / "src/main/java/uk/ac/sheffield/com1003/cafe/exceptions/RecipeNotFoundException.java",
+                    "model": self.model_solution / "src/main/java/uk/ac/sheffield/com1003/cafe/exceptions/RecipeNotFoundException.java"
+                },
+                "exception_ingredients": {
+                    "submission": submission / "src/main/java/uk/ac/sheffield/com1003/cafe/exceptions/TooManyIngredientsException.java",
+                    "model": self.model_solution / "src/main/java/uk/ac/sheffield/com1003/cafe/exceptions/TooManyIngredientsException.java"
+                }
+            }
+
+            for clazz, clazz_path in classes.items():
+                if not clazz_path["submission"].exists():
+                    print(f"Submission {submission.name} > class {clazz} not exist")
+                    shutil.copy2(clazz_path["model"], clazz_path["submission"])
 
     def reset_submission(self):
         """
@@ -174,4 +202,5 @@ if __name__ == '__main__':
     p = CafeProcessing()
     # p.compile_submissions()
     # p.get_failed_tests()
-    p.reset_submission()
+    # p.reset_submission()
+    p.test_all_submissions()
