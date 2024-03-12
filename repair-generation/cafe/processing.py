@@ -171,6 +171,14 @@ class CafeProcessing:
 
 
 if __name__ == '__main__':
-    p = CafeProcessing()
+    # p = CafeProcessing()
     # p.compile_submissions()
-    p.get_failed_tests()
+    # p.get_failed_tests()
+    nega = "uk.ac.sheffield.com1003.cafe.TestPlaceOrderForNonexistentRecipeThrowsCorrectException#placeOrderForNonexistentRecipeThrowsCorrectException, uk.ac.sheffield.com1003.cafe.TestServeNonexistentOrder#serveNonexistentOrder, uk.ac.sheffield.com1003.cafe.TestCafeTask3#placeAndServeOrder, uk.ac.sheffield.com1003.cafe.TestCafeTask3#placeOrderOutOfCapacityThrowsException, uk.ac.sheffield.com1003.cafe.TestCafeTask3#placeOrderCapacityZeroThrowsCorrectException, uk.ac.sheffield.com1003.cafe.TestCafeTask3#serveNonexistentOrder, uk.ac.sheffield.com1003.cafe.TestPlaceAndServeOrder#placeAndServeOrder, uk.ac.sheffield.com1003.cafe.TestCafeTask3#placeOrderForNonexistentRecipeThrowsException, uk.ac.sheffield.com1003.cafe.TestCafeTask3#placeOrderOutOfCapacityThrowsCorrectException, uk.ac.sheffield.com1003.cafe.TestRemoveRecipe#testRemoveRecipe, uk.ac.sheffield.com1003.cafe.TestCafeTask3#placeOrderCapacityZeroThrowsException, uk.ac.sheffield.com1003.cafe.TestCafeTask7#testRemoveRecipe, uk.ac.sheffield.com1003.cafe.TestSyrupToString#testSyrupToString, uk.ac.sheffield.com1003.cafe.TestRemoveMiddleRecipe#testRemoveMiddleRecipe, uk.ac.sheffield.com1003.cafe.TestRecipeEqualsIncompleteRecipe#testRecipeEqualsIncompleteRecipe, uk.ac.sheffield.com1003.cafe.TestRemoveAllRecipes#testRemoveAllRecipes, uk.ac.sheffield.com1003.cafe.TestCafeTask1#testTooManyIngredients, uk.ac.sheffield.com1003.cafe.TestCafeTask6#testSyrupToString, uk.ac.sheffield.com1003.cafe.TestCafeTask3#placeOrderForNonexistentRecipeThrowsCorrectException, uk.ac.sheffield.com1003.cafe.TestCafeTask7#testRemoveMiddleRecipe, uk.ac.sheffield.com1003.cafe.TestCafeTask5#testRecipeEqualsIncompleteRecipe, uk.ac.sheffield.com1003.cafe.TestCafeTask7#testRemoveAllRecipes"
+    for t in nega.split(","):
+        print(t)
+
+    # dep = Path("/Users/ruizhengu/Projects/APR-as-AAT/dependency")
+    # dependencies = [str(file) for file in dep.glob('**/*.jar') if file.name != ".DS_Store"]
+    # dependencies = ":".join(dependencies)
+    # print(dependencies)

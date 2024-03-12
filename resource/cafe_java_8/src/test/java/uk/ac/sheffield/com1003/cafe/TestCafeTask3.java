@@ -4,6 +4,8 @@ import org.apache.commons.lang3.reflect.FieldUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import uk.ac.sheffield.com1003.cafe.exceptions.CafeOutOfCapacityException;
+import uk.ac.sheffield.com1003.cafe.exceptions.RecipeNotFoundException;
 import uk.ac.sheffield.com1003.cafe.exceptions.TooManyIngredientsException;
 import uk.ac.sheffield.com1003.cafe.ingredients.Coffee;
 import uk.ac.sheffield.com1003.cafe.ingredients.Water;
@@ -127,19 +129,21 @@ public class TestCafeTask3 {
         assertNull(orders[0]);
     }
 
-    @Test
+    @Test(expected = Exception.class)
     public void placeOrderForNonexistentRecipeThrowsException() throws Exception {
         Cafe cafe = new Cafe("Central Perk", 1, 1);
         cafe.addRecipe(createEspressoRecipe()); // Price is 1.5
-        assertThrows(Exception.class, () -> cafe.placeOrder("Flat white", "Jose", 10));
+        cafe.placeOrder("Flat white", "Jose", 10);
+//        assertThrows(Exception.class, () -> cafe.placeOrder("Flat white", "Jose", 10));
     }
 
-    @Test
+    @Test(expected = RecipeNotFoundException.class)
     public void placeOrderForNonexistentRecipeThrowsCorrectException() throws Exception {
         Cafe cafe = new Cafe("Central Perk", 1, 1);
         cafe.addRecipe(createEspressoRecipe()); // Price is 1.5
-        Exception thrown = assertThrows(Exception.class, () -> cafe.placeOrder("Flat white", "Jose", 10));
-        assertEquals("uk.ac.sheffield.com1003.cafe.exceptions.RecipeNotFoundException", thrown.getClass().getName());
+        cafe.placeOrder("Flat white", "Jose", 10);
+//        Exception thrown = assertThrows(Exception.class, () -> cafe.placeOrder("Flat white", "Jose", 10));
+//        assertEquals("uk.ac.sheffield.com1003.cafe.exceptions.RecipeNotFoundException", thrown.getClass().getName());
     }
 
     @Test
@@ -184,43 +188,57 @@ public class TestCafeTask3 {
         assertNull(cafe.serveOrder()); // cannot serve more orders
     }
 
-    @Test
-    public void placeOrderCapacityZeroThrowsException() {
-        assertThrows(Exception.class, () -> {
-            Cafe cafe = new Cafe("Central Perk", 2, 0);
-            cafe.addRecipe(createEspressoRecipe());
-            cafe.placeOrder("Espresso", "Jose", 3);
-        });
+    @Test(expected = Exception.class)
+    public void placeOrderCapacityZeroThrowsException() throws RecipeNotFoundException, CafeOutOfCapacityException {
+        Cafe cafe = new Cafe("Central Perk", 2, 0);
+        cafe.addRecipe(createEspressoRecipe());
+        cafe.placeOrder("Espresso", "Jose", 3);
+//        assertThrows(Exception.class, () -> {
+//            Cafe cafe = new Cafe("Central Perk", 2, 0);
+//            cafe.addRecipe(createEspressoRecipe());
+//            cafe.placeOrder("Espresso", "Jose", 3);
+//        });
     }
 
-    @Test
-    public void placeOrderCapacityZeroThrowsCorrectException() {
-        Exception thrown = assertThrows(Exception.class, () -> {
-            Cafe cafe = new Cafe("Central Perk", 2, 0);
-            cafe.addRecipe(createEspressoRecipe());
-            cafe.placeOrder("Espresso", "Jose", 3);
-        });
-        assertEquals("uk.ac.sheffield.com1003.cafe.exceptions.CafeOutOfCapacityException", thrown.getClass().getName());
+    @Test(expected = CafeOutOfCapacityException.class)
+    public void placeOrderCapacityZeroThrowsCorrectException() throws RecipeNotFoundException, CafeOutOfCapacityException {
+        Cafe cafe = new Cafe("Central Perk", 2, 0);
+        cafe.addRecipe(createEspressoRecipe());
+        cafe.placeOrder("Espresso", "Jose", 3);
+//        Exception thrown = assertThrows(Exception.class, () -> {
+//            Cafe cafe = new Cafe("Central Perk", 2, 0);
+//            cafe.addRecipe(createEspressoRecipe());
+//            cafe.placeOrder("Espresso", "Jose", 3);
+//        });
+//        assertEquals("uk.ac.sheffield.com1003.cafe.exceptions.CafeOutOfCapacityException", thrown.getClass().getName());
     }
 
-    @Test
-    public void placeOrderOutOfCapacityThrowsException() {
-        assertThrows(Exception.class, () -> {
-            Cafe cafe = new Cafe("Central Perk", 2, 1);
-            cafe.addRecipe(createEspressoRecipe());
-            cafe.placeOrder("Espresso", "Jose", 3);
-            cafe.placeOrder("Espresso", "Mari-Cruz", 5);
-        });
+    @Test(expected = Exception.class)
+    public void placeOrderOutOfCapacityThrowsException() throws RecipeNotFoundException, CafeOutOfCapacityException {
+        Cafe cafe = new Cafe("Central Perk", 2, 1);
+        cafe.addRecipe(createEspressoRecipe());
+        cafe.placeOrder("Espresso", "Jose", 3);
+        cafe.placeOrder("Espresso", "Mari-Cruz", 5);
+//        assertThrows(Exception.class, () -> {
+//            Cafe cafe = new Cafe("Central Perk", 2, 1);
+//            cafe.addRecipe(createEspressoRecipe());
+//            cafe.placeOrder("Espresso", "Jose", 3);
+//            cafe.placeOrder("Espresso", "Mari-Cruz", 5);
+//        });
     }
 
-    @Test
-    public void placeOrderOutOfCapacityThrowsCorrectException() {
-        Exception thrown = assertThrows(Exception.class, () -> {
-            Cafe cafe = new Cafe("Central Perk", 2, 1);
-            cafe.addRecipe(createEspressoRecipe());
-            cafe.placeOrder("Espresso", "Jose", 3);
-            cafe.placeOrder("Espresso", "Mari-Cruz", 5);
-        });
-        assertEquals("uk.ac.sheffield.com1003.cafe.exceptions.CafeOutOfCapacityException", thrown.getClass().getName());
+    @Test(expected = CafeOutOfCapacityException.class)
+    public void placeOrderOutOfCapacityThrowsCorrectException() throws RecipeNotFoundException, CafeOutOfCapacityException {
+        Cafe cafe = new Cafe("Central Perk", 2, 1);
+        cafe.addRecipe(createEspressoRecipe());
+        cafe.placeOrder("Espresso", "Jose", 3);
+        cafe.placeOrder("Espresso", "Mari-Cruz", 5);
+//        Exception thrown = assertThrows(Exception.class, () -> {
+//            Cafe cafe = new Cafe("Central Perk", 2, 1);
+//            cafe.addRecipe(createEspressoRecipe());
+//            cafe.placeOrder("Espresso", "Jose", 3);
+//            cafe.placeOrder("Espresso", "Mari-Cruz", 5);
+//        });
+//        assertEquals("uk.ac.sheffield.com1003.cafe.exceptions.CafeOutOfCapacityException", thrown.getClass().getName());
     }
 }
