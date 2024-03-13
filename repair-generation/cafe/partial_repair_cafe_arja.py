@@ -12,7 +12,7 @@ class PartialRepairCafeArja:
         self.method_file_json = self.home_path / "repair-generation/lib/method_files.json"
         self.method_coverage_json = self.home_path / "repair-generation/lib/method_coverage.json"
         self.method_ranking_policy = "ASCENT"
-        self.method_ranking_policy = "DESCENT"
+        # self.method_ranking_policy = "DESCENT"
         # self.method_ranking_policy = "RANDOM"
         self.patch_dir = "/Users/ruizhengu/Experiments/APR-as-AAT/arja_intro/median"
 
@@ -185,13 +185,6 @@ class PartialRepairCafeArja:
             if "System.exit(0);" not in d:
                 print(patch)
             print(d)
-
-
-def yield_test():
-    li = [1, 2, 3, 4, 5]
-    for i in range(3):
-        print(li)
-        yield li.pop()
 
 
 if __name__ == '__main__':

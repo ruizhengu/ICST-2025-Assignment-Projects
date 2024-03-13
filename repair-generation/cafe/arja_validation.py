@@ -10,6 +10,7 @@ class ArjaValidation:
         self.submission_path = Path("/Users/ruizhengu/Experiments/APR4Grade/IntermediateJava/incorrect_submissions")
         self.arja_path = Path("/Users/ruizhengu/Experiments/APR-as-AAT/arja")
         self.negative_tests_json = Path("/Users/ruizhengu/Projects/APR4Grade/resource/negative_tests.json")
+        self.failed_tests_json = Path("/Users/ruizhengu/Projects/APR4Grade/resource/failed_tests.json")
         self.submission_list = [submission for submission in self.submission_path.iterdir() if
                                 submission.is_dir() and submission.name != ".git"]
 
@@ -35,7 +36,19 @@ class ArjaValidation:
             else:
                 print("The pattern was not found in the text.")
 
+    def check_different_number(self):
+        with open(self.failed_tests_json) as f:
+            failed_tests_data = json.load(f)
+        with open(self.negative_tests_json) as f:
+            negative_tests_data = json.load(f)
+        for submission in failed_tests_data:
+            failed_tests_number = failed_tests_data[submission]
+            negative_tests_number = negative_tests_data[submission]
+            if failed_tests_number != negative_tests_number:
+                print(f"submission {submission} test results do not match")
+
 
 if __name__ == '__main__':
     v = ArjaValidation()
-    v.get_num_negative_tests_arja()
+    # v.get_num_negative_tests_arja()
+    v.check_different_number()
