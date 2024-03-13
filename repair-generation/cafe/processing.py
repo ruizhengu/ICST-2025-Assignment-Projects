@@ -8,14 +8,18 @@ import utils
 
 class CafeProcessing:
     def __init__(self):
-        self.submission_path = Path("/Users/ruizhengu/Experiments/APR4Grade/IntermediateJava/incorrect_submissions")
-        self.model_solution = Path("/Users/ruizhengu/Experiments/APR4Grade/IntermediateJava/model_solution")
+        # self.project_home = Path("/Users/ruizhengu/Projects/APR4Grade")
+        self.project_home = Path("/mnt/parscratch/users/acp22rg/APR/APR4Grade")
+        # self.dataset_home = Path("/Users/ruizhengu/Experiments/APR4Grade/IntermediateJava")
+        self.dataset_home = Path("/mnt/parscratch/users/acp22rg/APR/IntermediateJava")
+        self.incorrect_submissions = self.dataset_home / "incorrect_submissions"
+        self.model_solution = self.dataset_home / "model_solution"
         self.model_test_suite = self.model_solution / "src/test/java/uk/ac/sheffield/com1003/cafe"
-        self.submission_list = [submission for submission in self.submission_path.iterdir() if
+        self.submission_list = [submission for submission in self.incorrect_submissions.iterdir() if
                                 submission.is_dir() and submission.name != ".git"]
         self._main_path = Path("src/main/java/uk/ac/sheffield/com1003/cafe")
         self._test_path = Path("src/test/java/uk/ac/sheffield/com1003/cafe")
-        self.failed_tests_json = Path("/Users/ruizhengu/Projects/APR4Grade/resource/failed_tests.json")
+        self.failed_tests_json = self.project_home / "resource/failed_tests.json"
         self.methods = self.get_model_methods()
         self.failed_tests_data = {}
 
@@ -38,11 +42,10 @@ class CafeProcessing:
                 build_output = utils.run_cmd(cmd)
                 if "BUILD SUCCESSFUL" not in build_output and "Execution failed for task ':test'." not in build_output:
                     print(submission.name + " BUILD FAILED")
-                else:
-                    self.get_failed_tests_gradle(submission, build_output)
+                # else:
+                #     self.get_failed_tests_gradle(submission, build_output)
             except Exception as e:
                 print(f"{submission} - Error executing {e}")
-            # print("*" * 5 + f" {submission} compilation finish " + "*" * 5)
 
     def replace_tests_with_solution(self, submission):
         destination = submission / self._test_path
