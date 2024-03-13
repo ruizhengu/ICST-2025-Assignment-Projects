@@ -7,20 +7,21 @@ from cream import utils
 
 class Repair:
     def __init__(self):
-        self.project_home = Path("/")
-        self.dataset_home = Path("/Users/ruizhengu/Experiments/APR4Grade/IntermediateJava/incorrect_submissions")
-        self.arja_home = Path("/Users/ruizhengu/Projects/arja")
+        # self.project_home = Path("/Users/ruizhengu/Projects")
+        self.project_home = Path("/mnt/parscratch/users/acp22rg/APR")
+        self.dataset_home = self.project_home / "IntermediateJava/incorrect_submissions"
+        self.arja_home = self.project_home / "arja"
+        self.model_solution = self.project_home / "IntermediateJava/model_solution"
+        self.dependency = self.project_home / "IntermediateJava/dependency"
         self.submission_list = [submission for submission in self.dataset_home.iterdir() if
                                 submission.is_dir() and submission.name != ".git"]
-        self.model_solution = Path("/Users/ruizhengu/Experiments/APR4Grade/IntermediateJava/model_solution")
-        self.dependency = Path("/Users/ruizhengu/Experiments/APR4Grade/IntermediateJava/dependency")
         self.model_test_suite = self.model_solution / "src/test/java/uk/ac/sheffield/com1003/cafe"
         self._main_path = Path("src/main/java/uk/ac/sheffield/com1003/cafe")
         self._test_path = Path("src/test/java/uk/ac/sheffield/com1003/cafe")
         self.arja_output = self.logging_init()
 
     def logging_init(self):
-        arja_output = self.project_home / "patches/default"
+        arja_output = self.project_home / "APR4Grade/patches/default"
         if not arja_output.exists():
             os.mkdir(arja_output)
         arja_log = arja_output / "arja.log"
