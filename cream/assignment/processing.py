@@ -208,7 +208,7 @@ class Processing:
 
 
 if __name__ == '__main__':
-    p = CafeProcessing()
+    p = Processing()
     p.compile_submissions()
     # p.get_failed_tests()
     # p.reset_submission()

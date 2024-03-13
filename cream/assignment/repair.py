@@ -1,6 +1,5 @@
 import logging
 import os
-import shutil
 from pathlib import Path
 
 from cream import utils
@@ -54,5 +53,5 @@ class Repair:
 
 
 if __name__ == '__main__':
-    repair = RepairCafe()
+    repair = Repair()
     repair.arja()

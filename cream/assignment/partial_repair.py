@@ -191,7 +191,7 @@ if __name__ == '__main__':
     # method = "App.main"
     # submission = Path("/Users/ruizhengu/Experiments/APR-as-AAT/cafe_java_8")
 
-    p = PartialRepairCafeArja()
+    p = PartialRepair()
     # content = p.get_model_method_content(method)
     # p.replace_method(submission, method, content)
     submission = "135"

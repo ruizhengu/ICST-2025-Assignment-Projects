@@ -5,7 +5,7 @@ from pathlib import Path
 from cream import utils
 
 
-class RepairIntroClass:
+class Repair:
     def __init__(self):
         self.home_path = Path("/Users/ruizhengu/Experiments/APR-as-AAT/IntroClassJava")
         self.dataset_path = self.home_path / "dataset"
@@ -136,7 +136,7 @@ class RepairIntroClass:
 
 
 if __name__ == '__main__':
-    repair = RepairIntroClass()
+    repair = Repair()
     # cream.arja()
     repair.check_outputs()
     # cream.k_gen_prog()
