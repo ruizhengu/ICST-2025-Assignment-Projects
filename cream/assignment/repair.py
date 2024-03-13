@@ -21,7 +21,10 @@ class Repair:
         self.arja_output = self.logging_init()
 
     def logging_init(self):
-        arja_output = self.project_home / "APR4Grade/patches/default"
+        arja_output = self.project_home / "APR4Grade/patches"
+        if not arja_output.exists():
+            os.mkdir(arja_output)
+        arja_output = arja_output / "default"
         if not arja_output.exists():
             os.mkdir(arja_output)
         arja_log = arja_output / "arja.log"
