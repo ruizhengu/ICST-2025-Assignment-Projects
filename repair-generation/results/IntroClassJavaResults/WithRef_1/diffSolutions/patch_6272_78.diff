@@ -1,8 +1,0 @@
---- /src/main/java/introclassJava/grade_cb243beb_001.java
-+++ /src/main/java/introclassJava/grade_cb243beb_001.java
-@@ -76,2 +76,2 @@
--		} else if ((score.value < B.value) && (score.value >= C.value)) {
--			output += java.lang.String.format("Student has and C grade\n");
-+		} else if ((score.value < B.value) && (score.value >= C.value)) { 			output += java.lang.String.format("Student has an C grade\n");
-+
-
