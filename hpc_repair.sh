@@ -11,4 +11,4 @@ module load Python/3.8.6-GCCcore-10.2.0
 
 #export PYTHONPATH="${PYTHONPATH}:/mnt/parscratch/users/acp22rg/APR-as-AAT/APR4Grade/cream-generation"
 
-python -m cream.assignment.repair_cafe
+python -m cream.assignment.repair

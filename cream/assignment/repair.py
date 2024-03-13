@@ -10,8 +10,8 @@ class Repair:
         # self.project_home = Path("/Users/ruizhengu/Projects")
         self.project_home = Path("/mnt/parscratch/users/acp22rg/APR")
         self.dataset_home = self.project_home / "IntermediateJava/incorrect_submissions"
-        self.arja_home = self.project_home / "arja"
         self.model_solution = self.project_home / "IntermediateJava/model_solution"
+        self.arja_home = self.project_home / "arja"
         self.dependency = self.project_home / "IntermediateJava/dependency"
         self.submission_list = [submission for submission in self.dataset_home.iterdir() if
                                 submission.is_dir() and submission.name != ".git"]

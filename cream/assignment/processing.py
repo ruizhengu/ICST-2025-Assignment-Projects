@@ -8,19 +8,17 @@ from cream import utils
 
 class Processing:
     def __init__(self):
-        # self.project_home = Path("/Users/ruizhengu/Projects/APR4Grade")
-        self.project_home = Path("/mnt/parscratch/users/acp22rg/APR/APR4Grade")
-        # self.dataset_home = Path("/Users/ruizhengu/Experiments/APR4Grade/IntermediateJava")
-        self.dataset_home = Path("/mnt/parscratch/users/acp22rg/APR/IntermediateJava")
-        self.incorrect_submissions = self.dataset_home / "incorrect_submissions"
-        self.model_solution = self.dataset_home / "model_solution"
+        self.root = Path("/Users/ruizhengu/Projects")
+        # self.root = Path("/mnt/parscratch/users/acp22rg/APR")
+        self.project_home = self.root / "APR4Grade"
+        self.dataset_home = self.root / "IntermediateJava/incorrect_submissions"
+        self.model_solution = self.root / "IntermediateJava/model_solution"
         self.model_test_suite = self.model_solution / "src/test/java/uk/ac/sheffield/com1003/cafe"
-        self.submission_list = [submission for submission in self.incorrect_submissions.iterdir() if
+        self.submission_list = [submission for submission in self.dataset_home.iterdir() if
                                 submission.is_dir() and submission.name != ".git"]
         self._main_path = Path("src/main/java/uk/ac/sheffield/com1003/cafe")
         self._test_path = Path("src/test/java/uk/ac/sheffield/com1003/cafe")
         self.failed_tests_json = self.project_home / "resource/failed_tests.json"
-        # self.methods = self.get_model_methods()
         self.failed_tests_data = {}
 
     def replace_build_gradle(self, submission):
@@ -112,27 +110,6 @@ class Processing:
         calls = set([line.replace("\n", "") for line in calls])
         return calls
 
-    def get_method_coverage(self, test_method_calls):
-        method_coverage = {}
-        for method in self.methods:
-            data = {}
-            tests = []
-            for test, method_calls in test_method_calls.items():
-                for call in method_calls:
-                    if method in call:
-                        tests.append(test)
-            data["tests"] = tests
-            data["num"] = len(tests)
-            method_coverage[method] = data
-        return method_coverage
-
-    def get_model_methods(self):
-        methods_txt = Path("/resource/methods.txt")
-        with open(methods_txt, "r") as f:
-            methods = f.readlines()
-        deduplicate = set(methods)
-        return [m.replace("\n", "") for m in deduplicate]
-
     def get_failed_tests_gradle(self, submission, gradle_output):
         pattern = r"(\d+) tests completed, (\d+) failed"
         match = re.search(pattern, gradle_output)
@@ -209,7 +186,7 @@ class Processing:
 
 if __name__ == '__main__':
     p = Processing()
-    p.compile_submissions()
+    # p.compile_submissions()
     # p.get_failed_tests()
     # p.reset_submission()
     # p.add_missed_classes()
