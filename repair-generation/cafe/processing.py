@@ -10,14 +10,16 @@ import utils
 
 class CafeProcessing:
     def __init__(self):
-        self.submission_path = Path("/Users/ruizhengu/Experiments/APR4Grade/IntermediateJava")
+        self.submission_path = Path("/Users/ruizhengu/Experiments/APR4Grade/IntermediateJava/incorrect_submissions")
         self.model_solution = Path("/Users/ruizhengu/Projects/APR4Grade/model_solution")
         self.model_test_suite = self.model_solution / "src/test/java/uk/ac/sheffield/com1003/cafe"
         self.submission_list = [submission for submission in self.submission_path.iterdir() if
                                 submission.is_dir() and submission.name != ".git"]
         self._main_path = Path("src/main/java/uk/ac/sheffield/com1003/cafe")
         self._test_path = Path("src/test/java/uk/ac/sheffield/com1003/cafe")
+        self.failed_tests_json = Path("/Users/ruizhengu/Projects/APR4Grade/repair-generation/lib/failed_tests.json")
         self.methods = self.get_model_methods()
+        self.failed_tests_data = {}
 
     def replace_build_gradle(self, submission):
         build_gradle_source = self.model_solution / "build.gradle"
@@ -28,20 +30,23 @@ class CafeProcessing:
         for submission in self.submission_list:
             self.replace_build_gradle(submission)
             self.replace_tests(submission)
+            # self.replace_tests_with_solution(submission)
             chmod = f"chmod +x {submission}/gradlew"
-            cmd = f"{submission}/gradlew build -p {submission}"
+            cmd = f"{submission}/gradlew clean build -p {submission}"
             # self.inject_model_solution(submission)
             # self.inject_aspectj(submission)
             try:
                 utils.run_cmd(chmod)
                 build_output = utils.run_cmd(cmd)
-                if "BUILD SUCCESSFUL" not in build_output:
+                if "BUILD SUCCESSFUL" not in build_output and "Execution failed for task ':test'." not in build_output:
                     print(submission.name + " BUILD FAILED")
+                else:
+                    self.get_failed_tests_gradle(submission, build_output)
             except Exception as e:
                 print(f"{submission} - Error executing {e}")
-            print("*" * 5 + f" {submission} compilation finish " + "*" * 5)
+            # print("*" * 5 + f" {submission} compilation finish " + "*" * 5)
 
-    def replace_tests(self, submission):
+    def replace_tests_with_solution(self, submission):
         destination = submission / self._test_path
         utils.empty_directory(destination)
         if not destination.exists():
@@ -50,6 +55,15 @@ class CafeProcessing:
             if item.is_dir():
                 shutil.copytree(item, destination / item.name)
             else:
+                shutil.copy2(item, destination / item.name)
+
+    def replace_tests(self, submission):
+        destination = submission / self._test_path
+        utils.empty_directory(destination)
+        if not destination.exists():
+            destination.mkdir(parents=True)
+        for item in self.model_test_suite.iterdir():
+            if item.is_file():
                 shutil.copy2(item, destination / item.name)
 
     def inject_model_solution(self, submission):
@@ -118,16 +132,16 @@ class CafeProcessing:
         deduplicate = set(methods)
         return [m.replace("\n", "") for m in deduplicate]
 
-    def test_all_submissions(self):
-        for submission in self.submission_list:
-            test_cmd = f"{submission}/gradlew build -p {submission}"
-            utils.run_cmd(test_cmd)
-            try:
-                build_output = utils.run_cmd(test_cmd)
-                if "BUILD SUCCESSFUL" not in build_output and "Execution failed for task ':test'." not in build_output:
-                    print(submission.name + " BUILD FAILED")
-            except Exception as e:
-                print(f"{submission} - Error executing {e}")
+    def get_failed_tests_gradle(self, submission, gradle_output):
+        pattern = r"(\d+) tests completed, (\d+) failed"
+        match = re.search(pattern, gradle_output)
+        if match:
+            failed_tests = int(match.group(2))
+            self.failed_tests_data[submission.name] = failed_tests
+            with open(self.failed_tests_json, "w") as f:
+                f.write(json.dumps(self.failed_tests_data, indent=4))
+        else:
+            print(f"{submission.name} pattern was not found in the text.")
 
     def add_missed_classes(self):
         for submission in self.submission_list:
@@ -191,16 +205,10 @@ class CafeProcessing:
             except Exception as e:
                 print(f"{submission} - Error executing {e}")
 
-    def count_submission(self):
-        count = 0
-        for submission in self.submission_list:
-            count += 1
-        print(count)
-
 
 if __name__ == '__main__':
     p = CafeProcessing()
     # p.compile_submissions()
     # p.get_failed_tests()
     # p.reset_submission()
-    p.test_all_submissions()
+    # p.add_missed_classes()
