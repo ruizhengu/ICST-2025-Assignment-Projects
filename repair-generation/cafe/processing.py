@@ -2,22 +2,20 @@ import json
 import os.path
 import re
 import shutil
-import subprocess
 from pathlib import Path
-import xml.etree.ElementTree as ET
 import utils
 
 
 class CafeProcessing:
     def __init__(self):
         self.submission_path = Path("/Users/ruizhengu/Experiments/APR4Grade/IntermediateJava/incorrect_submissions")
-        self.model_solution = Path("/Users/ruizhengu/Projects/APR4Grade/model_solution")
+        self.model_solution = Path("/Users/ruizhengu/Experiments/APR4Grade/IntermediateJava/model_solution")
         self.model_test_suite = self.model_solution / "src/test/java/uk/ac/sheffield/com1003/cafe"
         self.submission_list = [submission for submission in self.submission_path.iterdir() if
                                 submission.is_dir() and submission.name != ".git"]
         self._main_path = Path("src/main/java/uk/ac/sheffield/com1003/cafe")
         self._test_path = Path("src/test/java/uk/ac/sheffield/com1003/cafe")
-        self.failed_tests_json = Path("/Users/ruizhengu/Projects/APR4Grade/repair-generation/lib/failed_tests.json")
+        self.failed_tests_json = Path("/Users/ruizhengu/Projects/APR4Grade/resource/failed_tests.json")
         self.methods = self.get_model_methods()
         self.failed_tests_data = {}
 
@@ -28,8 +26,8 @@ class CafeProcessing:
 
     def compile_submissions(self):
         for submission in self.submission_list:
-            self.replace_build_gradle(submission)
-            self.replace_tests(submission)
+            # self.replace_build_gradle(submission)
+            # self.replace_tests(submission)
             # self.replace_tests_with_solution(submission)
             chmod = f"chmod +x {submission}/gradlew"
             cmd = f"{submission}/gradlew clean build -p {submission}"
@@ -82,7 +80,7 @@ class CafeProcessing:
 
     def get_failed_tests(self):
         submission_method_coverage = {}
-        method_coverage_json = "/Users/ruizhengu/Projects/APR-as-AAT/repair-generation/lib/method_coverage.json"
+        method_coverage_json = "/Users/ruizhengu/Projects/APR4Grade/resource/method_coverage.json"
         for submission in self.submission_list:
             self.inject_aspectj(submission)
             test_cmd = f"{submission}/gradlew build -p {submission}"
@@ -126,7 +124,7 @@ class CafeProcessing:
         return method_coverage
 
     def get_model_methods(self):
-        methods_txt = Path("/Users/ruizhengu/Projects/APR4Grade/repair-generation/lib/methods.txt")
+        methods_txt = Path("/Users/ruizhengu/Projects/APR4Grade/resource/methods.txt")
         with open(methods_txt, "r") as f:
             methods = f.readlines()
         deduplicate = set(methods)
@@ -208,7 +206,7 @@ class CafeProcessing:
 
 if __name__ == '__main__':
     p = CafeProcessing()
-    # p.compile_submissions()
+    p.compile_submissions()
     # p.get_failed_tests()
     # p.reset_submission()
     # p.add_missed_classes()
