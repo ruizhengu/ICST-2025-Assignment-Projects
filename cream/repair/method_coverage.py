@@ -18,7 +18,6 @@ class MethodCoverage:
                                 submission.is_dir() and submission.name != ".git"]
 
         self.methods = self.get_model_methods()
-
         self.method_file_json = self.project_home / "resource/method_files.json"
         self.method_coverage_json = self.project_home / "resource/lib/method_coverage.json"
 
