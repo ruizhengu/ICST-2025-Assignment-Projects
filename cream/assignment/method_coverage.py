@@ -1,4 +1,9 @@
+import json
+import re
+import shutil
 from pathlib import Path
+
+from cream import utils
 
 
 class MethodCoverage:
@@ -37,3 +42,46 @@ class MethodCoverage:
             data["num"] = len(tests)
             method_coverage[method] = data
         return method_coverage
+
+    def inject_aspectj(self, submission):
+        model_solution = self.model_solution / "src/main/java/aspect"
+        destination = submission / "src/main/java/aspect"
+        if destination.exists():
+            shutil.rmtree(destination)
+        shutil.copytree(model_solution, destination)
+
+    def get_failed_tests(self):
+        submission_method_coverage = {}
+        method_coverage_json = self.project_home / "resource/method_coverage.json"
+        for submission in self.submission_list:
+            self.inject_aspectj(submission)
+            test_cmd = f"{submission}/gradlew build -p {submission}"
+            utils.run_cmd(test_cmd)
+            list_cmd = f"{submission}/gradlew listFailedTests -p {submission}"
+            output = utils.run_cmd(list_cmd)
+            pattern = r"^(.+::\w+)$"
+            failed_tests = re.findall(pattern, output, re.MULTILINE)
+            failed_tests = [t.replace("::", ".") for t in failed_tests]
+            test_method_calls = {}
+            for test in failed_tests:
+                method_calls = self.get_method_calls(submission, test)
+                test_method_calls[test] = method_calls
+            method_coverage = self.get_method_coverage(test_method_calls)
+            submission_method_coverage[submission.name] = method_coverage
+            with open(method_coverage_json, "w") as f:
+                f.write(json.dumps(submission_method_coverage, indent=4))
+            print(f"Get failed tests: {submission.name}")
+
+    def get_method_calls(self, submission, test):
+        execution_log = submission / "method-executions.log"
+        test_cmd = f"{submission}/gradlew -p {submission} test --tests {test}"
+        utils.run_cmd(test_cmd)
+        with open(execution_log, "r") as f:
+            calls = f.readlines()
+        calls = set([line.replace("\n", "") for line in calls])
+        return calls
+
+
+if __name__ == '__main__':
+    m = MethodCoverage()
+    m.get_failed_tests()
