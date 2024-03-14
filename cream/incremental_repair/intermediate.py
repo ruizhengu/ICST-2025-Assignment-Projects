@@ -4,6 +4,8 @@ import re
 import shutil
 from pathlib import Path
 
+from cream import utils
+
 
 class Intermediate:
     def __init__(self):
@@ -33,16 +35,15 @@ class Intermediate:
             print(f"Method {method_name} not found.")
             return
         start_index = match.start()
-        end_index = match.end() - 1
         brace_count = 1
-        i = end_index + 1
+        i = match.end()
         while i < len(code) and brace_count > 0:
             if code[i] == '{':
                 brace_count += 1
             elif code[i] == '}':
                 brace_count -= 1
             i += 1
-        new_code = code[:start_index] + code[start_index:end_index] + content + code[i:]
+        new_code = code[:start_index] + content + code[i:]
         with open(file_path, "w") as file:
             file.write(new_code)
 
@@ -56,9 +57,9 @@ class Intermediate:
             re.DOTALL)
         match = pattern.search(code)
         if match:
-            start_index = match.end() - 1
+            start_index = match.start()
             brace_count = 1
-            i = start_index + 1
+            i = match.end()
             while i < len(code) and brace_count > 0:
                 if code[i] == '{':
                     brace_count += 1
@@ -80,7 +81,19 @@ class Intermediate:
         return buggy_methods
 
     def check_compilation(self, submission):
-        pass
+        intermediate_submission = self.intermediates_path / submission
+        for intermediate in intermediate_submission.iterdir():
+            print(intermediate)
+            chmod = f"chmod +x {intermediate}/gradlew"
+            cmd = f"{intermediate}/gradlew clean build -p {intermediate}"
+            try:
+                utils.run_cmd(chmod)
+                build_output = utils.run_cmd(cmd)
+                if "BUILD SUCCESSFUL" not in build_output and "Execution failed for task ':test'." not in build_output:
+                    print(submission + " BUILD FAILED")
+            except Exception as e:
+                print(f"{submission} - Error executing {e}")
+            break
 
     def copy_submission(self, submission, intermediate):
         original_submission = self.dataset_home / submission
@@ -102,8 +115,11 @@ class Intermediate:
                 self.replace_method(intermediate_method, method_replace, model_method)
 
     def launcher(self):
-        for i in range(1, 297):
-            self.create_intermediates(str(i))
+        for i in range(1, 2):
+            submission = Path("/Users/ruizhengu/Experiments/APR4Grade/intermediates/1/1_Cafe.addRecipe")
+            method = "Recipe.equals"
+            content = self.get_model_method_content(method)
+            self.replace_method(submission, method, content)
 
 
 if __name__ == '__main__':
