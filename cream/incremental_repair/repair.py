@@ -1,9 +1,12 @@
 import json
+import logging
 import os
 import random
 import re
 import sys
 from pathlib import Path
+
+from cream import utils
 
 
 class PartialRepair:
@@ -12,77 +15,37 @@ class PartialRepair:
         # self.root = Path("/mnt/parscratch/users/acp22rg/APR")
         self.project_home = self.root / "APR4Grade"
         self.dataset_home = self.root / "IntermediateJava/incorrect_submissions"
-        self.model_solution = self.root / "IntermediateJava/model_solution"
-        self.model_test_suite = self.model_solution / "src/test/java/uk/ac/sheffield/com1003/cafe"
-        self.method_file_json = self.project_home / "resource/method_files.json"
+        # self.model_solution = self.root / "IntermediateJava/model_solution"
+        self.arja_home = self.project_home / "arja"
+        self.dependency = self.project_home / "IntermediateJava/dependency"
+
+        # self.model_test_suite = self.model_solution / "src/test/java/uk/ac/sheffield/com1003/cafe"
+        # self.method_file_json = self.project_home / "resource/method_files.json"
         self.method_coverage_json = self.project_home / "resource/method_coverage.json"
         self.method_ranking_policy = "ASCENT"
         # self.method_ranking_policy = "DESCENT"
         # self.method_ranking_policy = "RANDOM"
-        self.patch_dir = "/Users/ruizhengu/Experiments/APR-as-AAT/arja_intro/median"
         self.start_index = start
         self.end_index = end
+        self.arja_output = self.logging_init()
+
+    def logging_init(self):
+        arja_output = self.project_home / "patches"
+        if not arja_output.exists():
+            os.mkdir(arja_output)
+        arja_output = arja_output / f"cream_{self.method_ranking_policy}"
+        if not arja_output.exists():
+            os.mkdir(arja_output)
+        arja_log = arja_output / "arja.log"
+        if arja_log.exists():
+            arja_log.unlink()
+        logging.basicConfig(filename=arja_log, level=logging.INFO)
+        return arja_output
 
     def repair(self):
         for i in range(self.start_index, self.end_index + 1):
             submission = self.dataset_home / str(i)
             print(submission)
-
-    def replace_method(self, submission, method_name, content):
-        method_file = Path(self.get_method_path(method_name))
-        file_path = submission / method_file
-        with open(file_path, "r") as file:
-            code = file.read()
-        pattern = re.compile(
-            rf'(public|protected|private|static|\s) +[\w<>\[\]]+\s+{re.escape(method_name.split(".")[1])}\s*\([^\)]*\)\s*(throws\s+[\w,\s]+)?\s*\{{',
-            re.DOTALL)
-        match = pattern.search(code)
-        if not match:
-            print(f"Method {method_name} not found.")
-            return
-        start_index = match.start()
-        end_index = match.end() - 1
-        brace_count = 1
-        i = end_index + 1
-        while i < len(code) and brace_count > 0:
-            if code[i] == '{':
-                brace_count += 1
-            elif code[i] == '}':
-                brace_count -= 1
-            i += 1
-        new_code = code[:start_index] + code[start_index:end_index] + content + code[i:]
-        with open(file_path, "w") as file:
-            file.write(new_code)
-        print(f"Method {method_name} in {file_path} replaced successfully.")
-
-    def get_model_method_content(self, method_name):
-        method_file = Path(self.get_method_path(method_name))
-        file_path = self.model_solution / method_file
-        with open(file_path, "r") as file:
-            code = file.read()
-        pattern = re.compile(
-            rf'(public|protected|private|static|\s) +[\w<>\[\]]+\s+{re.escape(method_name.split(".")[1])}\s*\([^\)]*\)\s*(throws\s+[\w,\s]+)?\s*\{{',
-            re.DOTALL)
-        match = pattern.search(code)
-        if match:
-            start_index = match.end() - 1
-            brace_count = 1
-            i = start_index + 1
-            while i < len(code) and brace_count > 0:
-                if code[i] == '{':
-                    brace_count += 1
-                elif code[i] == '}':
-                    brace_count -= 1
-                i += 1
-            return code[start_index:i].strip()
-        else:
-            print(f"Method {method_name} not found in {file_path}")
-            return None
-
-    def get_method_path(self, method_name):
-        with open(self.method_file_json) as f:
-            d = json.load(f)
-        return d[method_name]
 
     def get_patches(self, submission):
         with open("/Users/ruizhengu/Experiments/APR-as-AAT/arja_intro/median/median_1/Patch_465.txt") as f:
@@ -107,63 +70,8 @@ class PartialRepair:
                 patches.append(patch)
         return patches
 
-    def apply_patch(self, submission):
-        submission = "median_1"
-
-        # TODO create a copy of the program under patch
-
-        path = Path("/Users/ruizhengu/Experiments/APR-as-AAT/arja_intro_patches/median_1")
-
-        patches = self.get_patches(submission)
-        for patch in patches:
-            # print(patch["file_path"].split(f"{submission}/"))
-            path_suffix = patch["file_path"].split(f"{submission}/")[-1]
-            patch_path = path / path_suffix
-            print(patch)
-            if patch["action"] == "Replace":
-                # self.replace_statement(patch_path, patch)
-                pass
-            elif patch["action"] == "Delete":
-                # self.delete_statement(patch_path, patch)
-                pass
-            elif patch["action"] == "InsertBefore":
-                self.insert_statement_before(patch_path, patch)
-            else:
-                raise Exception("Unexpected Patch Action!")
-
-    def replace_statement(self, patch_path, patch):
-        with open(patch_path, "r") as f:
-            lines = f.readlines()
-        line_index = int(patch["line_number"]) - 1
-        if lines[line_index].strip().replace(" ", "") == patch["faulty_line"].replace(" ", ""):
-            lines[line_index] = patch["seed_line"] + "\n"
-        else:
-            raise Exception("Patch line number doesn't match with faulty code!")
-        with open(patch_path, "w") as f:
-            f.writelines(lines)
-
-    def delete_statement(self, patch_path, patch):
-        with open(patch_path, "r") as f:
-            lines = f.readlines()
-        line_index = int(patch["line_number"]) - 1
-        if lines[line_index].strip().replace(" ", "") == patch["faulty_line"].replace(" ", ""):
-            lines.pop(line_index)
-        else:
-            raise Exception("Patch line number doesn't match with faulty code!")
-        with open(patch_path, "w") as f:
-            f.writelines(lines)
-
-    def insert_statement_before(self, patch_path, patch):
-        with open(patch_path, "r") as f:
-            lines = f.readlines()
-        line_index = int(patch["line_number"]) - 1
-        print(lines[line_index].strip().replace(" ", ""))
-        if lines[line_index].strip().replace(" ", "") == patch["faulty_line"].replace(" ", ""):
-            lines.insert(line_index, patch["seed_line"] + "\n")
-        else:
-            raise Exception("Patch line number doesn't match with faulty code!")
-        with open(patch_path, "w") as f:
-            f.writelines(lines)
+    def apply_patch(self, submission, patch):
+        pass
 
     def method_ranking(self, submission):
         with open(self.method_coverage_json) as f:
@@ -211,6 +119,27 @@ class PartialRepair:
                     min_file = patch.name
         print(min_file)
 
+    def arja(self, submission):
+        path_src = submission / "src"
+        path_bin_src = submission / "build/classes/java/main"
+        path_bin_test = submission / "build/classes/java/test"
+        dependencies = [str(file) for file in self.dependency.glob('**/*.jar') if file.name != ".DS_Store"]
+        dependencies = ":".join(dependencies)
+        arja_output = self.arja_output / submission.name
+        if not arja_output.exists():
+            os.mkdir(arja_output)
+        arja_cmd = f"cd {self.arja_home} && java -cp \"lib/*:bin\" us.msu.cse.repair.Main ArjaE -DsrcJavaDir {path_src} -DbinJavaDir {path_bin_src} -DbinTestDir {path_bin_test} -Ddependences {dependencies} -DpatchOutputRoot {arja_output}"
+        arja_output = utils.run_cmd(arja_cmd)
+        # print(arja_output)
+        # self.logging(submission)
+
+    def logging(self, submission):
+        arja_output = self.arja_output / submission.name
+        if not any(arja_output.iterdir()):
+            logging.info(f"Repair {submission.name} completed > No patch generated.")
+        else:
+            logging.info(f"Repair {submission.name} completed > Patches generated.")
+
 
 if __name__ == '__main__':
     # start_index = int(sys.argv[1])
@@ -220,8 +149,4 @@ if __name__ == '__main__':
     end_index = 1
     p = PartialRepair(start_index, end_index)
 
-    # content = p.get_model_method_content(method)
-    # p.replace_method(submission, method, content)
-    # p.apply_patch(submission)
-    p.patch_selection()
-    # p.repair()
+    p.get_buggy_methods("212")
