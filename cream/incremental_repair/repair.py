@@ -52,35 +52,57 @@ class PartialRepair:
     def repair(self):
         for i in range(self.start_index, self.end_index + 1):
             # submission = self.dataset_home / str(i)
-            submission = Path("/Users/ruizhengu/Experiments/APR4Grade/1")
+            submission = Path("/Users/ruizhengu/Experiments/APR4Grade/221")
             intermediate = self.intermediate_repairs / str(i)
             buggy_methods = self.method_ranking(str(i))
             successful_patches = []
+            data = {}
+            print(buggy_methods)
             for m in range(len(buggy_methods)):
-                # restore the intermediate program
+                # Restore the intermediate program
                 if intermediate.exists():
                     shutil.rmtree(intermediate)
                 shutil.copytree(submission, intermediate)
-                # apply the successful patches to the intermediate program
+                # Apply the successful patches to the intermediate program
                 for successful_patch in successful_patches:
                     self.apply_patch(intermediate, successful_patch)
                 method_under_repair = buggy_methods[m]
                 methods_to_replace = buggy_methods[m + 1:]
+
                 print(f"Repair submission {str(i)} - Method under repair {method_under_repair}")
-                self.get_number_failed_tests(intermediate, method_under_repair)
-                if len(methods_to_replace) > 0:
-                    self.intermediate.update_intermediate(intermediate, methods_to_replace)
-                    # Compile the program when the intermediate is updated
-                    self.get_number_failed_tests(intermediate, method_under_repair)
-                arja_output = self.arja(intermediate, method_under_repair)
-                patch = self.patch_selection(arja_output)
-                # If there is a valid patch, apply the patch to the intermediate program
-                if patch is not None:
-                    self.apply_patch(intermediate, patch)
-                    successful_patches.append(patch)
-                    print(f"Submission {str(i)} - Method under repair {method_under_repair} > Patch generated.")
+                num_failed_tests_patched = self.get_number_failed_tests(intermediate, method_under_repair)
+                if num_failed_tests_patched == 0:
+                    # If the program has no failed tests after applying the patches, go to the next submission
+                    data[method_under_repair] = "The program is fully patched."
+                    self.incremental_record(submission.name, data)
+                    break
                 else:
-                    print(f"Submission {str(i)} - Method under repair {method_under_repair} > No Patch generated.")
+                    if len(methods_to_replace) > 0:
+                        self.intermediate.update_intermediate(intermediate, methods_to_replace)
+                        # Compile the program when the intermediate is updated
+                        num_failed_tests_replaced = self.get_number_failed_tests(intermediate, method_under_repair)
+                        if num_failed_tests_replaced == 0:
+                            # If the program has no failed tests after replacing incorrect methods,
+                            # means there is no bugs in the current method under repair
+                            data[method_under_repair] = "Intermediate program does not have failed tests."
+                            self.incremental_record(submission.name, data)
+                            continue
+                    arja_output = self.arja(intermediate, method_under_repair)
+                    patch = self.patch_selection(arja_output)
+                    if patch is not None:
+                        self.apply_patch(intermediate, patch)
+                        successful_patches.append(patch)
+                        patches_generated = True
+                        logging.info(f"Repair {str(i)} - Method {method_under_repair} > Patch generated.")
+                    else:
+                        patches_generated = False
+                        logging.info(f"Repair {str(i)} - Method {method_under_repair} > No Patch generated.")
+
+                    data[method_under_repair] = {
+                        "number of failed tests": num_failed_tests_patched,
+                        "patches generated": patches_generated
+                    }
+                    self.incremental_record(submission.name, data)
 
     def apply_patch(self, intermediate, patch):
         patch_classes = patch / "patched" / self._main_path
@@ -89,14 +111,12 @@ class PartialRepair:
                 submission_clazz = intermediate / "src" / self._main_path / clazz.name
                 submission_clazz.unlink()
                 shutil.copy(clazz, submission_clazz)
-                print(submission_clazz)
             elif clazz.is_dir():
                 for sub_clazz in clazz.iterdir():
                     if sub_clazz.name.endswith(".java"):
                         submission_clazz = intermediate / "src" / self._main_path / clazz.name / sub_clazz.name
                         submission_clazz.unlink()
                         shutil.copy(sub_clazz, submission_clazz)
-                        print(submission_clazz)
 
     def method_ranking(self, submission):
         with open(self.method_coverage_json) as f:
@@ -125,20 +145,19 @@ class PartialRepair:
                 diff = patch / "diff"
                 with open(diff, "r") as f:
                     d = f.read()
-            if "System.exit(0);" not in d:
-                print(patch)
-                patches_filtered.append(patch)
+                if "System.exit(0);" not in d:
+                    patches_filtered.append(patch)
         # Get the patch with the minimal edits (lowest number of lines in the diff file)
         min_lines = None
         min_file = None
-        for patch in patches_filtered:
-            diff = patch / "diff"
+        for filtered_patch in patches_filtered:
+            diff = filtered_patch / "diff"
             with open(diff, "r") as f:
                 lines = f.readlines()
                 number_of_lines = len(lines)
                 if min_lines is None or number_of_lines < min_lines:
                     min_lines = number_of_lines
-                    min_file = patch
+                    min_file = filtered_patch
         return min_file
 
     def compile_intermediate(self, intermediate):
@@ -160,7 +179,7 @@ class PartialRepair:
         failed_tests = re.findall(pattern, output, re.MULTILINE)
         print(
             f"Submission {intermediate} - Method under repair {method_under_repair} > Failed number of tests {len(failed_tests)}")
-        # failed_tests = [t.replace("::", ".") for t in failed_tests]
+        return len(failed_tests)
 
     def arja(self, submission, method):
         path_src = submission / "src"
@@ -180,16 +199,11 @@ class PartialRepair:
         return arja_output
 
     def incremental_record(self, submission, data):
-        with open(self.incremental_repair_record[self.method_ranking_policy]) as f:
+        with open(self.incremental_repair_record[self.method_ranking_policy], 'r') as f:
             d = json.load(f)
         d[str(submission)] = data
-
-    # def logging(self, submission):
-    #     arja_output = self.arja_output / submission.name
-    #     if not any(arja_output.iterdir()):
-    #         logging.info(f"Repair {submission.name} completed > No patch generated.")
-    #     else:
-    #         logging.info(f"Repair {submission.name} completed > Patches generated.")
+        with open(self.incremental_repair_record[self.method_ranking_policy], 'w') as f:
+            json.dump(d, f)
 
 
 if __name__ == '__main__':
@@ -199,5 +213,4 @@ if __name__ == '__main__':
     start_index = 1
     end_index = 1
     p = PartialRepair(start_index, end_index)
-    # p.method_ranking("212")
     p.repair()
