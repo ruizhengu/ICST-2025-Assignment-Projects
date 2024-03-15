@@ -30,6 +30,7 @@ class PartialRepair:
         self.start_index = start
         self.end_index = end
         self.arja_output = self.logging_init()
+        self.intermediate_repairs = Path("/Users/ruizhengu/Experiments/APR4Grade/intermediate_repairs")
 
     def logging_init(self):
         arja_output = self.project_home / "patches"
@@ -47,8 +48,13 @@ class PartialRepair:
     def repair(self):
         for i in range(self.start_index, self.end_index + 1):
             submission = self.dataset_home / str(i)
-            for method in self.method_ranking(submission):
-                pass
+            intermediate = self.intermediate_repairs / str(i)
+            if intermediate.exists():
+                shutil.rmtree(intermediate)
+            shutil.copytree(submission, intermediate)
+            buggy_methods = self.method_ranking(str(i))
+            for m in range(len(buggy_methods) - 1):
+                print(buggy_methods[m + 1:])
 
     def apply_patch(self, submission, patches):
         patches = Path("/Users/ruizhengu/Downloads/patches_ctxr")
@@ -76,22 +82,18 @@ class PartialRepair:
             d = json.load(f)
         coverage = d[submission]
         methods_with_coverage = [(method, detail["num"]) for method, detail in coverage.items() if detail["num"] > 0]
-        if self.method_ranking_policy == "ASCENT":
-            # sort from high to low
+        if self.method_ranking_policy == "ASCENT":  # sort from high to low
             sorted_methods = sorted(methods_with_coverage, key=lambda x: x[1], reverse=True)
-            for method in sorted_methods:
-                yield method[0]
-        elif self.method_ranking_policy == "DESCENT":
-            # sort from low to high
+            sorted_methods = [x[0] for x in sorted_methods]
+            return sorted_methods
+        elif self.method_ranking_policy == "DESCENT":  # sort from low to high
             sorted_methods = sorted(methods_with_coverage, key=lambda x: x[1], reverse=False)
-            for method in sorted_methods:
-                yield method[0]
-        elif self.method_ranking_policy == "RANDOM":
-            # get a random element
-            for i in range(len(methods_with_coverage)):
-                random_index = random.randint(0, len(methods_with_coverage) - 1)
-                random_element = methods_with_coverage.pop(random_index)
-                yield random_element[0]
+            sorted_methods = [x[0] for x in sorted_methods]
+            return sorted_methods
+        elif self.method_ranking_policy == "RANDOM":  # random shuffle methods
+            random.shuffle(methods_with_coverage)
+            shuffled_methods = [x[0] for x in methods_with_coverage]
+            return shuffled_methods
 
     def patch_selection(self):
         patches = Path("/Users/ruizhengu/Downloads/patches_ctxr")
@@ -142,8 +144,8 @@ if __name__ == '__main__':
     # start_index = int(sys.argv[1])
     # end_index = int(sys.argv[2])
 
-    start_index = 1
-    end_index = 1
+    start_index = 212
+    end_index = 212
     p = PartialRepair(start_index, end_index)
-    # p.patch_selection()
-    p.apply_patch()
+    # p.method_ranking("212")
+    p.repair()
