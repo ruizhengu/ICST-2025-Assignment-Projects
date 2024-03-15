@@ -120,6 +120,46 @@ class Processing:
                     print(f"Submission {submission.name} > class {clazz} not exist")
                     shutil.copy2(clazz_path["model"], clazz_path["submission"])
 
+    def replace_exception_classes(self):
+        for submission in self.submission_list:
+            exceptions = {
+                "exception_cafe": {
+                    "submission": submission / "src/main/java/uk/ac/sheffield/com1003/cafe/exceptions/CafeOutOfCapacityException.java",
+                    "model": self.model_solution / "src/main/java/uk/ac/sheffield/com1003/cafe/exceptions/CafeOutOfCapacityException.java"
+                },
+                "exception_recipe": {
+                    "submission": submission / "src/main/java/uk/ac/sheffield/com1003/cafe/exceptions/RecipeNotFoundException.java",
+                    "model": self.model_solution / "src/main/java/uk/ac/sheffield/com1003/cafe/exceptions/RecipeNotFoundException.java"
+                },
+                "exception_ingredients": {
+                    "submission": submission / "src/main/java/uk/ac/sheffield/com1003/cafe/exceptions/TooManyIngredientsException.java",
+                    "model": self.model_solution / "src/main/java/uk/ac/sheffield/com1003/cafe/exceptions/TooManyIngredientsException.java"
+                }
+            }
+            for clazz, clazz_path in exceptions.items():
+                if clazz_path["submission"].exists():
+                    clazz_path["submission"].unlink()
+                    shutil.copy2(clazz_path["model"], clazz_path["submission"])
+
+    def replace_exceptions(self):
+        for submission in self.submission_list:
+            files = [
+                submission / "src/main/java/uk/ac/sheffield/com1003/cafe/App.java",
+                submission / "src/main/java/uk/ac/sheffield/com1003/cafe/Cafe.java",
+                submission / "src/main/java/uk/ac/sheffield/com1003/cafe/Order.java",
+                submission / "src/main/java/uk/ac/sheffield/com1003/cafe/Recipe.java",
+            ]
+            exception_pattern = re.compile(
+                r'(CafeOutOfCapacityException|RecipeNotFoundException|TooManyIngredientsException)\([^)]*\)')
+            for file in files:
+                with open(file) as f:
+                    code = f.read()
+                modified_code_string = re.sub(exception_pattern, r'\1()', code)
+                if modified_code_string != code:
+                    with open(file, "w") as f:
+                        f.write(modified_code_string)
+                    print(f"Updated exceptions in {file}")
+
     def reset_submission(self):
         """
         Remove the model solution
@@ -152,10 +192,16 @@ class Processing:
             except Exception as e:
                 print(f"{submission} - Error executing {e}")
 
+    def replace_gitignore(self):
+        for submission in self.submission_list:
+            model_gitignore = self.model_solution / ".gitignore"
+            submission_gitignore = submission / ".gitignore"
+            if submission_gitignore.exists():
+                submission_gitignore.unlink()
+            shutil.copy(model_gitignore, submission_gitignore)
+
 
 if __name__ == '__main__':
     p = Processing()
     # p.compile_submissions()
-    # p.get_failed_tests()
-    # p.reset_submission()
-    # p.add_missed_classes()
+    p.reset_submission()

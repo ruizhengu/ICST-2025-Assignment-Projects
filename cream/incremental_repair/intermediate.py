@@ -83,17 +83,15 @@ class Intermediate:
     def check_compilation(self, submission):
         intermediate_submission = self.intermediates_path / submission
         for intermediate in intermediate_submission.iterdir():
-            print(intermediate)
             chmod = f"chmod +x {intermediate}/gradlew"
             cmd = f"{intermediate}/gradlew clean build -p {intermediate}"
             try:
                 utils.run_cmd(chmod)
                 build_output = utils.run_cmd(cmd)
                 if "BUILD SUCCESSFUL" not in build_output and "Execution failed for task ':test'." not in build_output:
-                    print(submission + " BUILD FAILED")
+                    print(f"{submission} - {intermediate.name} BUILD FAILED")
             except Exception as e:
-                print(f"{submission} - Error executing {e}")
-            break
+                print(f"{submission} - {intermediate.name} - Error executing {e}")
 
     def copy_submission(self, submission, intermediate):
         original_submission = self.dataset_home / submission
@@ -115,11 +113,8 @@ class Intermediate:
                 self.replace_method(intermediate_method, method_replace, model_method)
 
     def launcher(self):
-        for i in range(1, 2):
-            submission = Path("/Users/ruizhengu/Experiments/APR4Grade/intermediates/1/1_Cafe.addRecipe")
-            method = "Recipe.equals"
-            content = self.get_model_method_content(method)
-            self.replace_method(submission, method, content)
+        for i in range(1, 297):
+            self.create_intermediates(str(i))
 
 
 if __name__ == '__main__':

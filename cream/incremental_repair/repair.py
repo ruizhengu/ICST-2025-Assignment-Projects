@@ -128,7 +128,7 @@ class PartialRepair:
         arja_output = self.arja_output / submission.name
         if not arja_output.exists():
             os.mkdir(arja_output)
-        arja_cmd = f"cd {self.arja_home} && java -cp \"lib/*:bin\" us.msu.cse.repair.Main ArjaE -DsrcJavaDir {path_src} -DbinJavaDir {path_bin_src} -DbinTestDir {path_bin_test} -Ddependences {dependencies} -DpatchOutputRoot {arja_output}"
+        arja_cmd = f"cd {self.arja_home} && java -cp \"lib/*:bin\" us.msu.cse.repair.Main ArjaE -DsrcJavaDir {path_src} -DbinJavaDir {path_bin_src} -DbinTestDir {path_bin_test} -Ddependences {dependencies} -DpatchOutputRoot {arja_output} -DdiffFormat true"
         arja_output = utils.run_cmd(arja_cmd)
         # print(arja_output)
         # self.logging(submission)
