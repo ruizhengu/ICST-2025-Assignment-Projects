@@ -51,13 +51,11 @@ class PartialRepair:
 
     def repair(self):
         for i in range(self.start_index, self.end_index + 1):
-            # submission = self.dataset_home / str(i)
-            submission = Path("/Users/ruizhengu/Experiments/APR4Grade/221")
+            submission = self.dataset_home / str(i)
             intermediate = self.intermediate_repairs / str(i)
             buggy_methods = self.method_ranking(str(i))
             successful_patches = []
             data = {}
-            print(buggy_methods)
             for m in range(len(buggy_methods)):
                 # Restore the intermediate program
                 if intermediate.exists():
@@ -211,6 +209,6 @@ if __name__ == '__main__':
     # end_index = int(sys.argv[2])
 
     start_index = 1
-    end_index = 1
+    end_index = 20
     p = PartialRepair(start_index, end_index)
     p.repair()
