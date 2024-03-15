@@ -114,7 +114,7 @@ class Intermediate:
 
     def launcher(self):
         for i in range(1, 297):
-            self.create_intermediates(str(i))
+            self.check_compilation(str(i))
 
 
 if __name__ == '__main__':

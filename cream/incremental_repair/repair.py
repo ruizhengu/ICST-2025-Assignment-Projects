@@ -3,6 +3,7 @@ import logging
 import os
 import random
 import re
+import shutil
 import sys
 from pathlib import Path
 
@@ -19,6 +20,7 @@ class PartialRepair:
         self.arja_home = self.project_home / "arja"
         self.dependency = self.project_home / "IntermediateJava/dependency"
 
+        self._main_path = Path("main/java/uk/ac/sheffield/com1003/cafe")
         # self.model_test_suite = self.model_solution / "src/test/java/uk/ac/sheffield/com1003/cafe"
         # self.method_file_json = self.project_home / "resource/method_files.json"
         self.method_coverage_json = self.project_home / "resource/method_coverage.json"
@@ -45,33 +47,29 @@ class PartialRepair:
     def repair(self):
         for i in range(self.start_index, self.end_index + 1):
             submission = self.dataset_home / str(i)
-            print(submission)
+            for method in self.method_ranking(submission):
+                pass
 
-    def get_patches(self, submission):
-        with open("/Users/ruizhengu/Experiments/APR-as-AAT/arja_intro/median/median_1/Patch_465.txt") as f:
-            text = f.read()
-        patterns = {
-            "Replace": re.compile(r"Replace (.*?) (\d+)\s+Faulty:\s+(.*?)\s+Seed:\s+(.*?)\s+\*+", re.DOTALL),
-            "Delete": re.compile(r"Delete (.*?) (\d+)\s+Faulty:\s+(.*?)\s+Seed:\s+(.*?)\s+\*+", re.DOTALL),
-            "InsertBefore": re.compile(r"InsertBefore (.*?) (\d+)\s+Faulty:\s+(.*?)\s+Seed:\s+(.*?)\s+\*+", re.DOTALL),
-        }
-        patches = []
-        for action, pattern in patterns.items():
-            matches = pattern.findall(text)
-            for match in matches:
-                file_path, line_number, faulty, seed = match
-                patch = {
-                    "action": action,
-                    "file_path": file_path,
-                    "line_number": line_number,
-                    "faulty_line": faulty.strip(),
-                    "seed_line": seed.strip()
-                }
-                patches.append(patch)
-        return patches
-
-    def apply_patch(self, submission, patch):
-        pass
+    def apply_patch(self, submission, patches):
+        patches = Path("/Users/ruizhengu/Downloads/patches_ctxr")
+        submission = Path("/Users/ruizhengu/Experiments/APR4Grade/212")
+        for patch in patches.iterdir():
+            if patch.is_dir():
+                patch_classes = patch / "patched" / self._main_path
+                for clazz in patch_classes.iterdir():
+                    if clazz.is_file() and clazz.name.endswith(".java"):
+                        submission_clazz = submission / "src" / self._main_path / clazz.name
+                        submission_clazz.unlink()
+                        shutil.copy(clazz, submission_clazz)
+                        print(submission_clazz)
+                    elif clazz.is_dir():
+                        for sub_clazz in clazz.iterdir():
+                            if sub_clazz.name.endswith(".java"):
+                                submission_clazz = submission / "src" / self._main_path / clazz.name / sub_clazz.name
+                                submission_clazz.unlink()
+                                shutil.copy(sub_clazz, submission_clazz)
+                                print(submission_clazz)
+            # break
 
     def method_ranking(self, submission):
         with open(self.method_coverage_json) as f:
@@ -106,7 +104,6 @@ class PartialRepair:
             if "System.exit(0);" not in d:
                 print(patch)
                 patches_filtered.append(patch)
-        # Output the patch with minimal lines
         min_lines = None
         min_file = None
         for patch in patches_filtered:
@@ -116,8 +113,8 @@ class PartialRepair:
                 number_of_lines = len(lines)
                 if min_lines is None or number_of_lines < min_lines:
                     min_lines = number_of_lines
-                    min_file = patch.name
-        print(min_file)
+                    min_file = patch
+        return min_file
 
     def arja(self, submission):
         path_src = submission / "src"
@@ -148,5 +145,5 @@ if __name__ == '__main__':
     start_index = 1
     end_index = 1
     p = PartialRepair(start_index, end_index)
-
-    p.get_buggy_methods("212")
+    # p.patch_selection()
+    p.apply_patch()
