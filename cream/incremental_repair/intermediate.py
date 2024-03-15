@@ -8,8 +8,8 @@ from cream import utils
 
 
 class Intermediate:
-    def __init__(self):
-        self.root = Path("/Users/ruizhengu/Projects")
+    def __init__(self, root):
+        self.root = root
         self.project_home = self.root / "APR4Grade"
         self.dataset_home = self.root / "IntermediateJava/incorrect_submissions"
         self.method_file_json = self.project_home / "resource/method_files.json"
@@ -21,6 +21,11 @@ class Intermediate:
         with open(self.method_file_json) as f:
             d = json.load(f)
         return d[method_name]
+
+    def update_intermediate(self, submission, methods_to_replace):
+        for method in methods_to_replace:
+            method_content = self.get_model_method_content(method)
+            self.replace_method(submission, method, method_content)
 
     def replace_method(self, submission, method_name, content):
         method_file = Path(self.get_method_path(method_name))
@@ -115,8 +120,3 @@ class Intermediate:
     def launcher(self):
         for i in range(1, 297):
             self.check_compilation(str(i))
-
-
-if __name__ == '__main__':
-    im = Intermediate()
-    im.launcher()
