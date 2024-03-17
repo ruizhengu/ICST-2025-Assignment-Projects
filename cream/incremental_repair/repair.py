@@ -75,6 +75,7 @@ class PartialRepair:
                     self.incremental_record(submission.name, data)
                     break
                 else:
+                    num_failed_tests_replaced = num_failed_tests_patched
                     if len(methods_to_replace) > 0:
                         self.intermediate.update_intermediate(intermediate, methods_to_replace)
                         # Compile the program when the intermediate is updated
@@ -97,7 +98,8 @@ class PartialRepair:
                         logging.info(f"Repair {str(i)} - Method {method_under_repair} > No Patch generated.")
 
                     data[method_under_repair] = {
-                        "number of failed tests": num_failed_tests_patched,
+                        "number of failed tests - patched": num_failed_tests_patched,
+                        "number of failed tests - intermediate": num_failed_tests_replaced,
                         "patches generated": patches_generated
                     }
                     self.incremental_record(submission.name, data)
