@@ -192,7 +192,7 @@ class PartialRepair:
         if not arja_output.exists():
             os.mkdir(arja_output)
         # Set 10 minutes time limit per execution
-        arja_cmd = f"cd {self.arja_home} && java -cp \"lib/*:bin\" us.msu.cse.repair.Main ArjaE -DsrcJavaDir {path_src} -DbinJavaDir {path_bin_src} -DbinTestDir {path_bin_test} -Ddependences {dependencies} -DpatchOutputRoot {arja_output} -DmaxTime 10 -DdiffFormat true"
+        arja_cmd = f"cd {self.arja_home} && java -cp \"lib/*:bin\" us.msu.cse.repair.Main ArjaE -DsrcJavaDir {path_src} -DbinJavaDir {path_bin_src} -DbinTestDir {path_bin_test} -Ddependences {dependencies} -DpatchOutputRoot {arja_output} -DmaxTime 10 -DingredientMode Application -DdiffFormat true"
         arja_results = utils.run_cmd(arja_cmd)
         return arja_output
 
@@ -209,6 +209,6 @@ if __name__ == '__main__':
     # end_index = int(sys.argv[2])
 
     start_index = 1
-    end_index = 20
+    end_index = 10
     p = PartialRepair(start_index, end_index)
     p.repair()
