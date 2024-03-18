@@ -36,6 +36,8 @@ class PartialRepair:
         self.intermediate = Intermediate(self.root)
         self.intermediate_repairs = Path("/Users/ruizhengu/Experiments/APR4Grade/intermediate_repairs")
         # self.intermediate_repairs = Path("/mnt/parscratch/users/acp22rg/APR/intermediate_repairs")
+        self.intermediates_path = self.root / "IntermediateJava/intermediates"
+
 
     def logging_init(self):
         arja_output = self.project_home / "patches"
@@ -107,6 +109,19 @@ class PartialRepair:
                         "patches generated": patches_generated
                     }
                     self.incremental_record(submission.name, data)
+
+    def repair_intermediates(self, start_index, end_index):
+        for i in range(start_index, end_index + 1):
+            # submission = self.dataset_home / str(i)
+            intermediate = self.intermediates_path / str(i)
+            for intermediate_method in intermediate.iterdir():
+                if intermediate.is_dir():
+                    arja_output = self.arja(intermediate, intermediate_method.name)
+                    patch = self.patch_selection(arja_output)
+                    if patch is not None:
+                        logging.info(f"Repair {str(i)} - Method {intermediate_method.name} > Patch generated.")
+                    else:
+                        logging.info(f"Repair {str(i)} - Method {intermediate_method.name} > No Patch generated.")
 
     def apply_patch(self, intermediate, patch):
         patch_classes = patch / "patched" / self._main_path
