@@ -17,7 +17,6 @@ class Intermediate:
         self.model_solution = self.root / "IntermediateJava/model_solution"
         self.method_coverage_json = self.project_home / "resource/method_coverage.json"
         self.intermediates_path = self.root / "IntermediateJava/intermediates"
-        self.intermediate_failed_tests = self.project_home / "resource/intermediate_failed_tests.json"
         self.arja_home = self.root / "arja"
         self.dependency = self.root / "IntermediateJava/dependency"
 
@@ -119,25 +118,6 @@ class Intermediate:
             methods_to_replace = list(filter(lambda x: x != method, buggy_methods))
             self.update_intermediate(intermediate_method, methods_to_replace)
 
-    def get_number_failed_tests(self, submission):
-        intermediate_submission = self.intermediates_path / submission
-        for intermediate in intermediate_submission.iterdir():
-            if intermediate.is_dir():
-                list_cmd = f"{intermediate}/gradlew listFailedTests -p {intermediate}"
-                output = utils.run_cmd(list_cmd)
-                pattern = r"^(.+::\w+)$"
-                failed_tests = re.findall(pattern, output, re.MULTILINE)
-                with open(self.intermediate_failed_tests, 'r') as f:
-                    d = json.load(f)
-                intermediate_method = intermediate.name.split("_")[-1]
-                if not str(submission) in d:
-                    d[str(submission)] = {}
-                submission_data = d[str(submission)]
-                submission_data[intermediate_method] = len(failed_tests)
-                d[str(submission)] = submission_data
-                with open(self.intermediate_failed_tests, 'w') as f:
-                    json.dump(d, f)
-
     def launcher(self):
         for i in range(1, 297):
             # self.create_intermediates(str(i))
@@ -145,7 +125,7 @@ class Intermediate:
 
 
 if __name__ == '__main__':
-    # root = Path("/Users/ruizhengu/Projects")
-    root = Path("/mnt/parscratch/users/acp22rg/APR")
+    root = Path("/Users/ruizhengu/Projects")
+    # root = Path("/mnt/parscratch/users/acp22rg/APR")
     im = Intermediate(root)
     im.launcher()

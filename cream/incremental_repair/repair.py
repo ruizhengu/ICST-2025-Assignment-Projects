@@ -37,13 +37,14 @@ class PartialRepair:
         self.intermediate_repairs = Path("/Users/ruizhengu/Experiments/APR4Grade/intermediate_repairs")
         # self.intermediate_repairs = Path("/mnt/parscratch/users/acp22rg/APR/intermediate_repairs")
         self.intermediates_path = self.root / "IntermediateJava/intermediates"
-
+        self.intermediate_repair_record = self.project_home / "resource/intermediates_repair.json"
 
     def logging_init(self):
         arja_output = self.project_home / "patches"
         if not arja_output.exists():
             os.mkdir(arja_output)
-        arja_output = arja_output / f"cream_{self.method_ranking_policy}"
+        # arja_output = arja_output / f"cream_{self.method_ranking_policy}"
+        arja_output = arja_output / f"cream"
         if not arja_output.exists():
             os.mkdir(arja_output)
         arja_log = arja_output / "arja.log"
@@ -110,18 +111,26 @@ class PartialRepair:
                     }
                     self.incremental_record(submission.name, data)
 
-    def repair_intermediates(self, start_index, end_index):
-        for i in range(start_index, end_index + 1):
-            # submission = self.dataset_home / str(i)
+    def repair_intermediates(self):
+        for i in range(self.start_index, self.end_index + 1):
             intermediate = self.intermediates_path / str(i)
+            data = {}
             for intermediate_method in intermediate.iterdir():
-                if intermediate.is_dir():
-                    arja_output = self.arja(intermediate, intermediate_method.name)
+                if intermediate_method.is_dir():
+                    num_failed_tests = self.get_number_failed_tests(intermediate_method, intermediate_method.name)
+                    arja_output = self.arja(intermediate_method, intermediate_method.name, intermediate.name)
                     patch = self.patch_selection(arja_output)
                     if patch is not None:
+                        patches_generated = True
                         logging.info(f"Repair {str(i)} - Method {intermediate_method.name} > Patch generated.")
                     else:
+                        patches_generated = False
                         logging.info(f"Repair {str(i)} - Method {intermediate_method.name} > No Patch generated.")
+                    data[intermediate_method.name] = {
+                        "number of failed tests": num_failed_tests,
+                        "patches generated": patches_generated
+                    }
+                    self.incremental_record(intermediate.name, data)
 
     def apply_patch(self, intermediate, patch):
         patch_classes = patch / "patched" / self._main_path
@@ -200,16 +209,16 @@ class PartialRepair:
             f"Submission {intermediate} - Method under repair {method_under_repair} > Failed number of tests {len(failed_tests)}")
         return len(failed_tests)
 
-    def arja(self, submission, method):
+    def arja(self, submission, method, intermediate):
         path_src = submission / "src"
         path_bin_src = submission / "build/classes/java/main"
         path_bin_test = submission / "build/classes/java/test"
         dependencies = [str(file) for file in self.dependency.glob('**/*.jar') if file.name != ".DS_Store"]
         dependencies = ":".join(dependencies)
-        arja_output = self.arja_output / submission.name
+        arja_output = self.arja_output / intermediate
         if not arja_output.exists():
             os.mkdir(arja_output)
-        arja_output = self.arja_output / submission.name / method
+        arja_output = self.arja_output / intermediate / method
         if not arja_output.exists():
             os.mkdir(arja_output)
         # Set 10 minutes time limit per execution
@@ -218,18 +227,21 @@ class PartialRepair:
         return arja_output
 
     def incremental_record(self, submission, data):
-        with open(self.incremental_repair_record[self.method_ranking_policy], 'r') as f:
+        # with open(self.incremental_repair_record[self.method_ranking_policy], 'r') as f:
+        with open(self.intermediate_repair_record, 'r') as f:
             d = json.load(f)
         d[str(submission)] = data
-        with open(self.incremental_repair_record[self.method_ranking_policy], 'w') as f:
+        # with open(self.incremental_repair_record[self.method_ranking_policy], 'w') as f:
+        with open(self.intermediate_repair_record, 'w') as f:
             json.dump(d, f)
 
 
 if __name__ == '__main__':
-    start_index = int(sys.argv[1])
-    end_index = int(sys.argv[2])
+    # start_index = int(sys.argv[1])
+    # end_index = int(sys.argv[2])
 
-    # start_index = 1
-    # end_index = 10
+    start_index = 1
+    end_index = 1
     p = PartialRepair(start_index, end_index)
-    p.repair()
+    # p.repair()
+    p.repair_intermediates()
