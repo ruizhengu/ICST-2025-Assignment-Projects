@@ -6,9 +6,9 @@ from cream import utils
 
 
 class Repair:
-    def __init__(self):
-        # self.project_home = Path("/Users/ruizhengu/Projects")
-        self.project_home = Path("/mnt/parscratch/users/acp22rg/APR")
+    def __init__(self, submissions):
+        self.project_home = Path("/Users/ruizhengu/Projects")
+        # self.project_home = Path("/mnt/parscratch/users/acp22rg/APR")
         self.dataset_home = self.project_home / "IntermediateJava/incorrect_submissions"
         self.model_solution = self.project_home / "IntermediateJava/model_solution"
         self.arja_home = self.project_home / "arja"
@@ -19,6 +19,7 @@ class Repair:
         self._main_path = Path("src/main/java/uk/ac/sheffield/com1003/cafe")
         self._test_path = Path("src/test/java/uk/ac/sheffield/com1003/cafe")
         self.arja_output = self.logging_init()
+        self.submissions = submissions
 
     def logging_init(self):
         arja_output = self.project_home / "APR4Grade/patches"
@@ -34,7 +35,9 @@ class Repair:
         return arja_output
 
     def arja(self):
-        for submission in self.submission_list:
+        for i in submissions:
+            submission = self.dataset_home / str(i)
+            # for submission in self.submission_list:
             path_src = submission / "src"
             path_bin_src = submission / "build/classes/java/main"
             path_bin_test = submission / "build/classes/java/test"
@@ -57,5 +60,6 @@ class Repair:
 
 
 if __name__ == '__main__':
-    repair = Repair()
+    submissions = [21, 24, 98, 149, 223, 242]
+    repair = Repair(submissions)
     repair.arja()

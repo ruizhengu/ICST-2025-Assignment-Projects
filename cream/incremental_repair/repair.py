@@ -13,8 +13,8 @@ from cream.incremental_repair.intermediate import Intermediate
 
 class PartialRepair:
     def __init__(self, start, end):
-        self.root = Path("/Users/ruizhengu/Projects")
-        # self.root = Path("/mnt/parscratch/users/acp22rg/APR")
+        # self.root = Path("/Users/ruizhengu/Projects")
+        self.root = Path("/mnt/parscratch/users/acp22rg/APR")
         self.project_home = self.root / "APR4Grade"
         self.dataset_home = self.root / "IntermediateJava/incorrect_submissions"
         self.arja_home = self.root / "arja"
@@ -207,10 +207,10 @@ class PartialRepair:
 
 
 if __name__ == '__main__':
-    # start_index = int(sys.argv[1])
-    # end_index = int(sys.argv[2])
+    start_index = int(sys.argv[1])
+    end_index = int(sys.argv[2])
 
-    start_index = 1
-    end_index = 10
+    # start_index = 1
+    # end_index = 10
     p = PartialRepair(start_index, end_index)
     p.repair()
