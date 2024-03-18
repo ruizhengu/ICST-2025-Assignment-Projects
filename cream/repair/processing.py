@@ -203,5 +203,5 @@ class Processing:
 
 if __name__ == '__main__':
     p = Processing()
-    # p.compile_submissions()
-    p.reset_submission()
+    p.compile_submissions()
+    # p.reset_submission()

@@ -82,6 +82,7 @@ class PartialRepair:
                     if len(methods_to_replace) > 0:
                         self.intermediate.update_intermediate(intermediate, methods_to_replace)
                         # Compile the program when the intermediate is updated
+                        self.compile_intermediate(intermediate)
                         num_failed_tests_replaced = self.get_number_failed_tests(intermediate, method_under_repair)
                         if num_failed_tests_replaced == 0:
                             # If the program has no failed tests after replacing incorrect methods,
