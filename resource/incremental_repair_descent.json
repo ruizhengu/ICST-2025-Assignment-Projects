@@ -643,5 +643,32 @@
       "number of failed tests - intermediate": 36,
       "patches generated": false
     }
+  },
+  "31": {
+    "Recipe.addIngredient": {
+      "number of failed tests - patched": 22,
+      "number of failed tests - intermediate": 10,
+      "patches generated": false
+    },
+    "Ingredient.equals": {
+      "number of failed tests - patched": 22,
+      "number of failed tests - intermediate": 10,
+      "patches generated": false
+    },
+    "Ingredient.getName": {
+      "number of failed tests - patched": 22,
+      "number of failed tests - intermediate": 10,
+      "patches generated": false
+    },
+    "Cafe.addRecipe": {
+      "number of failed tests - patched": 22,
+      "number of failed tests - intermediate": 10,
+      "patches generated": false
+    },
+    "Recipe.getName": {
+      "number of failed tests - patched": 22,
+      "number of failed tests - intermediate": 10,
+      "patches generated": false
+    }
   }
 }
