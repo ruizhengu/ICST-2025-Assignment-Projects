@@ -125,7 +125,7 @@ class Intermediate:
 
 
 if __name__ == '__main__':
-    root = Path("/Users/ruizhengu/Projects")
-    # root = Path("/mnt/parscratch/users/acp22rg/APR")
+    # root = Path("/Users/ruizhengu/Projects")
+    root = Path("/mnt/parscratch/users/acp22rg/APR")
     im = Intermediate(root)
     im.launcher()
