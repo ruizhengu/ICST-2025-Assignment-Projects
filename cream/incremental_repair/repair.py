@@ -34,7 +34,8 @@ class PartialRepair:
         self.end_index = end
         self.arja_output = self.logging_init()
         self.intermediate = Intermediate(self.root)
-        self.intermediate_repairs = Path("/Users/ruizhengu/Experiments/APR4Grade/intermediate_repairs")
+        # self.intermediate_repairs = Path("/Users/ruizhengu/Experiments/APR4Grade/intermediate_repairs")
+        self.intermediate_repairs = Path("/mnt/parscratch/users/acp22rg/APR/intermediate_repairs")
 
     def logging_init(self):
         arja_output = self.project_home / "patches"
