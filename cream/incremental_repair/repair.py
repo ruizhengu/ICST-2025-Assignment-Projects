@@ -45,8 +45,8 @@ class PartialRepair:
         if not arja_output.exists():
             os.mkdir(arja_output)
         arja_log = arja_output / "arja.log"
-        if arja_log.exists():
-            arja_log.unlink()
+        # if arja_log.exists():
+        #     arja_log.unlink()
         logging.basicConfig(filename=arja_log, level=logging.INFO)
         return arja_output
 
