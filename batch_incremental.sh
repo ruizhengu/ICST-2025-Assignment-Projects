@@ -1,3 +1,5 @@
+sbatch hpc_incremental.sh 1 10
+sleep 180
 sbatch hpc_incremental.sh 11 20
 sleep 180
 sbatch hpc_incremental.sh 21 30

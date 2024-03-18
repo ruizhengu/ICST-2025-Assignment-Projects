@@ -166,7 +166,7 @@ class PartialRepair:
 
     def compile_intermediate(self, intermediate):
         chmod = f"chmod +x {intermediate}/gradlew"
-        cmd = f"{intermediate}/gradlew clean build -p {intermediate}"
+        cmd = f"{intermediate}/gradlew build -p {intermediate} --parallel"
         try:
             utils.run_cmd(chmod)
             build_output = utils.run_cmd(cmd)
@@ -177,7 +177,7 @@ class PartialRepair:
 
     def get_number_failed_tests(self, intermediate, method_under_repair):
         # self.compile_intermediate(intermediate)
-        list_cmd = f"{intermediate}/gradlew listFailedTests -p {intermediate}"
+        list_cmd = f"{intermediate}/gradlew listFailedTests -p {intermediate} --parallel"
         output = utils.run_cmd(list_cmd)
         pattern = r"^(.+::\w+)$"
         failed_tests = re.findall(pattern, output, re.MULTILINE)
