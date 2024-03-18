@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --mem=64G
+#SBATCH --mem=32G
 #SBATCH --time=96:00:00
 
 module load Java/8.362
