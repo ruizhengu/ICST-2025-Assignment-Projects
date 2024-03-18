@@ -63,8 +63,10 @@ class PartialRepair:
                     shutil.rmtree(intermediate)
                 shutil.copytree(submission, intermediate)
                 # Apply the successful patches to the intermediate program
-                for successful_patch in successful_patches:
-                    self.apply_patch(intermediate, successful_patch)
+                if len(successful_patches) != 0:
+                    for successful_patch in successful_patches:
+                        self.apply_patch(intermediate, successful_patch)
+                    self.compile_intermediate(intermediate)
                 method_under_repair = buggy_methods[m]
                 methods_to_replace = buggy_methods[m + 1:]
 
@@ -173,7 +175,7 @@ class PartialRepair:
             print(f"{intermediate} - Error executing {e}")
 
     def get_number_failed_tests(self, intermediate, method_under_repair):
-        self.compile_intermediate(intermediate)
+        # self.compile_intermediate(intermediate)
         list_cmd = f"{intermediate}/gradlew listFailedTests -p {intermediate}"
         output = utils.run_cmd(list_cmd)
         pattern = r"^(.+::\w+)$"

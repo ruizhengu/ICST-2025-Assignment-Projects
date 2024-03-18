@@ -8,8 +8,8 @@ from cream import utils
 
 class Processing:
     def __init__(self):
-        self.root = Path("/Users/ruizhengu/Projects")
-        # self.root = Path("/mnt/parscratch/users/acp22rg/APR")
+        # self.root = Path("/Users/ruizhengu/Projects")
+        self.root = Path("/mnt/parscratch/users/acp22rg/APR")
         self.project_home = self.root / "APR4Grade"
         self.dataset_home = self.root / "IntermediateJava/incorrect_submissions"
         self.model_solution = self.root / "IntermediateJava/model_solution"
