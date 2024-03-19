@@ -42,6 +42,15 @@ class MethodCoverage:
             method_coverage[method] = data
         return method_coverage
 
+    def get_method_calls(self, submission, test):
+        execution_log = submission / "method-executions.log"
+        test_cmd = f"{submission}/gradlew -p {submission} test --tests {test}"
+        utils.run_cmd(test_cmd)
+        with open(execution_log, "r") as f:
+            calls = f.readlines()
+        calls = set([line.replace("\n", "") for line in calls])
+        return calls
+
     def inject_aspectj(self, submission):
         model_solution = self.model_solution / "src/main/java/aspect"
         destination = submission / "src/main/java/aspect"
@@ -49,7 +58,7 @@ class MethodCoverage:
             shutil.rmtree(destination)
         shutil.copytree(model_solution, destination)
 
-    def get_failed_tests(self):
+    def failed_tests_method_coverage(self):
         submission_method_coverage = {}
         method_coverage_json = self.project_home / "resource/method_coverage.json"
         for submission in self.submission_list:
@@ -71,16 +80,36 @@ class MethodCoverage:
                 f.write(json.dumps(submission_method_coverage, indent=4))
             print(f"Get failed tests: {submission.name}")
 
-    def get_method_calls(self, submission, test):
-        execution_log = submission / "method-executions.log"
-        test_cmd = f"{submission}/gradlew -p {submission} test --tests {test}"
-        utils.run_cmd(test_cmd)
-        with open(execution_log, "r") as f:
-            calls = f.readlines()
-        calls = set([line.replace("\n", "") for line in calls])
-        return calls
+    def method_weighting(self):
+        method_weighting_json = self.project_home / "resource/method_weighting.json"
+        list_cmd = f"{self.model_solution}/gradlew listTests -p {self.model_solution}"
+        list_output = utils.run_cmd(list_cmd)
+        pattern = r"^(.+::\w+)$"
+        tests = re.findall(pattern, list_output, re.MULTILINE)
+        tests = [t.replace("::", ".") for t in tests]
+        test_method_calls = {}
+        for test in tests:
+            method_calls = self.get_method_calls(self.model_solution, test)
+            test_method_calls[test] = method_calls
+        method_weighting = self.get_method_coverage(test_method_calls)
+        with open(method_weighting_json, "w") as f:
+            f.write(json.dumps(method_weighting, indent=4))
+
+    def method_weighting_remove_solutions(self):
+        method_weighting_json = self.project_home / "resource/method_weighting.json"
+        with open(method_weighting_json, 'r') as file:
+            data = json.load(file)
+        filter_data = {}
+        for name, tests in data.items():
+            filter_tests = [test for test in tests["tests"] if "uk.ac.sheffield.com1003.cafe.solution" not in test]
+            filter_data[name] = {
+                "tests": filter_tests,
+                "num": len(filter_tests)
+            }
+        with open(method_weighting_json, "w") as f:
+            f.write(json.dumps(filter_data, indent=4))
 
 
 if __name__ == '__main__':
     m = MethodCoverage()
-    m.get_failed_tests()
+    m.method_weighting_remove_solutions()
