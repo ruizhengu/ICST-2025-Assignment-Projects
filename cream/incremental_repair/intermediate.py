@@ -3,20 +3,32 @@ import logging
 import os
 import re
 import shutil
+import sys
 from pathlib import Path
 
 from cream import utils
 
 
 class Intermediate:
-    def __init__(self, root):
+    def __init__(self, root, model):
         self.root = root
         self.project_home = self.root / "APR4Grade"
         self.dataset_home = self.root / "IntermediateJava/incorrect_submissions"
         self.method_file_json = self.project_home / "resource/method_files.json"
-        self.model_solution = self.root / "IntermediateJava/model_solution"
+
+        if model == "m":
+            self.model_solution = self.root / "IntermediateJava/model_solution"
+        elif model == "1":
+            self.model_solution = self.root / "IntermediateJava/correct_submissions/1"
+        elif model == "2":
+            self.model_solution = self.root / "IntermediateJava/correct_submissions/2"
+        elif model == "3":
+            self.model_solution = self.root / "IntermediateJava/correct_submissions/3"
+        else:
+            print("Please enter a valid model. Valid models are 1, 2, 3, m.")
         self.method_coverage_json = self.project_home / "resource/method_coverage.json"
-        self.intermediates_path = self.root / "IntermediateJava/intermediates"
+        # self.intermediates_path = self.root / "IntermediateJava/intermediates"
+        self.intermediates_path = Path("/Users/ruizhengu/Experiments/APR4Grade/intermediates")
         self.arja_home = self.root / "arja"
         self.dependency = self.root / "IntermediateJava/dependency"
 
@@ -113,6 +125,7 @@ class Intermediate:
             os.mkdir(intermediate_submission)
         buggy_methods = self.get_buggy_methods(submission)
         for method in buggy_methods:
+            # print(f"Intermediate {submission} - {method}")
             intermediate_method = intermediate_submission / method
             self.copy_submission(submission, intermediate_method)
             methods_to_replace = list(filter(lambda x: x != method, buggy_methods))
@@ -120,12 +133,19 @@ class Intermediate:
 
     def launcher(self):
         for i in range(1, 297):
-            # self.create_intermediates(str(i))
+            self.create_intermediates(str(i))
             self.check_compilation(str(i))
+
+    def empty_intermediates(self):
+        utils.empty_directory(self.intermediates_path)
 
 
 if __name__ == '__main__':
-    # root = Path("/Users/ruizhengu/Projects")
-    root = Path("/mnt/parscratch/users/acp22rg/APR")
-    im = Intermediate(root)
+    # model = sys.argv[1]
+    model = "2"
+
+    root = Path("/Users/ruizhengu/Projects")
+    # root = Path("/mnt/parscratch/users/acp22rg/APR")
+    im = Intermediate(root, model)
+    im.empty_intermediates()
     im.launcher()

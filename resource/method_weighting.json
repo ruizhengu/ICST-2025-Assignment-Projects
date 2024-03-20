@@ -16,7 +16,8 @@
             "uk.ac.sheffield.com1003.cafe.TestCafeTask7.testRemoveMiddleRecipe",
             "uk.ac.sheffield.com1003.cafe.TestCafeTask7.testRemoveAllRecipes"
         ],
-        "num": 14
+        "num": 14,
+        "weight": 2.27
     },
     "Syrup.toString": {
         "tests": [
@@ -25,7 +26,8 @@
             "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupToString",
             "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupToStringRelaxed"
         ],
-        "num": 4
+        "num": 4,
+        "weight": 0.65
     },
     "Cafe.printPendingOrders": {
         "tests": [
@@ -41,7 +43,8 @@
             "uk.ac.sheffield.com1003.cafe.TestPrintPendingOrdersMultiple.printPendingOrdersMultiple",
             "uk.ac.sheffield.com1003.cafe.TestPrintPendingOrderSingle.printPendingOrderSingle"
         ],
-        "num": 11
+        "num": 11,
+        "weight": 1.79
     },
     "Recipe.equals": {
         "tests": [
@@ -76,7 +79,8 @@
             "uk.ac.sheffield.com1003.cafe.TestRecipeMultipleIngredients.testRecipeMultipleIngredients",
             "uk.ac.sheffield.com1003.cafe.TestRecipeEqualsIncompleteRecipe.testRecipeEqualsIncompleteRecipe"
         ],
-        "num": 30
+        "num": 30,
+        "weight": 4.87
     },
     "Recipe.getPrice": {
         "tests": [
@@ -109,7 +113,8 @@
             "uk.ac.sheffield.com1003.cafe.TestPrintPendingOrdersMultiple.printPendingOrdersMultiple",
             "uk.ac.sheffield.com1003.cafe.TestPrintPendingOrderSingle.printPendingOrderSingle"
         ],
-        "num": 28
+        "num": 28,
+        "weight": 4.55
     },
     "Recipe.getName": {
         "tests": [
@@ -161,7 +166,8 @@
             "uk.ac.sheffield.com1003.cafe.TestPrintPendingOrdersMultiple.printPendingOrdersMultiple",
             "uk.ac.sheffield.com1003.cafe.TestPrintPendingOrderSingle.printPendingOrderSingle"
         ],
-        "num": 47
+        "num": 47,
+        "weight": 7.63
     },
     "Recipe.addIngredient": {
         "tests": [
@@ -254,15 +260,18 @@
             "uk.ac.sheffield.com1003.cafe.TestRecipeEqualsIncompleteRecipe.testRecipeEqualsIncompleteRecipe",
             "uk.ac.sheffield.com1003.cafe.TestPrintPendingOrderSingle.printPendingOrderSingle"
         ],
-        "num": 88
+        "num": 88,
+        "weight": 14.29
     },
     "Ingredient.equals": {
         "tests": [],
-        "num": 0
+        "num": 0,
+        "weight": 0.0
     },
     "Coffee.toString": {
         "tests": [],
-        "num": 0
+        "num": 0,
+        "weight": 0.0
     },
     "Recipe.isReady": {
         "tests": [
@@ -291,7 +300,8 @@
             "uk.ac.sheffield.com1003.cafe.TestRecipeMultipleIngredients.testRecipeMultipleIngredients",
             "uk.ac.sheffield.com1003.cafe.TestRecipeEqualsIncompleteRecipe.testRecipeEqualsIncompleteRecipe"
         ],
-        "num": 24
+        "num": 24,
+        "weight": 3.9
     },
     "Order.serve": {
         "tests": [
@@ -303,7 +313,8 @@
             "uk.ac.sheffield.com1003.cafe.TestPrintPendingOrdersEmpty.printPendingOrdersEmpty",
             "uk.ac.sheffield.com1003.cafe.TestSyrupDefaultConstructor.testSyrupDefaultConstructor"
         ],
-        "num": 7
+        "num": 7,
+        "weight": 1.14
     },
     "Cafe.findRecipe": {
         "tests": [
@@ -337,7 +348,8 @@
             "uk.ac.sheffield.com1003.cafe.TestPrintPendingOrdersMultiple.printPendingOrdersMultiple",
             "uk.ac.sheffield.com1003.cafe.TestPrintPendingOrderSingle.printPendingOrderSingle"
         ],
-        "num": 29
+        "num": 29,
+        "weight": 4.71
     },
     "Coffee.equals": {
         "tests": [
@@ -424,7 +436,8 @@
             "uk.ac.sheffield.com1003.cafe.TestRecipeEqualsIncompleteRecipe.testRecipeEqualsIncompleteRecipe",
             "uk.ac.sheffield.com1003.cafe.TestPrintPendingOrderSingle.printPendingOrderSingle"
         ],
-        "num": 82
+        "num": 82,
+        "weight": 13.31
     },
     "Cafe.printMenu": {
         "tests": [
@@ -433,7 +446,8 @@
             "uk.ac.sheffield.com1003.cafe.TestCafeTask2.testPrintMenuIncorrectFormat",
             "uk.ac.sheffield.com1003.cafe.TestPrintMenuExactFormat.testPrintMenuExactFormat"
         ],
-        "num": 4
+        "num": 4,
+        "weight": 0.65
     },
     "Milk.equals": {
         "tests": [
@@ -454,19 +468,23 @@
             "uk.ac.sheffield.com1003.cafe.TestSoyMilkOptionExists.testSoyMilkOptionExists",
             "uk.ac.sheffield.com1003.cafe.TestRecipeMultipleIngredients.testRecipeMultipleIngredients"
         ],
-        "num": 16
+        "num": 16,
+        "weight": 2.6
     },
     "Water.toString": {
         "tests": [],
-        "num": 0
+        "num": 0,
+        "weight": 0.0
     },
     "App.main": {
         "tests": [],
-        "num": 0
+        "num": 0,
+        "weight": 0.0
     },
     "Ingredient.toString": {
         "tests": [],
-        "num": 0
+        "num": 0,
+        "weight": 0.0
     },
     "Order.toString": {
         "tests": [
@@ -481,15 +499,18 @@
             "uk.ac.sheffield.com1003.cafe.TestPrintPendingOrdersMultiple.printPendingOrdersMultiple",
             "uk.ac.sheffield.com1003.cafe.TestPrintPendingOrderSingle.printPendingOrderSingle"
         ],
-        "num": 10
+        "num": 10,
+        "weight": 1.62
     },
     "Milk.toString": {
         "tests": [],
-        "num": 0
+        "num": 0,
+        "weight": 0.0
     },
     "Order.printReceipt": {
         "tests": [],
-        "num": 0
+        "num": 0,
+        "weight": 0.0
     },
     "Ingredient.getName": {
         "tests": [
@@ -528,7 +549,8 @@
             "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupOverloadedConstructorSetsUnit",
             "uk.ac.sheffield.com1003.cafe.TestRecipeMultipleIngredients.testRecipeMultipleIngredients"
         ],
-        "num": 34
+        "num": 34,
+        "weight": 5.52
     },
     "Cafe.getMenu": {
         "tests": [
@@ -549,7 +571,8 @@
             "uk.ac.sheffield.com1003.cafe.TestAddRecipeAndMenuSize.testAddRecipeAndMenuSize",
             "uk.ac.sheffield.com1003.cafe.TestSyrupExists.testSyrupExists"
         ],
-        "num": 16
+        "num": 16,
+        "weight": 2.6
     },
     "Ingredient.getAmount": {
         "tests": [
@@ -567,7 +590,8 @@
             "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupOverloadedConstructor",
             "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupOverloadedConstructorSetsUnit"
         ],
-        "num": 13
+        "num": 13,
+        "weight": 2.11
     },
     "Cafe.getName": {
         "tests": [
@@ -580,7 +604,8 @@
             "uk.ac.sheffield.com1003.cafe.TestGreetingPartial.testGreetingPartial",
             "uk.ac.sheffield.com1003.cafe.TestPrintMenuExactFormat.testPrintMenuExactFormat"
         ],
-        "num": 8
+        "num": 8,
+        "weight": 1.3
     },
     "Ingredient.getUnit": {
         "tests": [
@@ -601,11 +626,13 @@
             "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupOverloadedConstructor",
             "uk.ac.sheffield.com1003.cafe.TestCafeTask6.testSyrupOverloadedConstructorSetsUnit"
         ],
-        "num": 16
+        "num": 16,
+        "weight": 2.6
     },
     "Recipe.hashCode": {
         "tests": [],
-        "num": 0
+        "num": 0,
+        "weight": 0.0
     },
     "Cafe.placeOrder": {
         "tests": [
@@ -644,7 +671,8 @@
             "uk.ac.sheffield.com1003.cafe.TestPrintPendingOrdersMultiple.printPendingOrdersMultiple",
             "uk.ac.sheffield.com1003.cafe.TestPrintPendingOrderSingle.printPendingOrderSingle"
         ],
-        "num": 34
+        "num": 34,
+        "weight": 5.52
     },
     "Cafe.serveOrder": {
         "tests": [
@@ -658,7 +686,8 @@
             "uk.ac.sheffield.com1003.cafe.TestPrintPendingOrdersEmpty.printPendingOrdersEmpty",
             "uk.ac.sheffield.com1003.cafe.TestSyrupDefaultConstructor.testSyrupDefaultConstructor"
         ],
-        "num": 9
+        "num": 9,
+        "weight": 1.46
     },
     "Water.equals": {
         "tests": [
@@ -686,7 +715,8 @@
             "uk.ac.sheffield.com1003.cafe.TestCafeTask7.testRemoveAllRecipes",
             "uk.ac.sheffield.com1003.cafe.TestRecipeMultipleIngredients.testRecipeMultipleIngredients"
         ],
-        "num": 23
+        "num": 23,
+        "weight": 3.73
     },
     "Cafe.addRecipe": {
         "tests": [
@@ -752,7 +782,8 @@
             "uk.ac.sheffield.com1003.cafe.TestSyrupExists.testSyrupExists",
             "uk.ac.sheffield.com1003.cafe.TestPrintPendingOrderSingle.printPendingOrderSingle"
         ],
-        "num": 61
+        "num": 61,
+        "weight": 9.9
     },
     "Cafe.greeting": {
         "tests": [
@@ -765,6 +796,7 @@
             "uk.ac.sheffield.com1003.cafe.TestGreetingPartial.testGreetingPartial",
             "uk.ac.sheffield.com1003.cafe.TestPrintMenuExactFormat.testPrintMenuExactFormat"
         ],
-        "num": 8
+        "num": 8,
+        "weight": 1.3
     }
 }
