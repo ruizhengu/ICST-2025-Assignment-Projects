@@ -32,22 +32,33 @@ class Analysis:
         with open(self.method_weighting_json, "w") as f:
             f.write(json.dumps(weighted_data, indent=4))
 
-    def degree_of_patchness(self):
-        submission = 114
-        method = "Recipe.equals"
-        method_weight = self.get_weight(method)
-        num_failed_tests_before = self.get_number_failed_tests_before_patch(str(submission), method)
-        print(method_weight)
-        print(num_failed_tests_before)
+    def launcher(self):
         intermediate = Path("/Users/ruizhengu/Experiments/APR4Grade/114")
-        self.apply_patch(intermediate)
-        num_failed_tests_after = self.get_number_failed_tests(intermediate, method)
-        print(num_failed_tests_after)
-        # TODO Get the normalised weight of the method
+        patches = Path("/Users/ruizhengu/Downloads/114")
 
-    def apply_patch(self, intermediate):
-        patches = Path("/Users/ruizhengu/Downloads/114/Recipe.equals")
-        patch = self.patch_selection(patches)
+        buggy_methods = [method for method in patches.iterdir() if method.is_dir()]
+        valid_patches = self.count_valid_patches(buggy_methods)
+        if len(valid_patches) == 1:
+            intermediate = self.apply_patch(intermediate, valid_patches[0])
+            self.degree_of_patchness(intermediate, patches, buggy_methods)
+        else:
+            print("There are multiple patches, manually apply them to avoid conflict.")
+
+    def degree_of_patchness(self, intermediate, patches, buggy_methods):
+        dp = 0
+        unnormalised_weights = self.get_unnormalised_weights(buggy_methods)
+        for method in buggy_methods:
+            method_unnormalised_weight = self.get_weight(method.name)
+            method_normalised_weight = method_unnormalised_weight * 100 / unnormalised_weights
+            num_failed_tests_before = self.get_number_failed_tests_before_patch(patches.name, method.name)
+            num_failed_tests_after = self.get_number_failed_tests(intermediate, method.name)
+            print(
+                f"Program {intermediate.name}-{method.name} Num failed tests before: {num_failed_tests_before} Num failed tests after: {num_failed_tests_after}")
+            dp += method_normalised_weight * (
+                    num_failed_tests_before - num_failed_tests_after) / num_failed_tests_before
+        print(f"Patched Program {intermediate.name} Degree of Patchness {dp}")
+
+    def apply_patch(self, intermediate, patch):
         patch_classes = patch / "patched" / self._main_path
         for clazz in patch_classes.iterdir():
             if clazz.is_file() and clazz.name.endswith(".java"):
@@ -60,11 +71,29 @@ class Analysis:
                         submission_clazz = intermediate / "src" / self._main_path / clazz.name / sub_clazz.name
                         submission_clazz.unlink()
                         shutil.copy(sub_clazz, submission_clazz)
+        # Compile the patched program
+        chmod = f"chmod +x {intermediate}/gradlew"
+        cmd = f"{intermediate}/gradlew build -p {intermediate}"
+        try:
+            utils.run_cmd(chmod)
+            build_output = utils.run_cmd(cmd)
+            if "BUILD SUCCESSFUL" not in build_output and "Execution failed for task ':test'." not in build_output:
+                print(intermediate.name + " BUILD FAILED")
+        except Exception as e:
+            print(f"{intermediate} - Error executing {e}")
+        return intermediate
 
     def get_weight(self, method):
         with open(self.method_weighting_json, 'r') as file:
             data = json.load(file)
         return data[method]["weight"]
+
+    def get_unnormalised_weights(self, buggy_methods):
+        unnormalised_weights = 0
+        for buggy_method in buggy_methods:
+            weight = self.get_weight(buggy_method.name)
+            unnormalised_weights += weight
+        return unnormalised_weights
 
     def get_number_failed_tests_before_patch(self, submission, method):
         with open(self.method_coverage_json, 'r') as file:
@@ -72,20 +101,11 @@ class Analysis:
         return data[submission][method]["num"]
 
     def get_number_failed_tests(self, patched_program, method):
-        chmod = f"chmod +x {patched_program}/gradlew"
-        cmd = f"{patched_program}/gradlew build -p {patched_program}"
-        try:
-            utils.run_cmd(chmod)
-            build_output = utils.run_cmd(cmd)
-            if "BUILD SUCCESSFUL" not in build_output and "Execution failed for task ':test'." not in build_output:
-                print(patched_program.name + " BUILD FAILED")
-        except Exception as e:
-            print(f"{patched_program} - Error executing {e}")
-
         list_cmd = f"{patched_program}/gradlew listFailedTests -p {patched_program}"
         output = utils.run_cmd(list_cmd)
         pattern = r"^(.+::\w+)$"
         failed_tests = re.findall(pattern, output, re.MULTILINE)
+        failed_tests = [t.replace("::", ".") for t in failed_tests]
         method_covering_tests = self.get_method_covering_tests(method)
         still_failed_tests = [el for el in failed_tests if el in method_covering_tests]
         return len(still_failed_tests)
@@ -94,6 +114,14 @@ class Analysis:
         with open(self.method_weighting_json, 'r') as file:
             data = json.load(file)
         return data[method]["tests"]
+
+    def count_valid_patches(self, buggy_methods):
+        valid_patches = []
+        for buggy_method in buggy_methods:
+            patch = self.patch_selection(buggy_method)
+            if patch is not None:
+                valid_patches.append(patch)
+        return valid_patches
 
     def patch_selection(self, patches):
         patches_filtered = []
@@ -122,4 +150,4 @@ class Analysis:
 
 if __name__ == '__main__':
     a = Analysis()
-    a.degree_of_patchness()
+    a.launcher()

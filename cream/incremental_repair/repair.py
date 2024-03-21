@@ -1,20 +1,19 @@
 import json
 import logging
 import os
-import random
 import re
-import shutil
 import sys
 from pathlib import Path
 
 from cream import utils
-from cream.incremental_repair.intermediate import Intermediate
 
 
 class PartialRepair:
     def __init__(self, start, end):
-        self.root = Path("/Users/ruizhengu/Projects")
-        # self.root = Path("/mnt/parscratch/users/acp22rg/APR")
+        if sys.platform == "linux":
+            self.root = Path("/mnt/parscratch/users/acp22rg/APR")
+        else:
+            self.root = Path("/Users/ruizhengu/Projects")
         self.project_home = self.root / "APR4Grade"
         self.dataset_home = self.root / "IntermediateJava/incorrect_submissions"
         self.arja_home = self.root / "arja"
@@ -24,7 +23,7 @@ class PartialRepair:
         self.start_index = start
         self.end_index = end
         self.arja_output = self.logging_init()
-        self.intermediates_path = self.root / "IntermediateJava/intermediates"
+        self.intermediates_path = self.root / "intermediates"
         self.intermediate_repair_record = self.project_home / "resource/intermediates_repair.json"
 
     def logging_init(self):
@@ -42,7 +41,8 @@ class PartialRepair:
         return arja_output
 
     def repair_intermediates(self):
-        for i in range(self.start_index, self.end_index + 1):
+        # for i in range(self.start_index, self.end_index + 1):
+        for i in [227, 228, 229, 230]:
             intermediate = self.intermediates_path / str(i)
             data = {}
             for intermediate_method in intermediate.iterdir():
@@ -137,5 +137,4 @@ if __name__ == '__main__':
     start_index = 296
     end_index = 296
     p = PartialRepair(start_index, end_index)
-    # p.repair()
     p.repair_intermediates()

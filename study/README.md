@@ -10,7 +10,7 @@ A "runnable" tool only means the tool can run and does not guarantee it can gene
 
 Repository: https://github.com/yyxhdy/arja
 
-Java version: 1.8 (1.8.0_131 tested)
+Java version: 1.7
 
 ### Arguments
 
@@ -25,7 +25,7 @@ java -cp "lib/*:bin:target/classes" us.msu.cse.cream.Main Arja -DsrcJavaDir /Use
 ```
 
 ```shell
-# Café
+# Assignment
 java -cp "lib/*:bin" us.msu.cse.cream.Main ArjaE -DsrcJavaDir /Users/ruizhengu/Experiments/APR-as-AAT/model_mutants/cafe_java_8/src -DbinJavaDir /Users/ruizhengu/Experiments/APR-as-AAT/model_mutants/cafe_java_8/build/classes/java/main -DbinTestDir /Users/ruizhengu/Experiments/APR-as-AAT/model_mutants/cafe_java_8/build/classes/java/test -Ddependences /Users/ruizhengu/Projects/APR-as-AAT/dependency/evosuite-standalone-runtime-1.0.6.jar:/Users/ruizhengu/Projects/APR-as-AAT/dependency/junit-vintage-engine-5.9.0.jar:/Users/ruizhengu/Projects/APR-as-AAT/dependency/junit-4.13.2.jar:/Users/ruizhengu/Projects/APR-as-AAT/dependency/junit-jupiter-engine-5.9.0.jar:/Users/ruizhengu/Projects/APR-as-AAT/dependency/javaparser-core-3.25.1.jar:/Users/ruizhengu/Projects/APR-as-AAT/dependency/junit-jupiter-api-5.9.0.jar:/Users/ruizhengu/Projects/APR-as-AAT/dependency/javaparser-core-serialization-3.25.1.jar:/Users/ruizhengu/Projects/APR-as-AAT/dependency/apiguardian-api-1.1.2.jar:/Users/ruizhengu/Projects/APR-as-AAT/dependency/commons-lang3-3.0.jar:/Users/ruizhengu/Projects/APR-as-AAT/dependency/opentest4j-1.0.0.jar -DdiffFormat true -DingredientMode Application
 ```
 
@@ -40,8 +40,6 @@ java -cp "lib/*:bin" us.msu.cse.cream.Main ArjaE -DsrcJavaDir /Users/ruizhengu/E
 Repository: https://github.com/SpoonLabs/astor
 
 Java version: 1.8
-
-JUnit version: 4
 
 ### Command
 
@@ -274,12 +272,6 @@ Repository: https://github.com/TruX-DTF/TBar
 Repository: https://github.com/kusumotolab/kGenProg
 
 Java version: 11
-
-JUnit version: 4
-
-### Configuration
-
-**Properties:** [kgenprog.toml](./kGenProg/kgenprog.toml)
 
 ### Command
 

@@ -10,8 +10,12 @@ from cream import utils
 
 
 class Intermediate:
-    def __init__(self, root, model):
-        self.root = root
+    def __init__(self, model):
+        if sys.platform == "linux":
+            self.root = Path("/mnt/parscratch/users/acp22rg/APR")
+        else:
+            self.root = Path("/Users/ruizhengu/Projects")
+
         self.project_home = self.root / "APR4Grade"
         self.dataset_home = self.root / "IntermediateJava/incorrect_submissions"
         self.method_file_json = self.project_home / "resource/method_files.json"
@@ -28,7 +32,8 @@ class Intermediate:
             print("Please enter a valid model. Valid models are 1, 2, 3, m.")
         self.method_coverage_json = self.project_home / "resource/method_coverage.json"
         # self.intermediates_path = self.root / "IntermediateJava/intermediates"
-        self.intermediates_path = Path("/Users/ruizhengu/Experiments/APR4Grade/intermediates")
+        # self.intermediates_path = Path("/Users/ruizhengu/Experiments/APR4Grade/intermediates")
+        self.intermediates_path = self.root / "intermediates"
         self.arja_home = self.root / "arja"
         self.dependency = self.root / "IntermediateJava/dependency"
 
@@ -132,7 +137,8 @@ class Intermediate:
             self.update_intermediate(intermediate_method, methods_to_replace)
 
     def launcher(self):
-        for i in range(1, 297):
+        # for i in range(1, 297):
+        for i in [227, 228, 229, 230]:
             self.create_intermediates(str(i))
             self.check_compilation(str(i))
 
@@ -142,10 +148,7 @@ class Intermediate:
 
 if __name__ == '__main__':
     # model = sys.argv[1]
-    model = "3"
-
-    root = Path("/Users/ruizhengu/Projects")
-    # root = Path("/mnt/parscratch/users/acp22rg/APR")
-    im = Intermediate(root, model)
+    model = "m"
+    im = Intermediate(model)
     im.empty_intermediates()
     im.launcher()
