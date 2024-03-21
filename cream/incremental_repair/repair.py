@@ -131,10 +131,10 @@ class PartialRepair:
 
 
 if __name__ == '__main__':
-    # start_index = int(sys.argv[1])
-    # end_index = int(sys.argv[2])
+    start_index = int(sys.argv[1])
+    end_index = int(sys.argv[2])
 
-    start_index = 296
-    end_index = 296
+    # start_index = 296
+    # end_index = 296
     p = PartialRepair(start_index, end_index)
     p.repair_intermediates()

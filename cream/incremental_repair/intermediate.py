@@ -31,8 +31,6 @@ class Intermediate:
         else:
             print("Please enter a valid model. Valid models are 1, 2, 3, m.")
         self.method_coverage_json = self.project_home / "resource/method_coverage.json"
-        # self.intermediates_path = self.root / "IntermediateJava/intermediates"
-        # self.intermediates_path = Path("/Users/ruizhengu/Experiments/APR4Grade/intermediates")
         self.intermediates_path = self.root / "intermediates"
         self.arja_home = self.root / "arja"
         self.dependency = self.root / "IntermediateJava/dependency"
@@ -137,8 +135,8 @@ class Intermediate:
             self.update_intermediate(intermediate_method, methods_to_replace)
 
     def launcher(self):
-        # for i in range(1, 297):
-        for i in [227, 228, 229, 230]:
+        for i in range(1, 297):
+            # for i in [227, 228, 229, 230]:
             self.create_intermediates(str(i))
             self.check_compilation(str(i))
 
@@ -147,8 +145,8 @@ class Intermediate:
 
 
 if __name__ == '__main__':
-    # model = sys.argv[1]
-    model = "m"
+    model = sys.argv[1]
+    # model = "m"
     im = Intermediate(model)
     im.empty_intermediates()
     im.launcher()
