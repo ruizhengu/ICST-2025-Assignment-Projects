@@ -60,10 +60,41 @@ class Analysis:
                     print(f"Submission {patches.name} has multiple patches, manually apply them to avoid conflict.")
         print(count_patches)
 
+    def individual_check(self):
+        dp = 0
+        patches = Path("/Users/ruizhengu/Downloads/Archive/222")
+        intermediate = Path("/Users/ruizhengu/Downloads/Archive/submission/222")
+        buggy_methods = [method for method in patches.iterdir() if method.is_dir()]
+        unnormalised_weights = self.get_unnormalised_weights(buggy_methods)
+        for method in buggy_methods:
+            method_unnormalised_weight = self.get_weight(method.name)
+            method_normalised_weight = method_unnormalised_weight * 100 / unnormalised_weights
+            num_failed_tests_before = self.get_num_failed_tests_before_patch(patches.name, method.name)
+            num_failed_tests_after = self.get_number_failed_tests_method(intermediate, method.name)
+            print(
+                f"Program {intermediate.name}-{method.name} Num failed tests before: {num_failed_tests_before} Num failed tests after: {num_failed_tests_after}")
+            dp += method_normalised_weight * (
+                    num_failed_tests_before - num_failed_tests_after) / num_failed_tests_before
+        print(f"Patched Program {intermediate.name} Degree of Patchness {round(dp, 2)}")
+
+    def get_results(self):
+        with open(self.results_json, 'r') as f:
+            d = json.load(f)[self.model]
+        dps = []
+        for submission, result in d.items():
+            dps.append(result["degree of patchness"])
+        dp_len = len(dps)
+        dp_max = max(dps)
+        dp_min = min(dps)
+        dp_avg = sum(dps) / dp_len
+        print(f"Number of patched programs: {dp_len}")
+        print(f"Maximum dp: {dp_max}")
+        print(f"Minimum dp: {dp_min}")
+        print(f"Average dp: {round(dp_avg, 2)}")
+
     def degree_of_patchness(self, intermediate, patches, buggy_methods):
         dp = 0
         unnormalised_weights = self.get_unnormalised_weights(buggy_methods)
-        data = {}
         for method in buggy_methods:
             method_unnormalised_weight = self.get_weight(method.name)
             method_normalised_weight = method_unnormalised_weight * 100 / unnormalised_weights
@@ -213,4 +244,6 @@ class Analysis:
 
 if __name__ == '__main__':
     a = Analysis()
-    a.launcher()
+    # a.launcher()
+    # a.individual_check()
+    a.get_results()

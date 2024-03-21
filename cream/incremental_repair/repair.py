@@ -41,8 +41,8 @@ class PartialRepair:
         return arja_output
 
     def repair_intermediates(self):
-        # for i in range(self.start_index, self.end_index + 1):
-        for i in [227, 228, 229, 230]:
+        for i in range(self.start_index, self.end_index + 1):
+        # for i in [227, 228, 229, 230]:
             intermediate = self.intermediates_path / str(i)
             data = {}
             for intermediate_method in intermediate.iterdir():
