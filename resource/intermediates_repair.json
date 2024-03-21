@@ -1,1 +1,1 @@
-{}
+{"296": {"Cafe.findRecipe": {"number of failed tests": 20, "patches generated": false}, "Cafe.serveOrder": {"number of failed tests": 24, "patches generated": false}, "Cafe.removeRecipe": {"number of failed tests": 26, "patches generated": false}}}

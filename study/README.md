@@ -65,7 +65,7 @@ Repository: https://github.com/MingWEN-CS/CapGen
 
 ### Configuration
 
-**Properties:** [config_test.txt](/CapGen/config_test.txt)
+**Properties:** [config_test.txt](./CapGen/config_test.txt)
 
 ### Command
 
@@ -146,7 +146,7 @@ Repository: https://bitbucket.org/maxpei/jaid/src/master/
 
 ### Configuration
 
-**Properties:** [problem_sheet.properties](/jaid/problem_sheet.properties)
+**Properties:** [problem_sheet.properties](./jaid/problem_sheet.properties)
 
 **Program arguments**
 
@@ -209,7 +209,7 @@ Repository: https://github.com/TruX-DTF/LSRepair
 
 Repository: https://github.com/xgdsmileboy/SimFix
 
-**Properties(attempted):** [d4j-info](/SimFix/d4j-info)
+**Properties(attempted):** [d4j-info](./SimFix/d4j-info)
 
 **Program arguments**
 
@@ -240,7 +240,7 @@ Exception in thread "main" java.lang.Error: Unresolved compilation problem:
 
 Repository: https://github.com/SketchFix/SketchFix
 
-**Properties (simple example):** [SimpleConfig.txt](/SketchFix/SimpleConfig.txt)
+**Properties (simple example):** [SimpleConfig.txt](./SketchFix/SimpleConfig.txt)
 
 ### Procedure (simple example)
 
@@ -279,7 +279,7 @@ JUnit version: 4
 
 ### Configuration
 
-**Properties:** [kgenprog.toml](/kGenProg/kgenprog.toml)
+**Properties:** [kgenprog.toml](./kGenProg/kgenprog.toml)
 
 ### Command
 
@@ -310,9 +310,9 @@ Repository: https://github.com/TruX-DTF/FL-VS-APR
 
 Repository: https://github.com/qixin5/ssFix
 
-**Properties (simple example):** [testsuite_classes](/ssFix/simpleExample_1_buggy/testsuite_classes)
+**Properties (simple example):** [testsuite_classes](./ssFix/simpleExample_1_buggy/testsuite_classes)
 
-**Properties (problem sheet):** [testsuite_classes](/ssFix/com1003_cafe_8/testsuite_classes)
+**Properties (problem sheet):** [testsuite_classes](./ssFix/com1003_cafe_8/testsuite_classes)
 
 ### Command
 

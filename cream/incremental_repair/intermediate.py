@@ -142,7 +142,7 @@ class Intermediate:
 
 if __name__ == '__main__':
     # model = sys.argv[1]
-    model = "2"
+    model = "3"
 
     root = Path("/Users/ruizhengu/Projects")
     # root = Path("/mnt/parscratch/users/acp22rg/APR")

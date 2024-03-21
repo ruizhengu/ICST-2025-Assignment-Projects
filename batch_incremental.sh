@@ -14,7 +14,8 @@ sbatch hpc_incremental.sh 61 70
 #sleep 180
 sbatch hpc_incremental.sh 71 80
 #sleep 180
-sbatch hpc_incremental.sh 81 90
+sbatch hpc_incremental.sh 81 85
+sbatch hpc_incremental.sh 86 90
 #sleep 180
 sbatch hpc_incremental.sh 91 100
 #sleep 180
@@ -42,7 +43,8 @@ sbatch hpc_incremental.sh 201 210
 #sleep 180
 sbatch hpc_incremental.sh 211 220
 #sleep 180
-sbatch hpc_incremental.sh 221 230
+sbatch hpc_incremental.sh 221 225
+sbatch hpc_incremental.sh 226 230
 #sleep 180
 sbatch hpc_incremental.sh 231 240
 #sleep 180

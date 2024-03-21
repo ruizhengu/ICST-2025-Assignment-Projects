@@ -73,7 +73,7 @@ class Analysis:
 
     def get_number_failed_tests(self, patched_program, method):
         chmod = f"chmod +x {patched_program}/gradlew"
-        cmd = f"{patched_program}/gradlew build -p {patched_program} --parallel"
+        cmd = f"{patched_program}/gradlew build -p {patched_program}"
         try:
             utils.run_cmd(chmod)
             build_output = utils.run_cmd(cmd)
