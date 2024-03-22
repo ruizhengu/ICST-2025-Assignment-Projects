@@ -24,7 +24,7 @@ class PartialRepair:
         self.end_index = end
         self.arja_output = self.logging_init()
         self.intermediates_path = self.root / "intermediates"
-        self.intermediate_repair_record = self.project_home / "resource/intermediates_repair.json"
+        # self.intermediate_repair_record = self.project_home / "resource/intermediates_repair.json"
 
     def logging_init(self):
         arja_output = self.project_home / "patches"
@@ -60,7 +60,7 @@ class PartialRepair:
                         "number of failed tests": num_failed_tests,
                         "patches generated": patches_generated
                     }
-                    self.incremental_record(intermediate.name, data)
+                    # self.incremental_record(intermediate.name, data)
 
     def patch_selection(self, patches):
         patches_filtered = []
@@ -122,12 +122,12 @@ class PartialRepair:
         arja_results = utils.run_cmd(arja_cmd)
         return arja_output
 
-    def incremental_record(self, submission, data):
-        with open(self.intermediate_repair_record, 'r') as f:
-            d = json.load(f)
-        d[str(submission)] = data
-        with open(self.intermediate_repair_record, 'w') as f:
-            json.dump(d, f)
+    # def incremental_record(self, submission, data):
+    #     with open(self.intermediate_repair_record, 'r') as f:
+    #         d = json.load(f)
+    #     d[str(submission)] = data
+    #     with open(self.intermediate_repair_record, 'w') as f:
+    #         json.dump(d, f)
 
 
 if __name__ == '__main__':
