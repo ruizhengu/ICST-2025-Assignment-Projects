@@ -87,15 +87,15 @@ class PartialRepair:
         return min_file
 
     def get_number_failed_tests(self, intermediate, method_under_repair):
-        chmod = f"chmod +x {intermediate}/gradlew"
-        cmd = f"{intermediate}/gradlew build -p {intermediate}"
-        try:
-            utils.run_cmd(chmod)
-            build_output = utils.run_cmd(cmd)
-            if "BUILD SUCCESSFUL" not in build_output and "Execution failed for task ':test'." not in build_output:
-                print(intermediate.name + " BUILD FAILED")
-        except Exception as e:
-            print(f"{intermediate} - Error executing {e}")
+        # chmod = f"chmod +x {intermediate}/gradlew"
+        # cmd = f"{intermediate}/gradlew build -p {intermediate}"
+        # try:
+        #     utils.run_cmd(chmod)
+        #     build_output = utils.run_cmd(cmd)
+        #     if "BUILD SUCCESSFUL" not in build_output and "Execution failed for task ':test'." not in build_output:
+        #         print(intermediate.name + " BUILD FAILED")
+        # except Exception as e:
+        #     print(f"{intermediate} - Error executing {e}")
 
         list_cmd = f"{intermediate}/gradlew listFailedTests -p {intermediate}"
         output = utils.run_cmd(list_cmd)

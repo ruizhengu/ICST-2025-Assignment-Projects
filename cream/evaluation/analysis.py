@@ -46,6 +46,8 @@ class Analysis:
 
     def launcher(self):
         count_patches = 0
+        # tmp = Path("/Users/ruizhengu/Projects/APR4Grade/patches/cream")
+        # for patches in tmp.iterdir():
         for patches in self.patches_path.iterdir():
             if patches.is_dir():
                 buggy_methods = [method for method in patches.iterdir() if method.is_dir()]
@@ -58,6 +60,8 @@ class Analysis:
                 elif len(valid_patches) > 1:
                     count_patches += 1
                     print(f"Submission {patches.name} has multiple patches, manually apply them to avoid conflict.")
+                else:
+                    shutil.rmtree(patches)
         print(count_patches)
 
     def individual_check(self):
@@ -244,6 +248,6 @@ class Analysis:
 
 if __name__ == '__main__':
     a = Analysis()
-    # a.launcher()
+    a.launcher()
     # a.individual_check()
-    a.get_results()
+    # a.get_results()
