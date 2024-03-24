@@ -16,19 +16,11 @@ class Figures:
         dps = []
         for submission, result in d.items():
             dps.append(result["degree of patchness"])
-        # dp_len = len(dps)
-        # dp_max = max(dps)
-        # dp_min = min(dps)
-        # dp_avg = sum(dps) / dp_len
-        # print(f"Number of patched programs: {dp_len}")
-        # print(f"Maximum dp: {dp_max}")
-        # print(f"Minimum dp: {dp_min}")
-        # print(f"Average dp: {round(dp_avg, 2)}")
         return dps
 
     def box_plot(self):
         results_m = self.get_results("m")
-        results_1 = []
+        results_1 = self.get_results("1")
         results_2 = []
         results_3 = []
         results = {
