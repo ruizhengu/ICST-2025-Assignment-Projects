@@ -9,31 +9,100 @@ class Figures:
         self.root = Path("/Users/ruizhengu/Projects")
         self.project_home = self.root / "APR4Grade"
         self.results_json = self.project_home / "resource/results.json"
+        self.failed_tests_json = self.project_home / "resource/failed_tests.json"
+        self.method_coverage_json = self.project_home / "resource/method_coverage.json"
+        self.dp_m = self.get_dp("m")
+        self.dp_1 = self.get_dp("1")
+        self.dp_2 = []
+        self.dp_3 = []
 
-    def get_results(self, model):
-        with open(self.results_json, 'r') as f:
-            d = json.load(f)[model]
-        dps = []
-        for submission, result in d.items():
-            dps.append(result["degree of patchness"])
-        return dps
-
-    def box_plot(self):
-        results_m = self.get_results("m")
-        results_1 = self.get_results("1")
-        results_2 = []
-        results_3 = []
+    def box_plot_rq2(self):
         results = {
-            "MS": results_m,
-            "CS 1": results_1,
-            "CS 2": results_2,
-            "CS 3": results_3,
+            "MS": self.dp_m,
+            "CS 1": self.dp_1,
+            "CS 2": self.dp_2,
+            "CS 3": self.dp_3,
         }
         plt.boxplot(results.values(), labels=results.keys())
         plt.ylabel("Degree of patchedness")
         plt.show()
 
+    def bar_chart_rq2(self):
+        x = ["MS", "CS 1", "CS 2", "CS 3"]
+        y = [16, 15, 0, 0]
+        plt.bar(x, y)
+        plt.show()
+
+    def box_plot_failed_tests_program(self):
+        patched_programs = self.get_submission_patched()
+        unpatched_programs = self.get_submission_unpatched()
+        num_tests_patched = []
+        num_tests_unpatched = []
+
+        with open(self.failed_tests_json, 'r') as j:
+            d = json.load(j)
+        for submission, number in d.items():
+            if submission in patched_programs:
+                num_tests_patched.append(number)
+            elif submission in unpatched_programs:
+                num_tests_unpatched.append(number)
+        results = {
+            "patched": num_tests_patched,
+            "unpatched": num_tests_unpatched
+        }
+        plt.boxplot(results.values(), labels=results.keys())
+        plt.show()
+
+    def box_plot_failed_tests_method(self):
+        patched_programs = self.get_submission_patched()
+        unpatched_programs = self.get_submission_unpatched()
+        num_tests_patched = []
+        num_tests_unpatched = []
+        with open(self.method_coverage_json, 'r') as j:
+            d = json.load(j)
+        for submission, methods in d.items():
+            if submission in patched_programs:
+                for method, tests in methods.items():
+                    if tests["num"] > 0:
+                        num_tests_patched.append(tests["num"])
+            elif submission in unpatched_programs:
+                for method, tests in methods.items():
+                    if tests["num"] > 0:
+                        num_tests_unpatched.append(tests["num"])
+        results = {
+            "patched": num_tests_patched,
+            "unpatched": num_tests_unpatched
+        }
+        plt.boxplot(results.values(), labels=results.keys())
+        plt.show()
+
+    def get_dp(self, model):
+        with open(self.results_json, 'r') as j:
+            d = json.load(j)[model]
+        dps = []
+        for submission, result in d.items():
+            dps.append(result["degree of patchness"])
+        return dps
+
+    def get_submission_patched(self):
+        patched_programs = set()
+        for model in ["m", "1", "2", "3"]:
+            with open(self.results_json, 'r') as j:
+                d = json.load(j)[model]
+            for submission, result in d.items():
+                patched_programs.add(submission)
+        return list(patched_programs)
+
+    def get_submission_unpatched(self):
+        unpatched_programs = []
+        patched_programs = self.get_submission_patched()
+        for i in range(1, 297):
+            if str(i) not in patched_programs:
+                unpatched_programs.append(str(i))
+        return unpatched_programs
+
 
 if __name__ == '__main__':
     f = Figures()
-    f.box_plot()
+    # f.box_plot_failed_tests_program()
+    f.box_plot_failed_tests_method()
