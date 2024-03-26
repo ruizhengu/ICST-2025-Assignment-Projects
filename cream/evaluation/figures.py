@@ -2,6 +2,8 @@ import json
 from pathlib import Path
 
 import matplotlib.pyplot as plt
+from matplotlib_venn import venn2
+from matplotlib_venn import venn3
 
 
 class Figures:
@@ -33,6 +35,17 @@ class Figures:
         plt.bar(x, y)
         plt.show()
 
+    def venn_diagram_rq2(self):
+        set_m = self.results_get_submission("m")
+        set_1 = self.results_get_submission("1")
+        # set_2 = self.results_get_submission("2")
+        # set_3 = self.results_get_submission("3")
+        venn2(
+            [set_m, set_1],
+            ("Model solution", "Correct solution 1")
+        )
+        plt.show()
+
     def box_plot_failed_tests_program(self):
         patched_programs = self.get_submission_patched()
         unpatched_programs = self.get_submission_unpatched()
@@ -47,8 +60,8 @@ class Figures:
             elif submission in unpatched_programs:
                 num_tests_unpatched.append(number)
         results = {
-            "patched": num_tests_patched,
-            "unpatched": num_tests_unpatched
+            "with patches generated": num_tests_patched,
+            "without patches generated": num_tests_unpatched
         }
         plt.boxplot(results.values(), labels=results.keys())
         plt.show()
@@ -70,8 +83,8 @@ class Figures:
                     if tests["num"] > 0:
                         num_tests_unpatched.append(tests["num"])
         results = {
-            "patched": num_tests_patched,
-            "unpatched": num_tests_unpatched
+            "with patches generated": num_tests_patched,
+            "without patches generated": num_tests_unpatched
         }
         plt.boxplot(results.values(), labels=results.keys())
         plt.show()
@@ -101,8 +114,17 @@ class Figures:
                 unpatched_programs.append(str(i))
         return unpatched_programs
 
+    def results_get_submission(self, model):
+        with open(self.results_json, 'r') as j:
+            d = json.load(j)[model]
+        submissions = set()
+        for submission, result in d.items():
+            submissions.add(submission)
+        return submissions
+
 
 if __name__ == '__main__':
     f = Figures()
     # f.box_plot_failed_tests_program()
-    f.box_plot_failed_tests_method()
+    # f.box_plot_failed_tests_method()
+    f.venn_diagram_rq2()
