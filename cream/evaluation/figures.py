@@ -1,9 +1,13 @@
 import json
+import re
 from pathlib import Path
 
 import matplotlib.pyplot as plt
 from matplotlib_venn import venn2
 from matplotlib_venn import venn3
+import numpy as np
+
+from cream import utils
 
 
 class Figures:
@@ -13,6 +17,8 @@ class Figures:
         self.results_json = self.project_home / "resource/results.json"
         self.failed_tests_json = self.project_home / "resource/failed_tests.json"
         self.method_coverage_json = self.project_home / "resource/method_coverage.json"
+        self.failed_tests_buggy_methods = self.project_home / "resource/failed_tests_buggy_methods.json"
+        self.intermediates_path = self.root / "intermediates"
         self.dp_m = self.get_dp("m")
         self.dp_1 = self.get_dp("1")
         self.dp_2 = []
@@ -63,6 +69,12 @@ class Figures:
             "with patches generated": num_tests_patched,
             "without patches generated": num_tests_unpatched
         }
+
+        q3_patched = np.percentile(num_tests_patched, 75)
+        q3_unpatched = np.percentile(num_tests_unpatched, 75)
+        print(f"q3_patched: {q3_patched}")
+        print(f"q3_unpatched: {q3_unpatched}")
+
         plt.boxplot(results.values(), labels=results.keys())
         plt.show()
 
@@ -122,9 +134,31 @@ class Figures:
             submissions.add(submission)
         return submissions
 
+    def get_num_failed_tests_buggy_methods(self):
+        data = {}
+        for i in range(1, 297):
+            submissions = self.intermediates_path / str(i)
+            method_data = {}
+            for method in submissions.iterdir():
+                if method.is_dir():
+                    list_cmd = f"{method}/gradlew listFailedTests -p {method}"
+                    output = utils.run_cmd(list_cmd)
+                    pattern = r"^(.+::\w+)$"
+                    failed_tests = re.findall(pattern, output, re.MULTILINE)
+                    data[submissions.name] = {
+                        "method": method.name,
+                        "number of failed tests": len(failed_tests)
+                    }
+                    method_data[method.name] = len(failed_tests)
+
+            data[submissions.name] = method_data
+
+            with open(self.failed_tests_buggy_methods, 'w') as f:
+                json.dump(data, f)
+
 
 if __name__ == '__main__':
     f = Figures()
     # f.box_plot_failed_tests_program()
-    # f.box_plot_failed_tests_method()
-    f.venn_diagram_rq2()
+    # f.venn_diagram_rq2()
+    f.get_num_failed_tests_buggy_methods()

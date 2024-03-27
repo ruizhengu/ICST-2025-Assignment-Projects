@@ -15,7 +15,7 @@ class Analysis:
         self.method_weighting_json = self.project_home / "resource/method_weighting.json"
         self.method_coverage_json = self.project_home / "resource/method_coverage.json"
         self._main_path = Path("main/java/uk/ac/sheffield/com1003/cafe")
-        self.model = "1"
+        self.model = "m"
         self.model_solution = {
             "m": self.root / "IntermediateJava/model_solution",
             "1": self.root / "IntermediateJava/correct_submissions/1",
@@ -46,8 +46,6 @@ class Analysis:
 
     def launcher(self):
         count_patches = 0
-        # tmp = Path("/Users/ruizhengu/Projects/APR4Grade/patches/cream")
-        # for patches in tmp.iterdir():
         for patches in self.patches_path.iterdir():
             if patches.is_dir():
                 buggy_methods = [method for method in patches.iterdir() if method.is_dir()]
@@ -68,10 +66,12 @@ class Analysis:
 
     def individual_check(self):
         dp = 0
-        patches = Path("/Users/ruizhengu/Experiments/APR4Grade/patches_1/77")
-        intermediate = Path("/Users/ruizhengu/Projects/intermediates/77")
+        patches = Path("/Users/ruizhengu/Experiments/APR4Grade/patches_m/77")
+        intermediate = Path("/Users/ruizhengu/Projects/intermediate_test/77")
         buggy_methods = [method for method in patches.iterdir() if method.is_dir()]
         unnormalised_weights = self.get_unnormalised_weights(buggy_methods)
+        valid_patches = self.count_valid_patches(buggy_methods)
+        intermediate = self.apply_patch(intermediate, valid_patches[0])
         for method in buggy_methods:
             method_unnormalised_weight = self.get_weight(method.name)
             method_normalised_weight = method_unnormalised_weight * 100 / unnormalised_weights
