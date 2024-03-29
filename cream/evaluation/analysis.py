@@ -15,7 +15,7 @@ class Analysis:
         self.method_weighting_json = self.project_home / "resource/method_weighting.json"
         self.method_coverage_json = self.project_home / "resource/method_coverage.json"
         self._main_path = Path("main/java/uk/ac/sheffield/com1003/cafe")
-        self.model = "m"
+        self.model = "2"
         self.model_solution = {
             "m": self.root / "IntermediateJava/model_solution",
             "1": self.root / "IntermediateJava/correct_submissions/1",
@@ -51,9 +51,9 @@ class Analysis:
                 buggy_methods = [method for method in patches.iterdir() if method.is_dir()]
                 valid_patches = self.count_valid_patches(buggy_methods)
                 if len(valid_patches) == 1:
-                    # intermediate_path = self.get_submissions(patches)
-                    # intermediate = self.apply_patch(intermediate_path, valid_patches[0])
-                    # self.degree_of_patchness(intermediate, patches, buggy_methods)
+                    intermediate_path = self.get_submissions(patches)
+                    intermediate = self.apply_patch(intermediate_path, valid_patches[0])
+                    self.degree_of_patchedness(intermediate, patches, buggy_methods)
                     count_patches += 1
                 elif len(valid_patches) > 1:
                     count_patches += 1
@@ -66,12 +66,13 @@ class Analysis:
 
     def individual_check(self):
         dp = 0
-        patches = Path("/Users/ruizhengu/Experiments/APR4Grade/patches_m/77")
-        intermediate = Path("/Users/ruizhengu/Projects/intermediate_test/77")
+        patches = Path("/Users/ruizhengu/Experiments/APR4Grade/patches_2/77")
+        intermediate = Path("/Users/ruizhengu/Projects/intermediates/77")
         buggy_methods = [method for method in patches.iterdir() if method.is_dir()]
         unnormalised_weights = self.get_unnormalised_weights(buggy_methods)
-        valid_patches = self.count_valid_patches(buggy_methods)
-        intermediate = self.apply_patch(intermediate, valid_patches[0])
+
+        # valid_patches = self.count_valid_patches(buggy_methods)
+        # intermediate = self.apply_patch(intermediate, valid_patches[0])
         for method in buggy_methods:
             method_unnormalised_weight = self.get_weight(method.name)
             method_normalised_weight = method_unnormalised_weight * 100 / unnormalised_weights
@@ -81,14 +82,14 @@ class Analysis:
                 f"Program {intermediate.name}-{method.name} Num failed tests before: {num_failed_tests_before} Num failed tests after: {num_failed_tests_after}")
             dp += method_normalised_weight * (
                     num_failed_tests_before - num_failed_tests_after) / num_failed_tests_before
-        print(f"Patched Program {intermediate.name} Degree of Patchness {round(dp, 2)}")
+        print(f"Patched Program {intermediate.name} Degree of Patchedness {round(dp, 2)}")
 
     def get_results(self):
         with open(self.results_json, 'r') as f:
             d = json.load(f)[self.model]
         dps = []
         for submission, result in d.items():
-            dps.append(result["degree of patchness"])
+            dps.append(result["degree of patchedness"])
         dp_len = len(dps)
         dp_max = max(dps)
         dp_min = min(dps)
@@ -98,7 +99,7 @@ class Analysis:
         print(f"Minimum dp: {dp_min}")
         print(f"Average dp: {round(dp_avg, 2)}")
 
-    def degree_of_patchness(self, intermediate, patches, buggy_methods):
+    def degree_of_patchedness(self, intermediate, patches, buggy_methods):
         dp = 0
         unnormalised_weights = self.get_unnormalised_weights(buggy_methods)
         for method in buggy_methods:
@@ -110,11 +111,11 @@ class Analysis:
             #     f"Program {intermediate.name}-{method.name} Num failed tests before: {num_failed_tests_before} Num failed tests after: {num_failed_tests_after}")
             dp += method_normalised_weight * (
                     num_failed_tests_before - num_failed_tests_after) / num_failed_tests_before
-        print(f"Patched Program {intermediate.name} Degree of Patchness {round(dp, 2)}")
+        print(f"Patched Program {intermediate.name} Degree of Patchedness {round(dp, 2)}")
         num_failed_tests_model = self.get_num_failed_tests_model(patches)
         num_failed_test_patched = self.get_num_failed_tests_patched(patches)
         data = {
-            "degree of patchness": round(dp, 2),
+            "degree of patchedness": round(dp, 2),
             "number of failed tests - model": num_failed_tests_model,
             "number of failed tests - patched": num_failed_test_patched
         }
@@ -247,9 +248,20 @@ class Analysis:
         still_failed_tests = [el for el in failed_tests if el in method_covering_tests]
         return len(still_failed_tests)
 
+    def get_missed_submissions(self):
+        path = Path("/Users/ruizhengu/Experiments/APR4Grade/cream")
+        submissions = []
+        for submission in path.iterdir():
+            if submission.is_dir():
+                submissions.append(int(submission.name))
+        for i in range(1, 297):
+            if i not in submissions:
+                print(i)
+
 
 if __name__ == '__main__':
     a = Analysis()
     # a.launcher()
     a.individual_check()
     # a.get_results()
+    # a.get_missed_submissions()
