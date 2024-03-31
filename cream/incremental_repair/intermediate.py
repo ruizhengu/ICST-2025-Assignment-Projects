@@ -136,7 +136,7 @@ class Intermediate:
 
     def launcher(self):
         # for i in range(1, 297):
-        for i in [72, 73, 74, 75, 76, 77, 78, 79, 80, 208, 209, 210, 237, 238, 239, 240]:
+        for i in [119, 120, 227, 228, 229, 230, 248, 249, 250]:
             self.create_intermediates(str(i))
             self.check_compilation(str(i))
 
@@ -146,7 +146,7 @@ class Intermediate:
 
 if __name__ == '__main__':
     # model = sys.argv[1]
-    model = "2"
+    model = "3"
     im = Intermediate(model)
     im.empty_intermediates()
     im.launcher()

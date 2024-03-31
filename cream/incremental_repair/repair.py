@@ -42,7 +42,7 @@ class PartialRepair:
 
     def repair_intermediates(self):
         # for i in range(self.start_index, self.end_index + 1):
-        for i in [72, 73, 74, 75, 76, 77, 78, 79, 80, 208, 209, 210, 237, 238, 239, 240]:
+        for i in [119, 120, 227, 228, 229, 230, 248, 249, 250]:
             intermediate = self.intermediates_path / str(i)
             data = {}
             for intermediate_method in intermediate.iterdir():

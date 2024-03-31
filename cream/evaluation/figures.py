@@ -83,7 +83,7 @@ class Figures:
         plt.show()
 
 
-    def box_plot_failed_tests_program(self):
+    def box_plot_rq3_num_failed_tests(self):
         patched_programs = self.get_submission_patched()
         unpatched_programs = self.get_submission_unpatched()
         num_tests_patched = []
@@ -109,25 +109,32 @@ class Figures:
         plt.boxplot(results.values(), labels=results.keys())
         plt.show()
 
-    def box_plot_failed_tests_method(self):
+    def box_plot_rq3_buggy_methods(self):
         patched_programs = self.get_submission_patched()
         unpatched_programs = self.get_submission_unpatched()
-        num_tests_patched = []
-        num_tests_unpatched = []
+        num_methods_patched = []
+        num_methods_unpatched = []
+
         with open(self.method_coverage_json, 'r') as j:
             d = json.load(j)
         for submission, methods in d.items():
             if submission in patched_programs:
+                count_buggy_methods = 0
                 for method, tests in methods.items():
                     if tests["num"] > 0:
-                        num_tests_patched.append(tests["num"])
+                        count_buggy_methods += 1
+                num_methods_patched.append(count_buggy_methods)
             elif submission in unpatched_programs:
+                count_buggy_methods = 0
                 for method, tests in methods.items():
                     if tests["num"] > 0:
-                        num_tests_unpatched.append(tests["num"])
+                        count_buggy_methods += 1
+                num_methods_unpatched.append(count_buggy_methods)
+        print(num_methods_patched)
+        print(num_methods_unpatched)
         results = {
-            "with patches generated": num_tests_patched,
-            "without patches generated": num_tests_unpatched
+            "with patches generated": num_methods_patched,
+            "without patches generated": num_methods_unpatched
         }
         plt.boxplot(results.values(), labels=results.keys())
         plt.show()
@@ -191,6 +198,7 @@ class Figures:
 if __name__ == '__main__':
     f = Figures()
     # f.box_plot_failed_tests_program()
-    f.venn_diagram_rq2()
+    # f.venn_diagram_rq2()
     # f.box_plot_rq1()
-    f.box_plot_rq2()
+    # f.box_plot_rq2()
+    f.box_plot_rq3_buggy_methods()
