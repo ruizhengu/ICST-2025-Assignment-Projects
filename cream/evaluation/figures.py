@@ -2,9 +2,7 @@ import json
 import re
 from pathlib import Path
 
-import matplotlib.pyplot as plt
-from matplotlib_venn import venn2
-from matplotlib_venn import venn3
+import statistics
 from venny4py.venny4py import *
 import numpy as np
 
@@ -23,7 +21,7 @@ class Figures:
         self.dp_m = self.get_dp("m")
         self.dp_1 = self.get_dp("1")
         self.dp_2 = self.get_dp("2")
-        self.dp_3 = []
+        self.dp_3 = self.get_dp("3")
 
     def box_plot_rq1(self):
         failed_tests_original = []
@@ -48,17 +46,21 @@ class Figures:
     def box_plot_rq2(self):
         results = {
             "TS": self.dp_m,
-            "CS 1": self.dp_1,
-            "CS 2": self.dp_2,
-            "CS 3": self.dp_3,
+            "CS1": self.dp_1,
+            "CS2": self.dp_2,
+            "CS3": self.dp_3,
         }
+        print(f"TS: {statistics.mean(self.dp_m)}, {statistics.median(self.dp_m)}")
+        print(f"CS1: {statistics.mean(self.dp_1)}, {statistics.median(self.dp_1)}")
+        print(f"CS2: {statistics.mean(self.dp_2)}, {statistics.median(self.dp_2)}")
+        print(f"CS3: {statistics.mean(self.dp_3)}, {statistics.median(self.dp_3)}")
         plt.boxplot(results.values(), labels=results.keys())
         plt.ylabel("Degree of patchedness")
         plt.show()
 
     # def bar_chart_rq2(self):
-    #     x = ["MS", "CS 1", "CS 2", "CS 3"]
-    #     y = [16, 15, 0, 0]
+    #     x = ["TS", "CS 1", "CS 2", "CS 3"]
+    #     y = [16, 15, 15, 16]
     #     plt.bar(x, y)
     #     plt.show()
 
@@ -66,22 +68,15 @@ class Figures:
         set_m = self.results_get_submission("m")
         set_1 = self.results_get_submission("1")
         set_2 = self.results_get_submission("2")
-        # set_3 = self.results_get_submission("3")
-        # venn3(
-        #     [set_m, set_1, set_2],
-        #     ("Model solution", "Correct solution 1")
-        # )
-        # plt.show()
-
+        set_3 = self.results_get_submission("3")
         sets = {
             'TS': set_m,
-            'CS 1': set_1,
-            'CS 2': set_2,
-            # 'CS 3': set(list("Severus Snape"))
+            'CS1': set_1,
+            'CS2': set_2,
+            'CS3': set_3
         }
         venny4py(sets=sets)
         plt.show()
-
 
     def box_plot_rq3_num_failed_tests(self):
         patched_programs = self.get_submission_patched()
@@ -105,6 +100,9 @@ class Figures:
         q3_unpatched = np.percentile(num_tests_unpatched, 75)
         print(f"q3_patched: {q3_patched}")
         print(f"q3_unpatched: {q3_unpatched}")
+
+        print(f"with patches generated - average: {statistics.mean(num_tests_patched)}")
+        print(f"without patches generated - average: {statistics.mean(num_tests_unpatched)}")
 
         plt.boxplot(results.values(), labels=results.keys())
         plt.show()
@@ -194,11 +192,23 @@ class Figures:
             with open(self.failed_tests_buggy_methods, 'w') as f:
                 json.dump(data, f)
 
+    def get_below_threshold_unpatched(self):
+        unpatched_programs = self.get_submission_unpatched()
+        unpatched_below_threshold = []
+
+        with open(self.failed_tests_json, 'r') as j:
+            d = json.load(j)
+        for submission, number in d.items():
+            if submission in unpatched_programs and number < 18:
+                unpatched_below_threshold.append(submission)
+        print(f"Unpatched programs below threshold: {unpatched_below_threshold}", len(unpatched_below_threshold))
+
 
 if __name__ == '__main__':
     f = Figures()
-    # f.box_plot_failed_tests_program()
-    # f.venn_diagram_rq2()
     # f.box_plot_rq1()
     # f.box_plot_rq2()
-    f.box_plot_rq3_buggy_methods()
+    # f.venn_diagram_rq2()
+    # f.box_plot_rq3_num_failed_tests()
+    # f.box_plot_rq3_buggy_methods()
+    f.get_below_threshold_unpatched()

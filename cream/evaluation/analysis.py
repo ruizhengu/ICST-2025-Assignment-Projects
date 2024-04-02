@@ -51,9 +51,9 @@ class Analysis:
                 buggy_methods = [method for method in patches.iterdir() if method.is_dir()]
                 valid_patches = self.count_valid_patches(buggy_methods)
                 if len(valid_patches) == 1:
-                    # intermediate_path = self.get_submissions(patches)
-                    # intermediate = self.apply_patch(intermediate_path, valid_patches[0])
-                    # self.degree_of_patchedness(intermediate, patches, buggy_methods)
+                    intermediate_path = self.get_submissions(patches)
+                    intermediate = self.apply_patch(intermediate_path, valid_patches[0])
+                    self.degree_of_patchedness(intermediate, patches, buggy_methods)
                     count_patches += 1
                 elif len(valid_patches) > 1:
                     count_patches += 1
@@ -274,7 +274,7 @@ class Analysis:
 
 if __name__ == '__main__':
     a = Analysis()
-    # a.launcher()
-    a.individual_check()
+    a.launcher()
+    # a.individual_check()
     # a.get_results()
     # a.get_missed_submissions()
