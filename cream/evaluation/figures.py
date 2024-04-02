@@ -1,4 +1,5 @@
 import json
+import random
 import re
 from pathlib import Path
 
@@ -39,6 +40,8 @@ class Figures:
             "original programs": failed_tests_original,
             "intermediate programs": failed_tests_buggy_methods
         }
+        print(f"failed tests original - average: {statistics.mean(failed_tests_original)}")
+        print(f"failed tests buggy methods - average: {statistics.mean(failed_tests_buggy_methods)}")
         plt.boxplot(results.values(), labels=results.keys())
         plt.ylabel("Number of failed tests")
         plt.show()
@@ -57,12 +60,6 @@ class Figures:
         plt.boxplot(results.values(), labels=results.keys())
         plt.ylabel("Degree of patchedness")
         plt.show()
-
-    # def bar_chart_rq2(self):
-    #     x = ["TS", "CS 1", "CS 2", "CS 3"]
-    #     y = [16, 15, 15, 16]
-    #     plt.bar(x, y)
-    #     plt.show()
 
     def venn_diagram_rq2(self):
         set_m = self.results_get_submission("m")
@@ -202,6 +199,8 @@ class Figures:
             if submission in unpatched_programs and number < 18:
                 unpatched_below_threshold.append(submission)
         print(f"Unpatched programs below threshold: {unpatched_below_threshold}", len(unpatched_below_threshold))
+        random_samples = random.sample(unpatched_below_threshold, 10)
+        print(f"Random samples: {random_samples}")
 
 
 if __name__ == '__main__':
@@ -209,6 +208,6 @@ if __name__ == '__main__':
     # f.box_plot_rq1()
     # f.box_plot_rq2()
     # f.venn_diagram_rq2()
-    # f.box_plot_rq3_num_failed_tests()
+    f.box_plot_rq3_num_failed_tests()
     # f.box_plot_rq3_buggy_methods()
-    f.get_below_threshold_unpatched()
+    # f.get_below_threshold_unpatched()
