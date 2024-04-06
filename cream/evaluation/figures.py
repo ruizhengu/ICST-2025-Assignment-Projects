@@ -85,9 +85,9 @@ class Figures:
             d = json.load(j)
         for submission, number in d.items():
             if submission in patched_programs:
-                num_tests_patched.append(number)
+                num_tests_patched.append(number / 2)
             elif submission in unpatched_programs:
-                num_tests_unpatched.append(number)
+                num_tests_unpatched.append(number / 2)
         results = {
             "with patches generated": num_tests_patched,
             "without patches generated": num_tests_unpatched
