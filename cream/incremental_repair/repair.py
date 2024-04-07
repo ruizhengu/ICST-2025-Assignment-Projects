@@ -44,10 +44,10 @@ class PartialRepair:
         for i in range(self.start_index, self.end_index + 1):
             # for i in [119, 120, 227, 228, 229, 230, 248, 249, 250]:
             intermediate = self.intermediates_path / str(i)
-            data = {}
+            # data = {}
             for intermediate_method in intermediate.iterdir():
                 if intermediate_method.is_dir():
-                    num_failed_tests = self.get_number_failed_tests(intermediate_method, intermediate_method.name)
+                    # num_failed_tests = self.get_number_failed_tests(intermediate_method, intermediate_method.name)
                     arja_output = self.arja(intermediate_method, intermediate_method.name, intermediate.name)
                     patch = self.patch_selection(arja_output)
                     if patch is not None:
@@ -56,10 +56,10 @@ class PartialRepair:
                     else:
                         patches_generated = False
                         logging.info(f"Repair {str(i)} - Method {intermediate_method.name} > No Patch generated.")
-                    data[intermediate_method.name] = {
-                        "number of failed tests": num_failed_tests,
-                        "patches generated": patches_generated
-                    }
+                    # data[intermediate_method.name] = {
+                    #     "number of failed tests": num_failed_tests,
+                    #     "patches generated": patches_generated
+                    # }
                     # self.incremental_record(intermediate.name, data)
 
     def patch_selection(self, patches):
