@@ -44,23 +44,14 @@ class PartialRepair:
         for i in range(self.start_index, self.end_index + 1):
             # for i in [119, 120, 227, 228, 229, 230, 248, 249, 250]:
             intermediate = self.intermediates_path / str(i)
-            # data = {}
             for intermediate_method in intermediate.iterdir():
                 if intermediate_method.is_dir():
-                    # num_failed_tests = self.get_number_failed_tests(intermediate_method, intermediate_method.name)
                     arja_output = self.arja(intermediate_method, intermediate_method.name, intermediate.name)
                     patch = self.patch_selection(arja_output)
                     if patch is not None:
-                        patches_generated = True
                         logging.info(f"Repair {str(i)} - Method {intermediate_method.name} > Patch generated.")
                     else:
-                        patches_generated = False
                         logging.info(f"Repair {str(i)} - Method {intermediate_method.name} > No Patch generated.")
-                    # data[intermediate_method.name] = {
-                    #     "number of failed tests": num_failed_tests,
-                    #     "patches generated": patches_generated
-                    # }
-                    # self.incremental_record(intermediate.name, data)
 
     def patch_selection(self, patches):
         patches_filtered = []
@@ -86,25 +77,6 @@ class PartialRepair:
                     min_file = filtered_patch
         return min_file
 
-    def get_number_failed_tests(self, intermediate, method_under_repair):
-        # chmod = f"chmod +x {intermediate}/gradlew"
-        # cmd = f"{intermediate}/gradlew build -p {intermediate}"
-        # try:
-        #     utils.run_cmd(chmod)
-        #     build_output = utils.run_cmd(cmd)
-        #     if "BUILD SUCCESSFUL" not in build_output and "Execution failed for task ':test'." not in build_output:
-        #         print(intermediate.name + " BUILD FAILED")
-        # except Exception as e:
-        #     print(f"{intermediate} - Error executing {e}")
-
-        list_cmd = f"{intermediate}/gradlew listFailedTests -p {intermediate}"
-        output = utils.run_cmd(list_cmd)
-        pattern = r"^(.+::\w+)$"
-        failed_tests = re.findall(pattern, output, re.MULTILINE)
-        print(
-            f"Submission {intermediate} - Method under repair {method_under_repair} > Failed number of tests {len(failed_tests)}")
-        return len(failed_tests)
-
     def arja(self, submission, method, intermediate):
         path_src = submission / "src"
         path_bin_src = submission / "build/classes/java/main"
@@ -119,21 +91,15 @@ class PartialRepair:
             os.mkdir(arja_output)
         # Set 10 minutes time limit per execution
         arja_cmd = f"cd {self.arja_home} && java -cp \"lib/*:bin\" us.msu.cse.repair.Main ArjaE -DsrcJavaDir {path_src} -DbinJavaDir {path_bin_src} -DbinTestDir {path_bin_test} -Ddependences {dependencies} -DpatchOutputRoot {arja_output} -DmaxTime 10 -DingredientMode Application -DdiffFormat true"
+        print(arja_cmd)
         arja_results = utils.run_cmd(arja_cmd)
         return arja_output
-
-    # def incremental_record(self, submission, data):
-    #     with open(self.intermediate_repair_record, 'r') as f:
-    #         d = json.load(f)
-    #     d[str(submission)] = data
-    #     with open(self.intermediate_repair_record, 'w') as f:
-    #         json.dump(d, f)
 
 
 if __name__ == '__main__':
     start_index = int(sys.argv[1])
     end_index = int(sys.argv[2])
-    # start_index = 296
-    # end_index = 296
+    # start_index = 124
+    # end_index = 124
     p = PartialRepair(start_index, end_index)
     p.repair_intermediates()

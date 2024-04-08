@@ -113,6 +113,8 @@ class Intermediate:
                 build_output = utils.run_cmd(cmd)
                 if "BUILD SUCCESSFUL" not in build_output and "Execution failed for task ':test'." not in build_output:
                     print(f"{submission} - {intermediate.name} BUILD FAILED")
+                elif "BUILD SUCCESSFUL" in build_output and "Execution failed for task ':test'." not in build_output:
+                    shutil.rmtree(intermediate)
             except Exception as e:
                 print(f"{submission} - {intermediate.name} - Error executing {e}")
 
@@ -157,6 +159,7 @@ class Intermediate:
 
     def launcher(self):
         for i in range(1, 297):
+        # for i in range(124, 125):
             self.create_intermediates(str(i))
             self.check_compilation(str(i))
 
