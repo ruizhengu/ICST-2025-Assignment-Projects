@@ -157,6 +157,9 @@ class Intermediate:
             else:
                 shutil.copy2(item, destination / item.name)
 
+    def inject_correct_method_of_interest(self):
+        pass
+
     def launcher(self):
         for i in range(1, 297):
         # for i in range(124, 125):

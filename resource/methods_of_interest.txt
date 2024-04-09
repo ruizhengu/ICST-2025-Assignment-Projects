@@ -1,0 +1,17 @@
+Coffee.equals
+Water.equals
+Cafe.placeOrder
+Recipe.addIngredient
+Cafe.greeting
+Cafe.serveOrder
+Cafe.removeRecipe
+Recipe.equals
+Milk.equals
+Order.serve
+Cafe.printPendingOrders
+Cafe.findRecipe
+Ingredient.equals
+Cafe.printMenu
+Recipe.isReady
+Cafe.addRecipe
+Order.printReceipt
