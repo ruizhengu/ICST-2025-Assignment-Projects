@@ -115,5 +115,6 @@ class MethodCoverage:
 
 if __name__ == '__main__':
     m = MethodCoverage()
-    m.failed_tests_method_coverage()
-    # m.method_weighting_remove_solutions()
+    # m.failed_tests_method_coverage()
+    # m.method_weighting()
+    m.method_weighting_remove_solutions()
