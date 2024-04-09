@@ -138,17 +138,18 @@ class Intermediate:
     def check_compilation(self, submission):
         intermediate_submission = self.intermediates_path / submission
         for intermediate in intermediate_submission.iterdir():
-            chmod = f"chmod +x {intermediate}/gradlew"
-            cmd = f"{intermediate}/gradlew clean build -p {intermediate}"
-            try:
-                utils.run_cmd(chmod)
-                build_output = utils.run_cmd(cmd)
-                if "BUILD SUCCESSFUL" not in build_output and "Execution failed for task ':test'." not in build_output:
-                    print(f"{submission} - {intermediate.name} BUILD FAILED")
-                elif "BUILD SUCCESSFUL" in build_output and "Execution failed for task ':test'." not in build_output:
-                    shutil.rmtree(intermediate)
-            except Exception as e:
-                print(f"{submission} - {intermediate.name} - Error executing {e}")
+            if intermediate.is_dir():
+                chmod = f"chmod +x {intermediate}/gradlew"
+                cmd = f"{intermediate}/gradlew clean build -p {intermediate}"
+                try:
+                    utils.run_cmd(chmod)
+                    build_output = utils.run_cmd(cmd)
+                    if "BUILD SUCCESSFUL" not in build_output and "Execution failed for task ':test'." not in build_output:
+                        print(f"{submission} - {intermediate.name} BUILD FAILED")
+                    elif "BUILD SUCCESSFUL" in build_output and "Execution failed for task ':test'." not in build_output:
+                        shutil.rmtree(intermediate)
+                except Exception as e:
+                    print(f"{submission} - {intermediate.name} - Error executing {e}")
 
     def copy_submission(self, submission, intermediate):
         original_submission = self.dataset_home / submission
@@ -165,8 +166,10 @@ class Intermediate:
             # print(f"Intermediate {submission} - {method}")
             intermediate_program = intermediate_submission / method
             self.copy_submission(submission, intermediate_program)
-            self.inject_model_solution(intermediate_program)
-            self.replace_tests_with_solution(intermediate_program)
+            # self.inject_model_solution(intermediate_program)
+            # self.replace_tests_with_solution(intermediate_program)
+            self.replace_tests(intermediate_program)
+            self.inject_correct_method_of_interest(method, intermediate_program)
             methods_to_replace = list(filter(lambda x: x != method, buggy_methods))
             self.update_intermediate(intermediate_program, methods_to_replace)
 
@@ -189,6 +192,16 @@ class Intermediate:
             else:
                 shutil.copy2(item, destination / item.name)
 
+    def replace_tests(self, submission):
+        destination = submission / "src/test/java/uk/ac/sheffield/com1003/cafe"
+        utils.empty_directory(destination)
+        if not destination.exists():
+            destination.mkdir(parents=True)
+        model_test_suite = self.model_solution / "src/test/java/uk/ac/sheffield/com1003/cafe"
+        for item in model_test_suite.iterdir():
+            if item.is_file():
+                shutil.copy2(item, destination / item.name)
+
     def launcher(self):
         for i in range(1, 297):
             # for i in range(124, 125):
@@ -204,5 +217,4 @@ if __name__ == '__main__':
     model = "m"
     im = Intermediate(model)
     # im.empty_intermediates()
-    # im.launcher()
-    im.inject_correct_method_of_interest("Cafe.removeRecipe", "/Users/ruizhengu/Projects/intermediate_test/1/Cafe.removeRecipe")
+    im.launcher()
