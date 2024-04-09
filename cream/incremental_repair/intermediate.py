@@ -19,6 +19,7 @@ class Intermediate:
         self.project_home = self.root / "APR4Grade"
         self.dataset_home = self.root / "IntermediateJava/incorrect_submissions"
         self.method_file_json = self.project_home / "resource/method_files.json"
+        self.method_solution_test = self.project_home / "resource/method_of_interest_test.json"
 
         if model == "m":
             self.model_solution = self.root / "IntermediateJava/model_solution"
@@ -40,10 +41,36 @@ class Intermediate:
             d = json.load(f)
         return d[method_name]
 
+    def get_solution_test_path(self, method_name):
+        with open(self.method_solution_test) as f:
+            d = json.load(f)
+        return d[method_name]
+
     def update_intermediate(self, submission, methods_to_replace):
         for method in methods_to_replace:
-            method_content = self.get_model_method_content(method)
+            method_content = self.get_model_method_content(method, False)
             self.replace_method(submission, method, method_content)
+
+    def inject_correct_method_of_interest(self, method_name, submission):
+        method_content = self.get_model_method_content(method_name, True)
+        method_file = Path(self.get_method_path(method_name))
+        file_path = submission / method_file
+        with open(file_path, "r") as file:
+            code = file.read()
+        injection_point = code.rfind("}")
+        injected_code = code[:injection_point] + "\n\n" + method_content + "\n" + code[injection_point:]
+        with open(file_path, "w") as file:
+            file.write(injected_code)
+        self.inject_method_of_interest_test(method_name, submission)
+
+    def inject_method_of_interest_test(self, method_name, submission):
+        test_file = Path(self.get_solution_test_path(method_name))
+        test_path = submission / Path("src/test/java/uk/ac/sheffield/com1003/cafe/solution")
+        if not test_path.exists():
+            os.mkdir(test_path)
+        model_test_path = self.model_solution / test_file
+        destination_path = submission / test_file
+        shutil.copy2(model_test_path, destination_path)
 
     def replace_method(self, submission, method_name, content):
         method_file = Path(self.get_method_path(method_name))
@@ -70,14 +97,19 @@ class Intermediate:
         with open(file_path, "w") as file:
             file.write(new_code)
 
-    def get_model_method_content(self, method_name):
+    def get_model_method_content(self, method_name, solution):
         method_file = Path(self.get_method_path(method_name))
         file_path = self.model_solution / method_file
         with open(file_path, "r") as file:
             code = file.read()
-        pattern = re.compile(
-            rf'(public|protected|private|static|\s) +[\w<>\[\]]+\s+{re.escape(method_name.split(".")[1])}\s*\([^\)]*\)\s*(throws\s+[\w,\s]+)?\s*\{{',
-            re.DOTALL)
+        if not solution:
+            pattern = re.compile(
+                rf'(public|protected|private|static|\s) +[\w<>\[\]]+\s+{re.escape(method_name.split(".")[1])}\s*\([^\)]*\)\s*(throws\s+[\w,\s]+)?\s*\{{',
+                re.DOTALL)
+        else:
+            pattern = re.compile(
+                rf'(public|protected|private|static|\s) +[\w<>\[\]]+\s+{re.escape(method_name.split(".")[1] + "Solution")}\s*\([^\)]*\)\s*(throws\s+[\w,\s]+)?\s*\{{',
+                re.DOTALL)
         match = pattern.search(code)
         if match:
             start_index = match.start()
@@ -157,12 +189,9 @@ class Intermediate:
             else:
                 shutil.copy2(item, destination / item.name)
 
-    def inject_correct_method_of_interest(self):
-        pass
-
     def launcher(self):
         for i in range(1, 297):
-        # for i in range(124, 125):
+            # for i in range(124, 125):
             self.create_intermediates(str(i))
             self.check_compilation(str(i))
 
@@ -171,8 +200,9 @@ class Intermediate:
 
 
 if __name__ == '__main__':
-    model = sys.argv[1]
-    # model = "m"
+    # model = sys.argv[1]
+    model = "m"
     im = Intermediate(model)
-    im.empty_intermediates()
-    im.launcher()
+    # im.empty_intermediates()
+    # im.launcher()
+    im.inject_correct_method_of_interest("Cafe.removeRecipe", "/Users/ruizhengu/Projects/intermediate_test/1/Cafe.removeRecipe")

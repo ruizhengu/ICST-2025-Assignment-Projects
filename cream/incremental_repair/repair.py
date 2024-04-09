@@ -24,7 +24,6 @@ class PartialRepair:
         self.end_index = end
         self.arja_output = self.logging_init()
         self.intermediates_path = self.root / "intermediates"
-        # self.intermediate_repair_record = self.project_home / "resource/intermediates_repair.json"
 
     def logging_init(self):
         arja_output = self.project_home / "patches"

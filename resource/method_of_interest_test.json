@@ -1,0 +1,13 @@
+{
+  "Cafe.greeting": "src/test/java/uk/ac/sheffield/com1003/cafe/solution/TestCafeGreeting.java",
+  "Cafe.placeOrder": "src/test/java/uk/ac/sheffield/com1003/cafe/solution/TestCafePlaceOrder.java",
+  "Cafe.printMenu": "src/test/java/uk/ac/sheffield/com1003/cafe/solution/TestCafePrintMenu.java",
+  "Cafe.printPendingOrders": "src/test/java/uk/ac/sheffield/com1003/cafe/solution/TestCafePrintPendingOrders.java",
+  "Cafe.removeRecipe": "src/test/java/uk/ac/sheffield/com1003/cafe/solution/TestCafeRemoveRecipe.java",
+  "Cafe.serveOrder": "src/test/java/uk/ac/sheffield/com1003/cafe/solution/TestCafeServeOrder.java",
+  "Coffee.equals": "src/test/java/uk/ac/sheffield/com1003/cafe/solution/TestCoffeeEquals.java",
+  "Milk.equals": "src/test/java/uk/ac/sheffield/com1003/cafe/solution/TestMilkEquals.java",
+  "Recipe.addIngredient": "src/test/java/uk/ac/sheffield/com1003/cafe/solution/TestRecipeAddIngredient.java",
+  "Recipe.equals": "src/test/java/uk/ac/sheffield/com1003/cafe/solution/TestRecipeEquals.java",
+  "Water.equals": "src/test/java/uk/ac/sheffield/com1003/cafe/solution/TestWaterEquals.java"
+}
