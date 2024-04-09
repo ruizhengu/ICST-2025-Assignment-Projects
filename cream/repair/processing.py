@@ -2,14 +2,17 @@ import json
 import os.path
 import re
 import shutil
+import sys
 from pathlib import Path
 from cream import utils
 
 
 class Processing:
     def __init__(self):
-        # self.root = Path("/Users/ruizhengu/Projects")
-        self.root = Path("/mnt/parscratch/users/acp22rg/APR")
+        if sys.platform == "linux":
+            self.root = Path("/mnt/parscratch/users/acp22rg/APR")
+        else:
+            self.root = Path("/Users/ruizhengu/Projects")
         self.project_home = self.root / "APR4Grade"
         self.dataset_home = self.root / "IntermediateJava/incorrect_submissions"
         self.model_solution = self.root / "IntermediateJava/model_solution"
@@ -29,10 +32,10 @@ class Processing:
     def compile_submissions(self):
         for submission in self.submission_list:
             # self.replace_build_gradle(submission)
-            # self.replace_tests(submission)
+            self.replace_tests(submission)
             # self.replace_tests_with_solution(submission)
             chmod = f"chmod +x {submission}/gradlew"
-            cmd = f"{submission}/gradlew clean build -p {submission}"
+            cmd = f"{submission}/gradlew build -p {submission}"
             # self.inject_model_solution(submission)
             # self.inject_aspectj(submission)
             try:

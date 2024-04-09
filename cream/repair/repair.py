@@ -1,5 +1,6 @@
 import logging
 import os
+import sys
 from pathlib import Path
 
 from cream import utils
@@ -7,12 +8,14 @@ from cream import utils
 
 class Repair:
     def __init__(self, submissions):
-        self.project_home = Path("/Users/ruizhengu/Projects")
-        # self.project_home = Path("/mnt/parscratch/users/acp22rg/APR")
-        self.dataset_home = self.project_home / "IntermediateJava/incorrect_submissions"
-        self.model_solution = self.project_home / "IntermediateJava/model_solution"
-        self.arja_home = self.project_home / "arja"
-        self.dependency = self.project_home / "IntermediateJava/dependency"
+        if sys.platform == "linux":
+            self.root = Path("/mnt/parscratch/users/acp22rg/APR")
+        else:
+            self.root = Path("/Users/ruizhengu/Projects")
+        self.dataset_home = self.root / "IntermediateJava/incorrect_submissions"
+        self.model_solution = self.root / "IntermediateJava/model_solution"
+        self.arja_home = self.root / "arja"
+        self.dependency = self.root / "IntermediateJava/dependency"
         self.submission_list = [submission for submission in self.dataset_home.iterdir() if
                                 submission.is_dir() and submission.name != ".git"]
         self.model_test_suite = self.model_solution / "src/test/java/uk/ac/sheffield/com1003/cafe"
@@ -22,7 +25,7 @@ class Repair:
         self.submissions = submissions
 
     def logging_init(self):
-        arja_output = self.project_home / "APR4Grade/patches"
+        arja_output = self.root / "APR4Grade/patches"
         if not arja_output.exists():
             os.mkdir(arja_output)
         arja_output = arja_output / "default"

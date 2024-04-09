@@ -1,6 +1,7 @@
 import json
 import re
 import shutil
+import sys
 from pathlib import Path
 
 from cream import utils
@@ -8,8 +9,10 @@ from cream import utils
 
 class MethodCoverage:
     def __init__(self):
-        self.root = Path("/Users/ruizhengu/Projects")
-        # self.root = Path("/mnt/parscratch/users/acp22rg/APR")
+        if sys.platform == "linux":
+            self.root = Path("/mnt/parscratch/users/acp22rg/APR")
+        else:
+            self.root = Path("/Users/ruizhengu/Projects")
         self.project_home = self.root / "APR4Grade"
         self.dataset_home = self.root / "IntermediateJava/incorrect_submissions"
         self.model_solution = self.root / "IntermediateJava/model_solution"
@@ -112,4 +115,5 @@ class MethodCoverage:
 
 if __name__ == '__main__':
     m = MethodCoverage()
-    m.method_weighting_remove_solutions()
+    m.failed_tests_method_coverage()
+    # m.method_weighting_remove_solutions()
