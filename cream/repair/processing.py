@@ -187,13 +187,13 @@ class Processing:
             if os.path.exists(log):
                 os.remove(log)
             test_cmd = f"{submission}/gradlew build -p {submission}"
-            utils.run_cmd(test_cmd)
-            try:
-                build_output = utils.run_cmd(test_cmd)
-                if "BUILD SUCCESSFUL" not in build_output and "Execution failed for task ':test'." not in build_output:
-                    print(submission.name + " BUILD FAILED")
-            except Exception as e:
-                print(f"{submission} - Error executing {e}")
+            # utils.run_cmd(test_cmd)
+            # try:
+            #     build_output = utils.run_cmd(test_cmd)
+            #     if "BUILD SUCCESSFUL" not in build_output and "Execution failed for task ':test'." not in build_output:
+            #         print(submission.name + " BUILD FAILED")
+            # except Exception as e:
+            #     print(f"{submission} - Error executing {e}")
 
     def replace_gitignore(self):
         for submission in self.submission_list:
@@ -206,5 +206,5 @@ class Processing:
 
 if __name__ == '__main__':
     p = Processing()
-    p.compile_submissions()
-    # p.reset_submission()
+    # p.compile_submissions()
+    p.reset_submission()
