@@ -12,8 +12,8 @@ class PartialRepair:
     def __init__(self, start, end):
         if sys.platform == "linux":
             self.root = Path("/mnt/parscratch/users/acp22rg/APR")
-        elif sys.platform == "linux2":
-            self.root = Path("/mnt/fastdata/acp22rg/APR2")
+        # elif sys.platform == "linux2":
+        #     self.root = Path("/mnt/fastdata/acp22rg/APR2")
         else:
             self.root = Path("/Users/ruizhengu/Projects")
         self.project_home = self.root / "APR4Grade"

@@ -13,8 +13,8 @@ class Intermediate:
     def __init__(self, model):
         if sys.platform == "linux":
             self.root = Path("/mnt/parscratch/users/acp22rg/APR")
-        elif sys.platform == "linux2":
-            self.root = Path("/mnt/fastdata/acp22rg/APR2")
+        # elif sys.platform == "linux2":
+        #     self.root = Path("/mnt/fastdata/acp22rg/APR2")
         else:
             self.root = Path("/Users/ruizhengu/Projects")
 
@@ -37,6 +37,7 @@ class Intermediate:
         self.intermediates_path = self.root / "intermediates"
         self.arja_home = self.root / "arja"
         self.dependency = self.root / "IntermediateJava/dependency"
+        # self.count_purged_solutions = 0
 
     def get_method_path(self, method_name):
         with open(self.method_file_json) as f:
@@ -164,35 +165,33 @@ class Intermediate:
         if not intermediate_submission.exists():
             os.mkdir(intermediate_submission)
         buggy_methods = self.get_buggy_methods(submission)
+        # self.count_purged_solutions += len(buggy_methods)
         for method in buggy_methods:
-            # print(f"Intermediate {submission} - {method}")
             intermediate_program = intermediate_submission / method
             self.copy_submission(submission, intermediate_program)
-            # self.inject_model_solution(intermediate_program)
-            # self.replace_tests_with_solution(intermediate_program)
             self.replace_tests(intermediate_program)
             self.inject_correct_method_of_interest(method, intermediate_program)
             methods_to_replace = list(filter(lambda x: x != method, buggy_methods))
             self.update_intermediate(intermediate_program, methods_to_replace)
 
-    def inject_model_solution(self, intermediate_program):
-        model_solution = self.model_solution / "src/main/java/uk/ac/sheffield/com1003/cafe/solution"
-        destination = intermediate_program / "src/main/java/uk/ac/sheffield/com1003/cafe/solution"
-        if destination.exists():
-            shutil.rmtree(destination)
-        shutil.copytree(model_solution, destination)
-
-    def replace_tests_with_solution(self, intermediate_program):
-        destination = intermediate_program / "src/test/java/uk/ac/sheffield/com1003/cafe"
-        utils.empty_directory(destination)
-        if not destination.exists():
-            destination.mkdir(parents=True)
-        model_test_suite = self.model_solution / "src/test/java/uk/ac/sheffield/com1003/cafe"
-        for item in model_test_suite.iterdir():
-            if item.is_dir():
-                shutil.copytree(item, destination / item.name)
-            else:
-                shutil.copy2(item, destination / item.name)
+    # def inject_model_solution(self, intermediate_program):
+    #     model_solution = self.model_solution / "src/main/java/uk/ac/sheffield/com1003/cafe/solution"
+    #     destination = intermediate_program / "src/main/java/uk/ac/sheffield/com1003/cafe/solution"
+    #     if destination.exists():
+    #         shutil.rmtree(destination)
+    #     shutil.copytree(model_solution, destination)
+    #
+    # def replace_tests_with_solution(self, intermediate_program):
+    #     destination = intermediate_program / "src/test/java/uk/ac/sheffield/com1003/cafe"
+    #     utils.empty_directory(destination)
+    #     if not destination.exists():
+    #         destination.mkdir(parents=True)
+    #     model_test_suite = self.model_solution / "src/test/java/uk/ac/sheffield/com1003/cafe"
+    #     for item in model_test_suite.iterdir():
+    #         if item.is_dir():
+    #             shutil.copytree(item, destination / item.name)
+    #         else:
+    #             shutil.copy2(item, destination / item.name)
 
     def replace_tests(self, submission):
         destination = submission / "src/test/java/uk/ac/sheffield/com1003/cafe"
@@ -206,9 +205,9 @@ class Intermediate:
 
     def launcher(self):
         for i in range(1, 297):
-        # for i in range(1, 2):
             self.create_intermediates(str(i))
             self.check_compilation(str(i))
+        # print(self.count_purged_solutions)
 
     def empty_intermediates(self):
         utils.empty_directory(self.intermediates_path)
@@ -216,7 +215,7 @@ class Intermediate:
 
 if __name__ == '__main__':
     # model = sys.argv[1]
-    model = "1"
+    model = "2"
     im = Intermediate(model)
     im.empty_intermediates()
     im.launcher()

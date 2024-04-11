@@ -15,7 +15,7 @@ class Analysis:
         self.method_weighting_json = self.project_home / "resource/method_weighting.json"
         self.method_coverage_json = self.project_home / "resource/method_coverage.json"
         self._main_path = Path("main/java/uk/ac/sheffield/com1003/cafe")
-        self.model = "3"
+        self.model = "m"
         self.model_solution = {
             "m": self.root / "IntermediateJava/model_solution",
             "1": self.root / "IntermediateJava/correct_submissions/1",
@@ -57,22 +57,24 @@ class Analysis:
                     count_patches += 1
                 elif len(valid_patches) > 1:
                     count_patches += 1
-                    print(f"Submission {patches.name} has multiple patches, manually apply them to avoid conflict.")
-                    for patch in valid_patches:
-                        print(patch)
+                    try:
+                        intermediate_path = self.get_submissions(patches)
+                        intermediate = self.apply_patch_replace_methods(intermediate_path, valid_patches)
+                        self.degree_of_patchedness(intermediate, patches, buggy_methods)
+                    except FileNotFoundError:
+                        print(f"Submission {patches.name} has multiple patches, manually apply them to avoid conflict.")
+                        for patch in valid_patches:
+                            print(patch)
                 else:
                     shutil.rmtree(patches)
         print(count_patches)
 
     def individual_check(self):
         dp = 0
-        patches = Path("/Users/ruizhengu/Experiments/APR4Grade/patches_3/195")
-        intermediate = Path("/Users/ruizhengu/Projects/intermediates/195")
+        patches = Path("/Users/ruizhengu/Experiments/APR4Grade/patches_m/234")
+        intermediate = Path("/Users/ruizhengu/Projects/intermediates/234")
         buggy_methods = [method for method in patches.iterdir() if method.is_dir()]
         unnormalised_weights = self.get_unnormalised_weights(buggy_methods)
-
-        # valid_patches = self.count_valid_patches(buggy_methods)
-        # intermediate = self.apply_patch(intermediate, valid_patches[0])
         for method in buggy_methods:
             method_unnormalised_weight = self.get_weight(method.name)
             method_normalised_weight = method_unnormalised_weight * 100 / unnormalised_weights
@@ -107,8 +109,6 @@ class Analysis:
             method_normalised_weight = method_unnormalised_weight * 100 / unnormalised_weights
             num_failed_tests_before = self.get_num_failed_tests_before_patch(patches.name, method.name)
             num_failed_tests_after = self.get_number_failed_tests_method(intermediate, method.name)
-            # print(
-            #     f"Program {intermediate.name}-{method.name} Num failed tests before: {num_failed_tests_before} Num failed tests after: {num_failed_tests_after}")
             dp += method_normalised_weight * (
                     num_failed_tests_before - num_failed_tests_after) / num_failed_tests_before
         print(f"Patched Program {intermediate.name} Degree of Patchedness {round(dp, 2)}")
@@ -136,6 +136,61 @@ class Analysis:
                         shutil.copy(sub_clazz, submission_clazz)
         self.compile(intermediate)
         return intermediate
+
+    def apply_patch_replace_methods(self, intermediate, patches):
+        for patch in patches:
+            method_name = str(patch).split("/")[-2]
+            method_file = self.intermediate.get_method_path(method_name)
+            file_path = intermediate / method_file
+            method_content = self.get_method_content(patch)
+            with open(file_path, "r") as file:
+                code = file.read()
+            pattern = re.compile(
+                rf'(public|protected|private|static|\s) +[\w<>\[\]]+\s+{re.escape(method_name.split(".")[1])}\s*\([^\)]*\)\s*(throws\s+[\w,\s]+)?\s*\{{',
+                re.DOTALL)
+            match = pattern.search(code)
+            if not match:
+                print(f"Method {method_name} not found.")
+                return
+            start_index = match.start()
+            brace_count = 1
+            i = match.end()
+            while i < len(code) and brace_count > 0:
+                if code[i] == '{':
+                    brace_count += 1
+                elif code[i] == '}':
+                    brace_count -= 1
+                i += 1
+            new_code = code[:start_index] + method_content + code[i:]
+            with open(file_path, "w") as file:
+                file.write(new_code)
+        self.compile(intermediate)
+        return intermediate
+
+    def get_method_content(self, patch):
+        method_name = str(patch).split("/")[-2]
+        method_file = self.intermediate.get_method_path(method_name).replace("src", "patched")
+        file_path = patch / method_file
+        with open(file_path, "r") as file:
+            code = file.read()
+        pattern = re.compile(
+            rf'(public|protected|private|static|\s) +[\w<>\[\]]+\s+{re.escape(method_name.split(".")[1])}\s*\([^\)]*\)\s*(throws\s+[\w,\s]+)?\s*\{{',
+            re.DOTALL)
+        match = pattern.search(code)
+        if match:
+            start_index = match.start()
+            brace_count = 1
+            i = match.end()
+            while i < len(code) and brace_count > 0:
+                if code[i] == '{':
+                    brace_count += 1
+                elif code[i] == '}':
+                    brace_count -= 1
+                i += 1
+            return code[start_index:i].strip()
+        else:
+            print(f"Method {method_name} not found in {file_path}")
+            return None
 
     def compile(self, program):
         chmod = f"chmod +x {program}/gradlew"
@@ -188,7 +243,7 @@ class Analysis:
                 diff = patch / "diff"
                 with open(diff, "r") as f:
                     d = f.read()
-                if "System.exit(0);" not in d:
+                if "System.exit(0);" not in d and "Solution" not in d:
                     patches_filtered.append(patch)
         # Get the patch with the minimal edits (lowest number of lines in the diff file)
         min_lines = None
@@ -248,33 +303,10 @@ class Analysis:
         still_failed_tests = [el for el in failed_tests if el in method_covering_tests]
         return len(still_failed_tests)
 
-    def get_missed_submissions(self):
-        # path = Path("/Users/ruizhengu/Experiments/APR4Grade/cream")
-        # submissions = []
-        submissions = [1, 123, 131, 14, 148, 156, 164, 172, 180, 189, 197, 204, 212, 220, 232, 240, 251, 26, 268, 276,
-                       284, 292, 33, 41, 5, 58, 66, 74, 82, 10, 124, 132, 140, 149, 157, 165, 173, 181, 19, 198, 205,
-                       213, 221, 233, 241, 252, 260, 269, 277, 285, 293, 34, 42, 50, 59, 67, 75, 83, 101, 125, 133, 141,
-                       15, 158, 166, 174, 182, 190, 199, 206, 214, 222, 234, 242, 253, 261, 27, 278, 286, 294, 35, 43,
-                       51, 6, 68, 76, 84, 11, 126, 134, 142, 150, 159, 167, 175, 183, 191, 2, 207, 215, 223, 235, 243,
-                       254, 262, 270, 279, 287, 295, 36, 44, 52, 60, 69, 77, 85, 111, 127, 135, 143, 151, 16, 168, 176,
-                       184, 192, 20, 208, 216, 224, 236, 244, 255, 263, 271, 28, 288, 296, 37, 45, 53, 61, 7, 78, 86,
-                       112, 128, 136, 144, 152, 160, 169, 177, 185, 193, 200, 209, 217, 225, 237, 245, 256, 264, 272,
-                       280, 289, 3, 38, 46, 54, 62, 70, 79, 87, 12, 129, 137, 145, 153, 161, 17, 178, 186, 194, 201, 21,
-                       218, 226, 238, 246, 257, 265, 273, 281, 29, 30, 39, 47, 55, 63, 71, 8, 9, 121, 13, 138, 146, 154,
-                       162, 170, 179, 187, 195, 202, 210, 219, 23, 239, 247, 258, 266, 274, 282, 290, 31, 4, 48, 56, 64,
-                       72, 80, 91, 122, 130, 139, 147, 155, 163, 171, 18, 188, 196, 203, 211, 22, 231, 24, 25, 259, 267,
-                       275, 283, 291, 32, 40, 49, 57, 65, 73, 81, 92]
-        # for submission in path.iterdir():
-        #     if submission.is_dir():
-        #         submissions.append(int(submission.name))
-        for i in range(1, 297):
-            if i not in submissions:
-                print(i)
-
 
 if __name__ == '__main__':
     a = Analysis()
+    # a.calculate_weights()
     a.launcher()
     # a.individual_check()
     # a.get_results()
-    # a.get_missed_submissions()
