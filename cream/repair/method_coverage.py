@@ -25,8 +25,8 @@ class MethodCoverage:
         self.method_coverage_json = self.project_home / "resource/lib/method_coverage.json"
 
     def get_model_methods(self):
-        # methods_txt = self.project_home / "resource/methods.txt"
-        methods_txt = self.project_home / "resource/methods_of_interest.txt"
+        methods_txt = self.project_home / "resource/methods.txt"
+        # methods_txt = self.project_home / "resource/methods_of_interest.txt"
         with open(methods_txt, "r") as f:
             methods = f.readlines()
         deduplicate = set(methods)
@@ -117,5 +117,5 @@ class MethodCoverage:
 if __name__ == '__main__':
     m = MethodCoverage()
     # m.failed_tests_method_coverage()
-    # m.method_weighting()
+    m.method_weighting()
     m.method_weighting_remove_solutions()

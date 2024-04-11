@@ -13,6 +13,8 @@ class Intermediate:
     def __init__(self, model):
         if sys.platform == "linux":
             self.root = Path("/mnt/parscratch/users/acp22rg/APR")
+        elif sys.platform == "linux2":
+            self.root = Path("/mnt/fastdata/acp22rg/APR2")
         else:
             self.root = Path("/Users/ruizhengu/Projects")
 
@@ -204,6 +206,7 @@ class Intermediate:
 
     def launcher(self):
         for i in range(1, 297):
+        # for i in range(1, 2):
             self.create_intermediates(str(i))
             self.check_compilation(str(i))
 
@@ -212,8 +215,8 @@ class Intermediate:
 
 
 if __name__ == '__main__':
-    model = sys.argv[1]
-    # model = "m"
+    # model = sys.argv[1]
+    model = "1"
     im = Intermediate(model)
     im.empty_intermediates()
     im.launcher()
