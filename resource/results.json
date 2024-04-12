@@ -96,7 +96,93 @@
       "number of failed tests - patched": 11
     }
   },
-  "1": {},
+  "1": {
+    "157": {
+      "degree of patchedness": 9.63,
+      "number of failed tests - model": 6,
+      "number of failed tests - patched": 4
+    },
+    "221": {
+      "degree of patchedness": 100.0,
+      "number of failed tests - model": 1,
+      "number of failed tests - patched": 0
+    },
+    "286": {
+      "degree of patchedness": 67.66,
+      "number of failed tests - model": 5,
+      "number of failed tests - patched": 3
+    },
+    "187": {
+      "degree of patchedness": 100.0,
+      "number of failed tests - model": 4,
+      "number of failed tests - patched": 0
+    },
+    "89": {
+      "degree of patchedness": 100.0,
+      "number of failed tests - model": 4,
+      "number of failed tests - patched": 0
+    },
+    "74": {
+      "degree of patchedness": 67.66,
+      "number of failed tests - model": 5,
+      "number of failed tests - patched": 3
+    },
+    "19": {
+      "degree of patchedness": 100.0,
+      "number of failed tests - model": 3,
+      "number of failed tests - patched": 0
+    },
+    "26": {
+      "degree of patchedness": 67.66,
+      "number of failed tests - model": 6,
+      "number of failed tests - patched": 3
+    },
+    "191": {
+      "degree of patchedness": 66.64,
+      "number of failed tests - model": 10,
+      "number of failed tests - patched": 6
+    },
+    "164": {
+      "degree of patchedness": 100.0,
+      "number of failed tests - model": 5,
+      "number of failed tests - patched": 0
+    },
+    "283": {
+      "degree of patchedness": 54.81,
+      "number of failed tests - model": 9,
+      "number of failed tests - patched": 1
+    },
+    "222": {
+      "degree of patchedness": 54.81,
+      "number of failed tests - model": 9,
+      "number of failed tests - patched": 5
+    },
+    "112": {
+      "degree of patchedness": 100.0,
+      "number of failed tests - model": 5,
+      "number of failed tests - patched": 0
+    },
+    "77": {
+      "degree of patchedness": 66.64,
+      "number of failed tests - model": 10,
+      "number of failed tests - patched": 5
+    },
+    "15": {
+      "degree of patchedness": 34.2,
+      "number of failed tests - model": 8,
+      "number of failed tests - patched": 6
+    },
+    "125": {
+      "degree of patchedness": 100.0,
+      "number of failed tests - model": 4,
+      "number of failed tests - patched": 0
+    },
+    "114": {
+      "degree of patchedness": 43.79,
+      "number of failed tests - model": 5,
+      "number of failed tests - patched": 4
+    }
+  },
   "2": {},
   "3": {}
 }

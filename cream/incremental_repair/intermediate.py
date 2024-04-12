@@ -174,25 +174,6 @@ class Intermediate:
             methods_to_replace = list(filter(lambda x: x != method, buggy_methods))
             self.update_intermediate(intermediate_program, methods_to_replace)
 
-    # def inject_model_solution(self, intermediate_program):
-    #     model_solution = self.model_solution / "src/main/java/uk/ac/sheffield/com1003/cafe/solution"
-    #     destination = intermediate_program / "src/main/java/uk/ac/sheffield/com1003/cafe/solution"
-    #     if destination.exists():
-    #         shutil.rmtree(destination)
-    #     shutil.copytree(model_solution, destination)
-    #
-    # def replace_tests_with_solution(self, intermediate_program):
-    #     destination = intermediate_program / "src/test/java/uk/ac/sheffield/com1003/cafe"
-    #     utils.empty_directory(destination)
-    #     if not destination.exists():
-    #         destination.mkdir(parents=True)
-    #     model_test_suite = self.model_solution / "src/test/java/uk/ac/sheffield/com1003/cafe"
-    #     for item in model_test_suite.iterdir():
-    #         if item.is_dir():
-    #             shutil.copytree(item, destination / item.name)
-    #         else:
-    #             shutil.copy2(item, destination / item.name)
-
     def replace_tests(self, submission):
         destination = submission / "src/test/java/uk/ac/sheffield/com1003/cafe"
         utils.empty_directory(destination)
@@ -215,7 +196,7 @@ class Intermediate:
 
 if __name__ == '__main__':
     # model = sys.argv[1]
-    model = "2"
+    model = "3"
     im = Intermediate(model)
     im.empty_intermediates()
     im.launcher()

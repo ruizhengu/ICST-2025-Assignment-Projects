@@ -92,8 +92,7 @@ class PartialRepair:
             os.mkdir(arja_output)
         # Set 10 minutes time limit per execution
         arja_cmd = f"cd {self.arja_home} && java -cp \"lib/*:bin\" us.msu.cse.repair.Main ArjaE -DsrcJavaDir {path_src} -DbinJavaDir {path_bin_src} -DbinTestDir {path_bin_test} -Ddependences {dependencies} -DpatchOutputRoot {arja_output} -DmaxTime 10 -DingredientMode Application -DdiffFormat true"
-        print(arja_cmd)
-        arja_results = utils.run_cmd(arja_cmd)
+        utils.run_cmd(arja_cmd)
         return arja_output
 
 
