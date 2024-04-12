@@ -195,8 +195,8 @@ class Intermediate:
 
 
 if __name__ == '__main__':
-    # model = sys.argv[1]
-    model = "3"
+    model = sys.argv[1]
+    # model = "3"
     im = Intermediate(model)
     im.empty_intermediates()
     im.launcher()

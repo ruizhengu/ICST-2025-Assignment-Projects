@@ -15,7 +15,7 @@ class Analysis:
         self.method_weighting_json = self.project_home / "resource/method_weighting.json"
         self.method_coverage_json = self.project_home / "resource/method_coverage.json"
         self._main_path = Path("main/java/uk/ac/sheffield/com1003/cafe")
-        self.model = "1"
+        self.model = "m"
         self.model_solution = {
             "m": self.root / "IntermediateJava/model_solution",
             "1": self.root / "IntermediateJava/correct_submissions/1",
@@ -307,6 +307,6 @@ class Analysis:
 if __name__ == '__main__':
     a = Analysis()
     # a.calculate_weights()
-    a.launcher()
+    # a.launcher()
     # a.individual_check()
-    # a.get_results()
+    a.get_results()
