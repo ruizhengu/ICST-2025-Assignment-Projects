@@ -24,28 +24,6 @@ class Figures:
         self.dp_2 = self.get_dp("2")
         self.dp_3 = self.get_dp("3")
 
-    # def box_plot_rq1(self):
-    #     failed_tests_original = []
-    #     failed_tests_buggy_methods = []
-    #     with open(self.failed_tests_json, "r") as f:
-    #         d = json.load(f)
-    #     for submission, number in d.items():
-    #         failed_tests_original.append(number)
-    #     with open(self.failed_tests_buggy_methods, "r") as f:
-    #         d = json.load(f)
-    #     for submission, methods in d.items():
-    #         for method, number in methods.items():
-    #             failed_tests_buggy_methods.append(number)
-    #     results = {
-    #         "original programs": failed_tests_original,
-    #         "intermediate programs": failed_tests_buggy_methods
-    #     }
-    #     print(f"failed tests original - average: {statistics.mean(failed_tests_original)}")
-    #     print(f"failed tests buggy methods - average: {statistics.mean(failed_tests_buggy_methods)}")
-    #     plt.boxplot(results.values(), labels=results.keys())
-    #     plt.ylabel("Number of failed tests")
-    #     plt.show()
-
     def box_plot_rq2(self):
         results = {
             "TS": self.dp_m,
@@ -89,9 +67,7 @@ class Figures:
             elif submission in unpatched_programs:
                 num_tests_unpatched.append(number / 2)
         results = {
-            # "with patches generated": num_tests_patched,
             "patched solutions": num_tests_patched,
-            # "without patches generated": num_tests_unpatched,
             "unpatched solutions": num_tests_unpatched
         }
 
@@ -130,9 +106,7 @@ class Figures:
         print(num_methods_patched)
         print(num_methods_unpatched)
         results = {
-            # "with patches generated": num_methods_patched,
             "patched solutions": num_methods_patched,
-            # "without patches generated": num_methods_unpatched
             "unpatched solutions": num_methods_unpatched
         }
         plt.boxplot(results.values(), labels=results.keys())
@@ -171,28 +145,6 @@ class Figures:
             submissions.add(submission)
         return submissions
 
-    # def get_num_failed_tests_buggy_methods(self):
-    #     data = {}
-    #     for i in range(1, 297):
-    #         submissions = self.intermediates_path / str(i)
-    #         method_data = {}
-    #         for method in submissions.iterdir():
-    #             if method.is_dir():
-    #                 list_cmd = f"{method}/gradlew listFailedTests -p {method}"
-    #                 output = utils.run_cmd(list_cmd)
-    #                 pattern = r"^(.+::\w+)$"
-    #                 failed_tests = re.findall(pattern, output, re.MULTILINE)
-    #                 data[submissions.name] = {
-    #                     "method": method.name,
-    #                     "number of failed tests": len(failed_tests)
-    #                 }
-    #                 method_data[method.name] = len(failed_tests)
-    #
-    #         data[submissions.name] = method_data
-    #
-    #         with open(self.failed_tests_buggy_methods, 'w') as f:
-    #             json.dump(data, f)
-
     def get_below_threshold_unpatched(self):
         unpatched_programs = self.get_submission_unpatched()
         unpatched_below_threshold = []
@@ -213,5 +165,5 @@ if __name__ == '__main__':
     # f.box_plot_rq2()
     # f.venn_diagram_rq2()
     # f.box_plot_rq3_num_failed_tests()
-    f.box_plot_rq3_buggy_methods()
-    # f.get_below_threshold_unpatched()
+    # f.box_plot_rq3_buggy_methods()
+    f.get_below_threshold_unpatched()

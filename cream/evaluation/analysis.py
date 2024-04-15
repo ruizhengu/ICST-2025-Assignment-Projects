@@ -308,5 +308,5 @@ if __name__ == '__main__':
     a = Analysis()
     # a.calculate_weights()
     # a.launcher()
-    a.individual_check()
-    # a.get_results()
+    # a.individual_check()
+    a.get_results()
