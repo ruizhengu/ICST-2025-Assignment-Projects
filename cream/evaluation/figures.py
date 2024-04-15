@@ -89,8 +89,10 @@ class Figures:
             elif submission in unpatched_programs:
                 num_tests_unpatched.append(number / 2)
         results = {
-            "with patches generated": num_tests_patched,
-            "without patches generated": num_tests_unpatched
+            # "with patches generated": num_tests_patched,
+            "patched solutions": num_tests_patched,
+            # "without patches generated": num_tests_unpatched,
+            "unpatched solutions": num_tests_unpatched
         }
 
         q3_patched = np.percentile(num_tests_patched, 75)
@@ -128,8 +130,10 @@ class Figures:
         print(num_methods_patched)
         print(num_methods_unpatched)
         results = {
-            "with patches generated": num_methods_patched,
-            "without patches generated": num_methods_unpatched
+            # "with patches generated": num_methods_patched,
+            "patched solutions": num_methods_patched,
+            # "without patches generated": num_methods_unpatched
+            "unpatched solutions": num_methods_unpatched
         }
         plt.boxplot(results.values(), labels=results.keys())
         plt.show()

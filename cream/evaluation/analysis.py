@@ -15,7 +15,7 @@ class Analysis:
         self.method_weighting_json = self.project_home / "resource/method_weighting.json"
         self.method_coverage_json = self.project_home / "resource/method_coverage.json"
         self._main_path = Path("main/java/uk/ac/sheffield/com1003/cafe")
-        self.model = "m"
+        self.model = "3"
         self.model_solution = {
             "m": self.root / "IntermediateJava/model_solution",
             "1": self.root / "IntermediateJava/correct_submissions/1",
@@ -71,8 +71,8 @@ class Analysis:
 
     def individual_check(self):
         dp = 0
-        patches = Path("/Users/ruizhengu/Experiments/APR4Grade/patches_m/286")
-        intermediate = Path("/Users/ruizhengu/Projects/intermediates/286")
+        patches = Path("/Users/ruizhengu/Experiments/APR4Grade/patches_3/157")
+        intermediate = Path("/Users/ruizhengu/Projects/intermediates/157")
         buggy_methods = [method for method in patches.iterdir() if method.is_dir()]
         unnormalised_weights = self.get_unnormalised_weights(buggy_methods)
         for method in buggy_methods:
@@ -308,5 +308,5 @@ if __name__ == '__main__':
     a = Analysis()
     # a.calculate_weights()
     # a.launcher()
-    # a.individual_check()
-    a.get_results()
+    a.individual_check()
+    # a.get_results()
