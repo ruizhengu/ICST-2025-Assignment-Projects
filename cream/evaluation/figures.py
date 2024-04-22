@@ -76,8 +76,10 @@ class Figures:
         print(f"q3_patched: {q3_patched}")
         print(f"q3_unpatched: {q3_unpatched}")
 
-        print(f"with patches generated - average: {statistics.mean(num_tests_patched)}")
-        print(f"without patches generated - average: {statistics.mean(num_tests_unpatched)}")
+        print(f"patched solutions - average: {statistics.mean(num_tests_patched)}")
+        print(f"patched solutions - test failure rate: {statistics.mean(num_tests_patched) / 60}")
+        print(f"unpatched solutions - average: {statistics.mean(num_tests_unpatched)}")
+        print(f"unpatched solutions - test failure rate: {statistics.mean(num_tests_unpatched) / 60}")
 
         plt.boxplot(results.values(), labels=results.keys())
         plt.show()
@@ -164,6 +166,6 @@ if __name__ == '__main__':
     # f.box_plot_rq1()
     # f.box_plot_rq2()
     # f.venn_diagram_rq2()
-    # f.box_plot_rq3_num_failed_tests()
+    f.box_plot_rq3_num_failed_tests()
     # f.box_plot_rq3_buggy_methods()
-    f.get_below_threshold_unpatched()
+    # f.get_below_threshold_unpatched()
