@@ -1,13 +1,10 @@
 import json
 import random
-import re
 from pathlib import Path
 
 import statistics
 from venny4py.venny4py import *
 import numpy as np
-
-from cream import utils
 
 
 class Figures:
@@ -166,6 +163,6 @@ if __name__ == '__main__':
     # f.box_plot_rq1()
     # f.box_plot_rq2()
     # f.venn_diagram_rq2()
-    f.box_plot_rq3_num_failed_tests()
-    # f.box_plot_rq3_buggy_methods()
+    # f.box_plot_rq3_num_failed_tests()
+    f.box_plot_rq3_buggy_methods()
     # f.get_below_threshold_unpatched()

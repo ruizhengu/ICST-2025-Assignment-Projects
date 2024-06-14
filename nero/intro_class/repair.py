@@ -2,7 +2,7 @@ import os
 import shutil
 from pathlib import Path
 
-from cream import utils
+import utils
 
 
 class Repair:
@@ -137,6 +137,6 @@ class Repair:
 
 if __name__ == '__main__':
     repair = Repair()
-    # cream.arja()
+    # nero.arja()
     repair.check_outputs()
-    # cream.k_gen_prog()
+    # nero.k_gen_prog()

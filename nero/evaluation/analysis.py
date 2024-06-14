@@ -3,9 +3,8 @@ import re
 import shutil
 from pathlib import Path
 
-import pandas as pd
-from cream import utils
-from cream.incremental_repair.intermediate import Intermediate
+import utils
+from incremental_repair.intermediate import Intermediate
 
 
 class Analysis:
