@@ -111,6 +111,58 @@ class Figures:
         plt.boxplot(results.values(), labels=results.keys())
         plt.show()
 
+    def box_plot_rq3_merged(self):
+        patched_programs = self.get_submission_patched()
+        unpatched_programs = self.get_submission_unpatched()
+        num_tests_patched = []
+        num_tests_unpatched = []
+        num_methods_patched = []
+        num_methods_unpatched = []
+
+        with open(self.failed_tests_json, 'r') as j:
+            d = json.load(j)
+        for submission, number in d.items():
+            if submission in patched_programs:
+                num_tests_patched.append(number / 2)
+            elif submission in unpatched_programs:
+                num_tests_unpatched.append(number / 2)
+
+        with open(self.method_coverage_json, 'r') as j:
+            d = json.load(j)
+        for submission, methods in d.items():
+            if submission in patched_programs:
+                count_buggy_methods = 0
+                for method, tests in methods.items():
+                    if tests["num"] > 0:
+                        count_buggy_methods += 1
+                num_methods_patched.append(count_buggy_methods)
+            elif submission in unpatched_programs:
+                count_buggy_methods = 0
+                for method, tests in methods.items():
+                    if tests["num"] > 0:
+                        count_buggy_methods += 1
+                num_methods_unpatched.append(count_buggy_methods)
+
+        data = [num_tests_patched, num_tests_unpatched, num_methods_patched, num_methods_unpatched]
+        labels = ['Number of Failed Tests', 'Number of Buggy Methods']
+        positions = [1, 1.5, 2, 2.5]  # Leave a gap between the two groups
+        fig, ax = plt.subplots(figsize=(8, 6))
+        box = ax.boxplot(data, positions=positions, widths=0.3, showfliers=False, patch_artist=True)
+
+        colors = ['lightblue', 'lightgreen']
+        for patch, color in zip([box['boxes'][0], box['boxes'][2]], [colors[0]] * 2):
+            patch.set_facecolor(color)
+        for patch, color in zip([box['boxes'][1], box['boxes'][3]], [colors[1]] * 2):
+            patch.set_facecolor(color)
+
+        patched_patch = mpatches.Patch(color='lightblue', label='Patched Solutions')
+        unpatched_patch = mpatches.Patch(color='lightgreen', label='Unpatched Solutions')
+        plt.legend(handles=[patched_patch, unpatched_patch], loc='upper right', fontsize=12)
+        plt.xticks([1.25, 2.25], labels, fontsize=14)  # Merge the x-axis labels
+
+        plt.tight_layout()
+        plt.show()
+
     def get_dp(self, model):
         with open(self.results_json, 'r') as j:
             d = json.load(j)[model]
@@ -164,5 +216,6 @@ if __name__ == '__main__':
     # f.box_plot_rq2()
     # f.venn_diagram_rq2()
     # f.box_plot_rq3_num_failed_tests()
-    f.box_plot_rq3_buggy_methods()
+    # f.box_plot_rq3_buggy_methods()
     # f.get_below_threshold_unpatched()
+    f.box_plot_rq3_merged()
