@@ -12,11 +12,11 @@ class MethodCoverage:
         if sys.platform == "linux":
             self.root = Path("/mnt/parscratch/users/acp22rg/APR")
         else:
-            self.root = Path("/Users/ruizhengu/Projects")
+            self.root = Path("/Users/Projects")
         self.project_home = self.root / "APR4Grade"
         self.dataset_home = self.root / "IntermediateJava/incorrect_submissions"
         self.model_solution = self.root / "IntermediateJava/model_solution"
-        self.model_test_suite = self.model_solution / "src/test/java/uk/ac/sheffield/com1003/cafe"
+        self.model_test_suite = self.model_solution / "src/test/java/cafe"
         self.submission_list = [submission for submission in self.dataset_home.iterdir() if
                                 submission.is_dir() and submission.name != ".git"]
 
@@ -105,7 +105,7 @@ class MethodCoverage:
             data = json.load(file)
         filter_data = {}
         for name, tests in data.items():
-            filter_tests = [test for test in tests["tests"] if "uk.ac.sheffield.com1003.cafe.solution" not in test]
+            filter_tests = [test for test in tests["tests"] if "solution" not in test]
             filter_data[name] = {
                 "tests": filter_tests,
                 "num": len(filter_tests)

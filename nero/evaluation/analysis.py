@@ -9,11 +9,11 @@ from incremental_repair.intermediate import Intermediate
 
 class Analysis:
     def __init__(self):
-        self.root = Path("/Users/ruizhengu/Projects")
+        self.root = Path("/Users/Projects")
         self.project_home = self.root / "APR4Grade"
         self.method_weighting_json = self.project_home / "resource/method_weighting.json"
         self.method_coverage_json = self.project_home / "resource/method_coverage.json"
-        self._main_path = Path("main/java/uk/ac/sheffield/com1003/cafe")
+        self._main_path = Path("main/java/cafe")
         self.model = "3"
         self.model_solution = {
             "m": self.root / "IntermediateJava/model_solution",
@@ -21,7 +21,7 @@ class Analysis:
             "2": self.root / "IntermediateJava/correct_submissions/2",
             "3": self.root / "IntermediateJava/correct_submissions/3",
         }
-        self.patches_path = Path(f"/Users/ruizhengu/Experiments/APR4Grade/patches_{self.model}")
+        self.patches_path = Path(f"/Users/Experiments/APR4Grade/patches_{self.model}")
         self.intermediate = Intermediate(self.model)
         self.results_json = self.project_home / "resource/results.json"
         self.dataset_home = self.root / "IntermediateJava/incorrect_submissions"
@@ -70,8 +70,8 @@ class Analysis:
 
     def individual_check(self):
         dp = 0
-        patches = Path("/Users/ruizhengu/Experiments/APR4Grade/patches_3/157")
-        intermediate = Path("/Users/ruizhengu/Projects/intermediates/157")
+        patches = Path("/Users/Experiments/APR4Grade/patches_3/157")
+        intermediate = Path("/Users/Projects/intermediates/157")
         buggy_methods = [method for method in patches.iterdir() if method.is_dir()]
         unnormalised_weights = self.get_unnormalised_weights(buggy_methods)
         for method in buggy_methods:

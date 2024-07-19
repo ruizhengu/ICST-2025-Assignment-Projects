@@ -12,15 +12,15 @@ class Processing:
         if sys.platform == "linux":
             self.root = Path("/mnt/parscratch/users/acp22rg/APR")
         else:
-            self.root = Path("/Users/ruizhengu/Projects")
+            self.root = Path("/Users/Projects")
         self.project_home = self.root / "APR4Grade"
         self.dataset_home = self.root / "IntermediateJava/incorrect_submissions"
         self.model_solution = self.root / "IntermediateJava/model_solution"
-        self.model_test_suite = self.model_solution / "src/test/java/uk/ac/sheffield/com1003/cafe"
+        self.model_test_suite = self.model_solution / "src/test/java/cafe"
         self.submission_list = [submission for submission in self.dataset_home.iterdir() if
                                 submission.is_dir() and submission.name != ".git"]
-        self._main_path = Path("src/main/java/uk/ac/sheffield/com1003/cafe")
-        self._test_path = Path("src/test/java/uk/ac/sheffield/com1003/cafe")
+        self._main_path = Path("src/main/java/cafe")
+        self._test_path = Path("src/test/java/cafe")
         self.failed_tests_json = self.project_home / "resource/failed_tests.json"
         self.failed_tests_data = {}
 
@@ -97,24 +97,24 @@ class Processing:
         for submission in self.submission_list:
             classes = {
                 "app": {
-                    "submission": submission / "src/main/java/uk/ac/sheffield/com1003/cafe/App.java",
-                    "model": self.model_solution / "src/main/java/uk/ac/sheffield/com1003/cafe/App.java"
+                    "submission": submission / "src/main/java/cafe/App.java",
+                    "model": self.model_solution / "src/main/java/cafe/App.java"
                 },
                 "syrup": {
-                    "submission": submission / "src/main/java/uk/ac/sheffield/com1003/cafe/ingredients/Syrup.java",
-                    "model": self.model_solution / "src/main/java/uk/ac/sheffield/com1003/cafe/ingredients/Syrup.java"
+                    "submission": submission / "src/main/java/cafe/ingredients/Syrup.java",
+                    "model": self.model_solution / "src/main/java/cafe/ingredients/Syrup.java"
                 },
                 "exception_cafe": {
-                    "submission": submission / "src/main/java/uk/ac/sheffield/com1003/cafe/exceptions/CafeOutOfCapacityException.java",
-                    "model": self.model_solution / "src/main/java/uk/ac/sheffield/com1003/cafe/exceptions/CafeOutOfCapacityException.java"
+                    "submission": submission / "src/main/java/cafe/exceptions/CafeOutOfCapacityException.java",
+                    "model": self.model_solution / "src/main/java/cafe/exceptions/CafeOutOfCapacityException.java"
                 },
                 "exception_recipe": {
-                    "submission": submission / "src/main/java/uk/ac/sheffield/com1003/cafe/exceptions/RecipeNotFoundException.java",
-                    "model": self.model_solution / "src/main/java/uk/ac/sheffield/com1003/cafe/exceptions/RecipeNotFoundException.java"
+                    "submission": submission / "src/main/java/cafe/exceptions/RecipeNotFoundException.java",
+                    "model": self.model_solution / "src/main/java/cafe/exceptions/RecipeNotFoundException.java"
                 },
                 "exception_ingredients": {
-                    "submission": submission / "src/main/java/uk/ac/sheffield/com1003/cafe/exceptions/TooManyIngredientsException.java",
-                    "model": self.model_solution / "src/main/java/uk/ac/sheffield/com1003/cafe/exceptions/TooManyIngredientsException.java"
+                    "submission": submission / "src/main/java/cafe/exceptions/TooManyIngredientsException.java",
+                    "model": self.model_solution / "src/main/java/cafe/exceptions/TooManyIngredientsException.java"
                 }
             }
 
@@ -127,16 +127,16 @@ class Processing:
         for submission in self.submission_list:
             exceptions = {
                 "exception_cafe": {
-                    "submission": submission / "src/main/java/uk/ac/sheffield/com1003/cafe/exceptions/CafeOutOfCapacityException.java",
-                    "model": self.model_solution / "src/main/java/uk/ac/sheffield/com1003/cafe/exceptions/CafeOutOfCapacityException.java"
+                    "submission": submission / "src/main/java/cafe/exceptions/CafeOutOfCapacityException.java",
+                    "model": self.model_solution / "src/main/java/cafe/exceptions/CafeOutOfCapacityException.java"
                 },
                 "exception_recipe": {
-                    "submission": submission / "src/main/java/uk/ac/sheffield/com1003/cafe/exceptions/RecipeNotFoundException.java",
-                    "model": self.model_solution / "src/main/java/uk/ac/sheffield/com1003/cafe/exceptions/RecipeNotFoundException.java"
+                    "submission": submission / "src/main/java/cafe/exceptions/RecipeNotFoundException.java",
+                    "model": self.model_solution / "src/main/java/cafe/exceptions/RecipeNotFoundException.java"
                 },
                 "exception_ingredients": {
-                    "submission": submission / "src/main/java/uk/ac/sheffield/com1003/cafe/exceptions/TooManyIngredientsException.java",
-                    "model": self.model_solution / "src/main/java/uk/ac/sheffield/com1003/cafe/exceptions/TooManyIngredientsException.java"
+                    "submission": submission / "src/main/java/cafe/exceptions/TooManyIngredientsException.java",
+                    "model": self.model_solution / "src/main/java/cafe/exceptions/TooManyIngredientsException.java"
                 }
             }
             for clazz, clazz_path in exceptions.items():
@@ -147,10 +147,10 @@ class Processing:
     def replace_exceptions(self):
         for submission in self.submission_list:
             files = [
-                submission / "src/main/java/uk/ac/sheffield/com1003/cafe/App.java",
-                submission / "src/main/java/uk/ac/sheffield/com1003/cafe/Cafe.java",
-                submission / "src/main/java/uk/ac/sheffield/com1003/cafe/Order.java",
-                submission / "src/main/java/uk/ac/sheffield/com1003/cafe/Recipe.java",
+                submission / "src/main/java/cafe/App.java",
+                submission / "src/main/java/cafe/Cafe.java",
+                submission / "src/main/java/cafe/Order.java",
+                submission / "src/main/java/cafe/Recipe.java",
             ]
             exception_pattern = re.compile(
                 r'(CafeOutOfCapacityException|RecipeNotFoundException|TooManyIngredientsException)\([^)]*\)')

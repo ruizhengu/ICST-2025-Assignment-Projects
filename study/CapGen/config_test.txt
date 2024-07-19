@@ -2,7 +2,7 @@
 #1. The work directory, where to find the required libraries. The default one is the current directory "."
 workLoc=.
 #2. The bug location, where stores the bug repository
-bugLoc = /home/ruizhen/Projects/SSBSE/Cafe
+bugLoc = /home/Projects/SSBSE/Cafe
 #3. the location of JDK 7. Bug Lang 57 requires JDK7 to run it
 JDK7 = /usr/lib/jvm/jdk1.7.0_80/bin/
 #4. The task you want to run [RQ1/RQ3/RepairABug]

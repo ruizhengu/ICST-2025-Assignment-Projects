@@ -11,16 +11,16 @@ class Repair:
         if sys.platform == "linux":
             self.root = Path("/mnt/parscratch/users/acp22rg/APR")
         else:
-            self.root = Path("/Users/ruizhengu/Projects")
+            self.root = Path("/Users/Projects")
         self.dataset_home = self.root / "IntermediateJava/incorrect_submissions"
         self.model_solution = self.root / "IntermediateJava/model_solution"
         self.arja_home = self.root / "arja"
         self.dependency = self.root / "IntermediateJava/dependency"
         self.submission_list = [submission for submission in self.dataset_home.iterdir() if
                                 submission.is_dir() and submission.name != ".git"]
-        self.model_test_suite = self.model_solution / "src/test/java/uk/ac/sheffield/com1003/cafe"
-        self._main_path = Path("src/main/java/uk/ac/sheffield/com1003/cafe")
-        self._test_path = Path("src/test/java/uk/ac/sheffield/com1003/cafe")
+        self.model_test_suite = self.model_solution / "src/test/java/cafe"
+        self._main_path = Path("src/main/java/cafe")
+        self._test_path = Path("src/test/java/cafe")
         self.arja_output = self.logging_init()
         self.submissions = submissions
 

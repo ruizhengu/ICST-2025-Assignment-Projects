@@ -7,16 +7,16 @@ import utils
 
 class Repair:
     def __init__(self):
-        self.home_path = Path("/Users/ruizhengu/Experiments/APR-as-AAT/IntroClassJava")
+        self.home_path = Path("/Users/Experiments/APR-as-AAT/IntroClassJava")
         self.dataset_path = self.home_path / "dataset"
         self.datasets = [dataset for dataset in self.dataset_path.iterdir() if dataset.is_dir()]
-        self.new_root = Path("/Users/ruizhengu/Experiments/APR-as-AAT/newIntroClass")
-        self.datasets_ref = Path("/Users/ruizhengu/Experiments/APR-as-AAT/newIntroClassRef")
+        self.new_root = Path("/Users/Experiments/APR-as-AAT/newIntroClass")
+        self.datasets_ref = Path("/Users/Experiments/APR-as-AAT/newIntroClassRef")
         # self.new_datasets = self.pre_processing()
         # self.new_datasets = self.copy_ref()
         self.new_datasets = self.new_dataset()
-        # self.path_output = Path("/Users/ruizhengu/Experiments/APR-as-AAT/arja_intro")
-        self.path_output = Path("/Users/ruizhengu/Experiments/APR-as-AAT/arja_intro_ref")
+        # self.path_output = Path("/Users/Experiments/APR-as-AAT/arja_intro")
+        self.path_output = Path("/Users/Experiments/APR-as-AAT/arja_intro_ref")
 
     def get_datasets_info(self):
         datasets_info = []
@@ -90,11 +90,11 @@ class Repair:
             # utils.run_cmd(mvn_compile)
             # utils.run_cmd(mvn_test)
             # print(program)
-            arja_path = "/Users/ruizhengu/Experiments/APR-as-AAT/arja"
+            arja_path = "/Users/Experiments/APR-as-AAT/arja"
             path_src = program / "src"
             path_bin_src = program / "target/classes"
             path_bin_test = program / "target/test-classes"
-            path_dependency = "/Users/ruizhengu/Experiments/APR-as-AAT/dependency/junit-4.11.jar"
+            path_dependency = "/Users/Experiments/APR-as-AAT/dependency/junit-4.11.jar"
 
             path_output = self.path_output / program.name.split("_")[0]
             if not path_output.exists():
@@ -112,7 +112,7 @@ class Repair:
         for program in self.new_datasets:
             path_src = program / "src/main"
             path_test = program / "src/test"
-            cmd = f"java -jar /Users/ruizhengu/Experiments/APR-as-AAT/kGenProg-1.8.2.jar -r {program} -s {path_src} -t {path_test} --max-generation 50"
+            cmd = f"java -jar /Users/Experiments/APR-as-AAT/kGenProg-1.8.2.jar -r {program} -s {path_src} -t {path_test} --max-generation 50"
             output = utils.run_cmd(cmd)
             if "Exit status = SUCCESS" in output:
                 success_count += 1

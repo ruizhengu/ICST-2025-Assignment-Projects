@@ -16,7 +16,7 @@ class Intermediate:
         # elif sys.platform == "linux2":
         #     self.root = Path("/mnt/fastdata/acp22rg/APR2")
         else:
-            self.root = Path("/Users/ruizhengu/Projects")
+            self.root = Path("/Users/Projects")
 
         self.project_home = self.root / "APR4Grade"
         self.dataset_home = self.root / "IntermediateJava/incorrect_submissions"
@@ -68,7 +68,7 @@ class Intermediate:
 
     def inject_method_of_interest_test(self, method_name, submission):
         test_file = Path(self.get_solution_test_path(method_name))
-        test_path = submission / Path("src/test/java/uk/ac/sheffield/com1003/cafe/solution")
+        test_path = submission / Path("src/test/java/cafe/solution")
         if not test_path.exists():
             os.mkdir(test_path)
         model_test_path = self.model_solution / test_file
@@ -175,11 +175,11 @@ class Intermediate:
             self.update_intermediate(intermediate_program, methods_to_replace)
 
     def replace_tests(self, submission):
-        destination = submission / "src/test/java/uk/ac/sheffield/com1003/cafe"
+        destination = submission / "src/test/java/cafe"
         utils.empty_directory(destination)
         if not destination.exists():
             destination.mkdir(parents=True)
-        model_test_suite = self.model_solution / "src/test/java/uk/ac/sheffield/com1003/cafe"
+        model_test_suite = self.model_solution / "src/test/java/cafe"
         for item in model_test_suite.iterdir():
             if item.is_file():
                 shutil.copy2(item, destination / item.name)

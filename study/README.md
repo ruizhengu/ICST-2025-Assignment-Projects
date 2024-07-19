@@ -21,12 +21,12 @@ Java version: 1.7
 
 ```sh
 # IntroClassJava
-java -cp "lib/*:bin:target/classes" us.msu.cse.cream.Main Arja -DsrcJavaDir /Users/ruizhengu/Experiments/APR-as-AAT/newIntroClass/median/1/src -DbinJavaDir /Users/ruizhengu/Experiments/APR-as-AAT/newIntroClass/median/1/target/classes -DbinTestDir /Users/ruizhengu/Experiments/APR-as-AAT/newIntroClass/median/1/target/test-classes -Ddependences /Users/ruizhengu/Experiments/APR-as-AAT/dependency
+java -cp "lib/*:bin:target/classes" us.msu.cse.cream.Main Arja -DsrcJavaDir /Users/Experiments/APR-as-AAT/newIntroClass/median/1/src -DbinJavaDir /Usersgu/Experiments/APR-as-AAT/newIntroClass/median/1/target/classes -DbinTestDir /Usersgu/Experiments/APR-as-AAT/newIntroClass/median/1/target/test-classes -Ddependences /Usersgu/Experiments/APR-as-AAT/dependency
 ```
 
 ```shell
 # Assignment
-java -cp "lib/*:bin" us.msu.cse.cream.Main ArjaE -DsrcJavaDir /Users/ruizhengu/Experiments/APR-as-AAT/model_mutants/cafe_java_8/src -DbinJavaDir /Users/ruizhengu/Experiments/APR-as-AAT/model_mutants/cafe_java_8/build/classes/java/main -DbinTestDir /Users/ruizhengu/Experiments/APR-as-AAT/model_mutants/cafe_java_8/build/classes/java/test -Ddependences /Users/ruizhengu/Projects/APR-as-AAT/dependency/evosuite-standalone-runtime-1.0.6.jar:/Users/ruizhengu/Projects/APR-as-AAT/dependency/junit-vintage-engine-5.9.0.jar:/Users/ruizhengu/Projects/APR-as-AAT/dependency/junit-4.13.2.jar:/Users/ruizhengu/Projects/APR-as-AAT/dependency/junit-jupiter-engine-5.9.0.jar:/Users/ruizhengu/Projects/APR-as-AAT/dependency/javaparser-core-3.25.1.jar:/Users/ruizhengu/Projects/APR-as-AAT/dependency/junit-jupiter-api-5.9.0.jar:/Users/ruizhengu/Projects/APR-as-AAT/dependency/javaparser-core-serialization-3.25.1.jar:/Users/ruizhengu/Projects/APR-as-AAT/dependency/apiguardian-api-1.1.2.jar:/Users/ruizhengu/Projects/APR-as-AAT/dependency/commons-lang3-3.0.jar:/Users/ruizhengu/Projects/APR-as-AAT/dependency/opentest4j-1.0.0.jar -DdiffFormat true -DingredientMode Application
+java -cp "lib/*:bin" us.msu.cse.cream.Main ArjaE -DsrcJavaDir /Users/Experiments/APR-as-AAT/model_mutants/cafe_java_8/src -DbinJavaDir /Usersgu/Experiments/APR-as-AAT/model_mutants/cafe_java_8/build/classes/java/main -DbinTestDir /Usersgu/Experiments/APR-as-AAT/model_mutants/cafe_java_8/build/classes/java/test -Ddependences /Usersgu/Projects/APR-as-AAT/dependency/evosuite-standalone-runtime-1.0.6.jar:/Usersgu/Projects/APR-as-AAT/dependency/junit-vintage-engine-5.9.0.jar:/Usersgu/Projects/APR-as-AAT/dependency/junit-4.13.2.jar:/Usersgu/Projects/APR-as-AAT/dependency/junit-jupiter-engine-5.9.0.jar:/Usersgu/Projects/APR-as-AAT/dependency/javaparser-core-3.25.1.jar:/Usersgu/Projects/APR-as-AAT/dependency/junit-jupiter-api-5.9.0.jar:/Usersgu/Projects/APR-as-AAT/dependency/javaparser-core-serialization-3.25.1.jar:/Usersgu/Projects/APR-as-AAT/dependency/apiguardian-api-1.1.2.jar:/Usersgu/Projects/APR-as-AAT/dependency/commons-lang3-3.0.jar:/Usersgu/Projects/APR-as-AAT/dependency/opentest4j-1.0.0.jar -DdiffFormat true -DingredientMode Application
 ```
 
 
@@ -45,12 +45,12 @@ Java version: 1.8
 
 ```sh
 # gradle
-java -cp target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/  -binjavafolder /build/classes/java/main/ -bintestfolder /build/classes/java/test/ -location /Users/ruizhengu/Experiments/APR-as-AAT/anonymised-submissions/3 -dependencies /Users/ruizhengu/Experiments/APR-as-AAT/dependency -scope global
+java -cp target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/  -binjavafolder /build/classes/java/main/ -bintestfolder /build/classes/java/test/ -location /Usersgu/Experiments/APR-as-AAT/anonymised-submissions/3 -dependencies /Usersgu/Experiments/APR-as-AAT/dependency -scope global
 ```
 
 ```shell
 # maven
-java -cp target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/  -binjavafolder /target/classes/ -bintestfolder /target/test-classes/ -location /Users/ruizhengu/Experiments/APR-as-AAT/IntroClassJava/dataset/checksum/2c1556672751734adf9a561fbf88767c32224fca14a81e9d9c719f18d0b21765038acc16ecd8377f74d4f43e8c844538161d869605e3516cf797d0a6a59f1f8e/003 -scope global
+java -cp target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/  -binjavafolder /target/classes/ -bintestfolder /target/test-classes/ -location /Usersgu/Experiments/APR-as-AAT/IntroClassJava/dataset/checksum/2c1556672751734adf9a561fbf88767c32224fca14a81e9d9c719f18d0b21765038acc16ecd8377f74d4f43e8c844538161d869605e3516cf797d0a6a59f1f8e/003 -scope global
 ```
 
 ### Comments
@@ -74,11 +74,11 @@ java -jar CapGen.jar config_test.txt
 ### Error Output
 
 ```sh
-error happens when writing lines to file /home/ruizhen/Projects/SSBSE/Cafe/Chart_1_buggy/ingredients/ingredientsRank.txt
-java.io.FileNotFoundException: /home/ruizhen/Projects/SSBSE/Cafe/Chart_1_buggy/ingredients/ingredientsRank.txt (No such file or directory)
+error happens when writing lines to file /home/Projects/SSBSE/Cafe/Chart_1_buggy/ingredients/ingredientsRank.txt
+java.io.FileNotFoundException: /home/Projects/SSBSE/Cafe/Chart_1_buggy/ingredients/ingredientsRank.txt (No such file or directory)
 ......
-error happens when writing lines to file /home/ruizhen/Projects/SSBSE/Cafe/Chart_8_buggy/ingredients/ingredientsRank.txt
-java.io.FileNotFoundException: /home/ruizhen/Projects/SSBSE/Cafe/Chart_8_buggy/ingredients/ingredientsRank.txt (No such file or directory)
+error happens when writing lines to file /home/Projects/SSBSE/Cafe/Chart_8_buggy/ingredients/ingredientsRank.txt
+java.io.FileNotFoundException: /home/Projects/SSBSE/Cafe/Chart_8_buggy/ingredients/ingredientsRank.txt (No such file or directory)
 ......
 ```
 
@@ -112,18 +112,18 @@ Repository: https://github.com/xgdsmileboy/GenPat
 args = new String[5];
 args[0] = "repair";
 args[1] = "-bp";
-args[2] = "/home/ruizhen/Projects/SSBSE/CapGen/Defects4J/Chart_1_buggy";
+args[2] = "/home/Projects/SSBSE/CapGen/Defects4J/Chart_1_buggy";
 args[3] = "-pf";
-args[4] = "/home/ruizhen/Projects/SSBSE/GenPat/example/patterns/pattern_file1.pattern";
+args[4] = "/home/Projects/SSBSE/GenPat/example/patterns/pattern_file1.pattern";
 ```
 
 ### Error Output
 
 ```sh
-[INFO ] 2023-08-14 12:05:12,635 /home/ruizhen/Projects/SSBSE/CapGen/Defects4J/Chart_1_buggy, [_name=FakeSubject, _ssrc=, _tsrc=, _sbin=, _tbin=]
+[INFO ] 2023-08-14 12:05:12,635 /home/Projects/SSBSE/CapGen/Defects4J/Chart_1_buggy, [_name=FakeSubject, _ssrc=, _tsrc=, _sbin=, _tbin=]
 TIMEOUT : 7200000ms
 [INFO ] 2023-08-14 12:05:12,637 Repair : FakeSubject_1
-Failed test file does not exist : /home/ruizhen/Projects/SSBSE/GenPat/resources/d4j-info/failed_tests/FakeSubject/1.txt
+Failed test file does not exist : /home/Projects/SSBSE/GenPat/resources/d4j-info/failed_tests/FakeSubject/1.txt
 ```
 
 ### Comments
@@ -180,23 +180,23 @@ Repository: https://github.com/TruX-DTF/LSRepair
 4. Execute the command
 
    ```sh
-   java -cp "target/dependency/*" -Xmx1g data.javaFile.getter.MainProcess /home/ruizhen/Projects/SSBSE/LSRepair /home/ruizhen/Projects/SSBSE/LSRepair/ 2
+   java -cp "target/dependency/*" -Xmx1g data.javaFile.getter.MainProcess /home/Projects/SSBSE/LSRepair /home/Projects/SSBSE/LSRepair/ 2
    ```
 
-   This command will generate **JavaFiles.txt** in */home/ruizhen/Projects/SSBSE/LSRepair*.
+   This command will generate **JavaFiles.txt** in */home/Projects/SSBSE/LSRepair*.
 
-5. Create a **Output** folder at */home/ruizhen/Projects/SSBSE/LSRepair*.
+5. Create a **Output** folder at */home/Projects/SSBSE/LSRepair*.
 
 6. Execute the command
 
    ```sh
-   java -cp "target/dependency/*" -Xmx1g data.javaCode.akka.parser.MainParser /home/ruizhen/Projects/SSBSE/LSRepair/JavaFiles.txt /home/ruizhen/Projects/SSBSE/LSRepair/Output/ 2 2
+   java -cp "target/dependency/*" -Xmx1g data.javaCode.akka.parser.MainParser /home/Projects/SSBSE/LSRepair/JavaFiles.txt /home/Projects/SSBSE/LSRepair/Output/ 2 2
    ```
 
    The command fail with the error
 
    ```sh
-   java.io.FileNotFoundException: /home/ruizhen/Projects/SSBSE/LSRepair/Output/Metric/MethodBodyTokens.txt (No such file or directory)
+   java.io.FileNotFoundException: /home/Projects/SSBSE/LSRepair/Output/Metric/MethodBodyTokens.txt (No such file or directory)
    ```
 
 ### Comments
@@ -276,7 +276,7 @@ Java version: 11
 ### Command
 
 ```sh
-java -jar /Users/ruizhengu/Experiments/APR-as-AAT/kGenProg-1.8.2.jar -r /Users/ruizhengu/Experiments/APR-as-AAT/newIntroClass/median/median_1 -s /Users/ruizhengu/Experiments/APR-as-AAT/newIntroClass/median/median_1/src/main -t /Users/ruizhengu/Experiments/APR-as-AAT/newIntroClass/median/median_1/src/test --max-generation 50
+java -jar /Usersgu/Experiments/APR-as-AAT/kGenProg-1.8.2.jar -r /Usersgu/Experiments/APR-as-AAT/newIntroClass/median/median_1 -s /Usersgu/Experiments/APR-as-AAT/newIntroClass/median/median_1/src/main -t /Usersgu/Experiments/APR-as-AAT/newIntroClass/median/median_1/src/test --max-generation 50
 ```
 
 ### Comments
@@ -310,12 +310,12 @@ Repository: https://github.com/qixin5/ssFix
 
 ```sh
 # simple example
-./run -bugid s1 -dependjpath /home/ruizhen/Projects/SSBSE/ssFix/test/Lang_21_buggy/all0.jar -projdpath /home/ruizhen/Projects/SSBSE/ssFix/test/simpleExample_1_buggy -projsrcdpath /home/ruizhen/Projects/SSBSE/ssFix/test/simpleExample_1_buggy/src/main/java -projbuilddpath /home/ruizhen/Projects/SSBSE/ssFix/test/simpleExample_1_buggy/target/classes -projtestbuilddpath /home/ruizhen/Projects/SSBSE/ssFix/test/simpleExample_1_buggy/target/test-classes -outputdpath /home/ruizhen/Projects/SSBSE/ssFix/test/rslt -ssfixdpath /home/ruizhen/Projects/SSBSE/ssFix -tsuitefpath /home/ruizhen/Projects/SSBSE/ssFix/test/simpleExample_1_buggy/testsuite_classes -faulocaddstacktrace -parallelgranularity 8 &> simpleExample1_log
+./run -bugid s1 -dependjpath /home/Projects/SSBSE/ssFix/test/Lang_21_buggy/all0.jar -projdpath /home/Projects/SSBSE/ssFix/test/simpleExample_1_buggy -projsrcdpath /home/Projects/SSBSE/ssFix/test/simpleExample_1_buggy/src/main/java -projbuilddpath /home/Projects/SSBSE/ssFix/test/simpleExample_1_buggy/target/classes -projtestbuilddpath /home/Projects/SSBSE/ssFix/test/simpleExample_1_buggy/target/test-classes -outputdpath /home/Projects/SSBSE/ssFix/test/rslt -ssfixdpath /home/Projects/SSBSE/ssFix -tsuitefpath /home/Projects/SSBSE/ssFix/test/simpleExample_1_buggy/testsuite_classes -faulocaddstacktrace -parallelgranularity 8 &> simpleExample1_log
 ```
 
 ```sh
 # problem sheet 
-./run -bugid c8 -dependjpath /home/ruizhen/Projects/SSBSE/Cafe/dependency/ -projdpath /home/ruizhen/Projects/SSBSE/ssFix/test/com1003_cafe_8 -projsrcdpath /home/ruizhen/Projects/SSBSE/ssFix/test/com1003_cafe_8/src/main/java -projbuilddpath /home/ruizhen/Projects/SSBSE/ssFix/test/com1003_cafe_8/build/classes -projtestbuilddpath /home/ruizhen/Projects/SSBSE/ssFix/test/com1003_cafe_8/build/test-classes -outputdpath /home/ruizhen/Projects/SSBSE/ssFix/test/rslt -ssfixdpath /home/ruizhen/Projects/SSBSE/ssFix -tsuitefpath /home/ruizhen/Projects/SSBSE/ssFix/test/com1003_cafe_8/testsuite_classes -faulocaddstacktrace -parallelgranularity 8 &> cafe8_log
+./run -bugid c8 -dependjpath /home/Projects/SSBSE/Cafe/dependency/ -projdpath /home/Projects/SSBSE/ssFix/test/com1003_cafe_8 -projsrcdpath /home/Projects/SSBSE/ssFix/test/com1003_cafe_8/src/main/java -projbuilddpath /home/Projects/SSBSE/ssFix/test/com1003_cafe_8/build/classes -projtestbuilddpath /home/Projects/SSBSE/ssFix/test/com1003_cafe_8/build/test-classes -outputdpath /home/Projects/SSBSE/ssFix/test/rslt -ssfixdpath /home/Projects/SSBSE/ssFix -tsuitefpath /home/Projects/SSBSE/ssFix/test/com1003_cafe_8/testsuite_classes -faulocaddstacktrace -parallelgranularity 8 &> cafe8_log
 ```
 
 ### Comments

@@ -9,7 +9,7 @@ import numpy as np
 
 class Figures:
     def __init__(self):
-        self.root = Path("/Users/ruizhengu/Projects")
+        self.root = Path("/Users/Projects")
         self.project_home = self.root / "APR4Grade"
         self.results_json = self.project_home / "resource/results.json"
         self.failed_tests_json = self.project_home / "resource/failed_tests.json"

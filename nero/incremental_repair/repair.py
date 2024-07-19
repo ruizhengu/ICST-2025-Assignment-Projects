@@ -15,7 +15,7 @@ class PartialRepair:
         # elif sys.platform == "linux2":
         #     self.root = Path("/mnt/fastdata/acp22rg/APR2")
         else:
-            self.root = Path("/Users/ruizhengu/Projects")
+            self.root = Path("/Users/Projects")
         self.project_home = self.root / "APR4Grade"
         self.dataset_home = self.root / "IntermediateJava/incorrect_submissions"
         self.arja_home = self.root / "arja"
