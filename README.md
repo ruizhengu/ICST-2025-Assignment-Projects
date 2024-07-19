@@ -12,6 +12,8 @@
 
 We perform the APR tool selection process based on the existing APR tools from [program-repair.org](https://program-repair.org/tools.html).
 
+Inclusion criteria:
+
 1. applicable for Java program repair
 2. publicly available
 3. not aimed at repairing *only* specific types of faults, e.g., concurrency
@@ -20,30 +22,34 @@ We perform the APR tool selection process based on the existing APR tools from [
 6. use a redundancy-based approach, (i.e., able to use existing code as repair ingredients)
 7. executable without compilation errors (or errors solvable with reasonable efforts)
 
-| Tool          |      |      |      |      |      |      |      |
+| Tool          | I1   | I2   | I3   | I4   | I5   | I6   | I7   |
 | ------------- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| ACS           |      |      |      |      |      |      |      |
-| ARJA          |      |      |      |      |      |      |      |
-| AVATAR        |      |      |      |      |      |      |      |
-| Astor         |      |      |      |      |      |      |      |
-| CapGen        |      |      |      |      |      |      |      |
-| ConFix        |      |      |      |      |      |      |      |
-| GenPat        |      |      |      |      |      |      |      |
-| Genesis       |      |      |      |      |      |      |      |
-| HIPPODROME    |      |      |      |      |      |      |      |
-| HistoricalFix |      |      |      |      |      |      |      |
-| JAID          |      |      |      |      |      |      |      |
-| JFix          |      |      |      |      |      |      |      |
-| JaRFly        |      |      |      |      |      |      |      |
-| LSRepair      |      |      |      |      |      |      |      |
-| NPEFix        |      |      |      |      |      |      |      |
-| Nopol         |      |      |      |      |      |      |      |
-| QACrashFix    |      |      |      |      |      |      |      |
-| Repairnator   |      |      |      |      |      |      |      |
-| SimFix        |      |      |      |      |      |      |      |
-| SketchFix     |      |      |      |      |      |      |      |
-| TBar          |      |      |      |      |      |      |      |
-| kGenProg      |      |      |      |      |      |      |      |
-| kPAR          |      |      |      |      |      |      |      |
-| ssFix         |      |      |      |      |      |      |      |
+| ACS           | ✅    |      |      | ❌    |      |      |      |
+| ARJA          | ✅    | ✅    | ✅    | ✅    | ✅    | ✅    | ✅    |
+| AVATAR        | ✅    |      |      |      | ❌    | ❌    |      |
+| jGenProg2     | ✅    | ✅    | ✅    | ✅    | ✅    | ✅    | ✅    |
+| jKali         | ✅    |      |      | ❌    |      |      |      |
+| jMutRepair    | ✅    |      |      | ❌    |      |      |      |
+| Cardumen      | ✅    | ✅    | ✅    | ✅    | ✅    | ✅    | ✅    |
+| DeepRepair    | ✅    |      |      |      |      |      | ❌    |
+| CapGen        | ✅    |      |      |      | ❌    |      |      |
+| ConFix        | ✅    |      |      |      |      |      | ❌    |
+| GenPat        | ✅    |      |      |      |      |      | ❌    |
+| Genesis       | ✅    |      |      |      |      |      | ❌    |
+| HIPPODROME    | ✅    |      | ❌    |      |      |      |      |
+| HistoricalFix | ✅    |      |      |      |      |      | ❌    |
+| JAID          | ✅    |      |      |      | ❌    |      |      |
+| JFix          | ✅    |      |      | ❌    |      | ❌    | ❌    |
+| JaRFly        | ✅    |      |      |      |      |      | ❌    |
+| LSRepair      | ✅    |      |      |      | ❌    |      | ❌    |
+| NPEFix        | ✅    |      |      |      |      | ❌    |      |
+| Nopol         | ✅    |      |      |      |      | ❌    |      |
+| QACrashFix    | ✅    | ❌    |      |      |      |      |      |
+| Repairnator   | ✅    |      | ❌    |      |      |      |      |
+| SimFix        | ✅    |      |      |      | ❌    |      |      |
+| SketchFix     | ✅    |      |      |      |      |      | ❌    |
+| TBar          | ✅    |      |      |      | ❌    |      |      |
+| kGenProg      | ✅    | ✅    | ✅    | ✅    | ✅    | ✅    | ✅    |
+| kPAR          | ✅    |      |      |      | ❌    |      |      |
+| ssFix         | ✅    |      |      |      |      |      | ❌    |
 
