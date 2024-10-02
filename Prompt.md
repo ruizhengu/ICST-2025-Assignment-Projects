@@ -1,4 +1,4 @@
-There is a Java programming problem. Below is one buggy method within the program and its failing tests. Please fix the buggy method by only modifying the buggy method and return the correct code of the buggy method.
+There is a Java programming problem. Below is one buggy method within the program and its failing tests, along with the reference solution of the buggy method. Please fix the buggy method by only modifying the buggy method. Do not directly use the given reference solution, make as less as possible modifications to the original buggy methods. Return the corrected code of the buggy method.
 
 [Class of buggy method]
 
@@ -231,6 +231,21 @@ public class Cafe {
 
 ```
 serveOrder
+```
+
+[Reference solution]
+
+```
+public Order serveOrder() {
+    if (indexNextOrderToServe >= orders.length)
+        return null;
+    Order o = orders[indexNextOrderToServe];
+    if (o == null)
+        return null;
+    o.serve();
+    indexNextOrderToServe++;
+    return o;
+}
 ```
 
 [Failing tests]
