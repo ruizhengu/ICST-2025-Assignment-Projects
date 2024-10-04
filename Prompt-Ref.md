@@ -254,6 +254,21 @@ The failing test case's error message:
 java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
 ```
 
+This is the reference solution of the buggy method, do not directly use this as the answer.
+
+```
+public Order serveOrder() {
+    if (indexNextOrderToServe >= orders.length)
+        return null;
+    Order o = orders[indexNextOrderToServe];
+    if (o == null)
+        return null;
+    o.serve();
+    indexNextOrderToServe++;
+    return o;
+}
+```
 
 
-Please provide a fixed version of the buggy method, make the minimal edits to the original buggy method. Return only the fixed buggy method, within a code block.
+
+Please provide a fixed version of the buggy method, do not use the reference solution, make the minimal edits to the original buggy method. Return only the fixed buggy method, within a code block.
