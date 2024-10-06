@@ -53,3 +53,35 @@ Inclusion criteria:
 | kPAR          | ✅    |      |      |      | ❌    |      |      |
 | ssFix         | ✅    |      |      |      |      |      | ❌    |
 
+## Test Generation
+
+Java type and method descriptors: https://asm.ow2.io/asm4-guide.pdf
+
+**Cafe**
+
+`Cafe.greeting`: `greeting()Ljava/lang/String;`
+
+`Cafe.placeOrder`: `placeOrder(Ljava/lang/String;Ljava/lang/String;D)Z`
+
+`Cafe.printPendingOrders`: `printPendingOrders()V`
+
+`Cafe.removeRecipe`: `removeRecipe(Ljava/lang/String;)V`
+
+`Cafe.serveOrder`: `serveOrder()Luk/ac/sheffield/com1003/cafe/Order;`
+
+`Cafe.printMenu`: `printMenu()V`
+
+```
+java -jar evosuite-1.2.0.jar -Dtarget_method_list="printMenu()V" -class uk.ac.sheffield.com1003.cafe.Cafe -projectCP build/classes/java/main -criterion branch
+```
+
+**Coffee**
+
+`Coffee.equals`
+
+**Milk**
+
+**Water**
+
+**Recipe**
+
