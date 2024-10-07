@@ -1,0 +1,53 @@
+{
+    "1": {
+        "Cafe.greeting": {
+            "tests": [],
+            "num": 0
+        },
+        "Cafe.placeOrder": {
+            "tests": [],
+            "num": 0
+        },
+        "Cafe.printMenu": {
+            "tests": [],
+            "num": 0
+        },
+        "Cafe.printPendingOrders": {
+            "tests": [],
+            "num": 0
+        },
+        "Cafe.removeRecipe": {
+            "tests": [
+                "uk.ac.sheffield.com1003.cafe.Cafe_ESTest.test20"
+            ],
+            "num": 1
+        },
+        "Cafe.serveOrder": {
+            "tests": [],
+            "num": 0
+        },
+        "Coffee.equals": {
+            "tests": [],
+            "num": 0
+        },
+        "Milk.equals": {
+            "tests": [],
+            "num": 0
+        },
+        "Recipe.addIngredient": {
+            "tests": [],
+            "num": 0
+        },
+        "Recipe.equals": {
+            "tests": [
+                "uk.ac.sheffield.com1003.cafe.Recipe_ESTest.test11",
+                "uk.ac.sheffield.com1003.cafe.Cafe_ESTest.test20"
+            ],
+            "num": 2
+        },
+        "Water.equals": {
+            "tests": [],
+            "num": 0
+        }
+    }
+}
