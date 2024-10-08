@@ -1,3 +1,5 @@
+package uk.ac.sheffield.com1003.cafe;
+
 import org.junit.Before;
 import org.junit.Test;
 import uk.ac.sheffield.com1003.cafe.Cafe;
@@ -5,6 +7,7 @@ import uk.ac.sheffield.com1003.cafe.Order;
 import uk.ac.sheffield.com1003.cafe.Recipe;
 import uk.ac.sheffield.com1003.cafe.exceptions.CafeOutOfCapacityException;
 import uk.ac.sheffield.com1003.cafe.exceptions.RecipeNotFoundException;
+import uk.ac.sheffield.com1003.cafe.exceptions.TooManyIngredientsException;
 
 import static org.junit.Assert.*;
 
@@ -56,7 +59,7 @@ public class Cafe_LLMTest {
     }
 
     @Test
-    public void testPrintMenu() {
+    public void testPrintMenu() throws TooManyIngredientsException {
         // Simulate printing menu
         cafe.printMenu();
         // No assertions here since it's a print method; manual verification may be required.
@@ -99,7 +102,7 @@ public class Cafe_LLMTest {
 //    }
 
     @Test
-    public void testServeOrderNoOrders() {
+    public void testServeOrderNoOrders() throws CafeOutOfCapacityException{
         Order servedOrder = cafe.serveOrder();
         assertNull(servedOrder);
     }

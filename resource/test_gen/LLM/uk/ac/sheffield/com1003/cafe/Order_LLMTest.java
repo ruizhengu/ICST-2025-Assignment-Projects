@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import uk.ac.sheffield.com1003.cafe.Order;
 import uk.ac.sheffield.com1003.cafe.Recipe;
+import uk.ac.sheffield.com1003.cafe.exceptions.RecipeNotFoundException;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -18,13 +19,13 @@ public class Order_LLMTest {
     private Order order;
 
     @Before
-    public void setUp() {
+    public void setUp() throws RecipeNotFoundException {
         recipe = new Recipe("Latte", 2.5);
         order = new Order(recipe, "John Doe", 3.0);
     }
 
     @Test
-    public void testConstructorWithDefaultSpecialRequest() {
+    public void testConstructorWithDefaultSpecialRequest() throws RecipeNotFoundException{
         Order defaultOrder = new Order(recipe, "Jane Doe", 3.0);
         assertEquals("Order: Latte; For: Jane Doe; Paid: 3.0", defaultOrder.toString());
     }
