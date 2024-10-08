@@ -23,7 +23,7 @@ public class Recipe_LLMTest {
 
         // Add more ingredients to make it ready
         recipe.addIngredient(new Water());
-        recipe.addIngredient(new Milk(100, Milk.Type.SOY));
+        recipe.addIngredient(new Milk(100, Milk.Type.WHOLE));
 
         assertTrue("Recipe should be ready after adding all ingredients", recipe.isReady());
     }
@@ -34,7 +34,7 @@ public class Recipe_LLMTest {
         try {
             recipe.addIngredient(new Coffee());
             recipe.addIngredient(new Water());
-            recipe.addIngredient(new Milk(100, Milk.Type.SOY));
+            recipe.addIngredient(new Milk(100, Milk.Type.WHOLE));
 
             // Attempting to add another ingredient should exceed the limit
             recipe.addIngredient(new Water());
@@ -59,7 +59,7 @@ public class Recipe_LLMTest {
 
         // Now add the other ingredients
         recipe.addIngredient(new Water());
-        recipe.addIngredient(new Milk(100, Milk.Type.SOY));
+        recipe.addIngredient(new Milk(100, Milk.Type.WHOLE));
 
         assertTrue("Recipe should be ready after adding all ingredients", recipe.isReady());
     }
@@ -105,11 +105,11 @@ public class Recipe_LLMTest {
         // Add the same ingredients
         recipe1.addIngredient(new Coffee());
         recipe1.addIngredient(new Water());
-        recipe1.addIngredient(new Milk(100, Milk.Type.SOY));
+        recipe1.addIngredient(new Milk(100, Milk.Type.WHOLE));
 
         recipe2.addIngredient(new Coffee());
         recipe2.addIngredient(new Water());
-        recipe2.addIngredient(new Milk(100, Milk.Type.SOY));
+        recipe2.addIngredient(new Milk(100, Milk.Type.WHOLE));
 
         assertTrue("Ready recipes with same ingredients should be equal", recipe1.equals(recipe2));
     }

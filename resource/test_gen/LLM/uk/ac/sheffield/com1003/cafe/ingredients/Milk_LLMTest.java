@@ -51,8 +51,8 @@ public class Milk_LLMTest {
 
     @Test
     public void testEqualsIdenticalObjectsWithDifferentAmounts() {
-        Milk milk1 = new Milk(100, Type.SOY);
-        Milk milk2 = new Milk(100, Type.SOY);
+        Milk milk1 = new Milk(100, Type.WHOLE);
+        Milk milk2 = new Milk(100, Type.WHOLE);
         assertTrue(milk1.equals(milk2));
     }
 
