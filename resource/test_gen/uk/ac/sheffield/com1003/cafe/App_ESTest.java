@@ -19,66 +19,66 @@ import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import uk.ac.sheffield.com1003.cafe.App;
 
-//@RunWith(EvoRunner.class) @EvoRunnerParameters(mockJVMNonDeterminism = true, useVFS = true, useVNET = true, resetStaticState = true, separateClassLoader = true) 
+//@RunWith(EvoRunner.class) @EvoRunnerParameters(mockJVMNonDeterminism = true, useVFS = true, useVNET = true, resetStaticState = true, separateClassLoader = true)
 public class App_ESTest {
 
 //  @org.junit.Rule
 //  public org.evosuite.runtime.vnet.NonFunctionalRequirementRule nfr = new org.evosuite.runtime.vnet.NonFunctionalRequirementRule();
 //
-//  private static final java.util.Properties defaultProperties = (java.util.Properties) java.lang.System.getProperties().clone(); 
+//  private static final java.util.Properties defaultProperties = (java.util.Properties) java.lang.System.getProperties().clone();
 //
 //  private org.evosuite.runtime.thread.ThreadStopper threadStopper =  new org.evosuite.runtime.thread.ThreadStopper (org.evosuite.runtime.thread.KillSwitchHandler.getInstance(), 3000);
 //
 //
 //  @BeforeClass
-//  public static void initEvoSuiteFramework() { 
-//    org.evosuite.runtime.RuntimeSettings.className = "uk.ac.sheffield.com1003.cafe.App"; 
-//    org.evosuite.runtime.GuiSupport.initialize(); 
-//    org.evosuite.runtime.RuntimeSettings.maxNumberOfThreads = 100; 
-//    org.evosuite.runtime.RuntimeSettings.maxNumberOfIterationsPerLoop = 10000; 
-//    org.evosuite.runtime.RuntimeSettings.mockSystemIn = true; 
-//    org.evosuite.runtime.RuntimeSettings.sandboxMode = org.evosuite.runtime.sandbox.Sandbox.SandboxMode.RECOMMENDED; 
-//    org.evosuite.runtime.sandbox.Sandbox.initializeSecurityManagerForSUT(); 
+//  public static void initEvoSuiteFramework() {
+//    org.evosuite.runtime.RuntimeSettings.className = "uk.ac.sheffield.com1003.cafe.App";
+//    org.evosuite.runtime.GuiSupport.initialize();
+//    org.evosuite.runtime.RuntimeSettings.maxNumberOfThreads = 100;
+//    org.evosuite.runtime.RuntimeSettings.maxNumberOfIterationsPerLoop = 10000;
+//    org.evosuite.runtime.RuntimeSettings.mockSystemIn = true;
+//    org.evosuite.runtime.RuntimeSettings.sandboxMode = org.evosuite.runtime.sandbox.Sandbox.SandboxMode.RECOMMENDED;
+//    org.evosuite.runtime.sandbox.Sandbox.initializeSecurityManagerForSUT();
 //    org.evosuite.runtime.classhandling.JDKClassResetter.init();
 //    setSystemProperties();
 //    initializeClasses();
-//    org.evosuite.runtime.Runtime.getInstance().resetRuntime(); 
-//  } 
+//    org.evosuite.runtime.Runtime.getInstance().resetRuntime();
+//  }
 //
 //  @AfterClass
-//  public static void clearEvoSuiteFramework(){ 
-//    Sandbox.resetDefaultSecurityManager(); 
-//    java.lang.System.setProperties((java.util.Properties) defaultProperties.clone()); 
-//  } 
+//  public static void clearEvoSuiteFramework(){
+//    Sandbox.resetDefaultSecurityManager();
+//    java.lang.System.setProperties((java.util.Properties) defaultProperties.clone());
+//  }
 //
 //  @Before
-//  public void initTestCase(){ 
+//  public void initTestCase(){
 //    threadStopper.storeCurrentThreads();
 //    threadStopper.startRecordingTime();
-//    org.evosuite.runtime.jvm.ShutdownHookHandler.getInstance().initHandler(); 
-//    org.evosuite.runtime.sandbox.Sandbox.goingToExecuteSUTCode(); 
-//    setSystemProperties(); 
-//    org.evosuite.runtime.GuiSupport.setHeadless(); 
-//    org.evosuite.runtime.Runtime.getInstance().resetRuntime(); 
-//    org.evosuite.runtime.agent.InstrumentingAgent.activate(); 
-//  } 
+//    org.evosuite.runtime.jvm.ShutdownHookHandler.getInstance().initHandler();
+//    org.evosuite.runtime.sandbox.Sandbox.goingToExecuteSUTCode();
+//    setSystemProperties();
+//    org.evosuite.runtime.GuiSupport.setHeadless();
+//    org.evosuite.runtime.Runtime.getInstance().resetRuntime();
+//    org.evosuite.runtime.agent.InstrumentingAgent.activate();
+//  }
 //
 //  @After
-//  public void doneWithTestCase(){ 
+//  public void doneWithTestCase(){
 //    threadStopper.killAndJoinClientThreads();
-//    org.evosuite.runtime.jvm.ShutdownHookHandler.getInstance().safeExecuteAddedHooks(); 
-//    org.evosuite.runtime.classhandling.JDKClassResetter.reset(); 
-//    resetClasses(); 
-//    org.evosuite.runtime.sandbox.Sandbox.doneWithExecutingSUTCode(); 
-//    org.evosuite.runtime.agent.InstrumentingAgent.deactivate(); 
-//    org.evosuite.runtime.GuiSupport.restoreHeadlessMode(); 
-//  } 
+//    org.evosuite.runtime.jvm.ShutdownHookHandler.getInstance().safeExecuteAddedHooks();
+//    org.evosuite.runtime.classhandling.JDKClassResetter.reset();
+//    resetClasses();
+//    org.evosuite.runtime.sandbox.Sandbox.doneWithExecutingSUTCode();
+//    org.evosuite.runtime.agent.InstrumentingAgent.deactivate();
+//    org.evosuite.runtime.GuiSupport.restoreHeadlessMode();
+//  }
 //
 //  public static void setSystemProperties() {
-// 
-//    java.lang.System.setProperties((java.util.Properties) defaultProperties.clone()); 
-//    java.lang.System.setProperty("user.dir", "/Users/ruizhengu/Experiments/model_solution_evosuite"); 
-//    java.lang.System.setProperty("java.io.tmpdir", "/var/folders/1r/t1t8tcs944979hxkq3w8p1b40000gn/T/"); 
+//
+//    java.lang.System.setProperties((java.util.Properties) defaultProperties.clone());
+//    java.lang.System.setProperty("user.dir", "/Users/ruizhengu/Experiments/model_solution_evosuite");
+//    java.lang.System.setProperty("java.io.tmpdir", "/var/folders/1r/t1t8tcs944979hxkq3w8p1b40000gn/T/");
 //  }
 //
 //  private static void initializeClasses() {
@@ -98,10 +98,10 @@ public class App_ESTest {
 //      "uk.ac.sheffield.com1003.cafe.ingredients.Unit",
 //      "uk.ac.sheffield.com1003.cafe.Order"
 //    );
-//  } 
+//  }
 //
 //  private static void resetClasses() {
-//    org.evosuite.runtime.classhandling.ClassResetter.getInstance().setClassLoader(App_ESTest.class.getClassLoader()); 
+//    org.evosuite.runtime.classhandling.ClassResetter.getInstance().setClassLoader(App_ESTest.class.getClassLoader());
 //
 //    org.evosuite.runtime.classhandling.ClassStateSupport.resetClasses(
 //      "uk.ac.sheffield.com1003.cafe.App",

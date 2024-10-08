@@ -1,5 +1,7 @@
 import json
 from pathlib import Path
+import matplotlib.pyplot as plt
+import numpy as np
 
 from numpy.lib.function_base import select
 
@@ -43,6 +45,7 @@ class TestGen:
         shutil.copy2(model_gradle, submission_gradle)
 
     def check_compilation(self):
+        count = 0
         for submission in self.submission_list:
             chmod = f"chmod +x {submission}/gradlew"
             cmd = f"{submission}/gradlew clean build -p {submission}"
@@ -55,6 +58,8 @@ class TestGen:
                     shutil.rmtree(submission)
             except Exception as e:
                 print(f"{submission} - Error executing {e}")
+            count += 1
+            print(f"process {count} / 296")
 
     def get_model_methods(self):
         with open(self.method_of_interest_file_json, "r") as f:
@@ -130,24 +135,37 @@ class TestGen:
                 buggy_methods.append(method)
         return buggy_methods
 
-    def buggy_methods_analysis(self, submission):
-        buggy_method_teacher = self.get_buggy_method_teacher(submission)
-        buggy_method_evosuite = self.get_buggy_method_evosuite(submission)
-        if len(buggy_method_teacher) > len(buggy_method_evosuite):
-            missed_gen_tests = set(buggy_method_teacher) - set(buggy_method_evosuite)
-            print(f"submission {submission}: teacher tests better than generated tests")
-            print(f"missed tests by generated tests: {', '.join(missed_gen_tests)}")
-        elif len(buggy_method_teacher) == len(buggy_method_evosuite):
-            print(f"submission {submission}: teacher tests are equivalent to generated tests")
-        else:
-            missed_gen_tests = set(buggy_method_evosuite) - set(buggy_method_teacher)
-            print(f"submission {submission}: teacher tests are not sufficient")
-            print(f"missed tests by teacher tests: {', '.join(missed_gen_tests)}")
-
+    def buggy_methods_analysis(self):
+        insufficient = 0
+        equivalent = 0
+        outperform = 0
+        for submission in range(1, 296):
+            buggy_method_teacher = self.get_buggy_method_teacher(str(submission))
+            buggy_method_evosuite = self.get_buggy_method_evosuite(str(submission))
+            if len(buggy_method_teacher) > len(buggy_method_evosuite):
+                # missed_gen_tests = set(buggy_method_teacher) - set(buggy_method_evosuite)
+                # print(f"submission {submission}: teacher tests better than generated tests")
+                # print(f"missed tests by generated tests: {', '.join(missed_gen_tests)}")
+                insufficient += 1
+            elif len(buggy_method_teacher) == len(buggy_method_evosuite):
+                # print(f"submission {submission}: teacher tests are equivalent to generated tests")
+                equivalent += 1
+            else:
+                # missed_gen_tests = set(buggy_method_evosuite) - set(buggy_method_teacher)
+                # print(f"submission {submission}: teacher tests are not sufficient")
+                # print(f"missed tests by teacher tests: {', '.join(missed_gen_tests)}")
+                outperform += 1
+        print(f"Generated tests - insufficient: {insufficient} / 296, {insufficient / 296}")
+        print(f"Generated tests - equivalent: {equivalent} / 296, {equivalent / 296}")
+        print(f"Generated tests - outperform: {outperform} / 296, {outperform / 296}")
+        data = np.array([insufficient, equivalent, outperform])
+        labels = ["insufficient", "equivalent", "outperform"]
+        plt.pie(data, labels=labels)
+        plt.show()
 
 if __name__ == '__main__':
     test_gen = TestGen()
-    test_gen.replace_tests()
-    test_gen.check_compilation()
-    test_gen.failed_tests_method_coverage()
-    # test_gen.buggy_methods_analysis("1")
+    # test_gen.replace_tests()
+    # test_gen.check_compilation()
+    # test_gen.failed_tests_method_coverage()
+    test_gen.buggy_methods_analysis()
