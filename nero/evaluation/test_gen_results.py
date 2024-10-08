@@ -21,8 +21,8 @@ class TestGen:
                                 submission.is_dir() and submission.name != ".git"]
         self.method_file_json = self.project_home / "resource/method_files.json"
         self.method_of_interest_file_json = self.project_home / "resource/method_of_interest_test.json"
-        self.method_coverage_gen_json = self.project_home / "resource/method_coverage_evosuite.json"
-        # self.method_coverage_gen_json = self.project_home / "resource/method_coverage_llm.json"
+        # self.method_coverage_gen_json = self.project_home / "resource/method_coverage_evosuite.json"
+        self.method_coverage_gen_json = self.project_home / "resource/method_coverage_llm.json"
         self.method_coverage_teacher_json = self.project_home / "resource/method_coverage.json"
         self.methods = self.get_model_methods()
 
@@ -167,7 +167,7 @@ class TestGen:
 
 if __name__ == '__main__':
     test_gen = TestGen()
-    test_gen.replace_tests()
-    test_gen.check_compilation()
+    # test_gen.replace_tests()
+    # test_gen.check_compilation()
     # test_gen.failed_tests_method_coverage()
-    # test_gen.buggy_methods_analysis()
+    test_gen.buggy_methods_analysis()
