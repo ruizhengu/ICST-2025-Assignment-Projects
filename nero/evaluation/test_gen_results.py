@@ -12,7 +12,8 @@ class TestGen:
     def __init__(self):
         self.root = Path("/Users/ruizhengu/Projects")
         self.project_home = self.root / "NERO"
-        self.generated_tests_path = self.project_home / "resource/test_gen"
+        self.generated_tests_path = self.project_home / "resource/test_gen/evosuite"
+        # self.generated_tests_path = self.project_home / "resource/test_gen/LLM"
         self.generated_tests = list(self.generated_tests_path.rglob("*"))
         self.model_solution = Path("/Users/ruizhengu/Experiments/model_solution")
         self.dataset_home = Path("/Users/ruizhengu/Experiments/incorrect_submissions")
