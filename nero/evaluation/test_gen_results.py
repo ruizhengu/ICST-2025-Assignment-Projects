@@ -21,8 +21,8 @@ class TestGen:
                                 submission.is_dir() and submission.name != ".git"]
         self.method_file_json = self.project_home / "resource/method_files.json"
         self.method_of_interest_file_json = self.project_home / "resource/method_of_interest_test.json"
-        # self.method_coverage_evosuite_json = self.project_home / "resource/method_coverage_evosuite.json"
-        self.method_coverage_evosuite_json = self.project_home / "resource/method_coverage_llm.json"
+        self.method_coverage_gen_json = self.project_home / "resource/method_coverage_evosuite.json"
+        # self.method_coverage_gen_json = self.project_home / "resource/method_coverage_llm.json"
         self.method_coverage_teacher_json = self.project_home / "resource/method_coverage.json"
         self.methods = self.get_model_methods()
 
@@ -115,13 +115,13 @@ class TestGen:
                 test_method_calls[test] = method_calls
             method_coverage = self.get_method_coverage(test_method_calls)
             submission_method_coverage[submission.name] = method_coverage
-            with open(self.method_coverage_evosuite_json, "w") as f:
+            with open(self.method_coverage_gen_json, "w") as f:
                 f.write(json.dumps(submission_method_coverage, indent=4))
             print(f"Get failed tests: {submission.name}")
 
-    def get_buggy_method_evosuite(self, submission):
+    def get_buggy_method_gen(self, submission):
         buggy_methods = []
-        with open(self.method_coverage_evosuite_json) as f:
+        with open(self.method_coverage_gen_json) as f:
             data = json.load(f)
         for method, coverage in data[submission].items():
             if coverage["num"] > 0:
@@ -143,7 +143,7 @@ class TestGen:
         outperform = 0
         for submission in range(1, 296):
             buggy_method_teacher = self.get_buggy_method_teacher(str(submission))
-            buggy_method_evosuite = self.get_buggy_method_evosuite(str(submission))
+            buggy_method_evosuite = self.get_buggy_method_gen(str(submission))
             if len(buggy_method_teacher) > len(buggy_method_evosuite):
                 # missed_gen_tests = set(buggy_method_teacher) - set(buggy_method_evosuite)
                 # print(f"submission {submission}: teacher tests better than generated tests")

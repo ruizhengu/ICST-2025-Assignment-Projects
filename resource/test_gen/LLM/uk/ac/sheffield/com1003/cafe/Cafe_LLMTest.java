@@ -102,7 +102,7 @@ public class Cafe_LLMTest {
 //    }
 
     @Test
-    public void testServeOrderNoOrders() throws CafeOutOfCapacityException{
+    public void testServeOrderNoOrders() throws CafeOutOfCapacityException {
         Order servedOrder = cafe.serveOrder();
         assertNull(servedOrder);
     }
