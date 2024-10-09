@@ -1,11 +1,15 @@
 import json
+from calendar import day_abbr
+from operator import index
 from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib.colors as mcolors
+import pandas as pd
 
 from numpy.lib.function_base import select
 from numpy.ma.core import equal
+from setuptools.command.rotate import rotate
 
 from utils import *
 
@@ -180,10 +184,26 @@ class TestGen:
         plt.bar(labels, data, width=0.2, color=mcolors.TABLEAU_COLORS)
         plt.show()
 
+    def buggy_methods_plot_tmp(self):
+        data = pd.DataFrame({
+            "insufficient": [55, 56, 54, 58, 57],
+            "complementary": [30, 31, 35, 38, 36],
+            "outperform": [4, 5, 6, 5, 7],
+            "equivalent": [6, 5, 8, 3, 5]
+        },
+        index=["es1", "es2", "es3", "es4", "es5"])
+
+        data.plot(kind="bar", figsize=(16, 8), rot=0, alpha=0.8)
+        plt.title("evosuite results")
+        plt.ylabel("number of submission")
+        # plt.xticks(rotation=90)
+        plt.tight_layout()
+        plt.show()
 
 if __name__ == '__main__':
     test_gen = TestGen()
     # test_gen.replace_tests()
     # test_gen.check_compilation()
     # test_gen.failed_tests_method_coverage()
-    test_gen.buggy_methods_analysis()
+    # test_gen.buggy_methods_analysis()
+    test_gen.buggy_methods_plot_tmp()
