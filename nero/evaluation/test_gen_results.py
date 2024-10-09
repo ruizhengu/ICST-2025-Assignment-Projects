@@ -143,19 +143,18 @@ class TestGen:
         outperform = 0
         for submission in range(1, 296):
             buggy_method_teacher = self.get_buggy_method_teacher(str(submission))
-            buggy_method_evosuite = self.get_buggy_method_gen(str(submission))
-            if len(buggy_method_teacher) > len(buggy_method_evosuite):
-                # missed_gen_tests = set(buggy_method_teacher) - set(buggy_method_evosuite)
-                # print(f"submission {submission}: teacher tests better than generated tests")
-                # print(f"missed tests by generated tests: {', '.join(missed_gen_tests)}")
+            buggy_method_gen = self.get_buggy_method_gen(str(submission))
+            # if len(buggy_method_teacher) > len(buggy_method_evosuite):
+            #     insufficient += 1
+            # elif len(buggy_method_teacher) == len(buggy_method_evosuite):
+            #     equivalent += 1
+            # else:
+            #     outperform += 1
+            if set(buggy_method_gen).issubset(set(buggy_method_gen)):
                 insufficient += 1
-            elif len(buggy_method_teacher) == len(buggy_method_evosuite):
-                # print(f"submission {submission}: teacher tests are equivalent to generated tests")
+            elif len(buggy_method_teacher) >= len(buggy_method_gen):
                 equivalent += 1
             else:
-                # missed_gen_tests = set(buggy_method_evosuite) - set(buggy_method_teacher)
-                # print(f"submission {submission}: teacher tests are not sufficient")
-                # print(f"missed tests by teacher tests: {', '.join(missed_gen_tests)}")
                 outperform += 1
         print(f"Generated tests - insufficient: {insufficient} / 296, {insufficient / 296}")
         print(f"Generated tests - equivalent: {equivalent} / 296, {equivalent / 296}")
