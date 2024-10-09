@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.colors as mcolors
 
 from numpy.lib.function_base import select
 from numpy.ma.core import equal
@@ -173,9 +174,10 @@ class TestGen:
             f"Generated tests - average complementary - teacher better: {round(complementary_teacher_better / 296, 2)}")
         print(
             f"Generated tests - average complementary - gen better: {round(complementary_gen_better / 296, 2)}")
+
+        labels = np.array(["insufficient", "equivalent", "complementary", "outperform"])
         data = np.array([insufficient, equivalent, complementary, outperform])
-        labels = ["insufficient", "equivalent", "complementary", "outperform"]
-        plt.pie(data, labels=labels)
+        plt.bar(labels, data, width=0.2, color=mcolors.TABLEAU_COLORS)
         plt.show()
 
 
