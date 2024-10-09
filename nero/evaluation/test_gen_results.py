@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from numpy.lib.function_base import select
+from numpy.ma.core import equal
 
 from utils import *
 
@@ -21,8 +22,8 @@ class TestGen:
                                 submission.is_dir() and submission.name != ".git"]
         self.method_file_json = self.project_home / "resource/method_files.json"
         self.method_of_interest_file_json = self.project_home / "resource/method_of_interest_test.json"
-        # self.method_coverage_gen_json = self.project_home / "resource/method_coverage_evosuite.json"
-        self.method_coverage_gen_json = self.project_home / "resource/method_coverage_llm.json"
+        self.method_coverage_gen_json = self.project_home / "resource/method_coverage_evosuite.json"
+        # self.method_coverage_gen_json = self.project_home / "resource/method_coverage_llm.json"
         self.method_coverage_teacher_json = self.project_home / "resource/method_coverage.json"
         self.methods = self.get_model_methods()
 
@@ -139,30 +140,44 @@ class TestGen:
 
     def buggy_methods_analysis(self):
         insufficient = 0
-        equivalent = 0
+        complementary = 0
+        complementary_teacher_better = 0
+        complementary_gen_better = 0
         outperform = 0
-        for submission in range(1, 296):
-            buggy_method_teacher = self.get_buggy_method_teacher(str(submission))
-            buggy_method_gen = self.get_buggy_method_gen(str(submission))
+        equivalent = 0
+        for submission in range(1, 297):
+            buggy_method_teacher = set(self.get_buggy_method_teacher(str(submission)))
+            buggy_method_gen = set(self.get_buggy_method_gen(str(submission)))
             # if len(buggy_method_teacher) > len(buggy_method_evosuite):
             #     insufficient += 1
             # elif len(buggy_method_teacher) == len(buggy_method_evosuite):
             #     equivalent += 1
             # else:
             #     outperform += 1
-            if set(buggy_method_gen).issubset(set(buggy_method_gen)):
+            if buggy_method_gen.issubset(buggy_method_teacher) and buggy_method_gen != buggy_method_teacher:
                 insufficient += 1
-            elif len(buggy_method_teacher) >= len(buggy_method_gen):
+            elif buggy_method_teacher.issubset(buggy_method_gen) and buggy_method_gen != buggy_method_teacher:
+                outperform += 1
+            elif buggy_method_gen == buggy_method_teacher:
                 equivalent += 1
             else:
-                outperform += 1
+                complementary += 1
+                intersection = buggy_method_teacher & buggy_method_gen
+                complementary_teacher_better += len(buggy_method_teacher - intersection)
+                complementary_gen_better += len(buggy_method_gen - intersection)
         print(f"Generated tests - insufficient: {insufficient} / 296, {insufficient / 296}")
         print(f"Generated tests - equivalent: {equivalent} / 296, {equivalent / 296}")
+        print(f"Generated tests - complementary: {complementary} / 296, {complementary / 296}")
         print(f"Generated tests - outperform: {outperform} / 296, {outperform / 296}")
-        data = np.array([insufficient, equivalent, outperform])
-        labels = ["insufficient", "equivalent", "outperform"]
+        print(
+            f"Generated tests - average complementary - teacher better: {round(complementary_teacher_better / 296, 2)}")
+        print(
+            f"Generated tests - average complementary - gen better: {round(complementary_gen_better / 296, 2)}")
+        data = np.array([insufficient, equivalent, complementary, outperform])
+        labels = ["insufficient", "equivalent", "complementary", "outperform"]
         plt.pie(data, labels=labels)
         plt.show()
+
 
 if __name__ == '__main__':
     test_gen = TestGen()
