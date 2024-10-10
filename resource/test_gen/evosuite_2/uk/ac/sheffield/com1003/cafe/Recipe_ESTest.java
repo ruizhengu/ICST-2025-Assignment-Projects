@@ -157,7 +157,7 @@ public class Recipe_ESTest {
     @Test(timeout = 4000)
     public void test13() throws Throwable {
         Recipe recipe0 = new Recipe("LARGE", (-1201.1));
-        Milk.Type milk_Type0 = Milk.Type.SOY;
+        Milk.Type milk_Type0 = Milk.Type.WHOLE;
         Milk milk0 = new Milk(0, milk_Type0);
         recipe0.addIngredient(milk0);
         boolean boolean0 = recipe0.isReady();
