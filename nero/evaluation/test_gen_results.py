@@ -18,7 +18,7 @@ class TestGen:
     def __init__(self):
         self.root = Path("/Users/ruizhengu/Projects")
         self.project_home = self.root / "NERO"
-        self.generated_tests_path = self.project_home / "resource/test_gen/evosuite_2"
+        self.generated_tests_path = self.project_home / "resource/test_gen/evosuite_3"
         # self.generated_tests_path = self.project_home / "resource/test_gen/LLM"
         self.generated_tests = list(self.generated_tests_path.rglob("*"))
         self.model_solution = Path("/Users/ruizhengu/Experiments/model_solution")
@@ -27,7 +27,7 @@ class TestGen:
                                 submission.is_dir() and submission.name != ".git"]
         self.method_file_json = self.project_home / "resource/method_files.json"
         self.method_of_interest_file_json = self.project_home / "resource/method_of_interest_test.json"
-        self.method_coverage_gen_json = self.project_home / "resource/method_coverage_evosuite_2.json"
+        self.method_coverage_gen_json = self.project_home / "resource/method_coverage_evosuite_3.json"
         # self.method_coverage_gen_json = self.project_home / "resource/method_coverage_llm.json"
         self.method_coverage_teacher_json = self.project_home / "resource/method_coverage.json"
         self.methods = self.get_model_methods()
