@@ -12,7 +12,8 @@ class LLMRepair:
         self.root = Path("/Users/ruizhengu/Projects")
         self.project_home = self.root / "NERO"
         self.dataset = Path("/Users/ruizhengu/Experiments/intermediates_llm")
-        self.model_solution = Path("/Users/ruizhengu/Experiments/model_solution") # model solution error logging set to full
+        self.model_solution = Path(
+            "/Users/ruizhengu/Experiments/model_solution")  # model solution error logging set to full
         self.method_file_json = self.project_home / "resource/method_files.json"
         self.method_coverage_json = self.project_home / "resource/method_coverage.json"
 
@@ -86,7 +87,6 @@ class LLMRepair:
         else:
             return None
 
-
     def get_failing_tests(self, intermediate):
         failing_tests_error_message = {}
         with open(self.method_coverage_json) as f:
@@ -149,8 +149,11 @@ class LLMRepair:
                 prompt_txt = self.generate_prompt(intermediate)
                 with open(prompt_txt, "r") as f:
                     prompt = f.read()
-                llm_response = self.repair_results(prompt)
-                print(llm_response)
+                for i in range(5):
+                    llm_response = self.repair_results(prompt)
+                    response_file = intermediate_submission / f"llm_repair_{i + 1}.txt"
+                    with open(response_file, "w") as f:
+                        f.write(llm_response)
 
     def count_repairs(self):
         purged_count = 0
