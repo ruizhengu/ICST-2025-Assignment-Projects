@@ -19,7 +19,7 @@ class LLMRepair:
         purged_count = 0
         fixed_submissions = 0
         fixed_bugs = 0
-        purged_path = Path("/Users/ruizhengu/Experiments/cream")
+        purged_path = Path("/Users/ruizhengu/Experiments/intermediates")
         purged_submissions = (_ for _ in purged_path.iterdir() if _.is_dir())
         for submission in purged_submissions:
             fully_patched = True
@@ -41,5 +41,5 @@ class LLMRepair:
 
 if __name__ == '__main__':
     l = LLMRepair()
-    l.repair_results()
-    # l.count_repairs()
+    # l.repair_results()
+    l.count_repairs()
