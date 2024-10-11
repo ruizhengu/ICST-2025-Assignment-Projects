@@ -4,20 +4,23 @@ from pathlib import Path
 
 import ollama
 
+import utils
+
 
 class LLMRepair:
     def __init__(self):
         self.root = Path("/Users/ruizhengu/Projects")
         self.project_home = self.root / "NERO"
         self.dataset = Path("/Users/ruizhengu/Experiments/intermediates_llm")
+        self.model_solution = Path("/Users/ruizhengu/Experiments/model_solution") # model solution error logging set to full
         self.method_file_json = self.project_home / "resource/method_files.json"
+        self.method_coverage_json = self.project_home / "resource/method_coverage.json"
 
     def repair_results(self):
         response = ollama.generate(
             model="qwen2.5-coder:7b-instruct",
             prompt="why is the sky blue?"
         )
-
         print(response["response"])
 
     def get_class_content(self, solution, method_path):
@@ -35,14 +38,29 @@ class LLMRepair:
             signature = match.group().strip()
         return class_content, signature
 
-    def get_method_signature(self, solution, method_path):
-        pass
+    def get_failing_tests(self, intermediate):
+        failing_tests_error_message = {}
+        with open(self.method_coverage_json) as f:
+            data = json.load(f)
+        failing_tests = data[intermediate.parent.name][intermediate.name]["tests"]
+        for test in failing_tests:
+            error_message = self.get_error_message(intermediate, test)
+            failing_tests_error_message[test] = error_message
+        return failing_tests_error_message
 
-    def get_failing_tests(self):
-        pass
+    def get_error_message(self, intermediate, test):
+        failed_message = None
+        cmd = f"{intermediate}/gradlew test --tests {test} -p {intermediate}"
+        test_output = utils.run_cmd(cmd)
 
-    def get_error_message(self):
-        pass
+        lines = test_output.splitlines()
+        for i, line in enumerate(lines):
+            if "FAILED" in line:
+                failed_message = f"{line}\n{lines[i + 1].strip()}"
+                break
+
+        return failed_message
+
 
     def get_model_solutions(self):
         pass
@@ -50,6 +68,8 @@ class LLMRepair:
     def generate_prompt(self, intermediate):
         method_path = self.get_method_path(intermediate.name)
         class_content, method_signature = self.get_class_content(intermediate, method_path)
+        failing_test_error_message = self.get_failing_tests(intermediate)
+        print(intermediate.name, failing_test_error_message)
 
     def get_method_path(self, method_name):
         with open(self.method_file_json) as f:

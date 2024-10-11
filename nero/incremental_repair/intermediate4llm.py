@@ -12,7 +12,7 @@ class Intermediate4LLM:
         self.root = Path("/Users/ruizhengu/Projects")
         self.project_home = self.root / "NERO"
 
-        self.model_solution = Path("/Users/ruizhengu/Experiments/model_solution") # TODO create a new one without the solution test folder
+        self.model_solution = Path("/Users/ruizhengu/Experiments/model_solution")
         self.dataset_home = Path("/Users/ruizhengu/Experiments/incorrect_submissions")
         self.method_coverage_json = self.project_home / "resource/method_coverage.json"
         self.intermediates_path = Path("/Users/ruizhengu/Experiments/intermediates_llm")
@@ -123,6 +123,7 @@ class Intermediate4LLM:
         for method in buggy_methods:
             intermediate_program = intermediate_submission / method
             self.copy_submission(submission, intermediate_program)
+            self.replace_build_gradle(intermediate_program)
             methods_to_replace = list(filter(lambda x: x != method, buggy_methods))
             self.update_intermediate(intermediate_program, methods_to_replace)
 
@@ -137,10 +138,15 @@ class Intermediate4LLM:
                     build_output = utils.run_cmd(cmd)
                     if "BUILD SUCCESSFUL" not in build_output and "Execution failed for task ':test'." not in build_output:
                         print(f"{submission} - {intermediate.name} BUILD FAILED")
-                    elif "BUILD SUCCESSFUL" in build_output and "Execution failed for task ':test'." not in build_output:
-                        shutil.rmtree(intermediate)
+                    # elif "BUILD SUCCESSFUL" in build_output and "Execution failed for task ':test'." not in build_output:
+                    #     shutil.rmtree(intermediate)
                 except Exception as e:
                     print(f"{submission} - {intermediate.name} - Error executing {e}")
+
+    def replace_build_gradle(self, submission):
+        model_gradle = self.model_solution / "build.gradle"
+        submission_gradle = submission / "build.gradle"
+        shutil.copy2(model_gradle, submission_gradle)
 
     def launcher(self):
         for i in range(1, 2):
