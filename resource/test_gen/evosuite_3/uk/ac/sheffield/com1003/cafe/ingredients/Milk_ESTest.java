@@ -57,7 +57,7 @@ public class Milk_ESTest {
         milk0.amount = 0;
         milk0.amount = 0;
         milk0.amount = 2147483645;
-        Milk.Type milk_Type0 = Milk.Type.ALMOND;
+        Milk.Type milk_Type0 = Milk.Type.WHOLE;
         Milk milk1 = new Milk(2147483645, milk_Type0);
         boolean boolean0 = milk0.equals(milk1);
         assertFalse(boolean0);
