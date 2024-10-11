@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 
 import ollama
@@ -5,7 +6,11 @@ import ollama
 
 class LLMRepair:
     def __init__(self):
-        pass
+        self.root = Path("/Users/ruizhengu/Projects")
+        self.project_home = self.root / "NERO"
+        self.dataset = Path("/Users/ruizhengu/Experiments/intermediates_llm")
+        self.method_file_json = self.project_home / "resource/method_files.json"
+
 
     def repair_results(self):
         response = ollama.generate(
@@ -14,6 +19,37 @@ class LLMRepair:
         )
 
         print(response["response"])
+
+    def get_class_content(self, solution, method_path):
+        with open(solution / method_path, "r") as f:
+            class_content = f.read()
+        return class_content
+
+    def get_failing_tests(self):
+        pass
+
+    def get_error_message(self):
+        pass
+
+    def get_model_solutions(self):
+        pass
+
+    def generate_prompt(self, intermediate):
+        method_path = self.get_method_path(intermediate.name)
+        class_content = self.get_class_content(intermediate, method_path)
+
+    def get_method_path(self, method_name):
+        with open(self.method_file_json) as f:
+            d = json.load(f)
+        return d[method_name]
+
+    def repair(self, submission):
+        intermediate_submission = self.dataset / submission
+        for intermediate in intermediate_submission.iterdir():
+            if intermediate.is_dir():
+                self.generate_prompt(intermediate)
+                # method_path = self.get_method_path(intermediate.name)
+                # self.generate_prompt(submission, method_path)
 
     def count_repairs(self):
         purged_count = 0
@@ -42,4 +78,5 @@ class LLMRepair:
 if __name__ == '__main__':
     l = LLMRepair()
     # l.repair_results()
-    l.count_repairs()
+    # l.count_repairs()
+    l.repair("1")
