@@ -16,12 +16,12 @@ class LLMRepair:
         self.method_file_json = self.project_home / "resource/method_files.json"
         self.method_coverage_json = self.project_home / "resource/method_coverage.json"
 
-    def repair_results(self):
+    def repair_results(self, prompt):
         response = ollama.generate(
             model="qwen2.5-coder:7b-instruct",
-            prompt="why is the sky blue?"
+            prompt=prompt
         )
-        print(response["response"])
+        return response["response"]
 
     def get_class_content(self, solution, method_path):
         with open(solution / method_path, "r") as f:
@@ -147,6 +147,10 @@ class LLMRepair:
         for intermediate in intermediate_submission.iterdir():
             if intermediate.is_dir():
                 prompt_txt = self.generate_prompt(intermediate)
+                with open(prompt_txt, "r") as f:
+                    prompt = f.read()
+                llm_response = self.repair_results(prompt)
+                print(llm_response)
 
     def count_repairs(self):
         purged_count = 0
@@ -175,5 +179,5 @@ class LLMRepair:
 if __name__ == '__main__':
     l = LLMRepair()
     # l.repair_results()
-    l.count_repairs()
-    # l.repair("1")
+    # l.count_repairs()
+    l.repair("1")
