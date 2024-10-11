@@ -1,4 +1,5 @@
 import json
+import re
 from pathlib import Path
 
 import ollama
@@ -11,7 +12,6 @@ class LLMRepair:
         self.dataset = Path("/Users/ruizhengu/Experiments/intermediates_llm")
         self.method_file_json = self.project_home / "resource/method_files.json"
 
-
     def repair_results(self):
         response = ollama.generate(
             model="qwen2.5-coder:7b-instruct",
@@ -23,7 +23,20 @@ class LLMRepair:
     def get_class_content(self, solution, method_path):
         with open(solution / method_path, "r") as f:
             class_content = f.read()
-        return class_content
+        method_name = solution.name.split(".")[1]
+
+        pattern = re.compile(
+            rf'(public|protected|private|static|\s)+[\w<>\[\]]+\s+{re.escape(method_name)}\s*\([^\)]*\)\s*(throws\s+[\w,\s]+)?\s*',
+            re.DOTALL
+        )
+        match = pattern.search(class_content)
+        signature = ""
+        if match:
+            signature = match.group().strip()
+        return class_content, signature
+
+    def get_method_signature(self, solution, method_path):
+        pass
 
     def get_failing_tests(self):
         pass
@@ -36,7 +49,7 @@ class LLMRepair:
 
     def generate_prompt(self, intermediate):
         method_path = self.get_method_path(intermediate.name)
-        class_content = self.get_class_content(intermediate, method_path)
+        class_content, method_signature = self.get_class_content(intermediate, method_path)
 
     def get_method_path(self, method_name):
         with open(self.method_file_json) as f:
