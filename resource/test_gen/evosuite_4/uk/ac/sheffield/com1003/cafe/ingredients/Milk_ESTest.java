@@ -27,7 +27,7 @@ public class Milk_ESTest {
 
     @Test(timeout = 4000)
     public void test0() throws Throwable {
-        Milk.Type milk_Type0 = Milk.Type.SOY;
+        Milk.Type milk_Type0 = Milk.Type.WHOLE;
         Milk milk0 = new Milk((-1192), milk_Type0);
         Milk milk1 = new Milk();
         boolean boolean0 = milk0.equals(milk1);
@@ -52,7 +52,7 @@ public class Milk_ESTest {
     @Test(timeout = 4000)
     public void test2() throws Throwable {
         Milk milk0 = new Milk(1238);
-        Milk.Type milk_Type0 = Milk.Type.ALMOND;
+        Milk.Type milk_Type0 = Milk.Type.WHOLE;
         Milk milk1 = new Milk(1238, milk_Type0);
         boolean boolean0 = milk1.equals(milk0);
         assertEquals(1238, milk1.getAmount());
