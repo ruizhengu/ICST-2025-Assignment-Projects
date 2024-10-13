@@ -21,7 +21,7 @@ public class Recipe_LLMTest {
     public void setUp() {
         coffee = new Coffee();
         water = new Water();
-        milk = new Milk(50, Milk.Type.SOY);
+        milk = new Milk(50, Milk.Type.WHOLE);
         recipe = new Recipe("Espresso", 1.5, Recipe.Size.SMALL, 2);
     }
 

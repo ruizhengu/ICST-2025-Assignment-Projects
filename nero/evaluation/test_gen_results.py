@@ -18,8 +18,8 @@ class TestGen:
     def __init__(self):
         self.root = Path("/Users/ruizhengu/Projects")
         self.project_home = self.root / "NERO"
-        self.generated_tests_path = self.project_home / "resource/test_gen/evosuite_5"
-        # self.generated_tests_path = self.project_home / "resource/test_gen/LLM"
+        # self.generated_tests_path = self.project_home / "resource/test_gen/evosuite_5"
+        self.generated_tests_path = self.project_home / "resource/test_gen/LLM_qwen"
         self.generated_tests = list(self.generated_tests_path.rglob("*"))
         self.model_solution = Path("/Users/ruizhengu/Experiments/model_solution")
         self.dataset_home = Path("/Users/ruizhengu/Experiments/incorrect_submissions")
@@ -27,8 +27,8 @@ class TestGen:
                                 submission.is_dir() and submission.name != ".git"]
         self.method_file_json = self.project_home / "resource/method_files.json"
         self.method_of_interest_file_json = self.project_home / "resource/method_of_interest_test.json"
-        self.method_coverage_gen_json = self.project_home / "resource/method_coverage_evosuite_5.json"
-        # self.method_coverage_gen_json = self.project_home / "resource/method_coverage_llm.json"
+        # self.method_coverage_gen_json = self.project_home / "resource/method_coverage_evosuite_5.json"
+        self.method_coverage_gen_json = self.project_home / "resource/method_coverage_llm.json"
         self.method_coverage_teacher_json = self.project_home / "resource/method_coverage.json"
         self.methods = self.get_model_methods()
 
@@ -149,14 +149,10 @@ class TestGen:
         outperform = 0
         equivalent = 0
         for submission in range(1, 297):
+            if not (self.dataset_home / str(submission)).exists():
+                continue
             buggy_method_teacher = set(self.get_buggy_method_teacher(str(submission)))
             buggy_method_gen = set(self.get_buggy_method_gen(str(submission)))
-            # if len(buggy_method_teacher) > len(buggy_method_evosuite):
-            #     insufficient += 1
-            # elif len(buggy_method_teacher) == len(buggy_method_evosuite):
-            #     equivalent += 1
-            # else:
-            #     outperform += 1
             if buggy_method_gen.issubset(buggy_method_teacher) and buggy_method_gen != buggy_method_teacher:
                 insufficient += 1
             elif buggy_method_teacher.issubset(buggy_method_gen) and buggy_method_gen != buggy_method_teacher:
