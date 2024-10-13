@@ -123,9 +123,11 @@ class TestGen:
                 f.write(json.dumps(submission_method_coverage, indent=4))
             print(f"Get failed tests: {submission.name}")
 
-    def get_buggy_method_gen(self, submission):
+    def get_buggy_method_gen(self, submission, data_source=None):
         buggy_methods = []
-        with open(self.method_coverage_gen_json) as f:
+        if data_source is None:
+            data_source = self.method_coverage_gen_json
+        with open(data_source) as f:
             data = json.load(f)
         for method, coverage in data[submission].items():
             if coverage["num"] > 0:
@@ -173,31 +175,66 @@ class TestGen:
         print(
             f"Generated tests - average complementary - gen better: {round(complementary_gen_better / 296, 2)}")
 
-        labels = np.array(["insufficient", "equivalent", "complementary", "outperform"])
-        data = np.array([insufficient, equivalent, complementary, outperform])
+        labels = np.array(["insufficient", "complementary", "equivalent", "outperform"])
+        data = np.array([insufficient, complementary, equivalent, outperform])
         plt.bar(labels, data, width=0.2, color=mcolors.TABLEAU_COLORS)
         plt.show()
 
-    def buggy_methods_plot_tmp(self):
-        data = pd.DataFrame({
-            "insufficient": [55, 56, 54, 58, 57],
-            "complementary": [30, 31, 35, 38, 36],
-            "outperform": [4, 5, 6, 5, 7],
-            "equivalent": [6, 5, 8, 3, 5]
-        },
-        index=["es1", "es2", "es3", "es4", "es5"])
+    def buggy_methods_results(self, data_source):
+        insufficient = 0
+        complementary = 0
+        outperform = 0
+        equivalent = 0
+        for submission in range(1, 297):
+            if not (self.dataset_home / str(submission)).exists():
+                continue
+            buggy_method_teacher = set(self.get_buggy_method_teacher(str(submission)))
+            buggy_method_gen = set(self.get_buggy_method_gen(str(submission), data_source))
+            if buggy_method_gen.issubset(buggy_method_teacher) and buggy_method_gen != buggy_method_teacher:
+                insufficient += 1
+            elif buggy_method_teacher.issubset(buggy_method_gen) and buggy_method_gen != buggy_method_teacher:
+                outperform += 1
+            elif buggy_method_gen == buggy_method_teacher:
+                equivalent += 1
+            else:
+                complementary += 1
+        return [insufficient, complementary, equivalent, outperform]
 
-        data.plot(kind="bar", figsize=(16, 8), rot=0, alpha=0.8)
-        plt.title("evosuite results")
+    def buggy_methods_plot(self):
+        json_es1 = self.project_home / "resource/method_coverage_evosuite_1.json"
+        json_es2 = self.project_home / "resource/method_coverage_evosuite_2.json"
+        json_es3 = self.project_home / "resource/method_coverage_evosuite_3.json"
+        json_es4 = self.project_home / "resource/method_coverage_evosuite_4.json"
+        json_es5 = self.project_home / "resource/method_coverage_evosuite_5.json"
+        json_llm = self.project_home / "resource/method_coverage_llm.json"
+
+        data_es1 = self.buggy_methods_results(json_es1)
+        data_es2 = self.buggy_methods_results(json_es2)
+        data_es3 = self.buggy_methods_results(json_es3)
+        data_es4 = self.buggy_methods_results(json_es4)
+        data_es5 = self.buggy_methods_results(json_es5)
+        data_llm = self.buggy_methods_results(json_llm)
+
+        data = pd.DataFrame({
+            "insufficient": [data_es1[0], data_es2[0], data_es3[0], data_es4[0], data_es5[0], data_llm[0]],
+            "complementary": [data_es1[1], data_es2[1], data_es3[1], data_es4[1], data_es5[1], data_llm[1]],
+            "equivalent": [data_es1[2], data_es2[2], data_es3[2], data_es4[2], data_es5[2], data_llm[2]],
+            "outperform": [data_es1[3], data_es2[3], data_es3[3], data_es4[3], data_es5[3], data_llm[3]]
+        },
+            index=["es1", "es2", "es3", "es4", "es5", "llm"])
+
+        data.plot(kind="bar", figsize=(16, 6), rot=0, alpha=0.8)
+        plt.title("Test generation results")
         plt.ylabel("number of submission")
         # plt.xticks(rotation=90)
         plt.tight_layout()
         plt.show()
+
 
 if __name__ == '__main__':
     test_gen = TestGen()
     # test_gen.replace_tests()
     # test_gen.check_compilation()
     # test_gen.failed_tests_method_coverage()
-    test_gen.buggy_methods_analysis()
-    # test_gen.buggy_methods_plot_tmp()
+    # test_gen.buggy_methods_analysis()
+    test_gen.buggy_methods_plot()
