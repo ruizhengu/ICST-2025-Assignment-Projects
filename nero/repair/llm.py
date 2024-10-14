@@ -1,5 +1,6 @@
 import json
 import re
+from distutils.core import setup_keywords
 from pathlib import Path
 
 import ollama
@@ -151,7 +152,7 @@ class LLMRepair:
                     prompt = f.read()
                 for i in range(5):
                     llm_response = self.repair_results(prompt)
-                    response_file = intermediate_submission / f"llm_repair_{i + 1}.txt"
+                    response_file = intermediate / f"llm_repair_{i + 1}.txt"
                     with open(response_file, "w") as f:
                         f.write(llm_response)
 
@@ -179,8 +180,11 @@ class LLMRepair:
         print(f"number of fixed buggy methods: {fixed_bugs}")
 
 
+    def launcher(self):
+        for i in range(1, 297):
+            self.repair(str(i))
+
 if __name__ == '__main__':
     l = LLMRepair()
-    # l.repair_results()
     # l.count_repairs()
-    l.repair("1")
+    l.launcher()

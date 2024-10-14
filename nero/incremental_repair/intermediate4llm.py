@@ -18,7 +18,6 @@ class Intermediate4LLM:
         self.intermediates_path = Path("/Users/ruizhengu/Experiments/intermediates_llm")
         self.method_file_json = self.project_home / "resource/method_files.json"
 
-
     def get_buggy_methods(self, submission):
         buggy_methods = []
         with open(self.method_coverage_json) as f:
@@ -40,16 +39,14 @@ class Intermediate4LLM:
         shutil.copytree(original_submission, intermediate)
 
     def replace_tests(self, submission):
-        destination = submission / "src/test/java/cafe"
+        destination = submission / "src/test/java/uk/ac/sheffield/com1003/cafe"
         utils.empty_directory(destination)
         if not destination.exists():
             destination.mkdir(parents=True)
-        # TODO remove the solution test folder
-        model_test_suite = self.model_solution / "src/test/java/cafe"
+        model_test_suite = self.model_solution / "src/test/java/uk/ac/sheffield/com1003/cafe"
         for item in model_test_suite.iterdir():
             if item.is_file():
                 shutil.copy2(item, destination / item.name)
-
 
     def get_method_path(self, method_name):
         with open(self.method_file_json) as f:
@@ -124,6 +121,7 @@ class Intermediate4LLM:
             intermediate_program = intermediate_submission / method
             self.copy_submission(submission, intermediate_program)
             self.replace_build_gradle(intermediate_program)
+            self.replace_tests(intermediate_program)
             methods_to_replace = list(filter(lambda x: x != method, buggy_methods))
             self.update_intermediate(intermediate_program, methods_to_replace)
 
@@ -149,10 +147,11 @@ class Intermediate4LLM:
         shutil.copy2(model_gradle, submission_gradle)
 
     def launcher(self):
-        for i in range(1, 2):
+        for i in range(1, 297):
             self.delete_redundant(str(i))
             self.create_intermediates(str(i))
             self.check_compilation(str(i))
+
 
 if __name__ == '__main__':
     i4l = Intermediate4LLM()
