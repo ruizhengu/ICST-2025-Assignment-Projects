@@ -1,11 +1,14 @@
 import json
 import re
 from distutils.core import setup_keywords
+from linecache import cache
 from nis import match
 from pathlib import Path
 from turtledemo.nim import NimModel
 
 import ollama
+from anyio import open_process
+from exceptiongroup import catch
 from numpy.lib.function_base import select
 from pooch import retrieve
 
@@ -163,25 +166,46 @@ class LLMRepair:
     def count_repairs(self):
         purged_count = 0
         fixed_submissions = 0
+        partial_fixed_submissions = 0
         fixed_bugs = 0
         purged_path = Path("/Users/ruizhengu/Experiments/patches_1")
         purged_submissions = (_ for _ in purged_path.iterdir() if _.is_dir())
         for submission in purged_submissions:
-            fully_patched = True
-            fix_tmps = (_ for _ in submission.iterdir() if _.is_dir())
-            for tmp in fix_tmps:
-                purged_count += 1
-                # check if there is any patch within the buggy method
-                if not any(tmp.iterdir()):
-                    fully_patched = False
-                # count how many methods have a patch
-                else:
-                    fixed_bugs += 1
-            if fully_patched:
-                fixed_submissions += 1
+            try:
+                fully_patched = True
+                partial_patched = False
+                fix_tmps = (_ for _ in submission.iterdir() if _.is_dir())
+                for tmp in fix_tmps:
+                    purged_count += 1
+                    # check if there is any patch within the buggy method
+                    if not any(tmp.iterdir()):
+                        fully_patched = False
+                    # count how many methods have a patch
+                    elif any(tmp.iterdir()) and self.check_patch_if_valid(tmp):
+                        partial_patched = True
+                        fixed_bugs += 1
+                if fully_patched:
+                    fixed_submissions += 1
+                if partial_patched:
+                    partial_fixed_submissions += 1
+            except FileNotFoundError:
+                continue
         print(f"number of purged solutions: {purged_count}")
         print(f"number of fully fixed submissions: {fixed_submissions}")
+        print(f"number of partial fixed submissions: {partial_fixed_submissions}")
         print(f"number of fixed buggy methods: {fixed_bugs}")
+
+    def check_patch_if_valid(self, fix_tmp):
+        patches = (_ for _ in fix_tmp.iterdir() if _.is_dir())
+        valid_patch = False
+        for patch in patches:
+            diff = patch / "diff"
+            with open(diff, "r") as f:
+                d = f.read()
+            if "System.exit(0);" not in d and "Solution" not in d:
+                valid_patch = True
+        return valid_patch
+
 
     def get_llm_responses(self, intermediate):
         responses = []
@@ -276,6 +300,6 @@ class LLMRepair:
 
 if __name__ == '__main__':
     l = LLMRepair()
-    # l.count_repairs()
+    l.count_repairs()
     # l.launcher()
-    l.analysis()
+    # l.analysis()
