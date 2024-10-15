@@ -1,9 +1,13 @@
 import json
 import re
 from distutils.core import setup_keywords
+from nis import match
 from pathlib import Path
+from turtledemo.nim import NimModel
 
 import ollama
+from numpy.lib.function_base import select
+from pooch import retrieve
 
 import utils
 
@@ -179,12 +183,99 @@ class LLMRepair:
         print(f"number of fully fixed submissions: {fixed_submissions}")
         print(f"number of fixed buggy methods: {fixed_bugs}")
 
+    def get_llm_responses(self, intermediate):
+        responses = []
+
+        for i in range(5):
+            response_file = intermediate / f"llm_repair_{i + 1}.txt"
+            with open(response_file, "r") as f:
+                response = f.read()
+            pattern = r'```(?:java)?\s+(.*?)```'
+            match = re.search(pattern, response, re.DOTALL)
+
+            if match:
+                content = match.group(1)
+                responses.append(content)
+            else:
+                responses.append(None)
+        return responses
+
+    def replace_method(self, solution, method_name, content):
+        file_path = solution / self.get_method_path(method_name)
+        with open(file_path, "r") as f:
+            code = f.read()
+        pattern = re.compile(
+            rf'(public|protected|private|static|\s) +[\w<>\[\]]+\s+{re.escape(method_name.split(".")[1])}\s*\([^\)]*\)\s*(throws\s+[\w,\s]+)?\s*\{{',
+            re.DOTALL)
+        match = pattern.search(code)
+        if not match:
+            print(f"Method {method_name} not found.")
+            return
+        start_index = match.start()
+        brace_count = 1
+        i = match.end()
+        while i < len(code) and brace_count > 0:
+            if code[i] == '{':
+                brace_count += 1
+            elif code[i] == '}':
+                brace_count -= 1
+            i += 1
+        new_code = code[:start_index] + content + code[i:]
+        with open(file_path, "w") as file:
+            file.write(new_code)
+
+
+    def get_test_result(self, solution):
+        # make sure set solution gradle.build file ignoreFailures = false
+        chmod = f"chmod +x {solution}/gradlew"
+        cmd = f"{solution}/gradlew clean build -p {solution}"
+        utils.run_cmd(chmod)
+        build_output = utils.run_cmd(cmd)
+        if "BUILD SUCCESSFUL" not in build_output and "Execution failed for task ':test'." not in build_output:
+            print(f"{solution} - BUILD FAILED")
+            return "BUILD FAILED"
+        elif "BUILD SUCCESSFUL" not in build_output and "Execution failed for task ':test'." in build_output:
+            return "TEST FAILED"
+        # elif "BUILD SUCCESSFUL" in build_output and "Execution failed for task ':test'." not in build_output:
+        #     return "TEST SUCCESS"
+        else:
+            return "TEST SUCCESS"
+            # return "UNKNOWN"
+
+    def analysis(self):
+        purged_count = 0
+        fixed_submissions = 0
+        fixed_bugs = 0
+        for i in range(1, 2):
+            intermediate_submission = self.dataset / str(i)
+            intermediate_submission = (_ for _ in intermediate_submission.iterdir() if _.is_dir())
+            for intermediate in intermediate_submission:
+                fully_patched = True
+                purged_count += 1
+                responses = self.get_llm_responses(intermediate)
+                for response in responses:
+                    self.replace_method(intermediate, intermediate.name, response)
+                    test_result = self.get_test_result(intermediate)
+                    if test_result == "TEST SUCCESS":
+                        fixed_bugs += 1
+                        break
+                else:
+                    fully_patched = False
+                if fully_patched:
+                    fixed_submissions += 1
+                print(f"progress - {i} / 296")
+        print(f"number of purged solutions: {purged_count}")
+        print(f"number of fully fixed submissions: {fixed_submissions}")
+        print(f"number of fixed buggy methods: {fixed_bugs}")
+
 
     def launcher(self):
-        for i in range(1, 297):
+        for i in range(1, 2):
             self.repair(str(i))
+
 
 if __name__ == '__main__':
     l = LLMRepair()
     # l.count_repairs()
-    l.launcher()
+    # l.launcher()
+    l.analysis()

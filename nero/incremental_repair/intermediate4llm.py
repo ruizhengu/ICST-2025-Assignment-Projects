@@ -147,7 +147,7 @@ class Intermediate4LLM:
         shutil.copy2(model_gradle, submission_gradle)
 
     def launcher(self):
-        for i in range(1, 297):
+        for i in range(1, 2):
             self.delete_redundant(str(i))
             self.create_intermediates(str(i))
             self.check_compilation(str(i))
