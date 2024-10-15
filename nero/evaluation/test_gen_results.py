@@ -186,10 +186,13 @@ class TestGen:
         outperform = 0
         equivalent = 0
         for submission in range(1, 297):
-            if not (self.dataset_home / str(submission)).exists():
-                continue
+            # if not (self.dataset_home / str(submission)).exists():
+            #     continue
             buggy_method_teacher = set(self.get_buggy_method_teacher(str(submission)))
-            buggy_method_gen = set(self.get_buggy_method_gen(str(submission), data_source))
+            try:
+                buggy_method_gen = set(self.get_buggy_method_gen(str(submission), data_source))
+            except KeyError:
+                continue
             if buggy_method_gen.issubset(buggy_method_teacher) and buggy_method_gen != buggy_method_teacher:
                 insufficient += 1
             elif buggy_method_teacher.issubset(buggy_method_gen) and buggy_method_gen != buggy_method_teacher:
@@ -221,12 +224,12 @@ class TestGen:
             "equivalent": [data_es1[2], data_es2[2], data_es3[2], data_es4[2], data_es5[2], data_llm[2]],
             "outperform": [data_es1[3], data_es2[3], data_es3[3], data_es4[3], data_es5[3], data_llm[3]]
         },
-            index=["es1", "es2", "es3", "es4", "es5", "llm"])
+            index=["ES1", "ES2", "ES3", "ES4", "ES5", "LLM"])
 
         data.plot(kind="bar", figsize=(16, 6), rot=0, alpha=0.8)
-        plt.title("Test generation results")
-        plt.ylabel("number of submission")
-        # plt.xticks(rotation=90)
+        plt.ylabel("number of solutions", fontsize=14)
+        plt.xticks(fontsize=18)
+        plt.legend(fontsize=12)
         plt.tight_layout()
         plt.show()
 
