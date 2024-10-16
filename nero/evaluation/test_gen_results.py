@@ -216,19 +216,20 @@ class TestGen:
         data_es3 = self.buggy_methods_results(json_es3)
         data_es4 = self.buggy_methods_results(json_es4)
         data_es5 = self.buggy_methods_results(json_es5)
+        data_es_avg = [sum(v) / len(v) for v in zip(data_es1, data_es2, data_es3, data_es4, data_es5)]
         data_llm = self.buggy_methods_results(json_llm)
 
         data = pd.DataFrame({
-            "insufficient": [data_es1[0], data_es2[0], data_es3[0], data_es4[0], data_es5[0], data_llm[0]],
-            "complementary": [data_es1[1], data_es2[1], data_es3[1], data_es4[1], data_es5[1], data_llm[1]],
-            "equivalent": [data_es1[2], data_es2[2], data_es3[2], data_es4[2], data_es5[2], data_llm[2]],
-            "outperform": [data_es1[3], data_es2[3], data_es3[3], data_es4[3], data_es5[3], data_llm[3]]
+            "insufficient": [data_es_avg[0], data_llm[0]],
+            "complementary": [data_es_avg[1], data_llm[1]],
+            "equivalent": [data_es_avg[2], data_llm[2]],
+            "outperform": [data_es_avg[3], data_llm[3]]
         },
-            index=["ES1", "ES2", "ES3", "ES4", "ES5", "LLM"])
+            index=["$ES_{avg}$", "$LLM$"])
 
-        data.plot(kind="bar", figsize=(16, 6), rot=0, alpha=0.8)
+        data.plot(kind="bar", figsize=(8, 6), rot=0, alpha=0.8)
         plt.ylabel("number of solutions", fontsize=14)
-        plt.xticks(fontsize=18)
+        plt.xticks(fontsize=14)
         plt.legend(fontsize=12)
         plt.tight_layout()
         plt.show()
