@@ -1,16 +1,10 @@
 import json
 import re
-from distutils.core import setup_keywords
-from linecache import cache
-from nis import match
+import shutil
 from pathlib import Path
-from turtledemo.nim import NimModel
+from xml.etree.ElementTree import indent
 
 import ollama
-from anyio import open_process
-from exceptiongroup import catch
-from numpy.lib.function_base import select
-from pooch import retrieve
 
 import utils
 
@@ -24,6 +18,7 @@ class LLMRepair:
             "/Users/ruizhengu/Experiments/model_solution")  # model solution error logging set to full
         self.method_file_json = self.project_home / "resource/method_files.json"
         self.method_coverage_json = self.project_home / "resource/method_coverage.json"
+        self.repair_results_json = self.project_home / "resource/llm_repair_results.json"
 
     def repair_results(self, prompt):
         response = ollama.generate(
@@ -206,10 +201,8 @@ class LLMRepair:
                 valid_patch = True
         return valid_patch
 
-
     def get_llm_responses(self, intermediate):
         responses = []
-
         for i in range(5):
             response_file = intermediate / f"llm_repair_{i + 1}.txt"
             with open(response_file, "r") as f:
@@ -248,7 +241,6 @@ class LLMRepair:
         with open(file_path, "w") as file:
             file.write(new_code)
 
-
     def get_test_result(self, solution):
         # make sure set solution gradle.build file ignoreFailures = false
         chmod = f"chmod +x {solution}/gradlew"
@@ -256,42 +248,39 @@ class LLMRepair:
         utils.run_cmd(chmod)
         build_output = utils.run_cmd(cmd)
         if "BUILD SUCCESSFUL" not in build_output and "Execution failed for task ':test'." not in build_output:
-            print(f"{solution} - BUILD FAILED")
+            # print(f"{solution} - BUILD FAILED")
             return "BUILD FAILED"
         elif "BUILD SUCCESSFUL" not in build_output and "Execution failed for task ':test'." in build_output:
             return "TEST FAILED"
-        # elif "BUILD SUCCESSFUL" in build_output and "Execution failed for task ':test'." not in build_output:
-        #     return "TEST SUCCESS"
         else:
             return "TEST SUCCESS"
-            # return "UNKNOWN"
+
+    def replace_build_gradle(self, submission):
+        model_gradle = self.model_solution / "build.gradle"
+        submission_gradle = submission / "build.gradle"
+        shutil.copy2(model_gradle, submission_gradle)
+
+    def save_repair_results(self, repair_results):
+        with open(self.repair_results_json, "w") as f:
+            f.write(json.dumps(repair_results, indent=4))
 
     def analysis(self):
-        purged_count = 0
-        fixed_submissions = 0
-        fixed_bugs = 0
-        for i in range(1, 2):
+        repair_results = {}
+        for i in range(1, 297):
             intermediate_submission = self.dataset / str(i)
             intermediate_submission = (_ for _ in intermediate_submission.iterdir() if _.is_dir())
             for intermediate in intermediate_submission:
-                fully_patched = True
-                purged_count += 1
+                self.replace_build_gradle(intermediate)
                 responses = self.get_llm_responses(intermediate)
+
+                repair_responses = []
+                repair_results.setdefault(str(i), {})[intermediate.name] = repair_responses
                 for response in responses:
                     self.replace_method(intermediate, intermediate.name, response)
                     test_result = self.get_test_result(intermediate)
-                    if test_result == "TEST SUCCESS":
-                        fixed_bugs += 1
-                        break
-                else:
-                    fully_patched = False
-                if fully_patched:
-                    fixed_submissions += 1
-                print(f"progress - {i} / 296")
-        print(f"number of purged solutions: {purged_count}")
-        print(f"number of fully fixed submissions: {fixed_submissions}")
-        print(f"number of fixed buggy methods: {fixed_bugs}")
-
+                    repair_responses.append(test_result)
+                self.save_repair_results(repair_results)
+            print(f"progress - {i} / 296")
 
     def launcher(self):
         for i in range(1, 2):
@@ -300,6 +289,6 @@ class LLMRepair:
 
 if __name__ == '__main__':
     l = LLMRepair()
-    l.count_repairs()
+    # l.count_repairs()
     # l.launcher()
-    # l.analysis()
+    l.analysis()
