@@ -296,34 +296,81 @@ class LLMRepair:
         combinations.extend(itertools.combinations(li, n))
         return combinations
 
-    def get_pass_k(self):
+    def get_pass_k(self, mode="buggy_methods"):
         pass_1_count = 0
         pass_3_count = 0
         pass_5_count = 0
-
         with open(self.repair_results_json, "r") as f:
             data = json.load(f)
         for i in range(1, 297):
             buggy_methods = data[str(i)]
+            num_methods = len(buggy_methods)
+            pass_1_tmp = 0
+            pass_3_tmp = 0
+            pass_3_loc_count = 0
+            pass_3_loc_tmp = 0
+            pass_5_tmp = 0
+
             for method, responses in buggy_methods.items():
+                # Pass@1 check
                 if responses[0] == "TEST SUCCESS":
-                    pass_1_count += 1
+                    pass_1_tmp += 1
+                # Pass@3 check - calculate combinations of responses
                 pass_3_combinations = self.get_combinations(responses, 3)
-                pass_3_tmp = 0
+                pass_3_loc = 0
+                pass_3_loc_flag = False
                 for comb in pass_3_combinations:
                     if "TEST SUCCESS" in comb:
-                        pass_3_tmp += 1
-                pass_3_count += pass_3_tmp / len(pass_3_combinations)
+                        pass_3_loc += 1
+                        pass_3_loc_flag = True
+                if pass_3_loc_flag:
+                    pass_3_loc_count += 1
+                    pass_3_loc_tmp = pass_3_loc / len(pass_3_combinations)
+                pass_3_tmp += pass_3_loc / len(pass_3_combinations)
+                # Pass@5 check
                 if "TEST SUCCESS" in responses:
-                    pass_5_count += 1
+                    pass_5_tmp += 1
 
-        print(pass_1_count)
-        print(pass_3_count)
-        print(pass_5_count)
+            if mode == "buggy_methods":
+                pass_1_count += pass_1_tmp
+                pass_3_count += pass_3_tmp
+                pass_5_count += pass_5_tmp
+            elif mode == "fully_patched":
+                if pass_1_tmp == num_methods:
+                    pass_1_count += 1
+                if pass_3_loc_count == num_methods:
+                    pass_3_count += pass_3_loc_tmp
+                if pass_5_tmp == num_methods:
+                    pass_5_count += 1
+            elif mode == "partial_patched":
+                if pass_1_tmp >= 1:
+                    pass_1_count += 1
+                if pass_3_loc_count >= 1:
+                    pass_3_count += pass_3_loc_tmp
+                if pass_5_tmp >= 1:
+                    pass_5_count += 1
+        if mode == "buggy_methods":
+            print("# patched buggy methods - pass@1:", pass_1_count)
+            print("# patched buggy methods - pass@3:", pass_3_count)
+            print("# patched buggy methods - pass@5:", pass_5_count)
+
+        elif mode == "fully_patched":
+            print("# fully patched solutions - pass@1:", pass_1_count)
+            print("# fully patched solutions - pass@3:", pass_3_count)
+            print("# fully patched solutions - pass@5:", pass_5_count)
+
+        elif mode == "partial_patched":
+            print("# partially patched solutions - pass@1:", pass_1_count)
+            print("# partially patched solutions - pass@3:", pass_3_count)
+            print("# partially patched solutions - pass@5:", pass_5_count)
+
 
 if __name__ == '__main__':
     l = LLMRepair()
     # l.count_repairs()
     # l.launcher()
     # l.analysis()
-    l.get_pass_k()
+    l.get_pass_k("fully_patched")
+    l.get_pass_k("partial_patched")
+    l.get_pass_k("buggy_methods")
+
