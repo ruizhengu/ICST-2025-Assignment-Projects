@@ -1,3 +1,4 @@
+import itertools
 import json
 import re
 import shutil
@@ -290,9 +291,39 @@ class LLMRepair:
         for i in range(1, 2):
             self.repair(str(i))
 
+    def get_combinations(self, li, n):
+        combinations = []
+        combinations.extend(itertools.combinations(li, n))
+        return combinations
+
+    def get_pass_k(self):
+        pass_1_count = 0
+        pass_3_count = 0
+        pass_5_count = 0
+
+        with open(self.repair_results_json, "r") as f:
+            data = json.load(f)
+        for i in range(1, 297):
+            buggy_methods = data[str(i)]
+            for method, responses in buggy_methods.items():
+                if responses[0] == "TEST SUCCESS":
+                    pass_1_count += 1
+                pass_3_combinations = self.get_combinations(responses, 3)
+                pass_3_tmp = 0
+                for comb in pass_3_combinations:
+                    if "TEST SUCCESS" in comb:
+                        pass_3_tmp += 1
+                pass_3_count += pass_3_tmp / len(pass_3_combinations)
+                if "TEST SUCCESS" in responses:
+                    pass_5_count += 1
+
+        print(pass_1_count)
+        print(pass_3_count)
+        print(pass_5_count)
 
 if __name__ == '__main__':
     l = LLMRepair()
     # l.count_repairs()
     # l.launcher()
-    l.analysis()
+    # l.analysis()
+    l.get_pass_k()
