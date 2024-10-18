@@ -2,7 +2,7 @@ import json
 import re
 import shutil
 from pathlib import Path
-from xml.etree.ElementTree import indent
+import subprocess
 
 import ollama
 
@@ -246,11 +246,15 @@ class LLMRepair:
         chmod = f"chmod +x {solution}/gradlew"
         cmd = f"{solution}/gradlew clean build -p {solution}"
         utils.run_cmd(chmod)
-        build_output = utils.run_cmd(cmd)
-        if "BUILD SUCCESSFUL" not in build_output and "Execution failed for task ':test'." not in build_output:
-            # print(f"{solution} - BUILD FAILED")
+
+        try:
+            build_output = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=60).stdout
+        except subprocess.TimeoutExpired:
+            return "TEST FAILED"
+
+        if "BUILD SUCCESSFUL" not in build_output and "Task :test FAILED" not in build_output:
             return "BUILD FAILED"
-        elif "BUILD SUCCESSFUL" not in build_output and "Execution failed for task ':test'." in build_output:
+        elif "BUILD SUCCESSFUL" not in build_output and "Task :test FAILED" in build_output:
             return "TEST FAILED"
         else:
             return "TEST SUCCESS"
@@ -266,7 +270,7 @@ class LLMRepair:
 
     def analysis(self):
         repair_results = {}
-        for i in range(1, 297):
+        for i in range(185, 297):
             intermediate_submission = self.dataset / str(i)
             intermediate_submission = (_ for _ in intermediate_submission.iterdir() if _.is_dir())
             for intermediate in intermediate_submission:

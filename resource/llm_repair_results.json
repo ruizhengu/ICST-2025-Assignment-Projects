@@ -9784,6 +9784,5693 @@
             "TEST FAILED",
             "TEST FAILED",
             "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "187": {
+        "Cafe.serveOrder": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ],
+        "Coffee.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Water.equals": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ],
+        "Cafe.placeOrder": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ],
+        "Recipe.addIngredient": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ],
+        "Recipe.equals": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ]
+    },
+    "188": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "189": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Coffee.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Water.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Milk.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "190": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "191": {
+        "Cafe.removeRecipe": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST FAILED",
+            "TEST SUCCESS"
+        ],
+        "Coffee.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Water.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Milk.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ],
+        "Recipe.equals": [
+            "TEST SUCCESS",
+            "TEST FAILED",
+            "TEST SUCCESS",
+            "TEST FAILED",
+            "TEST SUCCESS"
+        ]
+    },
+    "192": {
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "193": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "194": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Coffee.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Water.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Milk.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "195": {
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Coffee.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Water.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "196": {
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "197": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "198": {
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Coffee.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Water.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Milk.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "199": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "200": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "201": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "202": {
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "203": {
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "204": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "205": {
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ]
+    },
+    "206": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Coffee.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Water.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Milk.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "207": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "208": {
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Coffee.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Water.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "209": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "BUILD FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Coffee.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Water.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Milk.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "210": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "211": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "BUILD FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "BUILD FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "212": {
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Coffee.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Water.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Milk.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "213": {
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "214": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "215": {
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "216": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "BUILD FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "217": {
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "BUILD FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "218": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "BUILD FAILED",
+            "TEST FAILED",
+            "BUILD FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "219": {
+        "Cafe.printMenu": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ],
+        "Cafe.serveOrder": [
+            "TEST SUCCESS",
+            "TEST FAILED",
+            "TEST SUCCESS",
+            "TEST FAILED",
+            "TEST SUCCESS"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ],
+        "Coffee.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Water.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST SUCCESS",
+            "TEST FAILED",
+            "TEST SUCCESS",
+            "TEST FAILED",
+            "TEST SUCCESS"
+        ],
+        "Milk.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.greeting": [
+            "BUILD FAILED",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST SUCCESS"
+        ],
+        "Recipe.addIngredient": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ],
+        "Recipe.equals": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ]
+    },
+    "220": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "221": {
+        "Recipe.equals": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST FAILED"
+        ]
+    },
+    "222": {
+        "Cafe.serveOrder": [
+            "TEST SUCCESS",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST FAILED",
+            "TEST SUCCESS"
+        ],
+        "Coffee.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Water.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ],
+        "Milk.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST SUCCESS"
+        ],
+        "Recipe.addIngredient": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ],
+        "Recipe.equals": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST FAILED"
+        ]
+    },
+    "223": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "224": {
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "225": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Coffee.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "BUILD FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "226": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Coffee.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Water.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Milk.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "227": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Coffee.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Water.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Milk.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "228": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "229": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Coffee.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Water.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Milk.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "230": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "231": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Coffee.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Water.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Milk.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "232": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "233": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "234": {
+        "Cafe.removeRecipe": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ],
+        "Coffee.equals": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ],
+        "Water.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ],
+        "Milk.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ],
+        "Recipe.addIngredient": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ],
+        "Recipe.equals": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ]
+    },
+    "235": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Coffee.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Water.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Milk.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "236": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ]
+    },
+    "237": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "238": {
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "239": {
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "240": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "BUILD FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "241": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "242": {
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "243": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "244": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "245": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "246": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "247": {
+        "Cafe.serveOrder": [
+            "BUILD FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "248": {
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Coffee.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "249": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "250": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "251": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Coffee.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Water.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Milk.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "252": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "253": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Coffee.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Water.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Milk.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "254": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "BUILD FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "255": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "256": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "257": {
+        "Cafe.removeRecipe": [
+            "TEST SUCCESS",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Coffee.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Water.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ],
+        "Recipe.equals": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ]
+    },
+    "258": {
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "259": {
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Coffee.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Water.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "260": {
+        "Cafe.removeRecipe": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST FAILED",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ],
+        "Coffee.equals": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ],
+        "Recipe.addIngredient": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ]
+    },
+    "261": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "262": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "263": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "264": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "265": {
+        "Cafe.printMenu": [
+            "TEST SUCCESS",
+            "TEST FAILED",
+            "TEST SUCCESS",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST FAILED",
+            "TEST SUCCESS"
+        ],
+        "Coffee.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Water.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ],
+        "Milk.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ],
+        "Recipe.addIngredient": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "266": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "267": {
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "268": {
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "BUILD FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "269": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "270": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "271": {
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Coffee.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "272": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Coffee.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Milk.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "273": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Coffee.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Water.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Milk.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "274": {
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "275": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Coffee.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Water.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Milk.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "276": {
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "277": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "278": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "279": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Coffee.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Water.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Milk.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "280": {
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "281": {
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Coffee.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Water.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "282": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "283": {
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ],
+        "Coffee.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Water.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST SUCCESS",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ],
+        "Recipe.equals": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ]
+    },
+    "284": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "285": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Coffee.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Water.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Milk.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "286": {
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST FAILED",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ],
+        "Coffee.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Water.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS",
+            "TEST SUCCESS"
+        ]
+    },
+    "287": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "BUILD FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "288": {
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "289": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Coffee.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Water.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Milk.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "290": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "291": {
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "292": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "BUILD FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "BUILD FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "293": {
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "294": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Coffee.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Water.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Milk.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "295": {
+        "Cafe.printMenu": [
+            "BUILD FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "BUILD FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ]
+    },
+    "296": {
+        "Cafe.printMenu": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.serveOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.removeRecipe": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Coffee.equals": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Water.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.placeOrder": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Milk.equals": [
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED",
+            "BUILD FAILED"
+        ],
+        "Cafe.greeting": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
+        ],
+        "Cafe.printPendingOrders": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "BUILD FAILED",
+            "TEST FAILED"
+        ],
+        "Recipe.addIngredient": [
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED",
+            "TEST FAILED"
         ]
     }
 }
