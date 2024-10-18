@@ -365,12 +365,24 @@ class LLMRepair:
             print("# partially patched solutions - pass@5:", pass_5_count)
 
 
+    def check_if_identical(self):
+        for i in range(1, 297):
+            intermediate_submission = self.dataset / str(i)
+            intermediate_submission = (_ for _ in intermediate_submission.iterdir() if _.is_dir())
+            for intermediate in intermediate_submission:
+                method_path = self.get_method_path(intermediate.name)
+                model_method = self.get_model_method(intermediate, method_path)
+                responses = self.get_llm_responses(intermediate)
+                if model_method in responses:
+                    print(model_method, responses)
+                    print(True)
+
 if __name__ == '__main__':
     l = LLMRepair()
     # l.count_repairs()
     # l.launcher()
     # l.analysis()
-    l.get_pass_k("fully_patched")
-    l.get_pass_k("partial_patched")
-    l.get_pass_k("buggy_methods")
-
+    # l.get_pass_k("fully_patched")
+    # l.get_pass_k("partial_patched")
+    # l.get_pass_k("buggy_methods")
+    l.check_if_identical()
