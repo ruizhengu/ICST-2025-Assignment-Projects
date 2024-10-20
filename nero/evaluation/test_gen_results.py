@@ -220,10 +220,18 @@ class TestGen:
         },
             index=["$ES_{avg}$", "$LLM$"])
 
-        data.plot(kind="bar", figsize=(8, 6), rot=0, alpha=0.8)
+        ax = data.plot(kind="bar", figsize=(8, 4), rot=0, alpha=0.7)
+        y_max = max(data.max()) * 1.1  # 20% space above the tallest bar
+        ax.set_ylim(1, y_max)
+
         plt.ylabel("number of solutions", fontsize=14)
         plt.xticks(fontsize=14)
         plt.legend(fontsize=12)
+        for p in ax.patches:
+            ax.annotate(f'{int(p.get_height())}',
+                        (p.get_x() + p.get_width() / 2., p.get_height()),
+                        ha='center', va='center', xytext=(0, 9),
+                        textcoords='offset points', fontsize=10)
         plt.tight_layout()
         plt.show()
 
