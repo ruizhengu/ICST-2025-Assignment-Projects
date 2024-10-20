@@ -136,51 +136,14 @@ class TestGen:
                 buggy_methods.append(method)
         return buggy_methods
 
-    def buggy_methods_analysis(self):
-        insufficient = 0
-        complementary = 0
-        complementary_teacher_better = 0
-        complementary_gen_better = 0
-        outperform = 0
-        equivalent = 0
-        for submission in range(1, 297):
-            if not (self.dataset_home / str(submission)).exists():
-                continue
-            buggy_method_teacher = set(self.get_buggy_method_teacher(str(submission)))
-            buggy_method_gen = set(self.get_buggy_method_gen(str(submission)))
-            if buggy_method_gen.issubset(buggy_method_teacher) and buggy_method_gen != buggy_method_teacher:
-                insufficient += 1
-            elif buggy_method_teacher.issubset(buggy_method_gen) and buggy_method_gen != buggy_method_teacher:
-                outperform += 1
-            elif buggy_method_gen == buggy_method_teacher:
-                equivalent += 1
-            else:
-                complementary += 1
-                intersection = buggy_method_teacher & buggy_method_gen
-                complementary_teacher_better += len(buggy_method_teacher - intersection)
-                complementary_gen_better += len(buggy_method_gen - intersection)
-        print(f"Generated tests - insufficient: {insufficient} / 296, {insufficient / 296}")
-        print(f"Generated tests - equivalent: {equivalent} / 296, {equivalent / 296}")
-        print(f"Generated tests - complementary: {complementary} / 296, {complementary / 296}")
-        print(f"Generated tests - outperform: {outperform} / 296, {outperform / 296}")
-        print(
-            f"Generated tests - average complementary - teacher better: {round(complementary_teacher_better / 296, 2)}")
-        print(
-            f"Generated tests - average complementary - gen better: {round(complementary_gen_better / 296, 2)}")
-
-        labels = np.array(["insufficient", "complementary", "equivalent", "outperform"])
-        data = np.array([insufficient, complementary, equivalent, outperform])
-        plt.bar(labels, data, width=0.2, color=mcolors.TABLEAU_COLORS)
-        plt.show()
-
     def buggy_methods_results(self, data_source):
         insufficient = 0
         complementary = 0
         outperform = 0
         equivalent = 0
+        complementary_teacher_better = 0
+        complementary_gen_better = 0
         for submission in range(1, 297):
-            # if not (self.dataset_home / str(submission)).exists():
-            #     continue
             buggy_method_teacher = set(self.get_buggy_method_teacher(str(submission)))
             try:
                 buggy_method_gen = set(self.get_buggy_method_gen(str(submission), data_source))
@@ -194,6 +157,13 @@ class TestGen:
                 equivalent += 1
             else:
                 complementary += 1
+                intersection = buggy_method_teacher & buggy_method_gen
+                complementary_teacher_better += len(buggy_method_teacher - intersection)
+                complementary_gen_better += len(buggy_method_gen - intersection)
+        print(
+            f"{data_source.name} - average unique - educator: {round(complementary_teacher_better / complementary, 2)}")
+        print(
+            f"{data_source.name} - average unique - gen: {round(complementary_gen_better / complementary, 2)}")
         return [insufficient, complementary, equivalent, outperform]
 
     def buggy_methods_plot(self):
@@ -241,5 +211,4 @@ if __name__ == '__main__':
     # test_gen.replace_tests()
     # test_gen.check_compilation()
     # test_gen.failed_tests_method_coverage()
-    # test_gen.buggy_methods_analysis()
     test_gen.buggy_methods_plot()
