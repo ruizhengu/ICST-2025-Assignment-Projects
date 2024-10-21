@@ -52,70 +52,6 @@ class Figures:
         venny4py(sets=sets)
         plt.show()
 
-    def histogram_rq3_num_failed_tests(self):
-        patched_programs = self.get_submission_patched()
-        unpatched_programs = self.get_submission_unpatched()
-        num_tests_patched = []
-        num_tests_unpatched = []
-
-        with open(self.failed_tests_json, 'r') as j:
-            d = json.load(j)
-        for submission, number in d.items():
-            if submission in patched_programs:
-                num_tests_patched.append(number / 2)
-            elif submission in unpatched_programs:
-                num_tests_unpatched.append(number / 2)
-
-        q3_patched = np.percentile(num_tests_patched, 75)
-        q3_unpatched = np.percentile(num_tests_unpatched, 75)
-        print(f"q3_patched: {q3_patched}")
-        print(f"q3_unpatched: {q3_unpatched}")
-
-        print(f"patched solutions - average: {statistics.mean(num_tests_patched)}")
-        print(f"patched solutions - test failure rate: {statistics.mean(num_tests_patched) / 60}")
-        print(f"unpatched solutions - average: {statistics.mean(num_tests_unpatched)}")
-        print(f"unpatched solutions - test failure rate: {statistics.mean(num_tests_unpatched) / 60}")
-
-        plt.hist(num_tests_patched, bins=20, alpha=0.7, label='Patched Solutions', color='blue')
-        plt.hist(num_tests_unpatched, bins=20, alpha=0.7, label='Unpatched Solutions', color='orange')
-
-        # plt.xlabel('Number of Failed Tests', fontsize=14)
-        plt.ylabel('Frequency', fontsize=12)
-        plt.legend(loc='upper right')
-        plt.tight_layout()
-        plt.show()
-
-    def histogram_rq3_buggy_methods(self):
-        patched_programs = self.get_submission_patched()
-        unpatched_programs = self.get_submission_unpatched()
-        num_methods_patched = []
-        num_methods_unpatched = []
-
-        with open(self.method_coverage_json, 'r') as j:
-            d = json.load(j)
-        for submission, methods in d.items():
-            if submission in patched_programs:
-                count_buggy_methods = 0
-                for method, tests in methods.items():
-                    if tests["num"] > 0:
-                        count_buggy_methods += 1
-                num_methods_patched.append(count_buggy_methods)
-            elif submission in unpatched_programs:
-                count_buggy_methods = 0
-                for method, tests in methods.items():
-                    if tests["num"] > 0:
-                        count_buggy_methods += 1
-                num_methods_unpatched.append(count_buggy_methods)
-
-        plt.hist(num_methods_patched, bins=20, alpha=0.7, label='Patched Solutions', color='blue')
-        plt.hist(num_methods_unpatched, bins=20, alpha=0.7, label='Unpatched Solutions', color='orange')
-
-        # plt.xlabel('Number of Buggy Methods', fontsize=14)
-        plt.ylabel('Frequency', fontsize=12)
-        plt.legend(loc='upper right')
-        plt.tight_layout()
-        plt.show()
-
     def get_dp(self, model):
         with open(self.results_json, 'r') as j:
             d = json.load(j)[model]
@@ -162,12 +98,81 @@ class Figures:
         random_samples = random.sample(unpatched_below_threshold, 10)
         print(f"Random samples: {random_samples}")
 
+    def histogram_rq3_buggy_methods(self):
+        patched_programs = self.get_submission_patched()
+        unpatched_programs = self.get_submission_unpatched()
+        num_methods_patched = []
+        num_methods_unpatched = []
+
+        with open(self.method_coverage_json, 'r') as j:
+            d = json.load(j)
+        for submission, methods in d.items():
+            if submission in patched_programs:
+                count_buggy_methods = 0
+                for method, tests in methods.items():
+                    if tests["num"] > 0:
+                        count_buggy_methods += 1
+                num_methods_patched.append(count_buggy_methods)
+            elif submission in unpatched_programs:
+                count_buggy_methods = 0
+                for method, tests in methods.items():
+                    if tests["num"] > 0:
+                        count_buggy_methods += 1
+                num_methods_unpatched.append(count_buggy_methods)
+
+        print(f"Max num of buggy methods - patched {max(num_methods_patched)}, unpatched {max(num_methods_unpatched)}")
+        print(f"Min num of buggy methods - patched {min(num_methods_patched)}, unpatched {min(num_methods_unpatched)}")
+
+        plt.figure(figsize=(8, 4))
+        plt.hist(num_methods_patched, bins=20, alpha=0.7, label='Repaired Solutions', color='blue')
+        plt.hist(num_methods_unpatched, bins=20, alpha=0.7, label='Unrepaired Solutions', color='orange')
+
+        plt.yscale("log")
+        plt.ylabel('number of solutions', fontsize=14)
+        plt.legend()
+        plt.tight_layout()
+        plt.show()
+
+    def histogram_rq3_num_failed_tests(self):
+        patched_programs = self.get_submission_patched()
+        unpatched_programs = self.get_submission_unpatched()
+        num_tests_patched = []
+        num_tests_unpatched = []
+
+        with open(self.failed_tests_json, 'r') as j:
+            d = json.load(j)
+        for submission, number in d.items():
+            if submission in patched_programs:
+                num_tests_patched.append(number / 2)
+            elif submission in unpatched_programs:
+                num_tests_unpatched.append(number / 2)
+
+        q3_patched = np.percentile(num_tests_patched, 75)
+        q3_unpatched = np.percentile(num_tests_unpatched, 75)
+        print(f"q3_patched: {q3_patched}")
+        print(f"q3_unpatched: {q3_unpatched}")
+
+        print(f"patched solutions - average: {statistics.mean(num_tests_patched)}")
+        print(f"patched solutions - test failure rate: {statistics.mean(num_tests_patched) / 60}")
+        print(f"unpatched solutions - average: {statistics.mean(num_tests_unpatched)}")
+        print(f"unpatched solutions - test failure rate: {statistics.mean(num_tests_unpatched) / 60}")
+
+        plt.figure(figsize=(8, 4))
+        plt.hist(num_tests_patched, bins=20, alpha=0.7, label='Repaired Solutions', color='blue')
+        plt.hist(num_tests_unpatched, bins=20, alpha=0.7, label='Unrepaired Solutions', color='orange')
+
+        plt.yscale("log")
+        plt.ylabel('number solutions', fontsize=14)
+        plt.legend()
+        plt.tight_layout()
+        plt.show()
+
 
 if __name__ == '__main__':
     f = Figures()
     # f.box_plot_rq1()
     # f.box_plot_rq2()
     # f.venn_diagram_rq2()
-    # f.histogram_rq3_num_failed_tests()
-    f.histogram_rq3_buggy_methods()
+    # f.histogram_rq3_buggy_methods()
+    f.histogram_rq3_num_failed_tests()
     # f.get_below_threshold_unpatched()
