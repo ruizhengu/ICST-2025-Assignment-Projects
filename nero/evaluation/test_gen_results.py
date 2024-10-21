@@ -12,7 +12,7 @@ class TestGen:
         self.root = Path("/Users/ruizhengu/Projects")
         self.project_home = self.root / "NERO"
         # self.generated_tests_path = self.project_home / "resource/test_gen/evosuite_5"
-        self.generated_tests_path = self.project_home / "resource/test_gen/LLM_qwen"
+        self.generated_tests_path = self.project_home / "resource/test_gen/Edu_LLM"
         self.generated_tests = list(self.generated_tests_path.rglob("*"))
         self.model_solution = Path("/Users/ruizhengu/Experiments/model_solution")
         self.dataset_home = Path("/Users/ruizhengu/Experiments/incorrect_submissions")
@@ -21,7 +21,8 @@ class TestGen:
         self.method_file_json = self.project_home / "resource/method_files.json"
         self.method_of_interest_file_json = self.project_home / "resource/method_of_interest_test.json"
         # self.method_coverage_gen_json = self.project_home / "resource/method_coverage_evosuite_5.json"
-        self.method_coverage_gen_json = self.project_home / "resource/method_coverage_llm.json"
+        # self.method_coverage_gen_json = self.project_home / "resource/method_coverage_llm.json"
+        self.method_coverage_gen_json = self.project_home / "resource/method_coverage_edu_llm.json"
         self.method_coverage_teacher_json = self.project_home / "resource/method_coverage.json"
         self.methods = self.get_model_methods()
 
@@ -53,8 +54,8 @@ class TestGen:
                 build_output = run_cmd(cmd)
                 if "BUILD SUCCESSFUL" not in build_output and "Execution failed for task ':test'." not in build_output:
                     print(f"{submission} - BUILD FAILED")
-                elif "BUILD SUCCESSFUL" in build_output and "Execution failed for task ':test'." not in build_output:
-                    shutil.rmtree(submission)
+                # elif "BUILD SUCCESSFUL" in build_output and "Execution failed for task ':test'." not in build_output:
+                #     shutil.rmtree(submission)
             except Exception as e:
                 print(f"{submission} - Error executing {e}")
             count += 1
@@ -209,7 +210,7 @@ class TestGen:
 
 if __name__ == '__main__':
     test_gen = TestGen()
-    # test_gen.replace_tests()
-    # test_gen.check_compilation()
+    test_gen.replace_tests()
+    test_gen.check_compilation()
     # test_gen.failed_tests_method_coverage()
-    test_gen.buggy_methods_plot()
+    # test_gen.buggy_methods_plot()
