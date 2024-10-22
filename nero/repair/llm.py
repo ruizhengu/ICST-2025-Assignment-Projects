@@ -302,6 +302,7 @@ class LLMRepair:
         pass_5_count = 0
         with open(self.repair_results_json, "r") as f:
             data = json.load(f)
+        valid_repairs = []
         for i in range(1, 297):
             buggy_methods = data[str(i)]
             num_methods = len(buggy_methods)
@@ -330,6 +331,7 @@ class LLMRepair:
                 # Pass@5 check
                 if "TEST SUCCESS" in responses:
                     pass_5_tmp += 1
+                    valid_repairs.append(f"{str(i)}.{method}")
 
             if mode == "buggy_methods":
                 pass_1_count += pass_1_tmp
@@ -363,19 +365,26 @@ class LLMRepair:
             print("# partially patched solutions - pass@1:", pass_1_count)
             print("# partially patched solutions - pass@3:", pass_3_count)
             print("# partially patched solutions - pass@5:", pass_5_count)
+        return valid_repairs
 
 
     def check_if_identical(self):
+        valid_repairs = self.get_pass_k("buggy_methods")
+        print(valid_repairs)
+        count = 0
         for i in range(1, 297):
             intermediate_submission = self.dataset / str(i)
             intermediate_submission = (_ for _ in intermediate_submission.iterdir() if _.is_dir())
             for intermediate in intermediate_submission:
                 method_path = self.get_method_path(intermediate.name)
-                model_method = self.get_model_method(intermediate, method_path)
+                model_method = self.get_model_method(intermediate, method_path).replace('\n', ' ').replace('\r', '').replace(" ", "")
                 responses = self.get_llm_responses(intermediate)
-                if model_method in responses:
-                    print(model_method, responses)
-                    print(True)
+                responses = [_.replace('\n', ' ').replace('\r', '').replace(" ", "") for _ in responses]
+                if model_method in responses and f"{str(i)}.{intermediate.name}" in valid_repairs:
+                    # print(model_method, responses)
+                    count += 1
+                    # print(True)
+        print(count)
 
 if __name__ == '__main__':
     l = LLMRepair()

@@ -152,6 +152,9 @@ class Figures:
         print(f"q3_patched: {q3_patched}")
         print(f"q3_unpatched: {q3_unpatched}")
 
+        print(f"patched solutions - failed test: [{min(num_tests_patched)}, {max(num_tests_patched)}]")
+        print(f"unpatched solutions - failed test: [{min(num_tests_unpatched)}, {max(num_tests_unpatched)}]")
+
         print(f"patched solutions - average: {statistics.mean(num_tests_patched)}")
         print(f"patched solutions - test failure rate: {statistics.mean(num_tests_patched) / 60}")
         print(f"unpatched solutions - average: {statistics.mean(num_tests_unpatched)}")
