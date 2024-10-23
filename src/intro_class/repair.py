@@ -137,6 +137,6 @@ class Repair:
 
 if __name__ == '__main__':
     repair = Repair()
-    # nero.arja()
+    # src.arja()
     repair.check_outputs()
-    # nero.k_gen_prog()
+    # src.k_gen_prog()
