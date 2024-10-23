@@ -2,6 +2,7 @@ import itertools
 import json
 import re
 import shutil
+from operator import index
 from pathlib import Path
 import subprocess
 
@@ -292,9 +293,13 @@ class LLMRepair:
             self.repair(str(i))
 
     def get_combinations(self, li, n):
-        combinations = []
-        combinations.extend(itertools.combinations(li, n))
-        return combinations
+        indexed_combinations = []
+        indexed_li = list(enumerate(li))
+        for combination in itertools.combinations(indexed_li, n):
+            indices = [index for index, _ in combination]
+            values = [value for _, value in combination]
+            indexed_combinations.append((values, indices))
+        return indexed_combinations
 
     def get_pass_k(self, mode="buggy_methods"):
         pass_1_count = 0
@@ -313,26 +318,29 @@ class LLMRepair:
             pass_5_tmp = 0
 
             for method, responses in buggy_methods.items():
+                intermediate = self.dataset / str(i) / method
                 # Pass@1 check
-                if responses[0] == "TEST SUCCESS":
+                if responses[0] == "TEST SUCCESS" and self.check_if_identical(intermediate, 0):
                     pass_1_tmp += 1
                 # Pass@3 check - calculate combinations of responses
                 pass_3_combinations = self.get_combinations(responses, 3)
                 pass_3_loc = 0
                 pass_3_loc_flag = False
                 for comb in pass_3_combinations:
-                    if "TEST SUCCESS" in comb:
-                        pass_3_loc += 1
-                        pass_3_loc_flag = True
+                    for j in range(3):
+                        if comb[0][j] == "TEST SUCCESS" and self.check_if_identical(intermediate, comb[1][j]):
+                            pass_3_loc += 1
+                            pass_3_loc_flag = True
+                            break
                 if pass_3_loc_flag:
                     pass_3_loc_count += 1
                     pass_3_loc_tmp = pass_3_loc / len(pass_3_combinations)
                 pass_3_tmp += pass_3_loc / len(pass_3_combinations)
                 # Pass@5 check
-                if "TEST SUCCESS" in responses:
-                    pass_5_tmp += 1
-                    # valid_repairs.append(f"{str(i)}.{method}")
-                    print(f"{str(i)}.{method}")
+                for j in range(5):
+                    if responses[j] == "TEST SUCCESS" and self.check_if_identical(intermediate, j):
+                        pass_5_tmp += 1
+                        break
 
             if mode == "buggy_methods":
                 pass_1_count += pass_1_tmp
@@ -368,24 +376,19 @@ class LLMRepair:
             print("# partially patched solutions - pass@5:", pass_5_count)
         return valid_repairs
 
+    def check_if_identical(self, intermediate, llm_index):
+        method_path = self.get_method_path(intermediate.name)
+        model_method = self.get_model_method(intermediate, method_path)
 
-    def check_if_identical(self):
-        # valid_repairs = self.get_pass_k("buggy_methods")
-        # print(valid_repairs)
-        count = 0
-        for i in range(1, 297):
-            intermediate_submission = self.dataset / str(i)
-            intermediate_submission = (_ for _ in intermediate_submission.iterdir() if _.is_dir())
-            for intermediate in intermediate_submission:
-                method_path = self.get_method_path(intermediate.name)
-                model_method = self.get_model_method(intermediate, method_path).replace('\n', ' ').replace('\r', '').replace(" ", "")
-                responses = self.get_llm_responses(intermediate)
-                responses = [_.replace('\n', ' ').replace('\r', '').replace(" ", "") for _ in responses]
-                if model_method in responses and f"{str(i)}.{intermediate.name}" in valid_repairs:
-                    # print(model_method, responses)
-                    count += 1
-                    # print(f"{str(i)}.{intermediate.name}")
-        # print(count)
+        model_method = model_method.replace('\n', ' ').replace('\r', '').replace(" ", "")
+        response_file = intermediate / f"llm_repair_{llm_index + 1}.txt"
+        with open(response_file, "r") as f:
+            response = f.read()
+        response = response.replace('\n', ' ').replace('\r', '').replace(" ", "")
+        if response == model_method:
+            return False
+        return True
+
 
 if __name__ == '__main__':
     l = LLMRepair()
