@@ -331,7 +331,8 @@ class LLMRepair:
                 # Pass@5 check
                 if "TEST SUCCESS" in responses:
                     pass_5_tmp += 1
-                    valid_repairs.append(f"{str(i)}.{method}")
+                    # valid_repairs.append(f"{str(i)}.{method}")
+                    print(f"{str(i)}.{method}")
 
             if mode == "buggy_methods":
                 pass_1_count += pass_1_tmp
@@ -369,8 +370,8 @@ class LLMRepair:
 
 
     def check_if_identical(self):
-        valid_repairs = self.get_pass_k("buggy_methods")
-        print(valid_repairs)
+        # valid_repairs = self.get_pass_k("buggy_methods")
+        # print(valid_repairs)
         count = 0
         for i in range(1, 297):
             intermediate_submission = self.dataset / str(i)
@@ -383,8 +384,8 @@ class LLMRepair:
                 if model_method in responses and f"{str(i)}.{intermediate.name}" in valid_repairs:
                     # print(model_method, responses)
                     count += 1
-                    # print(True)
-        print(count)
+                    # print(f"{str(i)}.{intermediate.name}")
+        # print(count)
 
 if __name__ == '__main__':
     l = LLMRepair()
@@ -393,5 +394,5 @@ if __name__ == '__main__':
     # l.analysis()
     # l.get_pass_k("fully_patched")
     # l.get_pass_k("partial_patched")
-    # l.get_pass_k("buggy_methods")
-    l.check_if_identical()
+    l.get_pass_k("buggy_methods")
+    # l.check_if_identical()
