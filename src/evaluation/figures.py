@@ -11,7 +11,7 @@ import numpy as np
 
 class Figures:
     def __init__(self):
-        self.root = Path("/Users/ruizhengu/Projects")
+        self.root = Path("/Users/Projects")
         self.project_home = self.root / "NERO"
         self.results_json = self.project_home / "resource/results.json"
         self.failed_tests_json = self.project_home / "resource/failed_tests.json"
@@ -124,8 +124,8 @@ class Figures:
         print(f"Min num of buggy methods - patched {min(num_methods_patched)}, unpatched {min(num_methods_unpatched)}")
 
         plt.figure(figsize=(8, 4))
-        plt.hist(num_methods_patched, bins=20, alpha=0.7, label='Repaired Solutions', color='blue')
-        plt.hist(num_methods_unpatched, bins=20, alpha=0.7, label='Unrepaired Solutions', color='orange')
+        plt.hist(num_methods_patched, bins=20, alpha=0.7, label='Repaired Submissions', color='blue')
+        plt.hist(num_methods_unpatched, bins=20, alpha=0.7, label='Unrepaired Submissions', color='orange')
 
         plt.yscale("log")
         plt.ylabel('number of solutions', fontsize=14)
@@ -161,8 +161,8 @@ class Figures:
         print(f"unpatched solutions - test failure rate: {statistics.mean(num_tests_unpatched) / 60}")
 
         plt.figure(figsize=(8, 4))
-        plt.hist(num_tests_patched, bins=20, alpha=0.7, label='Repaired Solutions', color='blue')
-        plt.hist(num_tests_unpatched, bins=20, alpha=0.7, label='Unrepaired Solutions', color='orange')
+        plt.hist(num_tests_patched, bins=20, alpha=0.7, label='Repaired Submissions', color='blue')
+        plt.hist(num_tests_unpatched, bins=20, alpha=0.7, label='Unrepaired Submissions', color='orange')
 
         plt.yscale("log")
         plt.ylabel('number solutions', fontsize=14)

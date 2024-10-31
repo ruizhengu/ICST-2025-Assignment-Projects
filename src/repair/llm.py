@@ -13,11 +13,11 @@ import utils
 
 class LLMRepair:
     def __init__(self):
-        self.root = Path("/Users/ruizhengu/Projects")
+        self.root = Path("/Users/Projects")
         self.project_home = self.root / "NERO"
-        self.dataset = Path("/Users/ruizhengu/Experiments/intermediates_llm")
+        self.dataset = Path("/Users/Experiments/intermediates_llm")
         self.model_solution = Path(
-            "/Users/ruizhengu/Experiments/model_solution")  # model solution error logging set to full
+            "/Users/Experiments/model_solution")  # model solution error logging set to full
         self.method_file_json = self.project_home / "resource/method_files.json"
         self.method_coverage_json = self.project_home / "resource/method_coverage.json"
         self.repair_results_json = self.project_home / "resource/llm_repair_results.json"

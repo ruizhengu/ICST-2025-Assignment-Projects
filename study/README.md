@@ -1,6 +1,4 @@
-# APR4Grade
-
-# Automated Program Repair for Grading Programming Assignments
+# APR for Programming Assignment Projects
 
 **Definition of a "not runnable" tool:** *if the tool can work for reproduction (e.g. can work on Defects4J bugs), then the execution of the tool is correct. If the tool can not work on the programming assignments or the simple example in the correct setup, then the tool is not runnable for the programming assignments.*
 
@@ -21,12 +19,12 @@ Java version: 1.7
 
 ```sh
 # IntroClassJava
-java -cp "lib/*:bin:target/classes" us.msu.cse.cream.Main Arja -DsrcJavaDir /Users/Experiments/APR-as-AAT/newIntroClass/median/1/src -DbinJavaDir /Usersgu/Experiments/APR-as-AAT/newIntroClass/median/1/target/classes -DbinTestDir /Usersgu/Experiments/APR-as-AAT/newIntroClass/median/1/target/test-classes -Ddependences /Usersgu/Experiments/APR-as-AAT/dependency
+java -cp "lib/*:bin:target/classes" us.msu.cse.cream.Main Arja -DsrcJavaDir /Users/Experiments/APR-as-AAT/newIntroClass/median/1/src -DbinJavaDir /Users/Experiments/APR-as-AAT/newIntroClass/median/1/target/classes -DbinTestDir /Users/Experiments/APR-as-AAT/newIntroClass/median/1/target/test-classes -Ddependences /Users/Experiments/APR-as-AAT/dependency
 ```
 
 ```shell
 # Assignment
-java -cp "lib/*:bin" us.msu.cse.cream.Main ArjaE -DsrcJavaDir /Users/Experiments/APR-as-AAT/model_mutants/cafe_java_8/src -DbinJavaDir /Usersgu/Experiments/APR-as-AAT/model_mutants/cafe_java_8/build/classes/java/main -DbinTestDir /Usersgu/Experiments/APR-as-AAT/model_mutants/cafe_java_8/build/classes/java/test -Ddependences /Usersgu/Projects/APR-as-AAT/dependency/evosuite-standalone-runtime-1.0.6.jar:/Usersgu/Projects/APR-as-AAT/dependency/junit-vintage-engine-5.9.0.jar:/Usersgu/Projects/APR-as-AAT/dependency/junit-4.13.2.jar:/Usersgu/Projects/APR-as-AAT/dependency/junit-jupiter-engine-5.9.0.jar:/Usersgu/Projects/APR-as-AAT/dependency/javaparser-core-3.25.1.jar:/Usersgu/Projects/APR-as-AAT/dependency/junit-jupiter-api-5.9.0.jar:/Usersgu/Projects/APR-as-AAT/dependency/javaparser-core-serialization-3.25.1.jar:/Usersgu/Projects/APR-as-AAT/dependency/apiguardian-api-1.1.2.jar:/Usersgu/Projects/APR-as-AAT/dependency/commons-lang3-3.0.jar:/Usersgu/Projects/APR-as-AAT/dependency/opentest4j-1.0.0.jar -DdiffFormat true -DingredientMode Application
+java -cp "lib/*:bin" us.msu.cse.cream.Main ArjaE -DsrcJavaDir /Users/Experiments/APR-as-AAT/model_mutants/cafe_java_8/src -DbinJavaDir /Users/Experiments/APR-as-AAT/model_mutants/cafe_java_8/build/classes/java/main -DbinTestDir /Users/Experiments/APR-as-AAT/model_mutants/cafe_java_8/build/classes/java/test -Ddependences /Users/Projects/APR-as-AAT/dependency/evosuite-standalone-runtime-1.0.6.jar:/Users/Projects/APR-as-AAT/dependency/junit-vintage-engine-5.9.0.jar:/Users/Projects/APR-as-AAT/dependency/junit-4.13.2.jar:/Users/Projects/APR-as-AAT/dependency/junit-jupiter-engine-5.9.0.jar:/Users/Projects/APR-as-AAT/dependency/javaparser-core-3.25.1.jar:/Users/Projects/APR-as-AAT/dependency/junit-jupiter-api-5.9.0.jar:/Users/Projects/APR-as-AAT/dependency/javaparser-core-serialization-3.25.1.jar:/Users/Projects/APR-as-AAT/dependency/apiguardian-api-1.1.2.jar:/Users/Projects/APR-as-AAT/dependency/commons-lang3-3.0.jar:/Users/Projects/APR-as-AAT/dependency/opentest4j-1.0.0.jar -DdiffFormat true -DingredientMode Application
 ```
 
 
@@ -45,12 +43,12 @@ Java version: 1.8
 
 ```sh
 # gradle
-java -cp target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/  -binjavafolder /build/classes/java/main/ -bintestfolder /build/classes/java/test/ -location /Usersgu/Experiments/APR-as-AAT/anonymised-submissions/3 -dependencies /Usersgu/Experiments/APR-as-AAT/dependency -scope global
+java -cp target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/  -binjavafolder /build/classes/java/main/ -bintestfolder /build/classes/java/test/ -location /Users/Experiments/APR-as-AAT/anonymised-submissions/3 -dependencies /Users/Experiments/APR-as-AAT/dependency -scope global
 ```
 
 ```shell
 # maven
-java -cp target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/  -binjavafolder /target/classes/ -bintestfolder /target/test-classes/ -location /Usersgu/Experiments/APR-as-AAT/IntroClassJava/dataset/checksum/2c1556672751734adf9a561fbf88767c32224fca14a81e9d9c719f18d0b21765038acc16ecd8377f74d4f43e8c844538161d869605e3516cf797d0a6a59f1f8e/003 -scope global
+java -cp target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.AstorMain -mode jgenprog -srcjavafolder /src/main/java/ -srctestfolder /src/test/java/  -binjavafolder /target/classes/ -bintestfolder /target/test-classes/ -location /Users/Experiments/APR-as-AAT/IntroClassJava/dataset/checksum/2c1556672751734adf9a561fbf88767c32224fca14a81e9d9c719f18d0b21765038acc16ecd8377f74d4f43e8c844538161d869605e3516cf797d0a6a59f1f8e/003 -scope global
 ```
 
 ### Comments
@@ -276,7 +274,7 @@ Java version: 11
 ### Command
 
 ```sh
-java -jar /Usersgu/Experiments/APR-as-AAT/kGenProg-1.8.2.jar -r /Usersgu/Experiments/APR-as-AAT/newIntroClass/median/median_1 -s /Usersgu/Experiments/APR-as-AAT/newIntroClass/median/median_1/src/main -t /Usersgu/Experiments/APR-as-AAT/newIntroClass/median/median_1/src/test --max-generation 50
+java -jar /Users/Experiments/APR-as-AAT/kGenProg-1.8.2.jar -r /Users/Experiments/APR-as-AAT/newIntroClass/median/median_1 -s /Users/Experiments/APR-as-AAT/newIntroClass/median/median_1/src/main -t /Users/Experiments/APR-as-AAT/newIntroClass/median/median_1/src/test --max-generation 50
 ```
 
 ### Comments

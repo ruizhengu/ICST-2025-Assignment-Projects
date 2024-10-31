@@ -9,13 +9,13 @@ import utils
 
 class Intermediate4LLM:
     def __init__(self):
-        self.root = Path("/Users/ruizhengu/Projects")
+        self.root = Path("/Users/Projects")
         self.project_home = self.root / "NERO"
 
-        self.model_solution = Path("/Users/ruizhengu/Experiments/model_solution")
-        self.dataset_home = Path("/Users/ruizhengu/Experiments/incorrect_submissions")
+        self.model_solution = Path("/Users/Experiments/model_solution")
+        self.dataset_home = Path("/Users/Experiments/incorrect_submissions")
         self.method_coverage_json = self.project_home / "resource/method_coverage.json"
-        self.intermediates_path = Path("/Users/ruizhengu/Experiments/intermediates_llm")
+        self.intermediates_path = Path("/Users/Experiments/intermediates_llm")
         self.method_file_json = self.project_home / "resource/method_files.json"
 
     def get_buggy_methods(self, submission):
