@@ -162,9 +162,9 @@ class TestGen:
                 complementary_teacher_better += len(buggy_method_teacher - intersection)
                 complementary_gen_better += len(buggy_method_gen - intersection)
         print(
-            f"{data_source.name} - average unique - educator: {round(complementary_teacher_better / complementary, 2)}")
+            f"{data_source.name} - # unique - educator: {complementary_teacher_better}")
         print(
-            f"{data_source.name} - average unique - gen: {round(complementary_gen_better / complementary, 2)}")
+            f"{data_source.name} - # unique - gen: {complementary_gen_better}")
         return [insufficient, complementary, equivalent, outperform]
 
     def buggy_methods_plot(self):
@@ -174,8 +174,8 @@ class TestGen:
         json_es4 = self.project_home / "resource/method_coverage_evosuite_4.json"
         json_es5 = self.project_home / "resource/method_coverage_evosuite_5.json"
         json_llm = self.project_home / "resource/method_coverage_llm.json"
-        json_edu_llm = self.project_home / "resource/method_coverage_edu_llm.json"
-        json_edu_edu_llm = self.project_home / "resource/method_coverage_edu+edu_llm.json"
+        # json_edu_llm = self.project_home / "resource/method_coverage_edu_llm.json"
+        # json_edu_edu_llm = self.project_home / "resource/method_coverage_edu+edu_llm.json"
 
         data_es1 = self.buggy_methods_results(json_es1)
         data_es2 = self.buggy_methods_results(json_es2)
@@ -184,16 +184,17 @@ class TestGen:
         data_es5 = self.buggy_methods_results(json_es5)
         data_es_avg = [sum(v) / len(v) for v in zip(data_es1, data_es2, data_es3, data_es4, data_es5)]
         data_llm = self.buggy_methods_results(json_llm)
-        data_edu_llm = self.buggy_methods_results(json_edu_llm)
-        data_edu_edu_llm = self.buggy_methods_results(json_edu_edu_llm)
+        # data_edu_llm = self.buggy_methods_results(json_edu_llm)
+        # data_edu_edu_llm = self.buggy_methods_results(json_edu_edu_llm)
 
         data = pd.DataFrame({
-            "insufficient": [data_es_avg[0], data_llm[0], data_edu_llm[0], data_edu_edu_llm[0]],
-            "complementary": [data_es_avg[1], data_llm[1], data_edu_llm[1], data_edu_edu_llm[1]],
-            "equivalent": [data_es_avg[2], data_llm[2], data_edu_llm[2], data_edu_edu_llm[2]],
-            "outperform": [data_es_avg[3], data_llm[3], data_edu_llm[3], data_edu_edu_llm[3]]
+            "nondetection": [0, 12],
+            "insufficient": [data_es_avg[0], data_llm[0]],
+            "complementary": [data_es_avg[1], data_llm[1]],
+            "equivalent": [data_es_avg[2], data_llm[2]],
+            "outperform": [data_es_avg[3], data_llm[3]]
         },
-            index=["$EvoSuite$", "$LLM$", "$Edu_{LLM}$", "$Edu+LLM$"])
+            index=["$EvoSuite$", "$LLM$"])
 
         ax = data.plot(kind="bar", figsize=(8, 4), rot=0, alpha=0.7)
         y_max = max(data.max()) * 1.1  # 20% space above the tallest bar
