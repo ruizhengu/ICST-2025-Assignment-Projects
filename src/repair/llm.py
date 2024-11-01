@@ -165,7 +165,7 @@ class LLMRepair:
         fixed_submissions = 0
         partial_fixed_submissions = 0
         fixed_bugs = 0
-        purged_path = Path("/Users/ruizhengu/Experiments/patches_3")
+        purged_path = Path("/Users/Experiments/patches_3")
         purged_submissions = (_ for _ in purged_path.iterdir() if _.is_dir())
         for submission in purged_submissions:
             try:

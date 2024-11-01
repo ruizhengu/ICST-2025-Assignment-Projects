@@ -123,13 +123,13 @@ class Figures:
         print(f"Max num of buggy methods - patched {max(num_methods_patched)}, unpatched {max(num_methods_unpatched)}")
         print(f"Min num of buggy methods - patched {min(num_methods_patched)}, unpatched {min(num_methods_unpatched)}")
 
-        plt.figure(figsize=(8, 4))
+        plt.figure(figsize=(8, 3.5))
         plt.hist(num_methods_patched, bins=20, alpha=0.7, label='Repaired Submissions', color='blue')
         plt.hist(num_methods_unpatched, bins=20, alpha=0.7, label='Unrepaired Submissions', color='orange')
 
         plt.yscale("log")
-        plt.ylabel('number of solutions', fontsize=14)
-        plt.legend()
+        plt.ylabel('number of solutions', fontsize=16)
+        plt.legend(fontsize=13)
         plt.tight_layout()
         plt.show()
 
@@ -160,13 +160,13 @@ class Figures:
         print(f"unpatched solutions - average: {statistics.mean(num_tests_unpatched)}")
         print(f"unpatched solutions - test failure rate: {statistics.mean(num_tests_unpatched) / 60}")
 
-        plt.figure(figsize=(8, 4))
+        plt.figure(figsize=(8, 3.5))
         plt.hist(num_tests_patched, bins=20, alpha=0.7, label='Repaired Submissions', color='blue')
         plt.hist(num_tests_unpatched, bins=20, alpha=0.7, label='Unrepaired Submissions', color='orange')
 
         plt.yscale("log")
-        plt.ylabel('number solutions', fontsize=14)
-        plt.legend()
+        plt.ylabel('number solutions', fontsize=16)
+        plt.legend(fontsize=13)
         plt.tight_layout()
         plt.show()
 
@@ -176,6 +176,6 @@ if __name__ == '__main__':
     # f.box_plot_rq1()
     # f.box_plot_rq2()
     # f.venn_diagram_rq2()
-    # f.histogram_rq3_buggy_methods()
-    f.histogram_rq3_num_failed_tests()
+    f.histogram_rq3_buggy_methods()
+    # f.histogram_rq3_num_failed_tests()
     # f.get_below_threshold_unpatched()
