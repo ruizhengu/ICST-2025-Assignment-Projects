@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
 import matplotlib.pyplot as plt
+import statistics
 import numpy as np
 import matplotlib.colors as mcolors
 
@@ -10,7 +11,7 @@ from src.utils import *
 class TestGen:
     def __init__(self):
         self.root = Path("/Users/ruizhengu/Projects")
-        self.project_home = self.root / "NERO"
+        self.project_home = self.root / "ICST-2025-Assignment-Projects"
         # self.generated_tests_path = self.project_home / "resource/test_gen/evosuite_5"
         self.generated_tests_path = self.project_home / "resource/test_gen/Edu_LLM"
         self.generated_tests = list(self.generated_tests_path.rglob("*"))
@@ -161,28 +162,35 @@ class TestGen:
                 intersection = buggy_method_teacher & buggy_method_gen
                 complementary_teacher_better += len(buggy_method_teacher - intersection)
                 complementary_gen_better += len(buggy_method_gen - intersection)
-        print(
-            f"{data_source.name} - # unique - educator: {complementary_teacher_better}")
-        print(
-            f"{data_source.name} - # unique - gen: {complementary_gen_better}")
+        # print(f"{data_source.name} - # unique - educator: {complementary_teacher_better}")
+        # print(f"{data_source.name} - # unique - gen: {complementary_gen_better}")
         return [insufficient, complementary, equivalent, outperform]
 
-    def buggy_methods_plot(self):
+    def get_evosuite_results(self):
         json_es1 = self.project_home / "resource/method_coverage_evosuite_1.json"
         json_es2 = self.project_home / "resource/method_coverage_evosuite_2.json"
         json_es3 = self.project_home / "resource/method_coverage_evosuite_3.json"
         json_es4 = self.project_home / "resource/method_coverage_evosuite_4.json"
         json_es5 = self.project_home / "resource/method_coverage_evosuite_5.json"
-        json_llm = self.project_home / "resource/method_coverage_llm.json"
-        # json_edu_llm = self.project_home / "resource/method_coverage_edu_llm.json"
-        # json_edu_edu_llm = self.project_home / "resource/method_coverage_edu+edu_llm.json"
 
         data_es1 = self.buggy_methods_results(json_es1)
         data_es2 = self.buggy_methods_results(json_es2)
         data_es3 = self.buggy_methods_results(json_es3)
         data_es4 = self.buggy_methods_results(json_es4)
         data_es5 = self.buggy_methods_results(json_es5)
-        data_es_avg = [sum(v) / len(v) for v in zip(data_es1, data_es2, data_es3, data_es4, data_es5)]
+        return [data_es1, data_es2, data_es3, data_es4, data_es5]
+
+    def statistical_measure(self):
+        data_es = self.get_evosuite_results()
+        data_es_stdev = [statistics.stdev(v) for v in zip(*data_es)]
+        print(data_es_stdev)
+
+    def buggy_methods_plot(self):
+        json_llm = self.project_home / "resource/method_coverage_llm.json"
+        # json_edu_llm = self.project_home / "resource/method_coverage_edu_llm.json"
+        # json_edu_edu_llm = self.project_home / "resource/method_coverage_edu+edu_llm.json"
+
+        data_es_avg = [sum(v) / len(v) for v in zip(*self.get_evosuite_results())]
         data_llm = self.buggy_methods_results(json_llm)
         # data_edu_llm = self.buggy_methods_results(json_edu_llm)
         # data_edu_edu_llm = self.buggy_methods_results(json_edu_edu_llm)
@@ -193,8 +201,7 @@ class TestGen:
             "complementary": [data_es_avg[1], data_llm[1]],
             "equivalent": [data_es_avg[2], data_llm[2]],
             "outperform": [data_es_avg[3], data_llm[3]]
-        },
-            index=["$EvoSuite$", "$LLM$"])
+        }, index=["$EvoSuite$", "$LLM$"])
 
         ax = data.plot(kind="bar", figsize=(8, 3.5), rot=0, alpha=0.7)
         y_max = max(data.max()) * 1.1  # 20% space above the tallest bar
@@ -217,5 +224,6 @@ if __name__ == '__main__':
     test_gen = TestGen()
     # test_gen.replace_tests()
     # test_gen.check_compilation()
-    # test_gen.failed_tests_method_coverage()
-    test_gen.buggy_methods_plot()
+    test_gen.failed_tests_method_coverage()
+    # test_gen.buggy_methods_plot()
+    # test_gen.statistical_measure()
