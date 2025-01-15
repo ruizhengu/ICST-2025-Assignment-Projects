@@ -173,9 +173,8 @@ class Figures:
 
 if __name__ == '__main__':
     f = Figures()
-    # f.box_plot_rq1()
-    # f.box_plot_rq2()
+    f.box_plot_rq2()
     # f.venn_diagram_rq2()
-    f.histogram_rq3_buggy_methods()
+    # f.histogram_rq3_buggy_methods()
     # f.histogram_rq3_num_failed_tests()
     # f.get_below_threshold_unpatched()

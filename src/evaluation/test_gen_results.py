@@ -4,18 +4,18 @@ import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib.colors as mcolors
 
-from utils import *
+from src.utils import *
 
 
 class TestGen:
     def __init__(self):
-        self.root = Path("/Users/Projects")
+        self.root = Path("/Users/ruizhengu/Projects")
         self.project_home = self.root / "NERO"
         # self.generated_tests_path = self.project_home / "resource/test_gen/evosuite_5"
         self.generated_tests_path = self.project_home / "resource/test_gen/Edu_LLM"
         self.generated_tests = list(self.generated_tests_path.rglob("*"))
-        self.model_solution = Path("/Users/Experiments/model_solution")
-        self.dataset_home = Path("/Users/Experiments/incorrect_submissions")
+        self.model_solution = Path("/Users/ruizhengu/Experiments/model_solution")
+        self.dataset_home = Path("/Users/ruizhengu/Experiments/incorrect_submissions")
         self.submission_list = [submission for submission in self.dataset_home.iterdir() if
                                 submission.is_dir() and submission.name != ".git"]
         self.method_file_json = self.project_home / "resource/method_files.json"
@@ -196,7 +196,7 @@ class TestGen:
         },
             index=["$EvoSuite$", "$LLM$"])
 
-        ax = data.plot(kind="bar", figsize=(8, 4), rot=0, alpha=0.7)
+        ax = data.plot(kind="bar", figsize=(8, 3.5), rot=0, alpha=0.7)
         y_max = max(data.max()) * 1.1  # 20% space above the tallest bar
         ax.set_ylim(1, y_max)
 

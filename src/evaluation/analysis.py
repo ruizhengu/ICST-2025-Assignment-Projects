@@ -3,8 +3,8 @@ import re
 import shutil
 from pathlib import Path
 
-import utils
-from incremental_repair.intermediate import Intermediate
+import src.utils as utils
+from src.incremental_repair.intermediate import Intermediate
 
 
 class Analysis:

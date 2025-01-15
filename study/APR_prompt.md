@@ -1,5 +1,4 @@
 **[Task Description]** You are an automatic program repair tool. Your task is to fix a buggy method within its class. 
-
 **[Problem Description]** The following class is where the buggy method within:
 
 ```
@@ -12,7 +11,6 @@ public class Class01 {
 ```
 
 **[Buggy method]** The buggy method is **method01**.
-
 **[Failing tests]** The method fails the following tests:
 
 ```
