@@ -10,10 +10,13 @@ from src.utils import *
 
 class TestGen:
     def __init__(self):
+        """
+        Evosuite command: java -jar evosuite-1.2.0.jar -prefix uk.ac.sheffield.com1003.cafe -projectCP build/classes/java/main
+        """
         self.root = Path("/Users/ruizhengu/Projects")
         self.project_home = self.root / "ICST-2025-Assignment-Projects"
-        # self.generated_tests_path = self.project_home / "resource/test_gen/evosuite_5"
-        self.generated_tests_path = self.project_home / "resource/test_gen/Edu_LLM"
+        self.generated_tests_path = self.project_home / "resource/test_gen/evosuite_7"
+        # self.generated_tests_path = self.project_home / "resource/test_gen/Edu_LLM"
         self.generated_tests = list(self.generated_tests_path.rglob("*"))
         self.model_solution = Path("/Users/ruizhengu/Experiments/model_solution")
         self.dataset_home = Path("/Users/ruizhengu/Experiments/incorrect_submissions")
@@ -21,9 +24,9 @@ class TestGen:
                                 submission.is_dir() and submission.name != ".git"]
         self.method_file_json = self.project_home / "resource/method_files.json"
         self.method_of_interest_file_json = self.project_home / "resource/method_of_interest_test.json"
-        # self.method_coverage_gen_json = self.project_home / "resource/method_coverage_evosuite_5.json"
+        self.method_coverage_gen_json = self.project_home / "resource/method_coverage_evosuite_7.json"
         # self.method_coverage_gen_json = self.project_home / "resource/method_coverage_llm.json"
-        self.method_coverage_gen_json = self.project_home / "resource/method_coverage_edu_llm.json"
+        # self.method_coverage_gen_json = self.project_home / "resource/method_coverage_edu_llm.json"
         self.method_coverage_teacher_json = self.project_home / "resource/method_coverage.json"
         self.methods = self.get_model_methods()
 
@@ -99,6 +102,7 @@ class TestGen:
 
     def failed_tests_method_coverage(self):
         submission_method_coverage = {}
+        count = 0
         for submission in self.submission_list:
             self.inject_aspectj(submission)
             test_cmd = f"{submission}/gradlew build -p {submission}"
@@ -116,7 +120,9 @@ class TestGen:
             submission_method_coverage[submission.name] = method_coverage
             with open(self.method_coverage_gen_json, "w") as f:
                 f.write(json.dumps(submission_method_coverage, indent=4))
-            print(f"Get failed tests: {submission.name}")
+            # print(f"Get failed tests: {submission.name}")
+            count += 1
+            print(f"process {count} / 296")
 
     def get_buggy_method_gen(self, submission, data_source=None):
         buggy_methods = []
@@ -167,18 +173,21 @@ class TestGen:
         return [insufficient, complementary, equivalent, outperform]
 
     def get_evosuite_results(self):
-        json_es1 = self.project_home / "resource/method_coverage_evosuite_1.json"
-        json_es2 = self.project_home / "resource/method_coverage_evosuite_2.json"
-        json_es3 = self.project_home / "resource/method_coverage_evosuite_3.json"
-        json_es4 = self.project_home / "resource/method_coverage_evosuite_4.json"
-        json_es5 = self.project_home / "resource/method_coverage_evosuite_5.json"
+        es_json = [self.project_home / f"resource/method_coverage_evosuite_{i}.json" for i in range(1, 6)]
 
-        data_es1 = self.buggy_methods_results(json_es1)
-        data_es2 = self.buggy_methods_results(json_es2)
-        data_es3 = self.buggy_methods_results(json_es3)
-        data_es4 = self.buggy_methods_results(json_es4)
-        data_es5 = self.buggy_methods_results(json_es5)
-        return [data_es1, data_es2, data_es3, data_es4, data_es5]
+        # json_es1 = self.project_home / "resource/method_coverage_evosuite_1.json"
+        # json_es2 = self.project_home / "resource/method_coverage_evosuite_2.json"
+        # json_es3 = self.project_home / "resource/method_coverage_evosuite_3.json"
+        # json_es4 = self.project_home / "resource/method_coverage_evosuite_4.json"
+        # json_es5 = self.project_home / "resource/method_coverage_evosuite_5.json"
+        #
+        # data_es1 = self.buggy_methods_results(json_es1)
+        # data_es2 = self.buggy_methods_results(json_es2)
+        # data_es3 = self.buggy_methods_results(json_es3)
+        # data_es4 = self.buggy_methods_results(json_es4)
+        # data_es5 = self.buggy_methods_results(json_es5)
+
+        return [self.buggy_methods_results(j) for j in es_json]
 
     def statistical_measure(self):
         data_es = self.get_evosuite_results()
