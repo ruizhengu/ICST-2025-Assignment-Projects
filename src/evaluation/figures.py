@@ -11,8 +11,8 @@ import numpy as np
 
 class Figures:
     def __init__(self):
-        self.root = Path("/Users/Projects")
-        self.project_home = self.root / "NERO"
+        self.root = Path("/Users/ruizhengu/Projects")
+        self.project_home = self.root / "ICST-2025-Assignment-Projects"
         self.results_json = self.project_home / "resource/results.json"
         self.failed_tests_json = self.project_home / "resource/failed_tests.json"
         self.method_coverage_json = self.project_home / "resource/method_coverage.json"
@@ -128,7 +128,7 @@ class Figures:
         plt.hist(num_methods_unpatched, bins=20, alpha=0.7, label='Unrepaired Submissions', color='orange')
 
         plt.yscale("log")
-        plt.ylabel('number of solutions', fontsize=16)
+        plt.ylabel('number of submissions', fontsize=16)
         plt.legend(fontsize=13)
         plt.tight_layout()
         plt.show()
@@ -165,7 +165,7 @@ class Figures:
         plt.hist(num_tests_unpatched, bins=20, alpha=0.7, label='Unrepaired Submissions', color='orange')
 
         plt.yscale("log")
-        plt.ylabel('number solutions', fontsize=16)
+        plt.ylabel('number of submissions', fontsize=16)
         plt.legend(fontsize=13)
         plt.tight_layout()
         plt.show()
@@ -173,8 +173,8 @@ class Figures:
 
 if __name__ == '__main__':
     f = Figures()
-    f.box_plot_rq2()
+    # f.box_plot_rq2()
     # f.venn_diagram_rq2()
     # f.histogram_rq3_buggy_methods()
-    # f.histogram_rq3_num_failed_tests()
+    f.histogram_rq3_num_failed_tests()
     # f.get_below_threshold_unpatched()

@@ -204,7 +204,7 @@ class TestGen:
         y_max = max(data.max()) * 1.1
         ax.set_ylim(1, y_max)
 
-        plt.ylabel("number of solutions", fontsize=15)
+        plt.ylabel("number of submissions", fontsize=15)
         plt.xticks(fontsize=15)
         plt.yticks(fontsize=13)
         plt.legend(fontsize=13)
