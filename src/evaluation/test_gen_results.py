@@ -15,7 +15,7 @@ class TestGen:
         """
         self.root = Path("/Users/ruizhengu/Projects")
         self.project_home = self.root / "ICST-2025-Assignment-Projects"
-        self.generated_tests_path = self.project_home / "resource/test_gen/evosuite_7"
+        self.generated_tests_path = self.project_home / "resource/test_gen/evosuite_10"
         # self.generated_tests_path = self.project_home / "resource/test_gen/Edu_LLM"
         self.generated_tests = list(self.generated_tests_path.rglob("*"))
         self.model_solution = Path("/Users/ruizhengu/Experiments/model_solution")
@@ -24,7 +24,7 @@ class TestGen:
                                 submission.is_dir() and submission.name != ".git"]
         self.method_file_json = self.project_home / "resource/method_files.json"
         self.method_of_interest_file_json = self.project_home / "resource/method_of_interest_test.json"
-        self.method_coverage_gen_json = self.project_home / "resource/method_coverage_evosuite_7.json"
+        self.method_coverage_gen_json = self.project_home / "resource/method_coverage_evosuite_10.json"
         # self.method_coverage_gen_json = self.project_home / "resource/method_coverage_llm.json"
         # self.method_coverage_gen_json = self.project_home / "resource/method_coverage_edu_llm.json"
         self.method_coverage_teacher_json = self.project_home / "resource/method_coverage.json"
@@ -173,19 +173,7 @@ class TestGen:
         return [insufficient, complementary, equivalent, outperform]
 
     def get_evosuite_results(self):
-        es_json = [self.project_home / f"resource/method_coverage_evosuite_{i}.json" for i in range(1, 6)]
-
-        # json_es1 = self.project_home / "resource/method_coverage_evosuite_1.json"
-        # json_es2 = self.project_home / "resource/method_coverage_evosuite_2.json"
-        # json_es3 = self.project_home / "resource/method_coverage_evosuite_3.json"
-        # json_es4 = self.project_home / "resource/method_coverage_evosuite_4.json"
-        # json_es5 = self.project_home / "resource/method_coverage_evosuite_5.json"
-        #
-        # data_es1 = self.buggy_methods_results(json_es1)
-        # data_es2 = self.buggy_methods_results(json_es2)
-        # data_es3 = self.buggy_methods_results(json_es3)
-        # data_es4 = self.buggy_methods_results(json_es4)
-        # data_es5 = self.buggy_methods_results(json_es5)
+        es_json = [self.project_home / f"resource/method_coverage_evosuite_{i}.json" for i in range(1, 11)]
 
         return [self.buggy_methods_results(j) for j in es_json]
 
@@ -213,7 +201,7 @@ class TestGen:
         }, index=["$EvoSuite$", "$LLM$"])
 
         ax = data.plot(kind="bar", figsize=(8, 3.5), rot=0, alpha=0.7)
-        y_max = max(data.max()) * 1.1  # 20% space above the tallest bar
+        y_max = max(data.max()) * 1.1
         ax.set_ylim(1, y_max)
 
         plt.ylabel("number of solutions", fontsize=15)
@@ -233,6 +221,6 @@ if __name__ == '__main__':
     test_gen = TestGen()
     # test_gen.replace_tests()
     # test_gen.check_compilation()
-    test_gen.failed_tests_method_coverage()
-    # test_gen.buggy_methods_plot()
+    # test_gen.failed_tests_method_coverage()
+    test_gen.buggy_methods_plot()
     # test_gen.statistical_measure()
