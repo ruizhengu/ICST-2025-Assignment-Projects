@@ -200,7 +200,7 @@ class TestGen:
             "outperform": [data_es_avg[3], data_llm[3]]
         }, index=["$EvoSuite$", "$LLM$"])
 
-        ax = data.plot(kind="bar", figsize=(8, 3.5), rot=0, alpha=0.7)
+        ax = data.plot(kind="bar", figsize=(8, 3.5), rot=0, alpha=0.7, width=0.8)
         y_max = max(data.max()) * 1.1
         ax.set_ylim(1, y_max)
 
