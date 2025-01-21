@@ -1,4 +1,4 @@
-**[source code, signatures, documentaion]** The task is to generate a JUnit4 test suite for the given class.
+**[source code, signatures, documentation]** The task is to generate a JUnit4 test suite for the given class.
 
 ```
 public class Class01 {
