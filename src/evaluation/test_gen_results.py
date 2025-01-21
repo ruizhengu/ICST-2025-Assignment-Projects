@@ -179,6 +179,8 @@ class TestGen:
 
     def statistical_measure(self):
         data_es = self.get_evosuite_results()
+        for data in data_es:
+            print(data)
         data_es_stdev = [statistics.stdev(v) for v in zip(*data_es)]
         print(data_es_stdev)
 
@@ -200,11 +202,12 @@ class TestGen:
             "outperform": [data_es_avg[3], data_llm[3]]
         }, index=["$EvoSuite$", "$LLM$"])
 
-        ax = data.plot(kind="bar", figsize=(8, 3.5), rot=0, alpha=0.7, width=0.8)
+        ax = data.plot(kind="bar", figsize=(8, 3.5), rot=0, alpha=0.7, width=0.7)
         y_max = max(data.max()) * 1.1
         ax.set_ylim(1, y_max)
 
         plt.ylabel("number of submissions", fontsize=15)
+        plt.xlim(-0.3, 1.6)
         plt.xticks(fontsize=15)
         plt.yticks(fontsize=13)
         plt.legend(fontsize=13)
