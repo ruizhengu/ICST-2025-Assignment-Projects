@@ -2,7 +2,7 @@ import plotly.graph_objects as go
 
 
 def dataset_distribution():
-    categories = ['Incorrect Submissions', 'Correct Submissions', 'Educator_solution']
+    categories = ['Incorrect Submissions', 'Correct Submissions', 'Educator Solution']
     values = [296, 3, 1]
     fig = go.Figure()
     sorted_pairs = sorted(zip(values, categories), reverse=True)
